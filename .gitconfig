@@ -1,6 +1,7 @@
 [user]
 	email = alex@villablanca.tech
 	name = Alex
+	signingkey = 2B826E3C035C8BB5
 [init]
 	defaultbranch = master
 [color]
