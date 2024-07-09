@@ -1,0 +1,30 @@
+[user]
+	email = alex@villablanca.tech
+	name = Alex
+[init]
+	defaultbranch = master
+[color]
+	ui = true
+[core]
+	editor = nvim
+	pager = delta
+[interactive]
+	difffilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colormoved = default
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true
+[gpg]
+	program = /usr/bin/gpg
+[gitbutler]
+	utmostdiscretion = 1
+	aimodelprovider = openai
+	aiopenaikeyoption = butlerAPI
+[rerere]
+	enabled = true
