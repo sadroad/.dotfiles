@@ -28,6 +28,7 @@ alias xxd="0x"
 alias l="ls -lah"
 alias reload="source ~/.zshrc"
 alias find="find"
+alias open="xdg-open"
 
 alias drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'
 alias update-all='export TMPFILE="$(mktemp)"; \
