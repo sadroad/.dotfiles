@@ -39,6 +39,8 @@ alias update-all='export TMPFILE="$(mktemp)"; \
       && drop-caches \
       && paru -Syyu --noconfirm'
 
+export PATH="$HOME/.cargo/bin:$PATH"
+
 source <(fnm env --use-on-cd --version-file-strategy=recursive)
 source <(fzf --zsh)
 source <(fnm completions --shell zsh)
