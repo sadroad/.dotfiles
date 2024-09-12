@@ -29,6 +29,11 @@ alias l="ls -lah"
 alias reload="source ~/.zshrc"
 alias find="find"
 alias open="xdg-open"
+alias cd="z"
+
+function cursor {
+	(nohup /opt/cursor-bin/cursor-bin.AppImage $@ > /dev/null 2>&1 &)
+}
 
 alias drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'
 alias update-all='export TMPFILE="$(mktemp)"; \
@@ -44,3 +49,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 source <(fnm env --use-on-cd --version-file-strategy=recursive)
 source <(fzf --zsh)
 source <(fnm completions --shell zsh)
+
+eval "$(zoxide init zsh)"

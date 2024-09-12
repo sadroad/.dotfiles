@@ -25,7 +25,7 @@
 	program = /usr/bin/gpg
 [gitbutler]
 	utmostdiscretion = 1
-	aimodelprovider = openai
+	aiModelProvider = anthropic
 	aiopenaikeyoption = butlerAPI
 [rerere]
 	enabled = true
