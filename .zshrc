@@ -15,6 +15,7 @@ bindkey "^X^E" edit-command-line
 export DO_NOT_TRACK=1
 export EDITOR="nvim"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 export WAYLAND_DISPLAY=wayland-1
 
 #Aliases?
