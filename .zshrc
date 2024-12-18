@@ -53,5 +53,7 @@ source <(fnm completions --shell zsh)
 
 eval "$(zoxide init zsh)"
 
+source <(jj util completion zsh)
+
 eval "$(atuin init zsh --disable-up-arrow)"
 
