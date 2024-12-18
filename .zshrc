@@ -31,6 +31,10 @@ alias reload="source ~/.zshrc"
 alias find="find"
 alias open="xdg-open"
 alias cd="z"
+alias dig="doggo"
+alias ps="procs"
+alias ping="gping"
+alias parallel="rust-parallel"
 
 function cursor {
 	(nohup /opt/cursor-bin/cursor-bin.AppImage $@ > /dev/null 2>&1 &)
