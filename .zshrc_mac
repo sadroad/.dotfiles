@@ -9,6 +9,7 @@ case ":$PATH:" in
 esac
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias bubu="brew update && brew outdated && brew upgrade"
 
 function cursor {
   (nohup /Applications/Cursor.app/Contents/Resources/app/bin/cursor $@ > /dev/null)
