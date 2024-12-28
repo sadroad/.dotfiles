@@ -1,2 +1,2 @@
-background = 282c34
-foreground = ffffff
+theme = GruvboxDark
+font-size = 14
