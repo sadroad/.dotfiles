@@ -10,7 +10,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
-[ -f "/Users/sadroad/.ghcup/env" ] && . "/Users/sadroad/.ghcup/env" # ghcup-env
+[ -f "/Users/sadroad/.ghcup/env" ] && source "/Users/sadroad/.ghcup/env" # ghcup-env
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias bubu="brew update && brew outdated && brew upgrade"
