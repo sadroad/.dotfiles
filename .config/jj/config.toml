@@ -1,0 +1,11 @@
+[ui]
+pager = "bat -p"
+
+[user]
+name = "Alex Villablanca"
+email = "alex@villablanca.tech"
+
+[signing]
+sign-all = true
+backend = "gpg"
+key = "559C824CAB412E69"

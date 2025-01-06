@@ -1,7 +1,14 @@
 [[ $- != *i* ]] && return
 
-# Antidote plugin manager, installed through the AUR
-source '/usr/share/zsh-antidote/antidote.zsh'
+case "$(uname)" in
+  Darwin)
+    source ~/.zshrc_mac
+    ;;
+  Linux)
+    source ~/.zshrc_linux
+    ;;
+esac
+
 antidote load 
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 
@@ -30,26 +37,31 @@ alias xxd="0x"
 alias l="ls -lah"
 alias reload="source ~/.zshrc"
 alias find="find"
-alias open="xdg-open"
 alias cd="z"
+alias dig="doggo"
+alias ps="procs"
+alias ping="gping"
+alias parallel="rust-parallel"
 
-function cursor {
-	(nohup /opt/cursor-bin/cursor-bin.AppImage $@ > /dev/null 2>&1 &)
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
-
-alias drop-caches='sudo paccache -rk3; paru -Sc --aur --noconfirm'
-alias update-all='export TMPFILE="$(mktemp)"; \
-    sudo true; \
-    rate-mirrors --save=$TMPFILE arch --max-delay=21600 \
-      && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
-      && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
-      && drop-caches \
-      && paru -Syyu --noconfirm'
 
 export PATH="$HOME/.cargo/bin:$PATH"
 
 source <(fnm env --use-on-cd --version-file-strategy=recursive)
-source <(fzf --zsh)
 source <(fnm completions --shell zsh)
 
+source <(fzf --zsh)
+
 eval "$(zoxide init zsh)"
+
+source <(jj util completion zsh)
+
+eval "$(atuin init zsh --disable-up-arrow)"
+

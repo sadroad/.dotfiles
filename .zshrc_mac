@@ -1,0 +1,18 @@
+export PATH=/opt/homebrew/bin:$PATH
+export PATH="/opt/homebrew/sbin:$PATH"
+export GPG_TTY=$(tty)
+
+export PNPM_HOME="/Users/sadroad/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias bubu="brew update && brew outdated && brew upgrade"
+
+function cursor {
+  (nohup /Applications/Cursor.app/Contents/Resources/app/bin/cursor $@ > /dev/null)
+}
+
+source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh

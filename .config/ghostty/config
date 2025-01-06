@@ -1,5 +1,3 @@
-background = 282c34
-foreground = ffffff
-
-# used in to make sure that sudo maintains all env variables
 shell-integration-features = sudo
+theme = GruvboxDark
+font-size = 14
