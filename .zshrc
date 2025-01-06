@@ -1,5 +1,6 @@
 [[ $- != *i* ]] && return
 
+
 case "$(uname)" in
   Darwin)
     source ~/.zshrc_mac
@@ -8,6 +9,8 @@ case "$(uname)" in
     source ~/.zshrc_linux
     ;;
 esac
+
+export PATH="$HOME/.cargo/bin:$PATH"
 
 antidote load 
 zstyle ':antidote:bundle' use-friendly-names 'yes'
@@ -53,7 +56,6 @@ function y() {
 	rm -f -- "$tmp"
 }
 
-export PATH="$HOME/.cargo/bin:$PATH"
 
 source <(fnm env --use-on-cd --version-file-strategy=recursive)
 source <(fnm completions --shell zsh)
