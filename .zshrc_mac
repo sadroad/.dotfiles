@@ -2,12 +2,15 @@ export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export GPG_TTY=$(tty)
 export XDG_RUNTIME_DIR="/tmp/"
+export PATH="/Applications/Racket v8.15/bin:$PATH"
 
 export PNPM_HOME="/Users/sadroad/Library/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
+
+[ -f "/Users/sadroad/.ghcup/env" ] && . "/Users/sadroad/.ghcup/env" # ghcup-env
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias bubu="brew update && brew outdated && brew upgrade"
@@ -18,3 +21,4 @@ function cursor {
 }
 
 source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+
