@@ -8,5 +8,3 @@ email = "alex@villablanca.tech"
 [signing]
 sign-all = true
 backend = "gpg"
-key = "2B826E3C035C8BB5"
-

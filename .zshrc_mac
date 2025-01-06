@@ -1,7 +1,6 @@
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export GPG_TTY=$(tty)
-export JJ_CONFIG="$HOME/.config/jj/config.toml"
 export XDG_RUNTIME_DIR="/tmp/"
 
 export PNPM_HOME="/Users/sadroad/Library/pnpm"
@@ -12,6 +11,7 @@ esac
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias bubu="brew update && brew outdated && brew upgrade"
+alias jj="jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
 
 function cursor {
   (nohup /Applications/Cursor.app/Contents/Resources/app/bin/cursor $@ > /dev/null)
