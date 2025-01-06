@@ -1,1 +1,6 @@
 cross
+cargo-update
+cargo-machete
+cargo-msrv
+cargo-outdated
+cargo-semver-checks

@@ -1,5 +1,5 @@
 [General]
-TerminalApplication=alacritty
+TerminalApplication=ghostty
 
 [KDE]
 ShowDeleteCommand=false

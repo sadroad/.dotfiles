@@ -1,6 +1,8 @@
-export PATH=/opt/homebrew/bin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
 export GPG_TTY=$(tty)
+export JJ_CONFIG="$HOME/.config/jj/config.toml"
+export XDG_RUNTIME_DIR="/tmp/"
 
 export PNPM_HOME="/Users/sadroad/Library/pnpm"
 case ":$PATH:" in
