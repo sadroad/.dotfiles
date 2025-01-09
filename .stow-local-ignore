@@ -1,4 +1,5 @@
-cargo-install
-npm-install
-toolstoinstall
+arch_pkgs
+cargo_install
+npm_install
+setup
 \.git
