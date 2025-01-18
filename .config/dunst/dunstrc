@@ -19,6 +19,8 @@
     # Maximum number of notification (0 means no limit)
     notification_limit = 5
 
+    monitor = 1
+
     # Define the corner radius of the notification window
     # in pixel size. If the radius is 0, you have no rounded
     # corners.

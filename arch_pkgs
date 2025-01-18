@@ -7,6 +7,7 @@ atuin
 base
 base-devel
 bat
+bats
 bemenu
 bpf
 bpf-linker
@@ -17,6 +18,8 @@ chromium
 chrony
 cloudflared
 cursor-bin
+dmidecode
+dnsmasq
 docker
 docker-buildx
 docker-compose
@@ -40,7 +43,8 @@ ffmpegthumbs
 firefox
 fnm-bin
 fzf
-ghostty-git
+ghcup-hs-bin
+ghostty
 git
 git-delta
 gitbutler-bin
@@ -75,9 +79,11 @@ libnotify
 libsixel
 libva-nvidia-driver
 libva-utils
+libvirt
 linux
 linux-firmware
 linux-headers
+lutris
 man-db
 miniserve
 mkcert
@@ -117,6 +123,7 @@ qemu-full
 qpwgraph
 qt5-wayland
 qt6-imageformats
+racket
 rate-mirrors
 rclone
 resvg
@@ -127,6 +134,7 @@ sddm
 selectdefaultapplication-git
 slurp
 spotify
+steam
 stow
 strace
 sudo
@@ -167,8 +175,12 @@ uv
 valgrind
 vesktop
 vi
+virt-manager
 waybar
 wikiman
+wine-gecko
+wine-mono
+wine-stable
 wireguard-tools
 wl-clipboard
 xdg-desktop-portal-gtk
