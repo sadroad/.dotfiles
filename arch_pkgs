@@ -47,7 +47,6 @@ ghcup-hs-bin
 ghostty
 git
 git-delta
-gitbutler-bin
 gnome-keyring
 gping
 grim
@@ -64,6 +63,7 @@ hyprpicker
 i7z
 ijq
 imagemagick
+imhex-bin
 infisical-bin
 intel-ucode
 iperf3
@@ -190,7 +190,6 @@ xdg-desktop-portal-hyprland
 xdg-user-dirs
 yazi
 yt-dlp
-zed
 zenity
 zig
 zoxide
