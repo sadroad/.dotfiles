@@ -15,6 +15,6 @@ alias update-all='export TMPFILE="$(mktemp)"; \
       && drop-caches \
       && paru -Syyu --noconfirm'
 alias jj="jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.linux.toml"
-alias update="cargo install-update -a --locked && paru"
+alias update="sudo -v && cargo install-update -a --locked && paru"
 
 source '/usr/share/zsh-antidote/antidote.zsh'
