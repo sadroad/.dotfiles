@@ -13,7 +13,7 @@ esac
 [ -f "/Users/sadroad/.ghcup/env" ] && source "/Users/sadroad/.ghcup/env" # ghcup-env
 
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias bubu="brew update && brew outdated && brew upgrade"
+alias bubu="brew update && brew upgrade"
 alias jj="jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
 
 function cursor {
