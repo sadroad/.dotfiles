@@ -17,6 +17,9 @@ alias bubu="brew update && brew upgrade"
 alias jj="jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
 alias update="cargo install-update -a --locked && bubu"
 
+alias dns-down='sudo -v && tailscale down && sudo networksetup -setdnsservers "Wi-Fi" empty && sudo killall -HUP mDNSResponder'
+alias dns-up='sudo -v && tailscale up && sudo networksetup -setdnsservers "Wi-Fi" 1.1.1.2 1.1.1.1 1.0.0.1 9.9.9.9 && sudo killall -HUP mDNSResponder'
+
 function cursor {
   (nohup /Applications/Cursor.app/Contents/Resources/app/bin/cursor $@ > /dev/null)
 }
