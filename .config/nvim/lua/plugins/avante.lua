@@ -10,7 +10,7 @@ return {
       api_key_name = "cmd:infisical --token=st.762083c7-2acc-4978-a60c-806ed8b1a40a.6394e05cebe3961e56514bb966a1353f.66914af33927ddbabe2fc985565e966b --domain=https://infisical.local.villablanca.tech secrets --silent get --plain ANTHROPIC_API_KEY",
     },
     behaviour = {
-      auto_suggestions = true,
+      auto_suggestions = false,
     },
     vendors = {
       deepseek = {
