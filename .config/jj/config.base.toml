@@ -5,6 +5,9 @@ pager = "bat -p"
 name = "Alex Villablanca"
 email = "alex@villablanca.tech"
 
+[git]
+subprocess = true
+
 [signing]
 sign-all = true
 backend = "gpg"

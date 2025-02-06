@@ -1,6 +1,7 @@
 0x-git
 7zip
 alsa-utils
+anki
 arch-wiki-docs
 archlinux-xdg-menu
 atuin
@@ -14,6 +15,7 @@ bpf-linker
 brave-bin
 btop
 bun-bin
+calibre
 chromium
 chrony
 cloudflared
@@ -77,6 +79,9 @@ lib32-nvidia-utils
 lib32-obs-vkcapture
 libheif
 libnotify
+libreoffice-extension-texmaths
+libreoffice-extension-writer2latex
+libreoffice-fresh
 libsixel
 libva-nvidia-driver
 libva-utils
@@ -117,9 +122,9 @@ pipewire-pulse
 polkit-kde-agent
 prismlauncher
 procs
-proton-ge-custom
 proton-mail
 proton-pass-bin
+protonup-qt
 qbittorrent
 qemu-full
 qpwgraph
