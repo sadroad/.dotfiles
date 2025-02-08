@@ -149,6 +149,7 @@ systemd
 systemd-resolvconf
 tableplus
 tailscale
+tealdeer
 texlive-basic
 texlive-bibtexextra
 texlive-binextra
@@ -171,7 +172,6 @@ texlive-plaingeneric
 texlive-pstricks
 texlive-publishers
 texlive-xetex
-tlrc
 traceroute
 tracy
 typora

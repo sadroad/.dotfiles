@@ -46,6 +46,7 @@ alias ps="procs"
 alias ping="gping"
 alias parallel="rust-parallel"
 alias diff=delta
+alias gzip=pigz
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd

@@ -1,5 +1,5 @@
 export WAYLAND_DISPLAY=wayland-1
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+export PATH="$HOME/.ghcup/bin:$PATH"
 
 function cursor {
   (nohup /opt/cursor-bin/cursor-bin.AppImage $@ > /dev/null)
