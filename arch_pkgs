@@ -63,6 +63,7 @@ hyprland
 hyprlang
 hyprpaper
 hyprpicker
+hyprwayland-scanner
 i7z
 ijq
 imagemagick
@@ -140,7 +141,6 @@ rate-mirrors
 rclone
 resvg
 ripgrep
-rustscan
 rustup
 sddm
 selectdefaultapplication-git
