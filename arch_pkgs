@@ -19,7 +19,6 @@ calibre
 chromium
 chrony
 cloudflared
-cursor-bin
 detect-it-easy-bin
 dmidecode
 dnsmasq
@@ -44,8 +43,11 @@ fcitx5-qt
 fd
 ffmpegthumbs
 firefox
+fish
 fnm-bin
 fzf
+gammastep
+ghciwatch-bin
 ghcup-hs-bin
 ghostty
 git
@@ -94,6 +96,7 @@ linux-firmware
 linux-headers
 lutris
 man-db
+mdbook
 miniserve
 mkcert
 mold
@@ -206,4 +209,3 @@ zig
 zoxide
 zsa-keymapp-bin
 zsh
-zsh-antidote

@@ -3,3 +3,4 @@ theme = GruvboxDark
 font-family = "Berkeley Mono Variable"
 font-style = "Retina"
 font-size = 14
+command = /usr/bin/fish --login --interactive
