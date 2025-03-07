@@ -9,5 +9,5 @@ email = "alex@villablanca.tech"
 subprocess = true
 
 [signing]
-sign-all = true
+behavoir = "own"
 backend = "gpg"
