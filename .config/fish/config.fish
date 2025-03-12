@@ -13,8 +13,7 @@ fish_add_path $HOME/.cargo/bin
 
 set -x DO_NOT_TRACK 1
 set -x EDITOR nvim
-set -x MANPAGER "sh -c 'col -bx | bat -l map -p'"
-set -x MANROFFOPT -c
+set -x MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
 abbr --add ls eza
 abbr --add l "eza -lah"
@@ -35,6 +34,8 @@ abbr --add ping gping
 abbr --add parallel rust-parallel
 abbr --add diff delta
 abbr --add gzip pigz
+abbr --add mkdir "mkdir -p"
+abbr --add type "type -a"
 
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
