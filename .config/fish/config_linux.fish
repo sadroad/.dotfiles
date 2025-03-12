@@ -16,7 +16,7 @@ end
 
 function update-all
     set TMPFILE (mktemp)
-    sudo true
+    sudo -v
     rate-mirrors --save=$TMPFILE arch --max-delay=21600
     and sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup
     and sudo mv $TMPFILE /etc/pacman.d/mirrorlist
@@ -26,9 +26,15 @@ end
 
 function update
     sudo -v
-    rustup update stable
-    cargo install-update -a --locked
-    paru
-    fisher
-    fish_update_completions
+
+    and echo "updating rust"
+    and rustup update stable
+    and cargo install-update -a --locked
+
+    and echo "updating arch"
+    and paru
+
+    and echo "updating fish"
+    and fisher update
+    and fish_update_completions
 end

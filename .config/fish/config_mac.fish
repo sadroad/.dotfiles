@@ -15,11 +15,18 @@ abbr --add bubu "brew update && brew upgrade && brew cleanup"
 alias jj "jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
 
 function update
+    echo "updating rust"
     rustup update stable
     cargo install-update -a --locked
+
+    echo "updating homebrew"
     bubu
+
+    echo "updating fish"
     fisher
     fish_update_completions
+
+    echo "updating apple"
     /usr/sbin/softwareupdate -ia
 end
 
