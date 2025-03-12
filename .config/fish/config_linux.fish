@@ -26,7 +26,9 @@ end
 
 function update
     sudo -v
-    and rustup update stable
-    and cargo install-update -a --locked
-    and paru
+    rustup update stable
+    cargo install-update -a --locked
+    paru
+    fisher
+    fish_update_completions
 end

@@ -12,7 +12,9 @@ end
 fish_add_path $HOME/.cargo/bin
 
 set -x DO_NOT_TRACK 1
+set -x PAGER delta
 set -x EDITOR nvim
+set -x VISUAL nvim
 set -x MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
 abbr --add ls eza

@@ -11,13 +11,16 @@ if test -f "/Users/sadroad/.ghcup/env"
 end
 
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-abbr --add bubu "brew update && brew upgrade"
+abbr --add bubu "brew update && brew upgrade && brew cleanup"
 alias jj "jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
 
 function update
     rustup update stable
     cargo install-update -a --locked
     bubu
+    fisher
+    fish_update_completions
+    /usr/sbin/softwareupdate -ia
 end
 
 abbr --add dns-down 'sudo -v && tailscale down && sudo networksetup -setdnsservers "Wi-Fi" empty && sudo killall -HUP mDNSResponder'
