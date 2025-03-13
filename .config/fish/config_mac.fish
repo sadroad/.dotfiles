@@ -11,7 +11,7 @@ if test -f "/Users/sadroad/.ghcup/env"
 end
 
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-abbr --add bubu "brew update && brew upgrade && brew cleanup"
+alias bubu "brew update && brew upgrade && brew cleanup"
 alias jj "jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
 
 function update
@@ -23,11 +23,17 @@ function update
     bubu
 
     echo "updating fish"
-    fisher
+    fisher update
     fish_update_completions
 
-    echo "updating apple"
-    /usr/sbin/softwareupdate -ia
+    echo "Do you want to update macOS? (y/N)"
+    read -l confirm
+    if test "$confirm" = y -o "$confirm" = Y
+        echo "updating apple"
+        /usr/sbin/softwareupdate -ia
+    else
+        echo "Skipping macOS update"
+    end
 end
 
 alias dns-down 'sudo -v && tailscale down && sudo networksetup -setdnsservers "Wi-Fi" empty && sudo killall -HUP mDNSResponder'
