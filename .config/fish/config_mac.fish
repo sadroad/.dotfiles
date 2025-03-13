@@ -1,5 +1,3 @@
-fish_add_path /opt/homebrew/bin
-fish_add_path /opt/homebrew/sbin
 fish_add_path "/Applications/Racket v8.15/bin"
 fish_add_path /Users/sadroad/Library/pnpm
 
