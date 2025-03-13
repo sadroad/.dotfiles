@@ -66,6 +66,7 @@
         pkgs.yazi
         pkgs.zig
         pkgs.fnm
+        pkgs.stow
       ];
 
       users.knownUsers = ["sadroad"];
@@ -83,6 +84,12 @@
           "gpg-suite-no-mail"
         ];
         onActivation.cleanup = "zap";
+        onActivation.autoUpdate = true;
+        onActivation.upgrade = true;
+      };
+
+      system.defaults = {
+        dock.autohide = true;
       };
 
       # Necessary for using flakes on this system.

@@ -9,16 +9,13 @@ if test -f "/Users/sadroad/.ghcup/env"
 end
 
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-alias bubu "brew update && brew upgrade && brew cleanup"
 alias jj "jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
+alias rebuild 'darwin-rebuild switch --flake "$(readlink -f ~/.config/nix)#R2D2"'
 
 function update
     echo "updating rust"
     rustup update stable
     cargo install-update -a --locked
-
-    echo "updating homebrew"
-    bubu
 
     echo "updating fish"
     fisher update

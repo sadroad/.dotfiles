@@ -3,3 +3,4 @@ cargo_install
 npm_install
 setup
 \.git
+atuin/*
