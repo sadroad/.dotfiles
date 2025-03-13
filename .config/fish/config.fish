@@ -9,7 +9,7 @@ switch (uname)
         source ~/.config/fish/config_linux.fish
 end
 
-fish_add_path $HOME/.cargo/bin
+#fish_add_path $HOME/.cargo/bin
 
 set -x DO_NOT_TRACK 1
 set -x PAGER delta
@@ -33,9 +33,8 @@ abbr --add cd z
 abbr --add dig doggo
 abbr --add ps procs
 abbr --add ping gping
-abbr --add parallel rust-parallel
 abbr --add diff delta
-abbr --add gzip pigz
+alias gzip pigz
 abbr --add mkdir "mkdir -p"
 abbr --add type "type -a"
 
@@ -47,8 +46,6 @@ function y
     end
     rm -f -- "$tmp"
 end
-
-fnm env --use-on-cd --version-file-strategy=recursive --shell fish | source
 
 fzf --fish | source
 

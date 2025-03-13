@@ -37,36 +37,36 @@
         pkgs.neovim
         pkgs.fish
         pkgs.atuin
-        pkgs.automake
         pkgs.bats
         pkgs.btop
         pkgs.bun
-        pkgs.bzip2
-        pkgs.ccache
-        pkgs.chafa
         pkgs.cloudflared
-        pkgs.cmake
-        pkgs.cmocka
         pkgs.curl
         pkgs.doggo
         pkgs.fastfetch
         pkgs.fzf
         pkgs.git
         pkgs.delta
-        pkgs.glfw
         pkgs.ijq
-        pkgs.imagemagick
         pkgs.infisical
         pkgs.jujutsu
         pkgs.file
-        pkgs.gnumake
-        pkgs.meson
         pkgs.miniserve
-        pkgs.uv
         pkgs.yazi
-        pkgs.zig
-        pkgs.fnm
         pkgs.stow
+        pkgs.bat
+        pkgs.zoxide
+        pkgs.tealdeer
+        pkgs.eza
+        pkgs.dust
+        pkgs.fd
+        pkgs.ripgrep
+        pkgs.procs
+        pkgs.mdbook
+        pkgs.hyperfine
+        pkgs.gping
+        pkgs._0x
+        pkgs.pigz
       ];
 
       users.knownUsers = ["sadroad"];
