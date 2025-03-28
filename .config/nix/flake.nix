@@ -33,40 +33,43 @@
     configuration = {pkgs, ...}: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.systemPackages = [
-        pkgs.neovim
-        pkgs.fish
-        pkgs.atuin
-        pkgs.bats
-        pkgs.btop
-        pkgs.bun
-        pkgs.cloudflared
-        pkgs.curl
-        pkgs.doggo
-        pkgs.fastfetch
-        pkgs.fzf
-        pkgs.git
-        pkgs.delta
-        pkgs.ijq
-        pkgs.infisical
-        pkgs.jujutsu
-        pkgs.file
-        pkgs.miniserve
-        pkgs.yazi
-        pkgs.stow
-        pkgs.bat
-        pkgs.zoxide
-        pkgs.tealdeer
-        pkgs.eza
-        pkgs.dust
-        pkgs.fd
-        pkgs.ripgrep
-        pkgs.procs
-        pkgs.mdbook
-        pkgs.hyperfine
-        pkgs.gping
-        pkgs._0x
-        pkgs.pigz
+      environment.systemPackages = with pkgs; [
+        neovim
+        fish
+        atuin
+        bats
+        btop
+        bun
+        cloudflared
+        curl
+        doggo
+        fastfetch
+        fzf
+        git
+        delta
+        ijq
+        infisical
+        jujutsu
+        file
+        miniserve
+        yazi
+        stow
+        bat
+        zoxide
+        tealdeer
+        eza
+        dust
+        fd
+        ripgrep
+        procs
+        mdbook
+        hyperfine
+        gping
+        _0x
+        pigz
+        nodejs_22
+        rustscan
+        zig
       ];
 
       users.knownUsers = ["sadroad"];
@@ -75,6 +78,10 @@
 
       homebrew = {
         enable = true;
+        brews = [
+          "podman"
+          "podman-compose"
+        ];
         casks = [
           "ghostty"
           "iina"
@@ -82,6 +89,7 @@
           "alt-tab"
           "imhex"
           "gpg-suite-no-mail"
+          "podman-desktop"
         ];
         onActivation.cleanup = "zap";
         onActivation.autoUpdate = true;

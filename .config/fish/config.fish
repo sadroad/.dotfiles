@@ -38,6 +38,13 @@ alias gzip pigz
 abbr --add mkdir "mkdir -p"
 abbr --add type "type -a"
 
+# Indicator if in nix shell
+set pure_enable_nixdevshell true
+
+function nix-develop
+    command nix develop -c fish $argv
+end
+
 function y
     set tmp (mktemp -t "yazi-cwd.XXXXXX")
     yazi $argv --cwd-file="$tmp"
