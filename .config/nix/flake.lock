@@ -17,6 +17,22 @@
         "type": "github"
       }
     },
+    "cloudflare-tmp": {
+      "locked": {
+        "lastModified": 1743076231,
+        "narHash": "sha256-yQugdVfi316qUfqzN8JMaA2vixl+45GxNm4oUfXlbgw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6c5963357f3c1c840201eda129a99d455074db04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "6c5963357f3c1c840201eda129a99d455074db04",
+        "type": "github"
+      }
+    },
     "homebrew-bundle": {
       "flake": false,
       "locked": {
@@ -36,11 +52,11 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1743623276,
-        "narHash": "sha256-Jfq8s86EAZ4Acf7OJYuRuIrzVOcAfAnbTu0/Vw2Go88=",
+        "lastModified": 1743879539,
+        "narHash": "sha256-GraKDUJm5ZaQbq74jV1cHSLgYFRH7P2Ro5xaW5Szd8E=",
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "a7f882f7b81ab5beeaf771667d6d597ee9fe4ac8",
+        "rev": "26a7640e37e770698b8b63a9ddd2e11cc043b5a4",
         "type": "github"
       },
       "original": {
@@ -52,11 +68,11 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1743626030,
-        "narHash": "sha256-BHlk97+LEQ0SKKZq9ul97LxfYkjTzNOPVP+fvcnGNaU=",
+        "lastModified": 1743879651,
+        "narHash": "sha256-WpfP+2W9aZ5OdCk3oj7z9N18DQzGXgMLS2cGQOdDeJE=",
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "d528647c2bd7976c59a4dbb5a626cf0206e87c39",
+        "rev": "b6d82e1e38e2cf402135935ac00900dfdb1b8618",
         "type": "github"
       },
       "original": {
@@ -155,11 +171,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1743568003,
-        "narHash": "sha256-ZID5T65E8ruHqWRcdvZLsczWDOAWIE7om+vQOREwiX0=",
+        "lastModified": 1743689281,
+        "narHash": "sha256-y7Hg5lwWhEOgflEHRfzSH96BOt26LaYfrYWzZ+VoVdg=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "b7ba7f9f45c5cd0d8625e9e217c28f8eb6a19a76",
+        "rev": "2bfc080955153be0be56724be6fa5477b4eefabb",
         "type": "github"
       },
       "original": {
@@ -171,6 +187,7 @@
     },
     "root": {
       "inputs": {
+        "cloudflare-tmp": "cloudflare-tmp",
         "homebrew-bundle": "homebrew-bundle",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",

@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    cloudflare-tmp.url = "github:NixOS/nixpkgs/6c5963357f3c1c840201eda129a99d455074db04";
     nix-darwin.url = "github:LnL7/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
@@ -28,10 +29,18 @@
     homebrew-core,
     homebrew-cask,
     homebrew-bundle,
+    cloudflare-tmp,
     ...
   }: let
+    system = "aarch64-darwin";
+
+    pkgs-cloudflare-tmp = import cloudflare-tmp {
+      inherit system;
+    };
+
     configuration = {pkgs, ...}: {
       nixpkgs.config.allowUnfree = true;
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
@@ -41,7 +50,7 @@
         bats
         btop
         bun
-        cloudflared
+        pkgs-cloudflare-tmp.cloudflared
         curl
         doggo
         fastfetch
@@ -102,29 +111,25 @@
         dock.autohide = true;
       };
 
-      # Necessary for using flakes on this system.
+      nix.enable = false;
       nix.settings.experimental-features = "nix-command flakes";
 
-      # Enable alternative shell support in nix-darwin.
       programs.fish.enable = true;
 
-      # Set Git commit hash for darwin-version.
       system.configurationRevision = self.rev or self.dirtyRev or null;
 
-      # Used for backwards compatibility, please read the changelog before changing.
-      # $ darwin-rebuild changelog
       system.stateVersion = 6;
 
-      # The platform the configuration will be used on.
-      nixpkgs.hostPlatform = "aarch64-darwin";
+      nixpkgs.hostPlatform = system;
     };
   in {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#R2D2
     darwinConfigurations."R2D2" = nix-darwin.lib.darwinSystem {
+      specialArgs = {inherit inputs;};
       modules = [
-        ({ config, ... }: {                                                          # <--
-          homebrew.taps = builtins.attrNames config.nix-homebrew.taps;               # <--
+        ({config, ...}: {
+          homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
         })
         configuration
         nix-homebrew.darwinModules.nix-homebrew
