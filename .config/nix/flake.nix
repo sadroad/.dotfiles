@@ -31,6 +31,7 @@
     ...
   }: let
     configuration = {pkgs, ...}: {
+      nixpkgs.config.allowUnfree = true;
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
@@ -70,6 +71,7 @@
         nodejs_22
         rustscan
         zig
+        vscode
       ];
 
       users.knownUsers = ["sadroad"];

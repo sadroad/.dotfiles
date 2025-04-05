@@ -9,16 +9,14 @@ switch (uname)
         source ~/.config/fish/config_linux.fish
 end
 
-#fish_add_path $HOME/.cargo/bin
-
 set -x DO_NOT_TRACK 1
 set -x PAGER delta
 set -x EDITOR nvim
 set -x VISUAL nvim
 set -x MANPAGER "sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
-abbr --add ls eza
-abbr --add l "eza -lah"
+alias ls eza
+alias l "eza -lah"
 abbr --add cat bat
 abbr --add grep rg
 abbr --add tree "eza --tree"
@@ -29,7 +27,7 @@ abbr --add vi nvim
 abbr --add xxd 0x
 abbr --add reload "source ~/.config/fish/config.fish"
 abbr --add find fd
-abbr --add cd z
+alias cd z
 abbr --add dig doggo
 abbr --add ps procs
 abbr --add ping gping
