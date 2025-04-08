@@ -3,11 +3,14 @@ set -x XDG_RUNTIME_DIR /tmp/
 
 alias tailscale "/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 alias jj "jj --config-file=$HOME/.config/jj/config.base.toml --config-file=$HOME/.config/jj/config.mac.toml"
-alias rebuild 'darwin-rebuild switch --flake "$(readlink -f ~/.config/nix)#R2D2"'
+
+function rebuild
+    darwin-rebuild switch --flake "$(readlink -f ~/.config/nix)#R2D2"
+end
 
 function update
     echo "updating nix"
-    nix flake update --flake "$(readlink -f ~/.config/nix)"
+    rebuild
 
     echo "updating fish"
     fisher update

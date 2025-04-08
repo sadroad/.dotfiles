@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    cloudflare-tmp.url = "github:NixOS/nixpkgs/6c5963357f3c1c840201eda129a99d455074db04";
-    nix-darwin.url = "github:LnL7/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin= {
+      url = "github:LnL7/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -30,15 +31,10 @@
     homebrew-core,
     homebrew-cask,
     homebrew-bundle,
-    cloudflare-tmp,
     mac-app-util,
     ...
   }: let
     system = "aarch64-darwin";
-
-    pkgs-cloudflare-tmp = import cloudflare-tmp {
-      inherit system;
-    };
 
     vesktop-overlay = final: prev: {
       # Target the 'vesktop' package
@@ -75,8 +71,10 @@
         bats
         btop
         bun
-        pkgs-cloudflare-tmp.cloudflared
+        cloudflared
+        qbittorrent
         curl
+        pv
         doggo
         fastfetch
         fzf
