@@ -13,15 +13,10 @@ in rec {
   home.packages = with pkgs; [
     neofetch
     btop
-    jujutsu
-    ghostty
     brave
     bemenu
     file
-    tealdeer
     delta
-    nh
-    fzf
 
     git-secrets
 
@@ -35,9 +30,7 @@ in rec {
     pigz
     bat
     doggo
-    zoxide
 
-    hyprpaper
     waybar
   ];
 
