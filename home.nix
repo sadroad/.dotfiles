@@ -82,7 +82,7 @@ in rec {
   };
 
   programs.fzf = {
-  	enable = true;
+    enable = true;
   };
 
   programs.zoxide = {
@@ -171,12 +171,26 @@ in rec {
     enable = true;
     enableAutoUpdates = true;
   };
-  	
- programs.nh = {
- 	enable = true;
-	clean.enable = true;
-	flake = "${home.homeDirectory}/.dotfiles";
- };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    flake = "${home.homeDirectory}/.dotfiles";
+  };
+
+  programs.atuin = {
+    daemon.enable = true;
+    enable = true;
+    flags = ["--disable-up-arrow"];
+    settings = {
+      sync_address = "https://atuin.local.villablanca.tech";
+      enter_accept = false;
+      sync = {
+        records = true;
+      };
+      dotfiles.enable = false;
+    };
+  };
 
   home.shell.enableFishIntegration = true;
 
