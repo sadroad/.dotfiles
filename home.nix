@@ -6,10 +6,9 @@
   inputs,
   osConfig,
   ...
-}: 
-let 
-decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
-importScript = ./import-gpg-key.sh;
+}: let
+  decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
+  importScript = ./import-gpg-key.sh;
 in {
   home.packages = with pkgs; [
     neofetch
@@ -22,6 +21,7 @@ in {
     tealdeer
     delta
     nh
+    fzf
 
     git-secrets
 
@@ -81,6 +81,10 @@ in {
     '';
   };
 
+  programs.fzf = {
+  	enable = true;
+  };
+
   programs.zoxide = {
     enable = true;
   };
@@ -125,13 +129,13 @@ in {
       };
       git = {
         subprocess = true;
-          sign-on-push = true;
+        sign-on-push = true;
       };
       signing = {
         behavoir = "drop";
         key = "2B826E3C035C8BB5";
         backend = "gpg";
-     };
+      };
     };
   };
 

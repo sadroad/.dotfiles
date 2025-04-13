@@ -18,6 +18,10 @@
       url = "git+ssh://git@github.com/sadroad/nix-secrets.git?shallow=1";
       flake = false;
     };
+    determinate = {
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,
@@ -26,6 +30,7 @@
     home-manager,
     agenix,
     my_secrets,
+    determinate,
     ...
   }: let
     system = "x86_64-linux";
@@ -47,15 +52,16 @@
           ./disko-config.nix
           ./secrets/nixos.nix
           ./configuration.nix
+          determinate.nixosModules.default
           home-manager.nixosModules.home-manager
-          ({config, ... }: {
+          ({config, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
             home-manager.users.${username} = ./home.nix;
             home-manager.extraSpecialArgs = {
               inherit username inputs agenix;
-	      osConfig = config;
+              osConfig = config;
             };
           })
         ];
