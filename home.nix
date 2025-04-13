@@ -9,7 +9,7 @@
 }: let
   decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
   importScript = ./import-gpg-key.sh;
-in {
+in rec {
   home.packages = with pkgs; [
     neofetch
     btop
@@ -50,12 +50,12 @@ in {
     settings = {
       ipc = "off";
       preload = [
-        "/data/Art/Others/GUWEIZ/change-17D1.jpg"
-        "/data/Art/Others/GUWEIZ/1.jpg"
+        "${osConfig.age.secrets."1.jpg".path}"
+        "${osConfig.age.secrets."change.jpg".path}"
       ];
       wallpaper = [
-        "DP-3, /data/Art/Others/GUWEIZ/change-17D1.jpg"
-        "DP-1, /data/Art/Others/GUWEIZ/1.jpg"
+        "DP-3, ${osConfig.age.secrets."change.jpg".path}"
+        "DP-1, ${osConfig.age.secrets."1.jpg".path}"
       ];
     };
   };
@@ -171,6 +171,12 @@ in {
     enable = true;
     enableAutoUpdates = true;
   };
+  	
+ programs.nh = {
+ 	enable = true;
+	clean.enable = true;
+	flake = "${home.homeDirectory}/.dotfiles";
+ };
 
   home.shell.enableFishIntegration = true;
 
