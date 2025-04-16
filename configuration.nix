@@ -19,12 +19,14 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.supportedFilesystems = [ "ntfs" ];  
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.systemPackages = with pkgs; [
     git
     neovim
     nix-output-monitor
+    ntfs3g  
   ];
 
   users.users.${username} = {
