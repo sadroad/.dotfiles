@@ -31,6 +31,11 @@ in rec {
     bat
     doggo
 
+    xfce.thunar
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
+
     waybar
   ];
 
