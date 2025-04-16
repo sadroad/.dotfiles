@@ -36,6 +36,7 @@ in rec {
 
   imports = [
     ./hyprland.nix
+    ./waybar
   ];
 
   services.hyprpaper = {

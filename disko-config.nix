@@ -115,7 +115,7 @@
                 type = "filesystem";
                 format = "ntfs";
                 mountpoint = "/data";
-                mountOptions = [ "rw" "uid=1000" "gid=100" "umask=007" ];
+                mountOptions = ["rw" "uid=1000" "gid=100" "umask=007"];
               };
             };
           };

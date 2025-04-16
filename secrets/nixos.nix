@@ -20,12 +20,6 @@
   ];
 
   age.secrets = {
-    "placeholder.txt" = {
-      symlink = true;
-      file = "${my_secrets}/placeholder.txt.age";
-      mode = "0400";
-      owner = username;
-    };
     "sadroad-gpg-private" = {
       file = "${my_secrets}/sadroad-gpg-private.age";
       symlink = true;
