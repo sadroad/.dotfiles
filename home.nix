@@ -31,10 +31,10 @@ in rec {
     bat
     doggo
 
-    xfce.thunar
-    xfce.thunar-volman
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
+    yazi
+
+    font-awesome
+    noto-fonts-cjk-sans
 
     waybar
   ];
@@ -140,6 +140,9 @@ in rec {
 
   programs.fish = {
     enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+    '';
     shellAbbrs = {
       reload = "source ~/.config/fish/config.fish";
       mkdir = "mkdir -p";
@@ -189,6 +192,18 @@ in rec {
       };
       dotfiles.enable = false;
     };
+  };
+
+  programs.yazi = {
+    enable = true;
+  };
+
+  programs.obs-studio = {
+    enable = true;
+    package = pkgs.obs-studio.override {
+      cudaSupport = true;
+    };
+    plugins = with pkgs.obs-studio-plugins; [wlrobs obs-pipewire-audio-capture];
   };
 
   home.shell.enableFishIntegration = true;

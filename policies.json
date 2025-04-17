@@ -1,0 +1,23 @@
+{
+  "MetricsReportingEnabled": false,
+  "SafeBrowsingExtendedReportingEnabled": false,
+  "UrlKeyedAnonymizedDataCollectionEnabled": false,
+  "FeedbackSurveysEnabled": false,
+  "AutofillAddressEnabled": false,
+  "AutofillCreditCardEnabled": false,
+  "PasswordManagerEnabled": false,
+  "BrowserSignin": false,
+  "EnableDoNotTrack": true,
+  "BraveRewardsDisabled": true,
+  "BraveWalletDisabled": true,
+  "BraveVPNDisabled": 1,
+  "BraveAIChatEnabled": false,
+  "TorDisabled": true,
+  "BackgroundModeEnabled": false,
+  "MediaRecommendationsEnabled": false,
+  "ShoppingListEnabled": false,
+  "PromotionsEnabled": false,
+  "SearchSuggestEnabled": false,
+  "DefaultBrowserSettingEnabled": false
+}
+

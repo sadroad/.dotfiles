@@ -27,6 +27,8 @@
     neovim
     nix-output-monitor
     ntfs3g
+
+    nvidia-vaapi-driver
   ];
 
   users.users.${username} = {
@@ -49,6 +51,14 @@
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
+  #just to remove brave bloat
+  environment.etc."brave/policies/managed/policies.json" = {
+    source = ./policies.json;
+    mode = "0444";
+    user = "root";
+    group = "root";
+  };
+
   programs.ssh.startAgent = true;
 
   services.displayManager.sddm.enable = true;
@@ -65,6 +75,16 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
+  hardware.keyboard.zsa.enable = true;
+
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      vaapiVdpau
+      nvidia-vaapi-driver
+    ];
+  };
+
   time.timeZone = "America/New_York";
 
   services.openssh = {
@@ -76,16 +96,12 @@
     openFirewall = true;
   };
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "en_US.UTF-8";
   # console = {
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
@@ -94,34 +110,14 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  # hardware.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     tree
-  #   ];
-  # };
-
-  # programs.firefox.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  # ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
