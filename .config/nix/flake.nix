@@ -35,76 +35,15 @@
     ...
   }: let
     system = "aarch64-darwin";
-
-    vesktop-overlay = final: prev: {
-      # Target the 'vesktop' package
-      vesktop = prev.vesktop.overrideAttrs (oldAttrs: {
-        # Add a postPatch hook. This runs after unpacking and applying upstream patches.
-        postPatch = ''
-          echo "Applying custom shiggy.gif patch to Vesktop"
-          # Ensure the target directory exists (it should, but good practice)
-          mkdir -p static
-          # Remove the original file (-f ignores errors if it doesn't exist)
-          rm -f static/shiggy.gif
-          # Copy the replacement file. Nix automatically copies ./shiggy.gif
-          # into the Nix store and substitutes the correct path here.
-          cp ${./shiggy.gif} static/shiggy.gif
-          echo "Successfully replaced static/shiggy.gif"
-        '';
-        # If the upstream derivation changes significantly, you might need to
-        # adjust the path 'static/shiggy.gif' here.
-      });
-    };
-
     configuration = {pkgs, lib, ...}: let
     in {
-      nixpkgs.overlays = [ vesktop-overlay ];
-
       nixpkgs.config.allowUnfree = true;
 
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = with pkgs; [
-        neovim
-        fish
-        atuin
-        bats
-        btop
-        bun
-        cloudflared
-        qbittorrent
-        curl
-        pv
-        doggo
-        fastfetch
-        fzf
-        git
-        delta
-        ijq
         infisical
-        jujutsu
-        file
         miniserve
-        yazi
-        stow
-        bat
-        zoxide
-        tealdeer
-        eza
-        dust
-        fd
-        ripgrep
-        procs
-        mdbook
-        hyperfine
-        gping
-        _0x
-        pigz
-        nodejs_22
-        rustscan
-        vscode
-        vesktop
-        viu
       ];
 
       users.knownUsers = ["sadroad"];

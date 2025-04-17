@@ -9,7 +9,25 @@
 }: let
   decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
   importScript = ./import-gpg-key.sh;
+  vesktop-overlay = final: prev: {
+    vesktop = prev.vesktop.overrideAttrs (oldAttrs: {
+      postPatch = ''
+        mkdir -p static #ensuring that the folder exists
+        rm -f static/shiggy.gif
+        cp ${./shiggy.gif} static/shiggy.gif
+      '';
+    });
+  };
+    vesktop = pkgs.vesktop.overrideAttrs
+    (oldAttrs: {
+      postPatch = ''
+        mkdir -p static #ensuring that the folder exists
+        rm -f static/shiggy.gif
+        cp ${./shiggy.gif} static/shiggy.gif
+      '';
+    });
 in rec {
+  #nixpkgs.overlays = [ vesktop-overlay ];
   home.packages = with pkgs; [
     neofetch
     btop
@@ -17,6 +35,7 @@ in rec {
     bemenu
     file
     delta
+    vesktop
 
     git-secrets
 
