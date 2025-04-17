@@ -1,4 +1,0 @@
-"$schema" = "https://jj-vcs.github.io/jj/latest/config-schema.json"
-
-[signing]
-key = "559C824CAB412E69"

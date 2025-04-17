@@ -9,16 +9,8 @@
 }: let
   decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
   importScript = ./import-gpg-key.sh;
-  vesktop-overlay = final: prev: {
-    vesktop = prev.vesktop.overrideAttrs (oldAttrs: {
-      postPatch = ''
-        mkdir -p static #ensuring that the folder exists
-        rm -f static/shiggy.gif
-        cp ${./shiggy.gif} static/shiggy.gif
-      '';
-    });
-  };
-    vesktop = pkgs.vesktop.overrideAttrs
+  vesktop =
+    pkgs.vesktop.overrideAttrs
     (oldAttrs: {
       postPatch = ''
         mkdir -p static #ensuring that the folder exists
@@ -27,7 +19,6 @@
       '';
     });
 in rec {
-  #nixpkgs.overlays = [ vesktop-overlay ];
   home.packages = with pkgs; [
     neofetch
     btop
@@ -54,6 +45,10 @@ in rec {
 
     font-awesome
     noto-fonts-cjk-sans
+
+    unzip
+    coreutils
+    fontconfig
 
     waybar
   ];
@@ -225,9 +220,57 @@ in rec {
     plugins = with pkgs.obs-studio-plugins; [wlrobs obs-pipewire-audio-capture];
   };
 
+  home.activation.installBerkleyMonoFont = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    echo "HM Activation: Executing Berkley Mono install script with arguments..."
+
+    # Execute the script, passing the absolute paths as arguments
+    # Ensure the order matches the script's expectation ($1, $2, ...)
+    # Quoting is good practice, though Nix store paths are usually safe.
+    ${./install-berkley-mono.sh} \
+      "${pkgs.unzip}/bin/unzip" \
+      "${pkgs.coreutils}/bin/mkdir" \
+      "${pkgs.coreutils}/bin/cp" \
+      "${pkgs.coreutils}/bin/rm" \
+      "${pkgs.coreutils}/bin/chmod" \
+      "${pkgs.coreutils}/bin/find" \
+      "${pkgs.coreutils}/bin/mktemp" \
+      "${pkgs.fontconfig.bin}/bin/fc-cache"
+
+    echo "HM Activation: Berkley Mono install script finished."
+  '';
+
+  gtk = {
+    enable = true;
+    font = {
+      name = "Berkeley Mono Variable";
+      size = 14;
+    };
+  };
+
+  #home.file.".gtkrc-2.0".text = ''
+  #  gtk-font-name="Berkeley Mono Variable 14"
+  #  gtk-im-module="fcitx"
+  #'';
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = with pkgs; [fcitx5-hangul];
+    };
+  };
+
   home.shell.enableFishIntegration = true;
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    defaultFonts = {
+      monospace = ["Berkeley Mono Variable" "Noto Sans Mono"];
+
+      sansSerif = ["Berkeley Mono Variable" "Noto Sans"];
+      serif = ["Berkeley Mono Variable" "Noto Serif"];
+    };
+  };
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
