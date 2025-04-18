@@ -27,6 +27,7 @@ in rec {
     file
     delta
     vesktop
+    wl-clipboard
 
     git-secrets
 
@@ -41,14 +42,19 @@ in rec {
     bat
     doggo
 
+    jq
+
     yazi
 
     font-awesome
     noto-fonts-cjk-sans
 
     unzip
+    zip
     coreutils
     fontconfig
+
+    spotify
 
     waybar
   ];
@@ -246,8 +252,8 @@ in rec {
       size = 14;
     };
     iconTheme = {
-    	name = "Adwaita";
-	package = pkgs.adwaita-icon-theme;
+      name = "Adwaita";
+      package = pkgs.adwaita-icon-theme;
     };
   };
 
@@ -327,23 +333,26 @@ in rec {
   };
 
   services.gammastep = {
-  	enable = true;
-	latitude = 40.74833456688329;
-	longitude = -73.98545303180413 ;
-	provider = "manual";
-	temperature = {
-		day = 6500;
-		night = 4500;
-	};
-	settings = {
-		general = {
-			adjustment-method = "wayland";
-			gamma = 0.8;
-			fade = 1;
-		};
-	};
-	tray = true;
+    enable = true;
+    latitude = 40.74833456688329;
+    longitude = -73.98545303180413;
+    provider = "manual";
+    temperature = {
+      day = 6500;
+      night = 4500;
+    };
+    settings = {
+      general = {
+        adjustment-method = "wayland";
+        gamma = 0.8;
+        fade = 1;
+      };
+    };
+    tray = true;
   };
+
+  programs.nix-index.enable = true;
+  programs.command-not-found.enable = false;
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
