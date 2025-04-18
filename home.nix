@@ -245,12 +245,11 @@ in rec {
       name = "Berkeley Mono Variable";
       size = 14;
     };
+    iconTheme = {
+    	name = "Adwaita";
+	package = pkgs.adwaita-icon-theme;
+    };
   };
-
-  #home.file.".gtkrc-2.0".text = ''
-  #  gtk-font-name="Berkeley Mono Variable 14"
-  #  gtk-im-module="fcitx"
-  #'';
 
   i18n.inputMethod = {
     enabled = "fcitx5";
@@ -270,6 +269,80 @@ in rec {
       sansSerif = ["Berkeley Mono Variable" "Noto Sans"];
       serif = ["Berkeley Mono Variable" "Noto Serif"];
     };
+  };
+
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        width = 300;
+        origin = "bottom-right";
+        offset = "48x48";
+        scale = 0;
+        notification_limit = 5;
+        monitor = 1;
+        corner_radius = 4;
+        progress_bar = true;
+        progress_bar_height = 10;
+        progress_bar_frame_width = 1;
+        progress_bar_min_width = 150;
+        progress_bar_max_width = 300;
+        indicate_hidden = "yes";
+        transparency = 16;
+        separator_height = 2;
+        padding = 8;
+        horizontal_padding = 8;
+        text_icon_padding = 0;
+        frame_width = 2;
+        frame_collor = "#FFFFFF";
+        idle_threshold = 0;
+        font = "Berkeley Mono Variable";
+        line_height = 0;
+        format = "<b>%s</b>\\n%b";
+        alignment = "left";
+        veritcal_alignment = "center";
+        show_age_threshold = 60;
+        ellipsize = "middle";
+        ignore_newline = "no";
+        stack_duplicates = true;
+        hide_duplicate_count = true;
+        show_indicators = "no";
+      };
+      urgency_low = {
+        background = "#080808";
+        foreground = "#f0f0f0";
+        frame_color = "#ffffff";
+      };
+      urgency_normal = {
+        background = "#080808";
+        foreground = "#f0f0f0";
+        frame_color = "#ffffff";
+      };
+      urgency_critical = {
+        background = "#080808";
+        foreground = "#db4b4b";
+        frame_color = "#db4b4b";
+      };
+    };
+  };
+
+  services.gammastep = {
+  	enable = true;
+	latitude = 40.74833456688329;
+	longitude = -73.98545303180413 ;
+	provider = "manual";
+	temperature = {
+		day = 6500;
+		night = 4500;
+	};
+	settings = {
+		general = {
+			adjustment-method = "wayland";
+			gamma = 0.8;
+			fade = 1;
+		};
+	};
+	tray = true;
   };
 
   home.username = username;
