@@ -33,7 +33,6 @@
       exec-once = [
         "hyprctl dispatch workspace 1"
         "[workspace 1 silent] $terminal"
-        #"waybar & hyprpaper"
       ];
 
       general = {

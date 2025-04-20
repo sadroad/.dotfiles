@@ -9,6 +9,9 @@
 }: let
   decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
   importScript = ./import-gpg-key.sh;
+  gitName = "Alex Villablanca";
+  gitEmail = "alex@villablanca.tech";
+  gitSigningKey = "2B826E3C035C8BB5";
   vesktop =
     pkgs.vesktop.overrideAttrs
     (oldAttrs: {
@@ -28,6 +31,7 @@ in rec {
     delta
     vesktop
     wl-clipboard
+    grimblast
 
     git-secrets
 
@@ -45,6 +49,7 @@ in rec {
     jq
 
     yazi
+    yaak
 
     font-awesome
     noto-fonts-cjk-sans
@@ -62,6 +67,7 @@ in rec {
   imports = [
     ./hyprland.nix
     ./waybar
+    inputs.nvf.homeManagerModules.default
   ];
 
   services.hyprpaper = {
@@ -136,6 +142,36 @@ in rec {
     };
   };
 
+  programs.git = {
+    enable = true;
+    userEmail = gitEmail;
+    userName = gitName;
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+      };
+    };
+    extraConfig = {
+      rerere = {
+        enable = true;
+      };
+      merge = {
+        conflictstyle = "diff3";
+      };
+      diff = {
+        colorMoved = "default";
+      };
+      color = {
+        ui = true;
+      };
+    };
+    signing = {
+      key = gitSigningKey;
+      format = "openpgp";
+    };
+  };
+
   programs.jujutsu = {
     enable = true;
     settings = {
@@ -143,8 +179,8 @@ in rec {
         pager = "delta";
       };
       user = {
-        name = "Alex Villablanca";
-        email = "alex@villablanca.tech";
+        name = gitName;
+        email = gitEmail;
       };
       git = {
         subprocess = true;
@@ -152,17 +188,38 @@ in rec {
       };
       signing = {
         behavoir = "drop";
-        key = "2B826E3C035C8BB5";
+        key = gitSigningKey;
         backend = "gpg";
       };
     };
   };
 
+  home.sessionVariables = {
+    DO_NOT_TRACK = 1;
+    PAGER = "delta";
+    MANPAGER = ''sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman' '';
+    fish_greeting = "";
+    pure_enable_nixdevshell = "true";
+  };
+
   programs.fish = {
     enable = true;
-    interactiveShellInit = ''
-      set fish_greeting
-    '';
+    plugins = [
+      {
+        name = "pure";
+        inherit (pkgs.fishPlugins.pure) src;
+      }
+    ];
+    functions = {
+      y = ''
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            builtin cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+      '';
+    };
     shellAbbrs = {
       reload = "source ~/.config/fish/config.fish";
       mkdir = "mkdir -p";
@@ -176,8 +233,6 @@ in rec {
       tree = "eza --tree";
       top = "btop";
       du = "dust";
-      vim = "nvim";
-      vi = "nvim";
       xxd = "0x";
       find = "fd";
       cd = "z";
@@ -351,8 +406,122 @@ in rec {
     tray = true;
   };
 
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+
   programs.nix-index.enable = true;
   programs.command-not-found.enable = false;
+
+  programs.nvf = {
+    enable = true;
+    settings = {
+      vim = {
+        viAlias = true;
+        vimAlias = true;
+
+        options = {
+          shiftwidth = 2;
+          tabstop = 2;
+        };
+
+        keymaps = [
+          {
+            key =
+              if pkgs.stdenv.isDarwin
+              then "<D-/>"
+              else "<C-/>";
+            desc = "Toggle Line Comment";
+            mode = "n";
+            action = ''
+              function()
+                vim.api.nvim_feedkeys("gcc", "x", true)
+              end
+            '';
+            lua = true;
+          }
+          {
+            key =
+              if pkgs.stdenv.isDarwin
+              then "<D-/>"
+              else "<C-/>";
+            desc = "Toggle Line Comment";
+            mode = "v";
+            action = ''
+              function()
+                vim.api.nvim_feedkeys("gb", "v", true)
+              end
+            '';
+            lua = true;
+          }
+          {
+            key = "<leader>e";
+            desc = "Toggle Neotree";
+            mode = "n";
+            action = "<cmd>Neotree toggle reveal<cr>";
+          }
+        ];
+
+        debugger = {
+          nvim-dap = {
+            enable = true;
+            ui.enable = true;
+          };
+        };
+
+        comments.comment-nvim = {
+          enable = true;
+        };
+
+        autocomplete.nvim-cmp.enable = true;
+
+        binds = {
+          whichKey.enable = true;
+          cheatsheet.enable = true;
+        };
+
+        telescope.enable = true;
+
+        theme = {
+          enable = true;
+          name = "gruvbox";
+          style = "dark";
+        };
+
+        filetree.neo-tree = {
+          enable = true;
+          setupOpts = {
+            filesystem = {
+              filtered_items = {
+                visible = true;
+              };
+            };
+          };
+        };
+
+        lsp = {
+          formatOnSave = true;
+        };
+
+        languages = {
+          enableLSP = true;
+          enableFormat = true;
+          enableTreesitter = true;
+          enableExtraDiagnostics = true;
+          nix.enable = true;
+          ts = {
+            enable = true;
+            format.type = "biome";
+          };
+          rust = {
+            enable = true;
+            crates.enable = true;
+          };
+        };
+      };
+    };
+  };
 
   home.username = username;
   home.homeDirectory = "/home/${username}";

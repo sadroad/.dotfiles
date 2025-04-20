@@ -1,4 +1,0 @@
-[user]
-  signingkey = 559C824CAB412E69
-[gpg]
-program = /opt/homebrew/bin/gpg

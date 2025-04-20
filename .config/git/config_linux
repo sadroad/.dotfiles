@@ -1,4 +1,0 @@
-[user]
-  signingkey = 2B826E3C035C8BB5
-[gpg]
-  program  =/usr/bin/gpg

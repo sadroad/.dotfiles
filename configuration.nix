@@ -24,7 +24,6 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.systemPackages = with pkgs; [
     git
-    neovim
     nix-output-monitor
     ntfs3g
 
@@ -36,8 +35,6 @@
     description = username;
     extraGroups = ["networkmanager" "wheel"];
   };
-
-  environment.variables.EDITOR = "nvim";
 
   networking.hostName = hostname;
   networking.networkmanager.enable = true;

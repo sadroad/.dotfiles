@@ -22,6 +22,10 @@
       url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = inputs @ {
     self,
@@ -31,6 +35,7 @@
     agenix,
     my_secrets,
     determinate,
+    nvf,
     ...
   }: let
     system = "x86_64-linux";
@@ -51,6 +56,7 @@
           disko.nixosModules.disko
           ./disko-config.nix
           ./secrets/nixos.nix
+          nvf.nixosModules.default
           ./configuration.nix
           determinate.nixosModules.default
           home-manager.nixosModules.home-manager
