@@ -300,6 +300,15 @@ in rec {
     echo "HM Activation: Berkley Mono install script finished."
   '';
 
+  home.pointerCursor = {
+    enable = true;
+    name = "BreezeX-RosePine-Linux";
+    package = pkgs.rose-pine-cursor;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+
   gtk = {
     enable = true;
     font = {
@@ -521,6 +530,10 @@ in rec {
         };
       };
     };
+  };
+
+  nix.settings = {
+    access-tokens = "!include ${osConfig.age.secrets."github_oauth".path}";
   };
 
   home.username = username;

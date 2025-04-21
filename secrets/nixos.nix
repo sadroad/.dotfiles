@@ -44,5 +44,11 @@
       mode = "0400";
       owner = username;
     };
+    "github_oauth" = {
+      file = "${my_secrets}/github_oauth.age";
+      symlink = true;
+      mode = "0400";
+      owner = username;
+    };
   };
 }

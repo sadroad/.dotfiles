@@ -39,6 +39,8 @@
   networking.hostName = hostname;
   networking.networkmanager.enable = true;
 
+  environment.variables.EDITOR = "nvim";
+
   programs.fish.enable = true;
 
   programs.hyprland = {
