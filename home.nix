@@ -32,8 +32,9 @@ in rec {
     vesktop
     wl-clipboard
     grimblast
-
     git-secrets
+
+    hydra-check
 
     eza
     dust
@@ -322,7 +323,8 @@ in rec {
   };
 
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    type = "fcitx5";
+    enable = true;
     fcitx5 = {
       waylandFrontend = true;
       addons = with pkgs; [fcitx5-hangul];
