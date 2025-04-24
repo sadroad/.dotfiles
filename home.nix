@@ -21,6 +21,12 @@
         cp ${./shiggy.gif} static/shiggy.gif
       '';
     });
+  saveClipbordToFileYaziPlugin = pkgs.fetchFromGitHub {
+    owner = "boydaihungst";
+    repo = "save-clipboard-to-file.yazi";
+    rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
+    sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
+  };
 in rec {
   home.packages = with pkgs; [
     neofetch
@@ -33,6 +39,11 @@ in rec {
     wl-clipboard
     grimblast
     git-secrets
+    keymapp
+    pavucontrol
+    caido
+    ungoogled-chromium
+    libreoffice-qt6-fresh
 
     hydra-check
 
@@ -272,6 +283,17 @@ in rec {
 
   programs.yazi = {
     enable = true;
+    plugins = {
+      save-clipboard-to-file = saveClipbordToFileYaziPlugin;
+    };
+    keymap = {
+      manager.prepend_keymap = [
+        {
+          on = ["p" "c"];
+          run = "plugin save-clipboard-to-file";
+        }
+      ];
+    };
   };
 
   programs.obs-studio = {
@@ -431,10 +453,15 @@ in rec {
       vim = {
         viAlias = true;
         vimAlias = true;
+        useSystemClipboard = true;
 
         options = {
           shiftwidth = 2;
           tabstop = 2;
+        };
+
+        utility = {
+          leetcode-nvim.enable = true;
         };
 
         keymaps = [
@@ -461,7 +488,7 @@ in rec {
             mode = "v";
             action = ''
               function()
-                vim.api.nvim_feedkeys("gb", "v", true)
+                vim.api.nvim_feedkeys("gcc", "v", true)
               end
             '';
             lua = true;
@@ -529,6 +556,9 @@ in rec {
             enable = true;
             crates.enable = true;
           };
+          assembly.enable = true;
+          python.enable = true;
+          markdown.enable = true;
         };
       };
     };
@@ -536,6 +566,13 @@ in rec {
 
   nix.settings = {
     access-tokens = "!include ${osConfig.age.secrets."github_oauth".path}";
+  };
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
   };
 
   home.username = username;

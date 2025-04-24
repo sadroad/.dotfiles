@@ -33,8 +33,13 @@
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "libvirtd"];
   };
+
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = [username];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   networking.hostName = hostname;
   networking.networkmanager.enable = true;

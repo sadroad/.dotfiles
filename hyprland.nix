@@ -77,6 +77,7 @@
 
       windowrulev2 = [
         "float,class:git-butler"
+        "float,class:org.pulseaudio.pavucontrol"
         "suppressevent maximize, class:.*"
       ];
 
