@@ -26,6 +26,7 @@ in {
 
     hyperfine
     neofetch
+    hydra-check
   ];
 
   programs.fzf = {
@@ -36,6 +37,15 @@ in {
     enable = true;
     clean.enable = true;
     flake = "${userDir}/.dotfiles";
+  };
+
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+      Host tux
+      	HostName tux.cs.drexel.edu
+      	User av676
+    '';
   };
 
   programs.yazi = {

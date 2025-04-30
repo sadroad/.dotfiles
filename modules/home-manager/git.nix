@@ -8,6 +8,9 @@
   gitEmail = "alex@villablanca.tech";
   gitSigningKey = "2B826E3C035C8BB5";
 in {
+  home.packages = with pkgs; [
+    git-secrets
+  ];
   programs.git = {
     enable = true;
     userEmail = gitEmail;

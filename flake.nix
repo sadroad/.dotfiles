@@ -82,6 +82,7 @@
       if pkgs.stdenv.isDarwin
       then "R2D2"
       else "piplup";
+
     username = "sadroad";
 
     userDir =

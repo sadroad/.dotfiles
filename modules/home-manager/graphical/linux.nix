@@ -292,6 +292,11 @@
     grimblast
     keymapp
     pavucontrol
+
+    caido
+    ungoogled-chromium
+    libreoffice-qt6-fresh
+    yaak
   ];
 
   home.sessionVariables = {
@@ -304,5 +309,12 @@
       cudaSupport = true;
     };
     plugins = with pkgs.obs-studio-plugins; [wlrobs obs-pipewire-audio-capture];
+  };
+
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
   };
 }

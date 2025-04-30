@@ -26,6 +26,22 @@
     (nerdfonts.override {fonts = ["SymbolsOnly" "JetBrainsMono"];})
   ];
 
+  programs.ghostty = {
+    enable = true;
+    package =
+      if pkgs.stdenv.isLinux
+      then pkgs.ghostty
+      else "";
+    settings = {
+      shell-integration-features = "sudo";
+      command = "fish --login --interactive";
+      theme = "GruvboxDark";
+      font-family = "Berkeley Mono Variable";
+      font-style = "Retina";
+      font-size = "14";
+    };
+  };
+
   gtk = {
     enable = true;
     font = {
