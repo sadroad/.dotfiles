@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  inputs,
   username,
   agenix,
   my_secrets,
