@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   inputs,
   username,
   ...
@@ -14,4 +15,16 @@
   };
 
   programs.ssh.startAgent = true;
+
+  #obs virutal cam
+  boot.kernelModules = ["v4l2loopback"];
+  boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+
+  '';
+
+  users.users.${username}.extraGroups = ["video"];
+
+  security.polkit.enable = true;
 }

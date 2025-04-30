@@ -29,7 +29,8 @@ in {
       neofetch
       hydra-check
     ]
-    ++ (lib.optionals pkgs.stdenv.isLinux [mprime]);
+    ++ (lib.optionals pkgs.stdenv.isLinux [
+      ]);
 
   programs.fzf = {
     enable = true;

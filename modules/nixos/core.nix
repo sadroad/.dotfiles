@@ -12,6 +12,10 @@
 
   networking.networkmanager.enable = true;
 
+  networking.nftables.enable = true;
+
+  networking.firewall.enable = true;
+
   time.timeZone = "America/New_York";
 
   services.openssh = {

@@ -1,6 +1,7 @@
 {
   inputs,
   hostname,
+  pkgs,
   ...
 }: {
   imports = [
