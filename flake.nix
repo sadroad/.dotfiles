@@ -93,10 +93,12 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = {
-            inherit hostname username userDir inputs agenix my_secrets pkgs;
+            inherit hostname username userDir inputs agenix my_secrets;
           };
           modules = [
             ./hosts/${hostname}/default.nix
+
+            {nixpkgs.pkgs = pkgs;}
 
             home-manager.nixosModules.home-manager
             ({
@@ -128,10 +130,12 @@
         nix-darwin.lib.darwinSystem {
           inherit system;
           specialArgs = {
-            inherit hostname username userDir inputs agenix my_secrets pkgs;
+            inherit hostname username userDir inputs agenix my_secrets;
           };
           modules = [
             ./hosts/${hostname}/default.nix
+
+            {nixpkgs.pkgs = pkgs;}
 
             home-manager.darwinModules.home-manager
             ({

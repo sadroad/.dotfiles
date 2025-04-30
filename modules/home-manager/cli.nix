@@ -11,23 +11,25 @@
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
 in {
-  home.packages = with pkgs; [
-    eza
-    bat
-    delta
-    dust
-    fd
-    ripgrep
-    procs
-    gping
-    doggo
-    _0x
-    pigz
+  home.packages = with pkgs;
+    [
+      eza
+      bat
+      delta
+      dust
+      fd
+      ripgrep
+      procs
+      gping
+      doggo
+      _0x
+      pigz
 
-    hyperfine
-    neofetch
-    hydra-check
-  ];
+      hyperfine
+      neofetch
+      hydra-check
+    ]
+    ++ (lib.optionals pkgs.stdenv.isLinux [mprime]);
 
   programs.fzf = {
     enable = true;
