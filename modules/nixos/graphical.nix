@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  username,
   inputs,
   ...
 }: {
@@ -26,9 +27,6 @@
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
-  hardware.opengl.enable = true;
-  hardware.opengl.driSupport32Bit = true;
-
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
@@ -46,20 +44,14 @@
     pulse.enable = true;
     wireplumber.enable = true;
   };
-  users.users.${config.users.users.sadroad.name}.extraGroups = ["audio"];
+  users.users.${username}.extraGroups = ["audio"];
 
   hardware.keyboard.zsa.enable = true;
 
   environment.systemPackages = with pkgs; [
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
-    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    pkgs.nerd-fonts.jetbrains-mono
   ];
-
-  # Policy for Brave (keep if desired)
-  environment.etc."brave/policies/managed/policies.json" = {
-    source = ../../assets/policies.json; # Assuming you move policies.json to assets
-    mode = "0444";
-  };
 }

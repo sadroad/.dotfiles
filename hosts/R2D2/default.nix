@@ -16,8 +16,6 @@
   nix.enable = false;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  nixpkgs.config.allowUnfree = true;
-
   system.stateVersion = 6;
 
   homebrew.taps = builtins.attrNames config.nix-homebrew.taps;

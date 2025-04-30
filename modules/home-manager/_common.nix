@@ -3,7 +3,7 @@
   lib,
   username,
   userDir,
-  config,
+  osConfig,
   ...
 }: {
   home.username = username;
@@ -40,7 +40,7 @@
   };
 
   nix.settings = {
-    access-tokens = "!include ${config.age.secrets."github_oauth".path}";
+    access-tokens = "!include ${osConfig.age.secrets."github_oauth".path}";
   };
 
   programs.home-manager.enable = true;

@@ -1,13 +1,12 @@
 {
   pkgs,
   lib,
-  config,
-  inputs,
-  username,
+  osConfig,
   ...
-}: {
+}:
+lib.mkIf pkgs.stdenv.isLinux {
   home.activation.installBerkleyMonoFont = let
-    installScript = ../../scripts/install-berkley-mono.sh;
+    installScript = ../../../scripts/install-berkley-mono.sh;
   in
     lib.hm.dag.entryAfter ["writeBoundary"] ''
       ${installScript} \
@@ -258,12 +257,12 @@
     settings = {
       ipc = "off";
       preload = [
-        "${config.age.secrets."1.jpg".path}"
-        "${config.age.secrets."change.jpg".path}"
+        "${osConfig.age.secrets."1.jpg".path}"
+        "${osConfig.age.secrets."change.jpg".path}"
       ];
       wallpaper = [
-        "DP-3, ${config.age.secrets."change.jpg".path}"
-        "DP-1, ${config.age.secrets."1.jpg".path}"
+        "DP-3, ${osConfig.age.secrets."change.jpg".path}"
+        "DP-1, ${osConfig.age.secrets."1.jpg".path}"
       ];
     };
   };

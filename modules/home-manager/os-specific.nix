@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    (lib.mkIf pkgs.stdenv.isLinux ./graphical/linux.nix)
+    ./graphical/linux.nix
 
     # (lib.mkIf pkgs.stdenv.isDarwin ./graphical/darwin.nix)
   ];

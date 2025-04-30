@@ -12,7 +12,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland/v0.48.1";
+    hyprland.url = "github:hyprwm/Hyprland/v0.48.1"; # Note: Check if this version is still current
     determinate = {
       url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,6 +46,7 @@
 
     # shared
     agenix = {
+      # Consider using a more stable ref like a tag if available
       url = "github:ryantm/agenix/564595d0ad4be7277e07fa63b5a991b3c645655d";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -58,6 +59,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
   outputs = inputs @ {
     self,
     nixpkgs,
@@ -67,106 +69,88 @@
     nix-darwin,
     ...
   }: let
+    username = "sadroad";
+
     systems = ["x86_64-linux" "aarch64-darwin"];
 
     forAllSystems = nixpkgs.lib.genAttrs systems;
 
-    pkgs = forAllSystems (system: nixpkgs.legacyPackages.${system});
-
-    system =
-      if pkgs.stdenv.isDarwin
-      then "aarch64-darwin"
-      else "x86_64-linux";
-
-    hostname =
-      if pkgs.stdenv.isDarwin
-      then "R2D2"
-      else "piplup";
-
-    username = "sadroad";
-
-    userDir =
-      if pkgs.stdenv.isDarwin
-      then "/Users/${username}"
-      else "/home/${username}";
-  in {
-    formatter = pkgs.alejandra;
-
-    overlays = {
-      default = final: prev: {
-        vesktop = (import ./overlays/vesktop.nix {inherit inputs;}).vesktop final prev;
+    mkPkgs = system:
+      import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
       };
-    };
+  in {
+    formatter = forAllSystems (system: (mkPkgs system).alejandra);
 
     nixosConfigurations = {
-      ${hostname} = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit hostname username inputs agenix my_secrets;
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [self.overlays.default];
+      piplup = let
+        system = "x86_64-linux";
+        hostname = "piplup";
+        userDir = "/home/${username}";
+        pkgs = mkPkgs system;
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit hostname username userDir inputs agenix my_secrets pkgs;
           };
-        };
-        modules = [
-          ./hosts/${hostname}/default.nix
+          modules = [
+            ./hosts/${hostname}/default.nix
 
-          home-manager.nixosModules.home-manager
-          ({config, ...}: {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.${username} = import ./modules/home-manager/default.nix {
-              pkgs = import nixpkgs {
-                inherit system;
-                config.allowUnfree = true;
-                overlays = [self.overlays.default];
+            home-manager.nixosModules.home-manager
+            ({
+              config,
+              pkgs,
+              lib,
+              ...
+            }: {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.${username} = ./modules/home-manager/default.nix;
+              home-manager.extraSpecialArgs = {
+                inherit username inputs agenix userDir;
+                osConfig = config;
               };
-              lib = nixpkgs.lib;
-              inherit inputs username userDir;
-            };
-            home-manager.extraSpecialArgs = {
-              inherit username inputs agenix;
-            };
-          })
-        ];
-      };
+            })
+          ];
+        };
     };
-    darwinConfigurations = {
-      R2D2 = nix-darwin.lib.darwinSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs username hostname;
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [self.overlays.default];
-          };
-        };
-        modules = [
-          ./hosts/R2D2/default.nix
 
-          home-manager.darwinModules.home-manager
-          ({config, ...}: {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.${username} = import ./modules/home-manager/default.nix {
-              pkgs = import nixpkgs {
-                inherit system;
-                config.allowUnfree = true;
-                overlays = [self.overlays.default];
+    darwinConfigurations = {
+      R2D2 = let
+        system = "aarch64-darwin";
+        hostname = "R2D2";
+        userDir = "/Users/${username}";
+        pkgs = mkPkgs system;
+      in
+        nix-darwin.lib.darwinSystem {
+          inherit system;
+          specialArgs = {
+            inherit hostname username userDir inputs agenix my_secrets pkgs;
+          };
+          modules = [
+            ./hosts/${hostname}/default.nix
+
+            home-manager.darwinModules.home-manager
+            ({
+              config,
+              pkgs,
+              lib,
+              ...
+            }: {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.${username} = ./modules/home-manager/default.nix;
+              home-manager.extraSpecialArgs = {
+                inherit username inputs agenix userDir;
+                osConfig = config;
               };
-              lib = nixpkgs.lib;
-              inherit inputs username userDir;
-            };
-            home-manager.extraSpecialArgs = {
-              inherit username inputs agenix;
-            };
-          })
-        ];
-      };
+            })
+          ];
+        };
     };
   };
 }

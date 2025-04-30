@@ -4,7 +4,17 @@
   config,
   username,
   ...
-}: {
+}: let
+  vesktop =
+    pkgs.vesktop.overrideAttrs
+    (oldAttrs: {
+      postPatch = ''
+        mkdir -p static #ensuring that the folder exists
+        rm -f static/shiggy.gif
+        cp ${../../../assets/shiggy.gif} static/shiggy.gif
+      '';
+    });
+in {
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
@@ -20,10 +30,11 @@
     vesktop
     spotify
     noto-fonts
-    noto-fonts-cjk
+    noto-fonts-cjk-sans
     noto-fonts-emoji
     font-awesome
-    (nerdfonts.override {fonts = ["SymbolsOnly" "JetBrainsMono"];})
+    pkgs.nerd-fonts.jetbrains-mono
+    pkgs.nerd-fonts.symbols-only
   ];
 
   programs.ghostty = {
@@ -31,7 +42,7 @@
     package =
       if pkgs.stdenv.isLinux
       then pkgs.ghostty
-      else "";
+      else null;
     settings = {
       shell-integration-features = "sudo";
       command = "fish --login --interactive";

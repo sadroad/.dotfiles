@@ -1,10 +1,10 @@
 {
-  config,
+  osConfig,
   pkgs,
   lib,
   ...
 }: let
-  decryptedKeyPath = config.age.secrets."sadroad-gpg-private".path;
+  decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
 
   importScript = ../../scripts/import-gpg-key.sh;
 in {
