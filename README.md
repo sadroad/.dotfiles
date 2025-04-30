@@ -1,0 +1,1 @@
+atuin login -u sadroad

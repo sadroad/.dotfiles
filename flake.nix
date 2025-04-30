@@ -83,6 +83,11 @@
       then "R2D2"
       else "piplup";
     username = "sadroad";
+
+    userDir =
+      if pkgs.stdenv.isDarwin
+      then "/Users/${username}"
+      else "/home/${username}";
   in {
     formatter = pkgs.alejandra;
 
@@ -118,7 +123,7 @@
                 overlays = [self.overlays.default];
               };
               lib = nixpkgs.lib;
-              inherit inputs username;
+              inherit inputs username userDir;
             };
             home-manager.extraSpecialArgs = {
               inherit username inputs agenix;
@@ -153,7 +158,7 @@
                 overlays = [self.overlays.default];
               };
               lib = nixpkgs.lib;
-              inherit inputs username;
+              inherit inputs username userDir;
             };
             home-manager.extraSpecialArgs = {
               inherit username inputs agenix;
