@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  username,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -45,15 +46,9 @@
     vesktop
     viu
   ];
-
-  users.knownUsers = ["sadroad"];
-  users.users.sadroad.uid = 501;
-
-  system.defaults = {
-    dock.autohide = true;
+  users = {
+    knownUsers = [username];
+    users.${username}.uid = 501;
+    users.${username}.shell = pkgs.fish;
   };
-
-  nix.enable = false;
-
-  programs.fish.enable = true;
 }
