@@ -16,6 +16,9 @@
     buildNpmPackage = pkgs.buildNpmPackage;
   };
 in {
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
   home.packages = with pkgs;
     [
       eza

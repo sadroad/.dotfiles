@@ -3,6 +3,8 @@
   lib,
   config,
   username,
+  username,
+  hostname,
   ...
 }: {
   imports = [

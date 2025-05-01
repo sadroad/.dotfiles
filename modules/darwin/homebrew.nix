@@ -18,7 +18,8 @@
       "homebrew/homebrew-bundle" = inputs.homebrew-bundle;
     };
     mutableTaps = false;
-
+  };
+  homebrew = {
     brews = [
     ];
     casks = [

@@ -1,6 +1,7 @@
 {
   inputs,
   config,
+  hostname,
   ...
 }: {
   imports = [
@@ -15,6 +16,8 @@
   ];
   nix.enable = false;
   nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  networking.hostName = hostname;
 
   system.stateVersion = 6;
 

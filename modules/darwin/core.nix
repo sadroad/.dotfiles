@@ -16,8 +16,4 @@
     dock.autohide = true;
     finder.AppleShowAllExtensions = true;
   };
-
-  security.pam.enableSudoTouchIdAuth = true;
-
-  location.provider = "corelocation";
 }
