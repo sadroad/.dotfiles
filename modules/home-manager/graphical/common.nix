@@ -50,6 +50,7 @@ in {
       font-family = "Berkeley Mono Variable";
       font-style = "Retina";
       font-size = "14";
+      gtk-single-instance = "true";
     };
   };
 

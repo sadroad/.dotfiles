@@ -112,7 +112,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = ./modules/home-manager/default.nix;
               home-manager.extraSpecialArgs = {
-                inherit username inputs agenix userDir;
+                inherit username inputs agenix userDir system;
                 osConfig = config;
               };
             })
@@ -149,7 +149,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = ./modules/home-manager/default.nix;
               home-manager.extraSpecialArgs = {
-                inherit username inputs agenix userDir;
+                inherit username inputs agenix userDir system;
                 osConfig = config;
               };
             })

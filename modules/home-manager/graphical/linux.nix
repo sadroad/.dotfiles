@@ -5,6 +5,21 @@
   ...
 }:
 lib.mkIf pkgs.stdenv.isLinux {
+  home.packages = with pkgs; [
+    bemenu
+    wl-clipboard
+    grimblast
+    keymapp
+    pavucontrol
+
+    caido
+    ungoogled-chromium
+    libreoffice-qt6-fresh
+    yaak
+    protonmail-desktop
+    proton-pass
+  ];
+
   home.activation.installBerkleyMonoFont = let
     installScript = ../../../scripts/install-berkley-mono.sh;
   in
@@ -284,19 +299,6 @@ lib.mkIf pkgs.stdenv.isLinux {
     gtk.enable = true;
     x11.enable = true;
   };
-
-  home.packages = with pkgs; [
-    bemenu
-    wl-clipboard
-    grimblast
-    keymapp
-    pavucontrol
-
-    caido
-    ungoogled-chromium
-    libreoffice-qt6-fresh
-    yaak
-  ];
 
   home.sessionVariables = {
     NIXOS_ZONE_WL = "1";

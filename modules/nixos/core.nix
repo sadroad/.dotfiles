@@ -32,7 +32,17 @@
   environment.systemPackages = with pkgs; [
     git
     ntfs3g
+
+    #steam
+    mangohud
   ];
+
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+  };
+
+  programs.gamemode.enable = true;
 
   programs.fish.enable = true;
 

@@ -10,6 +10,11 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
+  claude-code-pkg = import ./custom/claude/package.nix {
+    inherit lib;
+    fetchzip = pkgs.fetchzip;
+    buildNpmPackage = pkgs.buildNpmPackage;
+  };
 in {
   home.packages = with pkgs;
     [
@@ -28,6 +33,7 @@ in {
       hyperfine
       neofetch
       hydra-check
+      claude-code-pkg
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       ]);
