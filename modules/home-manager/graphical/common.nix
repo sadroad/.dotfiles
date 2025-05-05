@@ -45,7 +45,10 @@ in {
       else null;
     settings = {
       shell-integration-features = "sudo";
-      command = "fish --login --interactive";
+      command =
+        if pkgs.stdenv.isLinux
+        then "fish --login --interactive"
+        else null;
       theme = "GruvboxDark";
       font-family = "Berkeley Mono Variable";
       font-style = "Retina";
