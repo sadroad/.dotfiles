@@ -48,5 +48,11 @@
       mode = "0400";
       owner = username;
     };
+    "wg-conf" = {
+      file = "${my_secrets}/piplup-CH-US-3.conf.age";
+      symlink = true;
+      mode = "0400";
+      owner = username;
+    };
   };
 }

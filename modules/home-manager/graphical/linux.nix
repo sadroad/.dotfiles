@@ -18,6 +18,9 @@ lib.mkIf pkgs.stdenv.isLinux {
     yaak
     protonmail-desktop
     proton-pass
+    krita
+    typora
+    mpv
   ];
 
   home.activation.installBerkleyMonoFont = let
