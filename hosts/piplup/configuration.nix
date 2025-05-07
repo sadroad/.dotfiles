@@ -16,7 +16,10 @@
 
   programs.ssh.startAgent = true;
 
-  networking.wg-quick.interfaces.wg0.configFile = config.age.secrets."wg-conf".path;
+  networking.wg-quick.interfaces.wg0 = {
+    configFile = config.age.secrets."wg-conf".path;
+    autostart = false;
+  };
 
   #obs virutal cam
   boot.kernelModules = ["v4l2loopback"];
