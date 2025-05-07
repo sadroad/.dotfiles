@@ -20,6 +20,10 @@
 
         utility = {
           leetcode-nvim.enable = true;
+          yazi-nvim = {
+            enable = true;
+            mappings.openYazi = "<leader>e";
+          };
         };
 
         keymaps = [
@@ -83,17 +87,6 @@
           enable = true;
           name = "gruvbox";
           style = "dark";
-        };
-
-        filetree.neo-tree = {
-          enable = true;
-          setupOpts = {
-            filesystem = {
-              filtered_items = {
-                visible = true;
-              };
-            };
-          };
         };
 
         lsp = {
