@@ -67,6 +67,7 @@
     agenix,
     my_secrets,
     nix-darwin,
+    mac-app-util,
     ...
   }: let
     username = "sadroad";
@@ -148,6 +149,9 @@
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = ./modules/home-manager/default.nix;
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
               home-manager.extraSpecialArgs = {
                 inherit username inputs agenix userDir system;
                 osConfig = config;

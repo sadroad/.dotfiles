@@ -3,7 +3,6 @@
   lib,
   config,
   username,
-  username,
   hostname,
   ...
 }: {
