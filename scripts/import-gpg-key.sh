@@ -22,7 +22,8 @@ echo "Attempting to process GPG key from $DECRYPTED_KEY_PATH"
 
 # --- Extract Fingerprint ---
 # Uses gpg, grep, cut which must be in PATH
-FINGERPRINT=$(gpg --show-keys --with-colons --fingerprint < "$DECRYPTED_KEY_PATH" 2>/dev/null | grep "^fpr:" | cut -d: -f10)
+# Only take the first fingerprint in case there are multiple keys
+FINGERPRINT=$(gpg --show-keys --with-colons --fingerprint < "$DECRYPTED_KEY_PATH" 2>/dev/null | grep "^fpr:" | head -n 1 | cut -d: -f10)
 
 if [ -z "$FINGERPRINT" ]; then
   echo "Error: Could not extract fingerprint from $DECRYPTED_KEY_PATH" >&2
@@ -30,13 +31,21 @@ if [ -z "$FINGERPRINT" ]; then
 fi
 echo "Extracted fingerprint: $FINGERPRINT"
 
+# Ensure we have a clean fingerprint with no whitespace
+FINGERPRINT=$(echo "$FINGERPRINT" | tr -d '[:space:]')
+
 # --- Import Key ---
 echo "Importing key..."
 gpg --batch --import "$DECRYPTED_KEY_PATH"
 
 # --- Set Trust ---
 echo "Setting trust for $FINGERPRINT to ultimate..."
-echo "$FINGERPRINT:6:" | gpg --import-ownertrust -
+# The format for trust is FINGERPRINT:TRUST_VALUE: (must end with colon)
+# Create a temporary file for the ownertrust to avoid issues with pipes
+TRUST_FILE=$(mktemp)
+echo "$FINGERPRINT:6:" > "$TRUST_FILE"
+gpg --import-ownertrust "$TRUST_FILE"
+rm -f "$TRUST_FILE"
 
 echo "GPG key import and trust setting complete."
 

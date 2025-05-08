@@ -46,8 +46,7 @@
 
     # shared
     agenix = {
-      # Consider using a more stable ref like a tag if available
-      url = "github:ryantm/agenix/564595d0ad4be7277e07fa63b5a991b3c645655d";
+      url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     my_secrets = {

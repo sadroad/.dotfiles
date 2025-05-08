@@ -13,10 +13,7 @@ in {
   };
   services.gpg-agent = {
     enable = true;
-    pinentry.package =
-      if pkgs.stdenv.isDarwin
-      then pkgs.pinentry_mac
-      else pkgs.pinentry-qt;
+    pinentry.package = pkgs.pinentry-tty;
     defaultCacheTtl = 4 * 60 * 60; # 4 hours
   };
 
