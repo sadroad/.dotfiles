@@ -6,7 +6,7 @@
   username,
   ...
 }: {
-  # #just to remove brave bloat
+  # just to remove brave bloat
   environment.etc."brave/policies/managed/policies.json" = {
     source = ../../assets/policies.json;
     mode = "0444";
@@ -21,7 +21,7 @@
     autostart = false;
   };
 
-  #obs virutal cam
+  # obs virutal cam
   boot.kernelModules = ["v4l2loopback"];
   boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
   boot.extraModprobeConfig = ''
@@ -29,7 +29,9 @@
 
   '';
 
-  users.users.${username}.extraGroups = ["video"];
-
   security.polkit.enable = true;
+
+  virtualisation.docker.enable = true;
+
+  users.users.${username}.extraGroups = ["video" "docker"];
 }

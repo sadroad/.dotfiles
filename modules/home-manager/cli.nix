@@ -34,6 +34,8 @@ in {
       neofetch
       hydra-check
       claude-code-pkg
+      nixos-anywhere
+      deploy-rs
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       ]);

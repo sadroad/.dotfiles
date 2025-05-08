@@ -55,12 +55,6 @@
             '';
             lua = true;
           }
-          {
-            key = "<leader>e";
-            desc = "Toggle Neotree";
-            mode = "n";
-            action = "<cmd>Neotree toggle reveal<cr>";
-          }
         ];
 
         debugger = {
@@ -110,6 +104,7 @@
           assembly.enable = true;
           python.enable = true;
           markdown.enable = true;
+          yaml.enable = true;
         };
       };
     };
