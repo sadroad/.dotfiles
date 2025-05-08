@@ -22,6 +22,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     typora
     mpv
     nsxiv
+    code-cursor
   ];
 
   home.activation.installBerkleyMonoFont = let
