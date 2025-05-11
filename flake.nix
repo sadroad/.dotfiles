@@ -12,7 +12,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland/v0.48.1"; # Note: Check if this version is still current
+    hyprland.url = "github:hyprwm/Hyprland/v0.49.0";
     determinate = {
       url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -50,7 +50,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     my_secrets = {
-      url = "git+ssh://git@github.com/sadroad/nix-secrets.git?shallow=1";
+      url = "git+ssh://git@github.com/sadroad/nix-secrets.git";
       flake = false;
     };
     nvf = {
