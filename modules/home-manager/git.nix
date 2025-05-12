@@ -52,7 +52,6 @@ in {
         email = gitEmail;
       };
       git = {
-        subprocess = true;
         sign-on-push = true;
       };
       signing = {
