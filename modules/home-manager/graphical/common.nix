@@ -37,27 +37,28 @@ in {
     pkgs.nerd-fonts.symbols-only
   ];
 
-  programs.ghostty =
-    {
-      enable = true;
-      package =
-        if pkgs.stdenv.isLinux
-        then pkgs.ghostty
-        else null;
-      settings = {
-        shell-integration-features = "sudo";
-        theme = "GruvboxDark";
-        font-family = "Berkeley Mono Variable";
-        font-style = "Retina";
-        font-size = "14";
-        gtk-single-instance = "true";
-      };
-    }
-    // (
+  programs.ghostty = let
+    baseSettings = {
+      shell-integration-features = "sudo";
+      theme = "GruvboxDark";
+      font-family = "Berkeley Mono Variable";
+      font-style = "Retina";
+      font-size = "14";
+      gtk-single-instance = "true";
+    };
+    linuxSettings =
       if pkgs.stdenv.isLinux
       then {command = "fish --login --interactive";}
-      else {}
-    );
+      else {};
+  in {
+    enable = true;
+    package =
+      if pkgs.stdenv.isLinux
+      then pkgs.ghostty
+      else null;
+    settings = baseSettings // linuxSettings;
+  };
+
   gtk = {
     enable = true;
     font = {
