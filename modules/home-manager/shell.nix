@@ -37,7 +37,7 @@
       tree = "eza --tree";
       top = "btop";
       du = "dust";
-      xxd = "0x";
+      xxd = "hexyl";
       find = "fd";
       cd = "z";
       dig = "doggo";

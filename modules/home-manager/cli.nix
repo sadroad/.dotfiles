@@ -30,8 +30,8 @@ in {
       procs
       gping
       doggo
-      _0x
       pigz
+      hexyl
 
       hyperfine
       neofetch
