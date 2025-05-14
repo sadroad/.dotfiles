@@ -11,7 +11,6 @@
       vim = {
         viAlias = true;
         vimAlias = true;
-        useSystemClipboard = true;
 
         options = {
           shiftwidth = 2;
@@ -24,6 +23,11 @@
             enable = true;
             mappings.openYazi = "<leader>e";
           };
+        };
+
+        clipboard = {
+          enable = true;
+          registers = "unnamedplus";
         };
 
         keymaps = [
