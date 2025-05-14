@@ -253,29 +253,10 @@ lib.mkIf pkgs.stdenv.isLinux {
     };
   };
 
-  services.gammastep = {
-    enable = true;
-    latitude = 40.74833456688329;
-    longitude = -73.98545303180413;
-    provider = "manual";
-    temperature = {
-      day = 6500;
-      night = 4500;
-    };
-    settings = {
-      general = {
-        adjustment-method = "wayland";
-        gamma = 0.8;
-        fade = 1;
-      };
-    };
-    tray = true;
-  };
-
   services.hyprpaper = {
     enable = true;
     settings = {
-      ipc = "off";
+      ipc = "on";
       preload = [
         "${osConfig.age.secrets."1.jpg".path}"
         "${osConfig.age.secrets."change.jpg".path}"
