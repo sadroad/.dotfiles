@@ -23,6 +23,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     mpv
     nsxiv
     code-cursor
+    davinci-resolve-studio
   ];
 
   home.activation.installBerkleyMonoFont = let

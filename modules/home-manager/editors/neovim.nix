@@ -68,6 +68,10 @@
           };
         };
 
+        notes = {
+          todo-comments.enable = true;
+        };
+
         comments.comment-nvim = {
           enable = true;
         };
@@ -96,11 +100,18 @@
           enableFormat = true;
           enableTreesitter = true;
           enableExtraDiagnostics = true;
-          nix.enable = true;
+
+          # web stuff
           ts = {
             enable = true;
             format.type = "biome";
           };
+          css.enable = true;
+          tailwind.enable = true;
+          html.enable = true;
+          astro.enable = true;
+
+          nix.enable = true;
           rust = {
             enable = true;
             crates.enable = true;
@@ -109,6 +120,7 @@
           python.enable = true;
           markdown.enable = true;
           yaml.enable = true;
+          typst.enable = true;
         };
       };
     };

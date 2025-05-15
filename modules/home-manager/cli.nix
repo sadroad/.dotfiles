@@ -39,6 +39,7 @@ in {
       claude-code-pkg
       nixos-anywhere
       deploy-rs
+      asciinema_3
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       ]);

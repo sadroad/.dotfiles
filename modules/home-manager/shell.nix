@@ -45,6 +45,7 @@
       ping = "gping";
       diff = "delta";
       gzip = "pigz";
+      "rec" = "asciinema rec -c fish";
     };
   };
 
