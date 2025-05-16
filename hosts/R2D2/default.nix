@@ -17,6 +17,10 @@
   nix.enable = false;
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  environment.etc."nix/nix.custom.conf".text = ''
+    lazy-trees = true
+  '';
+
   networking.hostName = hostname;
 
   system.stateVersion = 6;

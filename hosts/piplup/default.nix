@@ -28,5 +28,9 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  environment.etc."nix/nix.custom.conf".text = ''
+    lazy-trees = true
+  '';
+
   system.stateVersion = "24.11";
 }
