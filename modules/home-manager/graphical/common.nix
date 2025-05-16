@@ -29,6 +29,8 @@ in {
     brave
     vesktop
     spotify
+    zed-editor
+
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji

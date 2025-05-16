@@ -23,6 +23,9 @@
             enable = true;
             mappings.openYazi = "<leader>e";
           };
+          motion = {
+            precognition.enable = true;
+          };
         };
 
         clipboard = {
@@ -76,14 +79,19 @@
           enable = true;
         };
 
-        autocomplete.nvim-cmp.enable = true;
+        autocomplete.blink-cmp.enable = true;
+
+        autopairs.nvim-autopairs.enable = true;
 
         binds = {
           whichKey.enable = true;
           cheatsheet.enable = true;
+          hardtime-nvim.enable = true;
         };
 
         telescope.enable = true;
+
+        treesitter.context.enable = true;
 
         theme = {
           enable = true;
