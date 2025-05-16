@@ -23,6 +23,23 @@
         end
         rm -f -- "$tmp"
       '';
+      mkcd = ''
+        if test (count $argv) -eq 0
+          echo "Usage: mkcd <directory_name>"
+          return 1
+        end
+
+        set -l dir_name "$argv[1]"
+
+        mkdir -p "$dir_name"
+
+        if test $status -eq 0
+          cd "$dir_name"
+        else
+          echo "Error: Could not create directory '$dir_name'."
+          return $status
+        end
+      '';
     };
     shellAbbrs = {
       reload = "source ~/.config/fish/config.fish";
