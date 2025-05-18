@@ -40,6 +40,8 @@ in {
       nixos-anywhere
       deploy-rs
       asciinema_3
+      compose2nix
+      nix-output-monitor
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       ]);
