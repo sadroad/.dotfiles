@@ -180,10 +180,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1747274630,
+        "lastModified": 1747621015,
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "ec7c109a4f794fce09aad87239eab7f66540b888",
+        "rev": "cec44d77d9dacf0c91d3d51aff128fefabce06ee",
         "type": "github"
       },
       "original": {
@@ -401,10 +401,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1747439237,
+        "lastModified": 1747565775,
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ae755329092c87369b9e9a1510a8cf1ce2b1c708",
+        "rev": "97118a310eb8e13bc1b9b12d67267e55b7bee6c8",
         "type": "github"
       },
       "original": {
@@ -431,10 +431,10 @@
     "homebrew-cask": {
       "flake": false,
       "locked": {
-        "lastModified": 1747524757,
+        "lastModified": 1747661485,
         "owner": "homebrew",
         "repo": "homebrew-cask",
-        "rev": "b45524dc47e33892014b1927ed00075883e4b6ae",
+        "rev": "29b07f280a2ea7181b06726809f5c15e699f652b",
         "type": "github"
       },
       "original": {
@@ -446,10 +446,10 @@
     "homebrew-core": {
       "flake": false,
       "locked": {
-        "lastModified": 1747525815,
+        "lastModified": 1747660024,
         "owner": "homebrew",
         "repo": "homebrew-core",
-        "rev": "61a146fae11d323a8e719752b9762ad54b59fd12",
+        "rev": "61ecf9c35478c037bc8a2fd58188b01e38380923",
         "type": "github"
       },
       "original": {
@@ -758,10 +758,10 @@
     "my_secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1746725903,
+        "lastModified": 1747627803,
         "ref": "refs/heads/main",
-        "rev": "489a9ea7a710e8c864e131e246f1861c836abd70",
-        "revCount": 13,
+        "rev": "7b9ef128644696efcf3a94e48b93dab71259a96e",
+        "revCount": 17,
         "type": "git",
         "url": "ssh://git@github.com/sadroad/nix-secrets.git"
       },
@@ -970,10 +970,10 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1747327360,
+        "lastModified": 1747542820,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e06158e58f3adee28b139e9c2bcfcc41f8625b46",
+        "rev": "292fa7d4f6519c074f0a50394dbbe69859bb6043",
         "type": "github"
       },
       "original": {

@@ -30,6 +30,7 @@ in {
     vesktop
     spotify
     zed-editor
+    qbittorrent
 
     noto-fonts
     noto-fonts-cjk-sans
