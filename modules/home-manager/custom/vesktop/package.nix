@@ -155,6 +155,12 @@ stdenv.mkDerivation (finalAttrs: {
       makeWrapper $out/Applications/Vesktop.app/Contents/MacOS/Vesktop $out/bin/vesktop
     '';
 
+  postPatch = ''
+    mkdir -p static #ensuring that the folder exists
+    rm -f static/shiggy.gif
+    cp ${../../../../assets/shiggy.gif} static/shiggy.gif
+  '';
+
   desktopItems = lib.optional stdenv.hostPlatform.isLinux (makeDesktopItem {
     name = "vesktop";
     desktopName = "Vesktop";

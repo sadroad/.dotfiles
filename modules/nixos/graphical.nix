@@ -55,6 +55,8 @@ in {
 
   environment.systemPackages = with pkgs; [
     sddm-eucalyptus-drop
+    libsForQt5.qt5.qtgraphicaleffects # required for sddm-eucalyptus-drop
+
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji

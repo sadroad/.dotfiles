@@ -57,11 +57,6 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    vesktop = {
-      url = "github:Vencord/Vesktop/6e7d912b9524ea8f104b7ecd0432a47e4835a95d";
-      flake = false;
-    };
   };
 
   outputs = inputs @ {

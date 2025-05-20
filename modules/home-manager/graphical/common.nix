@@ -5,17 +5,7 @@
   username,
   ...
 }: let
-  custom-vesktop = pkgs.callPackage ../custom/vesktop/package.nix {};
-
-  vesktop =
-    custom-vesktop.overrideAttrs
-    (oldAttrs: {
-      postPatch = ''
-        mkdir -p static #ensuring that the folder exists
-        rm -f static/shiggy.gif
-        cp ${../../../assets/shiggy.gif} static/shiggy.gif
-      '';
-    });
+  vesktop = pkgs.callPackage ../custom/vesktop/package.nix {};
 in {
   fonts.fontconfig = {
     enable = true;
