@@ -6,6 +6,9 @@
   inputs,
   ...
 }: {
+  imports = [
+    ./sddm-theme.nix
+  ];
   programs.hyprland = {
     enable = true;
     withUWSM = true;
