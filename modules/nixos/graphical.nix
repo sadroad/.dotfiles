@@ -5,10 +5,12 @@
   username,
   inputs,
   ...
-}: {
-  imports = [
-    ./sddm-theme.nix
-  ];
+}: let
+  sddm-eucalyptus-drop = import ./sddm-theme.nix {
+    inherit lib;
+    stdenvNoCC = pkgs.stdenvNoCC;
+  };
+in {
   programs.hyprland = {
     enable = true;
     withUWSM = true;
@@ -55,6 +57,7 @@
   hardware.keyboard.zsa.enable = true;
 
   environment.systemPackages = with pkgs; [
+    sddm-eucalyptus-drop
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
