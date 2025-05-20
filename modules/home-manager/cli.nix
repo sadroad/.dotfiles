@@ -10,11 +10,7 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  claude-code-pkg = import ./custom/claude/package.nix {
-    inherit lib;
-    fetchzip = pkgs.fetchzip;
-    buildNpmPackage = pkgs.buildNpmPackage;
-  };
+  claude-code-pkg = pkgs.callPackage ./custom/claude/package.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";

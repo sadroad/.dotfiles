@@ -6,10 +6,7 @@
   inputs,
   ...
 }: let
-  sddm-eucalyptus-drop = import ./sddm-theme.nix {
-    inherit lib pkgs;
-    stdenvNoCC = pkgs.stdenvNoCC;
-  };
+  sddm-eucalyptus-drop = pkgs.callPackage ./sddm-theme.nix {};
 in {
   programs.hyprland = {
     enable = true;
