@@ -5,8 +5,26 @@
   username,
   ...
 }: let
+  custom-vesktop = import ../custom/vesktop/package.nix {
+    inherit lib;
+    stdenv = pkgs.stdenv;
+    makeBinaryWrapper = pkgs.makeBinaryWrapper;
+    makeWrapper = pkgs.makeWrapper;
+  makeDesktopItem = pkgs.makeDesktopItem;
+  copyDesktopItems = pkgs.copyDesktopItems;
+  vencord = pkgs.vencord;
+  electron,
+  libicns,
+  pipewire,
+  libpulseaudio,
+  autoPatchelfHook,
+  pnpm_10,
+  nodejs,
+  nix-update-script,
+  };
+
   vesktop =
-    pkgs.vesktop.overrideAttrs
+    custom-vesktop.overrideAttrs
     (oldAttrs: {
       postPatch = ''
         mkdir -p static #ensuring that the folder exists

@@ -7,7 +7,7 @@
   ...
 }: let
   sddm-eucalyptus-drop = import ./sddm-theme.nix {
-    inherit lib;
+    inherit lib pkgs;
     stdenvNoCC = pkgs.stdenvNoCC;
   };
 in {

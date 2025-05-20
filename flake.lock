@@ -1045,7 +1045,8 @@
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
         "nixpkgs": "nixpkgs_4",
-        "nvf": "nvf"
+        "nvf": "nvf",
+        "vesktop": "vesktop"
       }
     },
     "rust-overlay": {
@@ -1142,6 +1143,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "vesktop": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1747698324,
+        "owner": "Vencord",
+        "repo": "Vesktop",
+        "rev": "6e7d912b9524ea8f104b7ecd0432a47e4835a95d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Vencord",
+        "repo": "Vesktop",
+        "rev": "6e7d912b9524ea8f104b7ecd0432a47e4835a95d",
         "type": "github"
       }
     },
