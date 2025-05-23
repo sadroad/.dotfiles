@@ -6,7 +6,7 @@
   inputs,
   ...
 }: let
-  sddm-eucalyptus-drop = pkgs.callPackage ./sddm-theme.nix {};
+  sddm-eucalyptus-drop = pkgs.callPackage ./sddm-theme.nix {inherit config;};
 in {
   programs.hyprland = {
     enable = true;

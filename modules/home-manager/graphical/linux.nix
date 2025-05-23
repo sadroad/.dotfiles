@@ -256,15 +256,18 @@ lib.mkIf pkgs.stdenv.isLinux {
 
   services.hyprpaper = {
     enable = true;
-    settings = {
+    settings = let
+      wallpaper1 = pkgs.copyPathToStore ../../../assets/1.jpg;
+      wallpaperChange = pkgs.copyPathToStore ../../../assets/change.jpg;
+    in {
       ipc = "on";
       preload = [
-        "${osConfig.age.secrets."1.jpg".path}"
-        "${osConfig.age.secrets."change.jpg".path}"
+        wallpaper1
+        wallpaperChange
       ];
       wallpaper = [
-        "DP-3, ${osConfig.age.secrets."change.jpg".path}"
-        "DP-1, ${osConfig.age.secrets."1.jpg".path}"
+        "DP-3, ${wallpaperChange}"
+        "DP-1, ${wallpaper1}"
       ];
     };
   };

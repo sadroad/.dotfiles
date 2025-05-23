@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   stdenvNoCC,
@@ -15,21 +16,22 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-C3qB9hFUeuT5+Dos2zFj5SyQegnghpoFV9wHvE9VoD8=";
   };
 
-  dontWrapQtApps = true;
+  backgroundImage = ../../assets/change.jpg;
 
+  dontWrapQtApps = true;
+  nativeBuildInputs = [pkgs.makeWrapper];
   buildInputs = with pkgs.libsForQt5.qt5; [qtgraphicaleffects];
 
   installPhase = let
-    iniFormat = pkgs.formats.ini {};
-    configFile = iniFormat.generate "" {General = themeConfig;};
+    base = "$out/share/sddm/themes/eucalyptus-drop";
+  in ''
+    mkdir -p ${base}
+    cp -r $src/* ${base}
+    
+    # Copy the background image to the theme directory
+    cp ${backgroundImage} ${base}/change.jpg
 
-    basePath = "$out/share/sddm/themes/eucalyptus-drop";
-  in
-    ''
-      mkdir -p ${basePath}
-      cp -r $src/* ${basePath}
-    ''
-    + lib.optionalString (themeConfig != null) ''
-      ln -sf ${configFile} ${basePath}/theme.conf.user
-    '';
+    substituteInPlace ${base}/theme.conf \
+      --replace 'Background="Background.jpg"' 'Background="change.jpg"'
+  '';
 }
