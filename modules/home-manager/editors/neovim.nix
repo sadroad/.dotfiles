@@ -91,8 +91,6 @@
 
         telescope.enable = true;
 
-        treesitter.context.enable = true;
-
         theme = {
           enable = true;
           name = "gruvbox";
