@@ -48,6 +48,7 @@ in {
   };
 
   programs.nh = {
+    package = inputs.nh.packages.${pkgs.system}.default;
     enable = true;
     clean.enable = true;
     flake = "${userDir}/.dotfiles";
