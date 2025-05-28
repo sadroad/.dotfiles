@@ -41,8 +41,8 @@ run_cmd() {
 
 echo "Activation Script: Attempting to install Berkeley Mono font for user $USER..."
 
-decrypted_zip="/run/agenix/berkley_mono.zip"
-font_dir="$HOME/.local/share/fonts/opentype/berkley-mono" # Target directory
+decrypted_zip="/run/agenix/berkeley_mono.zip"
+font_dir="$HOME/.local/share/fonts/opentype/berkeley-mono" # Target directory
 
 if [ ! -r "$decrypted_zip" ]; then
   echo "Activation Script: Decrypted file $decrypted_zip not found or not readable. Skipping font installation."

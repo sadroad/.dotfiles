@@ -27,7 +27,7 @@ lib.mkIf pkgs.stdenv.isLinux {
   ];
 
   home.activation.installBerkeleyMonoFont = let
-    installScript = ../../../scripts/install-berkley-mono.sh;
+    installScript = ../../../scripts/install-berkeley-mono.sh;
   in
     lib.hm.dag.entryAfter ["writeBoundary"] ''
       ${installScript} \
@@ -53,7 +53,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     settings = {
       "$mainMod" = "SUPER";
 
-      monitor = ["DP-3, 2560x1440@180,0x0,1" "DP-1, 1920x1080@165,0x-1080,1"];
+      monitor = ["DP-3, 2560x1440@180,0x0,1" "DP-1, 1920x1080@165,0x-1080,1" "HDMI-A-1, preferred, auto, 1, mirror, DP-3"];
 
       "$menu" = "bemenu-run -b";
       "$terminal" = "ghostty";
@@ -179,7 +179,7 @@ lib.mkIf pkgs.stdenv.isLinux {
         };
         clock = {
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
-          format = "{:L%Y-%m-%d<small>[%a]</small> <tt><small>%p</small></tt>%I:%M}";
+          format = "{:L%Y-%m-%d<small>[%a]</small> %H:%M}";
         };
         pulseaudio = {
           scroll-step = 5;

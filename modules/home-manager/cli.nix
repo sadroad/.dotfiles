@@ -39,6 +39,7 @@ in {
       asciinema_3
       compose2nix
       nix-output-monitor
+      cloudflared
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       ]);

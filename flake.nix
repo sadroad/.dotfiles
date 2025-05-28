@@ -14,6 +14,7 @@
     };
     hyprland.url = "github:hyprwm/Hyprland/v0.49.0";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     # nix-darwin
     nix-darwin = {
@@ -74,6 +75,8 @@
         inherit system;
         config.allowUnfree = true;
       };
+
+    chaotic.nyx.cache.enable = false;
   in {
     formatter = forAllSystems (system: (mkPkgs system).alejandra);
 

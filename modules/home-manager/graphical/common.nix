@@ -23,6 +23,7 @@ in {
     spotify
     zed-editor
     qbittorrent
+    jetbrains.datagrip
 
     noto-fonts
     noto-fonts-cjk-sans
@@ -40,6 +41,8 @@ in {
       font-style = "Retina";
       font-size = "14";
       gtk-single-instance = "true";
+      # for claude-code: new line trick
+      keybind = "shift+enter=text:\n";
     };
     linuxSettings =
       if pkgs.stdenv.isLinux
