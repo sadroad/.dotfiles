@@ -44,7 +44,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     my_secrets = {
-      url = "git+ssh://git@github.com/sadroad/nix-secrets.git";
+      url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
       flake = false;
     };
     nvf = {

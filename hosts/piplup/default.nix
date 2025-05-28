@@ -26,11 +26,10 @@
   boot.supportedFilesystems = ["ntfs"];
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  environment.etc."nix/nix.custom.conf".text = ''
-    lazy-trees = true
-  '';
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    lazy-trees = true;
+  };
 
   system.stateVersion = "24.11";
 }
