@@ -55,7 +55,7 @@ in {
         sign-on-push = true;
       };
       signing = {
-        behavoir = "drop";
+        behavior = "drop";
         key = gitSigningKey;
         backend = "gpg";
       };

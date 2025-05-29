@@ -24,8 +24,8 @@
       mode = "0400";
       owner = username;
     };
-    "berkley_mono.zip" = {
-      file = "${my_secrets}/berkley_mono.zip.age";
+    "berkeley_mono.zip" = {
+      file = "${my_secrets}/berkeley_mono.zip.age";
       symlink = true;
       mode = "0400";
       owner = username;

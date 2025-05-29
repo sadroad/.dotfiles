@@ -39,7 +39,7 @@ run_cmd() {
     return $?
 }
 
-echo "Activation Script: Attempting to install Berkley Mono font for user $USER..."
+echo "Activation Script: Attempting to install Berkeley Mono font for user $USER..."
 
 decrypted_zip="/run/agenix/berkley_mono.zip"
 font_dir="$HOME/.local/share/fonts/opentype/berkley-mono" # Target directory
@@ -123,7 +123,7 @@ else
 fi
 
 # Cleanup is handled by the trap EXIT (if not dry run)
-echo "Activation Script: Berkley Mono font installation script finished."
+echo "Activation Script: Berkeley Mono font installation script finished."
 
 exit 0
 

@@ -26,7 +26,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     davinci-resolve-studio
   ];
 
-  home.activation.installBerkleyMonoFont = let
+  home.activation.installBerkeleyMonoFont = let
     installScript = ../../../scripts/install-berkley-mono.sh;
   in
     lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -59,7 +59,7 @@ lib.mkIf pkgs.stdenv.isLinux {
       "$terminal" = "ghostty";
       "$screenshot" = "grimblast --freeze copy area";
 
-      # hack to make main monitor have inital focus
+      # hack to make main monitor have initial focus
       workspace = "name:1, monitor:DP-3";
 
       exec-once = [
@@ -228,7 +228,7 @@ lib.mkIf pkgs.stdenv.isLinux {
         line_height = 0;
         format = "<b>%s</b>\\n%b";
         alignment = "left";
-        veritcal_alignment = "center";
+        vertical_alignment = "center";
         show_age_threshold = 60;
         ellipsize = "middle";
         ignore_newline = "no";

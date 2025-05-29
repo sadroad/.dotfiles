@@ -21,7 +21,7 @@
     autostart = false;
   };
 
-  # obs virutal cam
+  # obs virtual cam
   boot.kernelModules = ["v4l2loopback"];
   boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
   boot.extraModprobeConfig = ''
