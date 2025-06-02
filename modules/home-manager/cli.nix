@@ -12,6 +12,7 @@
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
   claude-code-pkg = pkgs.callPackage ./custom/claude/package.nix {};
+  glimpse = inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -30,16 +31,19 @@ in {
       pigz
       hexyl
 
+      #deploy tools
+      nixos-anywhere
+      deploy-rs
+      compose2nix
+
       hyperfine
       neofetch
       hydra-check
       claude-code-pkg
-      nixos-anywhere
-      deploy-rs
       asciinema_3
-      compose2nix
       nix-output-monitor
       cloudflared
+      glimpse
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       ]);
