@@ -56,24 +56,6 @@ in {
     settings = baseSettings // linuxSettings;
   };
 
-  programs.zed-editor =
-    {
-      enable = true;
-      extensions = ["catppuccin-icons"];
-      userSettings = {
-        vim_mode = true;
-        icon_theme = "Catppuccin Latte";
-        telemetry = {
-            metrics = false;
-            diagnostics = false;
-        };
-      };
-    }
-    // lib.optionalAttrs (hostname
-      == "piplup") {
-      installRemoteServer = true;
-    };
-
   gtk = {
     enable = true;
     font = {

@@ -45,6 +45,7 @@ in {
       nix-output-monitor
       cloudflared
       glimpse
+      pv
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       ]);
