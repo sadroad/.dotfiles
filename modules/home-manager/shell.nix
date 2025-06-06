@@ -41,29 +41,38 @@
         end
       '';
     };
-    shellAbbrs = {
-      reload = "source ~/.config/fish/config.fish";
-      mkdir = "mkdir -p";
-      type = "type -a";
-    };
-    shellAliases = {
-      ls = "eza";
-      l = "eza -lah";
-      cat = "bat";
-      grep = "rg";
-      tree = "eza --tree";
-      top = "btop";
-      du = "dust";
-      xxd = "hexyl";
-      find = "fd";
-      cd = "z";
-      dig = "doggo";
-      ps = "procs";
-      ping = "gping";
-      diff = "delta";
-      gzip = "pigz";
-      "rec" = "asciinema rec -c fish";
-    };
+    shellAbbrs =
+      {
+        reload = "source ~/.config/fish/config.fish";
+        mkdir = "mkdir -p";
+        type = "type -a";
+      }
+      // lib.optionalAttrs pkgs.stdenv.isDarwin {
+        dns-reset = "dns-down && dns-up";
+      };
+    shellAliases =
+      {
+        ls = "eza";
+        l = "eza -lah";
+        cat = "bat";
+        grep = "rg";
+        tree = "eza --tree";
+        top = "btop";
+        du = "dust";
+        xxd = "hexyl";
+        find = "fd";
+        cd = "z";
+        dig = "doggo";
+        ps = "procs";
+        ping = "gping";
+        diff = "delta";
+        gzip = "pigz";
+        "rec" = "asciinema rec -c fish";
+      }
+      // lib.optionalAttrs pkgs.stdenv.isDarwin {
+        dns-down = "sudo -v && tailscale down && sudo networksetup -setdnsservers \"Wi-Fi\" empty && sudo killall -HUP mDNSResponder";
+        dns-up = "sudo -v && tailscale up && sudo networksetup -setdnsservers \"Wi-Fi\" 1.1.1.1 1.0.0.1 9.9.9.9 && sudo killall -HUP mDNSResponder";
+      };
   };
 
   programs.atuin = {

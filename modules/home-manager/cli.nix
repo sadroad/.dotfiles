@@ -16,6 +16,7 @@
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
+    NH_NO_CHECKS = "1";
   };
   home.packages = with pkgs;
     [
@@ -60,11 +61,15 @@ in {
 
   programs.ssh = {
     enable = true;
-    extraConfig = ''
-      Host tux
-      	HostName tux.cs.drexel.edu
-      	User av676
-    '';
+    addKeysToAgent = "yes";
+    extraConfig =
+      lib.optionalString pkgs.stdenv.isDarwin "UseKeychain yes";
+    matchBlocks = {
+      "tux" = {
+        hostname = "tux.cs.drexel.edu";
+        user = "av676";
+      };
+    };
   };
 
   programs.yazi = {

@@ -53,7 +53,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     glimpse = {
-      url = "github:seatedro/glimpse/v0.7.5";
+      url = "github:seatedro/glimpse/v0.7.6";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
