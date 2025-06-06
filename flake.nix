@@ -113,7 +113,7 @@
               home-manager.backupFileExtension = "backup";
               home-manager.users.${username} = ./modules/home-manager/default.nix;
               home-manager.extraSpecialArgs = {
-                inherit username inputs agenix userDir system;
+                inherit username inputs agenix userDir system hostname;
                 osConfig = config;
               };
             })
@@ -153,7 +153,7 @@
                 mac-app-util.homeManagerModules.default
               ];
               home-manager.extraSpecialArgs = {
-                inherit username inputs agenix userDir system;
+                inherit username inputs agenix userDir system hostname;
                 osConfig = config;
               };
             })

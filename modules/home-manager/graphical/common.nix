@@ -3,6 +3,7 @@
   lib,
   config,
   username,
+  hostname,
   ...
 }: let
   vesktop = pkgs.callPackage ../custom/vesktop/package.nix {};
@@ -21,7 +22,6 @@ in {
     brave
     vesktop
     spotify
-    zed-editor
     qbittorrent
     jetbrains.datagrip
 
@@ -45,9 +45,8 @@ in {
       keybind = "shift+enter=text:\n";
     };
     linuxSettings =
-      if pkgs.stdenv.isLinux
-      then {command = "fish --login --interactive";}
-      else {};
+      lib.optionalAttrs pkgs.stdenv.isLinux
+      {command = "fish --login --interactive";};
   in {
     enable = true;
     package =
@@ -56,6 +55,24 @@ in {
       else null;
     settings = baseSettings // linuxSettings;
   };
+
+  programs.zed-editor =
+    {
+      enable = true;
+      extensions = ["catppuccin-icons"];
+      userSettings = {
+        vim_mode = true;
+        icon_theme = "Catppuccin Latte";
+        telemetry = {
+            metrics = false;
+            diagnostics = false;
+        };
+      };
+    }
+    // lib.optionalAttrs (hostname
+      == "piplup") {
+      installRemoteServer = true;
+    };
 
   gtk = {
     enable = true;
