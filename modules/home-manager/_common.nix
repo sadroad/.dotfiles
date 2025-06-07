@@ -4,6 +4,7 @@
   username,
   userDir,
   osConfig,
+  secretsAvailable,
   ...
 }: {
   home.username = username;
@@ -39,7 +40,7 @@
     enableAutoUpdates = true;
   };
 
-  nix.settings = {
+  nix.settings = lib.mkIf secretsAvailable {
     access-tokens = "!include ${osConfig.age.secrets."github_oauth".path}";
   };
 

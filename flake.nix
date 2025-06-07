@@ -1,3 +1,4 @@
+# flake.nix
 {
   inputs = {
     # core
@@ -58,29 +59,28 @@
     };
   };
 
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    home-manager,
-    agenix,
-    my_secrets,
-    nix-darwin,
-    mac-app-util,
-    ...
-  }: let
+  outputs = inputs: let
+    secretsEval = builtins.tryEval inputs.my_secrets;
+    secretsAvailable = secretsEval.success;
+    secretsPath =
+      if secretsAvailable
+      then secretsEval.value
+      else null;
+
     username = "sadroad";
-
     systems = ["x86_64-linux" "aarch64-darwin"];
-
-    forAllSystems = nixpkgs.lib.genAttrs systems;
+    forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
 
     mkPkgs = system:
-      import nixpkgs {
+      import inputs.nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
 
-    chaotic.nyx.cache.enable = false;
+    commonSpecialArgs = {
+      inherit username inputs secretsAvailable secretsPath;
+      agenix = inputs.agenix;
+    };
   in {
     formatter = forAllSystems (system: (mkPkgs system).alejandra);
 
@@ -91,31 +91,53 @@
         userDir = "/home/${username}";
         pkgs = mkPkgs system;
       in
-        nixpkgs.lib.nixosSystem {
+        inputs.nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {
-            inherit hostname username userDir inputs agenix my_secrets;
-          };
+          specialArgs = commonSpecialArgs // {inherit hostname userDir;};
           modules = [
             ./hosts/${hostname}/default.nix
-
             {nixpkgs.pkgs = pkgs;}
-
-            home-manager.nixosModules.home-manager
-            ({
-              config,
-              pkgs,
-              lib,
-              ...
-            }: {
+            inputs.home-manager.nixosModules.home-manager
+            ({config, ...}: {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.${username} = ./modules/home-manager/default.nix;
-              home-manager.extraSpecialArgs = {
-                inherit username inputs agenix userDir system hostname;
-                osConfig = config;
-              };
+              home-manager.users.${username} =
+                ./modules/home-manager/default.nix;
+              home-manager.extraSpecialArgs =
+                commonSpecialArgs
+                // {
+                  inherit userDir system hostname;
+                  osConfig = config;
+                };
+            })
+          ];
+        };
+      serperior = let
+        system = "x86_64-linux";
+        hostname = "serperior";
+        userDir = "/home/${username}";
+        pkgs = mkPkgs system;
+      in
+        inputs.nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = commonSpecialArgs // {inherit hostname userDir;};
+          modules = [
+            ./hosts/${hostname}/default.nix
+            {nixpkgs.pkgs = pkgs;}
+            inputs.home-manager.nixosModules.home-manager
+            ({config, ...}: {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.backupFileExtension = "backup";
+              home-manager.users.${username} =
+                ./modules/home-manager/default.nix;
+              home-manager.extraSpecialArgs =
+                commonSpecialArgs
+                // {
+                  inherit userDir system hostname;
+                  osConfig = config;
+                };
             })
           ];
         };
@@ -128,34 +150,28 @@
         userDir = "/Users/${username}";
         pkgs = mkPkgs system;
       in
-        nix-darwin.lib.darwinSystem {
+        inputs.nix-darwin.lib.darwinSystem {
           inherit system;
-          specialArgs = {
-            inherit hostname username userDir inputs agenix my_secrets;
-          };
+          specialArgs = commonSpecialArgs // {inherit hostname userDir;};
           modules = [
             ./hosts/${hostname}/default.nix
-
             {nixpkgs.pkgs = pkgs;}
-
-            home-manager.darwinModules.home-manager
-            ({
-              config,
-              pkgs,
-              lib,
-              ...
-            }: {
+            inputs.home-manager.darwinModules.home-manager
+            ({config, ...}: {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.backupFileExtension = "backup";
-              home-manager.users.${username} = ./modules/home-manager/default.nix;
+              home-manager.users.${username} =
+                ./modules/home-manager/default.nix;
               home-manager.sharedModules = [
-                mac-app-util.homeManagerModules.default
+                inputs.mac-app-util.homeManagerModules.default
               ];
-              home-manager.extraSpecialArgs = {
-                inherit username inputs agenix userDir system hostname;
-                osConfig = config;
-              };
+              home-manager.extraSpecialArgs =
+                commonSpecialArgs
+                // {
+                  inherit userDir system hostname;
+                  osConfig = config;
+                };
             })
           ];
         };

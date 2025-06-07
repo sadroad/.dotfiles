@@ -1,9 +1,12 @@
+# modules/home-manager/gpg.nix
 {
   osConfig,
   pkgs,
   lib,
+  secretsAvailable,
   ...
-}: let
+}:
+lib.mkIf secretsAvailable (let
   decryptedKeyPath = osConfig.age.secrets."sadroad-gpg-private".path;
 
   importScript = ../../scripts/import-gpg-key.sh;
@@ -30,4 +33,4 @@ in {
       ${importScript} "${decryptedKeyPath}" || echo "GPG Import Activation: Import script failed." >&2
     fi
   '';
-}
+})

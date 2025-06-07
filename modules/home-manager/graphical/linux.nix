@@ -2,6 +2,7 @@
   pkgs,
   lib,
   osConfig,
+  secretsAvailable,
   ...
 }:
 lib.mkIf pkgs.stdenv.isLinux {
@@ -26,7 +27,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     davinci-resolve-studio
   ];
 
-  home.activation.installBerkeleyMonoFont = let
+  home.activation.installBerkeleyMonoFont = lib.mkIf secretsAvailable (let
     installScript = ../../../scripts/install-berkeley-mono.sh;
   in
     lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -39,7 +40,7 @@ lib.mkIf pkgs.stdenv.isLinux {
         "${pkgs.findutils}/bin/find" \
         "${pkgs.coreutils}/bin/mktemp" \
         "${pkgs.fontconfig.bin}/bin/fc-cache" \
-    '';
+    '');
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -155,10 +156,7 @@ lib.mkIf pkgs.stdenv.isLinux {
             9)
         );
 
-      bindm = [
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
+      bindm = ["$mainMod, mouse:272, movewindow" "$mainMod, mouse:273, resizewindow"];
     };
   };
 
@@ -261,14 +259,8 @@ lib.mkIf pkgs.stdenv.isLinux {
       wallpaperChange = pkgs.copyPathToStore ../../../assets/change.jpg;
     in {
       ipc = "on";
-      preload = [
-        wallpaper1
-        wallpaperChange
-      ];
-      wallpaper = [
-        "DP-3, ${wallpaperChange}"
-        "DP-1, ${wallpaper1}"
-      ];
+      preload = [wallpaper1 wallpaperChange];
+      wallpaper = ["DP-3, ${wallpaperChange}" "DP-1, ${wallpaper1}"];
     };
   };
 
@@ -333,8 +325,6 @@ lib.mkIf pkgs.stdenv.isLinux {
               value = program;
             })
             subt);
-      in [
-        (subtypes "image" "nsxiv.desktop" ["png" "jpeg" "gif" "svg"])
-      ]);
+      in [(subtypes "image" "nsxiv.desktop" ["png" "jpeg" "gif" "svg"])]);
   };
 }

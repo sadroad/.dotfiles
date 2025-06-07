@@ -4,6 +4,7 @@
   lib,
   inputs,
   username,
+  secretsAvailable,
   ...
 }: {
   # just to remove brave bloat
@@ -16,7 +17,7 @@
 
   programs.ssh.startAgent = true;
 
-  networking.wg-quick.interfaces.wg0 = {
+  networking.wg-quick.interfaces.wg0 = lib.mkIf secretsAvailable {
     configFile = config.age.secrets."wg-conf".path;
     autostart = false;
   };

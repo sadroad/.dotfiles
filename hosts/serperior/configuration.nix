@@ -16,11 +16,6 @@
 
   programs.ssh.startAgent = true;
 
-  networking.wg-quick.interfaces.wg0 = {
-    configFile = config.age.secrets."wg-conf".path;
-    autostart = false;
-  };
-
   # obs virtual cam
   boot.kernelModules = ["v4l2loopback"];
   boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
