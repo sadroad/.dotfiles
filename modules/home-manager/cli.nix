@@ -78,11 +78,6 @@ in {
     plugins = {
       save-clipboard-to-file = saveClipbordToFileYaziPlugin;
     };
-    settings = {
-      manager = {
-        show_hidden = true;
-      };
-    };
     keymap = {
       manager.prepend_keymap = [
         {

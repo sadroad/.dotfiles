@@ -24,9 +24,8 @@ in {
       vesktop
       spotify
       qbittorrent
-      jetbrains.datagrip
 
-      noto-fonts
+        noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
       font-awesome

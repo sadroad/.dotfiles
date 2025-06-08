@@ -7,9 +7,10 @@
   lib,
   ...
 }:
-lib.mkIf secretsAvailable {
+{
   imports = [agenix.nixosModules.default];
-
+}
+// lib.mkIf secretsAvailable {
   environment.systemPackages = [agenix.packages."${pkgs.system}".default];
 
   age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];

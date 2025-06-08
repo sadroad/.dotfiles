@@ -27,7 +27,7 @@ stdenvNoCC.mkDerivation rec {
   in ''
     mkdir -p ${base}
     cp -r $src/* ${base}
-    
+
     # Copy the background image to the theme directory
     cp ${backgroundImage} ${base}/change.jpg
 
