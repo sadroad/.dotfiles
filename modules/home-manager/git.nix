@@ -10,6 +10,7 @@
 in {
   home.packages = with pkgs; [
     git-secrets
+    mergiraf
   ];
   programs.git = {
     enable = true;
@@ -21,12 +22,17 @@ in {
         navigate = true;
       };
     };
+    attributes = ["* merge=mergiraf"];
     extraConfig = {
       rerere = {
         enable = true;
       };
       merge = {
         conflictstyle = "diff3";
+      };
+      "merge \"mergiraf\"" = {
+        name = "mergiraf";
+        driver = "mergiraf merge --git %O %A %B -s %S -x %X -y %Y -p %P -l %L";
       };
       diff = {
         colorMoved = "default";
