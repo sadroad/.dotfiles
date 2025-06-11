@@ -52,6 +52,7 @@ in {
     settings = {
       ui = {
         pager = "delta";
+        merge-editor = "mergiraf";
       };
       user = {
         name = gitName;

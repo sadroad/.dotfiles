@@ -18,21 +18,24 @@ in {
     };
   };
 
-  home.packages = with pkgs; [
-    brave
-    vesktop
-    spotify
-    qbittorrent
-    jetbrains.datagrip
+  home.packages = with pkgs;
+    [
+      brave
+      vesktop
+      spotify
+      qbittorrent
+      jetbrains.datagrip
 
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    font-awesome
-    pkgs.nerd-fonts.jetbrains-mono
-    pkgs.nerd-fonts.symbols-only
-  ];
-
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      font-awesome
+      pkgs.nerd-fonts.jetbrains-mono
+      pkgs.nerd-fonts.symbols-only
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [
+      grandperspective
+    ];
   programs.ghostty = let
     baseSettings = {
       shell-integration-features = "sudo";
