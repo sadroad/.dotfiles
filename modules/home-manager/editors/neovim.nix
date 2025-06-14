@@ -34,6 +34,13 @@
           registers = "unnamedplus";
         };
 
+        statusline = {
+          lualine = {
+            enable = true;
+            theme = "gruvbox_dark";
+          };
+        };
+
         keymaps = [
           {
             key =
