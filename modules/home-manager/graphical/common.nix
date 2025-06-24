@@ -25,7 +25,7 @@ in {
       spotify
       qbittorrent
 
-        noto-fonts
+      noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-emoji
       font-awesome

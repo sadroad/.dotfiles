@@ -15,7 +15,11 @@
     inputs.nix-homebrew.darwinModules.nix-homebrew
   ];
   nix.enable = false;
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    lazy-trees = true;
+  };
 
   networking.hostName = hostname;
 

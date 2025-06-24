@@ -46,9 +46,11 @@ in {
       cloudflared
       glimpse
       pv
+      zellij
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
-      ]);
+      dysk
+    ]);
 
   programs.fzf = {
     enable = true;
