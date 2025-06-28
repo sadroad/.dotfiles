@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  inputs,
   config,
   username,
   hostname,
@@ -31,9 +32,12 @@ in {
       font-awesome
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
+      prismlauncher
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
     ];
   programs.ghostty = let
     baseSettings = {
@@ -48,7 +52,9 @@ in {
     };
     linuxSettings =
       lib.optionalAttrs pkgs.stdenv.isLinux
-      {command = "fish --login --interactive";};
+      {
+        command = "fish --login --interactive";
+      };
   in {
     enable = true;
     package =
