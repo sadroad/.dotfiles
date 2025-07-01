@@ -13,7 +13,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland/v0.49.0";
+    hyprland.url = "github:hyprwm/Hyprland";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     # chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     chaotic.url = "github:chaotic-cx/nyx/ffeb9f4b6a4bfbf33e9c3f9494aa9f08b4a2da61";
