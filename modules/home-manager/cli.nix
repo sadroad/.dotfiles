@@ -13,6 +13,7 @@
   };
   claude-code-pkg = pkgs.callPackage ./custom/claude/package.nix {};
   glimpse = inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  opencode-pkg = pkgs.callPackage ./custom/opencode/package.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -47,6 +48,7 @@ in {
       glimpse
       pv
       zellij
+      opencode-pkg
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
