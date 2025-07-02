@@ -22,6 +22,14 @@
     autostart = false;
   };
 
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
+  networking.nameservers = ["100.100.100.100" "192.168.2.1"];
+  networking.search = ["tail217ff.ts.net"];
+
   # obs virtual cam
   boot.kernelModules = ["v4l2loopback"];
   boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];

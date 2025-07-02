@@ -49,6 +49,9 @@ in {
       pv
       zellij
       opencode-pkg
+      caligula
+      pastel
+      numbat
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
@@ -83,7 +86,7 @@ in {
       save-clipboard-to-file = saveClipbordToFileYaziPlugin;
     };
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           on = ["p" "c"];
           run = "plugin save-clipboard-to-file";
