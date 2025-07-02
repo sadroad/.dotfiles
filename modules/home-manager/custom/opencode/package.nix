@@ -1,26 +1,45 @@
 {
   lib,
   stdenv,
+  buildGoModule,
   bun,
   fetchFromGitHub,
-  go,
+  fetchurl,
   nix-update-script,
-  makeBinaryWrapper,
   testers,
 }: let
-  version = "0.1.170";
+  version = "0.1.174";
   src = fetchFromGitHub {
     owner = "sst";
     repo = "opencode";
     tag = "v${version}";
-    hash = "sha256-pHwIHxKMW2A2trV4Rzk4jLkPChLMOBWiPLniBms1qP0=";
+    hash = "sha256-xKDbMp3dD6gKLOYqIlP+SRzBSKEBobdHoimgC1zkkhY=";
+  };
+
+  opencode-tui = buildGoModule {
+    pname = "opencode-tui";
+    inherit version src;
+
+    sourceRoot = "source/packages/tui";
+
+    vendorHash = "sha256-gkaxjMGoJfDX6QjDCn6SSyyO7/mRqYrh+IRhWeBzj48=";
+
+    subPackages = ["cmd/opencode"];
+
+    env.CGO_ENABLED = 0;
+
+    ldflags = [
+      "-s"
+      "-w"
+      "-X=main.Version=${version}"
+    ];
   };
 
   opencode-node-modules-hash = {
-    "aarch64-darwin" = "sha256-+VAGsQf2oXffsrv2GDcOItbfCmjIu5QfaaZ9PtE4K04=";
+    "aarch64-darwin" = "sha256-Jb/syr9b1fswTX1NacatzGpmNwoCgMjI8FQcWPz0Uk0=";
     "aarch64-linux" = "sha256-t7dcyPsWeqYJv4/DPP15bvVurVPGCXWXVPUfpk1+l1Q=";
     "x86_64-darwin" = "sha256-qYljdz4iyl3aZBhVU+uIVx4ZsvY9ubTTLNxJ94TUkBo=";
-    "x86_64-linux" = "sha256-TYjcA7MTfOKkvTwGSK1SotMDIH9xag79dikf6hMF8us=";
+    "x86_64-linux" = "";
   };
   node_modules = stdenv.mkDerivation {
     name = "opencode-${version}-node-modules";
@@ -54,33 +73,52 @@
     outputHashAlgo = "sha256";
     outputHashMode = "recursive";
   };
+
+  modelsDevData = fetchurl {
+    url = "https://models.dev/api.json";
+    sha256 = "sha256-+VpQjvOOtuoltE3n9MZn8d0srYDacOh6B4wM0RqBmBM=";
+  };
+  bun-target = {
+    "aarch64-darwin" = "bun-darwin-arm64";
+    "aarch64-linux" = "bun-linux-arm64";
+    "x86_64-darwin" = "bun-darwin-x64";
+    "x86_64-linux" = "bun-linux-x64";
+  };
 in
   stdenv.mkDerivation (finalAttrs: {
     pname = "opencode";
     inherit version src;
 
-    nativeBuildInputs = [makeBinaryWrapper];
+    nativeBuildInputs = [bun];
 
-    dontConfigure = true;
-    dontBuild = true;
+    patches = [./fix-models-macro.patch];
+
+    configurePhase = ''
+      runHook preConfigure
+
+      cp -R ${node_modules}/node_modules .
+
+      runHook postConfigure
+    '';
+
+    buildPhase = ''
+      runHook preBuild
+
+      export MODELS_JSON="$(cat ${modelsDevData})"
+      bun build --define OPENCODE_VERSION="'${version}'" --compile --minify --target=${
+        bun-target.${stdenv.hostPlatform.system}
+      } --outfile=opencode ./packages/opencode/src/index.ts ${opencode-tui}/bin/opencode
+
+      runHook postBuild
+    '';
+
+    dontStrip = true;
 
     installPhase = ''
       runHook preInstall
 
       mkdir -p $out/bin
-
-      ln -s ${node_modules}/node_modules $out
-      cp -R ./* $out
-
-      # bun is referenced naked in the package.json generated script
-      makeBinaryWrapper ${bun}/bin/bun $out/bin/opencode \
-        --prefix PATH : ${
-        lib.makeBinPath [
-          bun
-          go
-        ]
-      } \
-        --add-flags "run --prefer-offline --no-install --cwd $out ./packages/opencode/src/index.ts"
+      cp opencode $out/bin/opencode
 
       runHook postInstall
     '';
