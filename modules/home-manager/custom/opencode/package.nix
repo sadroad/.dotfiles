@@ -39,7 +39,7 @@
     "aarch64-darwin" = "sha256-Jb/syr9b1fswTX1NacatzGpmNwoCgMjI8FQcWPz0Uk0=";
     "aarch64-linux" = "sha256-t7dcyPsWeqYJv4/DPP15bvVurVPGCXWXVPUfpk1+l1Q=";
     "x86_64-darwin" = "sha256-qYljdz4iyl3aZBhVU+uIVx4ZsvY9ubTTLNxJ94TUkBo=";
-    "x86_64-linux" = "";
+    "x86_64-linux" = "sha256-d2ux5d8hSKEOOEI0dA2biWTg46uMLkEb9uXK1A+kspc=";
   };
   node_modules = stdenv.mkDerivation {
     name = "opencode-${version}-node-modules";
