@@ -52,6 +52,7 @@ in {
       caligula
       pastel
       numbat
+      railway
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk

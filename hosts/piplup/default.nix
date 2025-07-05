@@ -32,7 +32,6 @@
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    lazy-trees = true;
   };
 
   system.stateVersion = "24.11";

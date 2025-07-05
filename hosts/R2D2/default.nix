@@ -18,7 +18,6 @@
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    lazy-trees = true;
   };
 
   networking.hostName = hostname;
