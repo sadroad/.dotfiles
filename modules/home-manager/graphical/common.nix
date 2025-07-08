@@ -8,6 +8,7 @@
   ...
 }: let
   vesktop = pkgs.callPackage ../custom/vesktop/package.nix {};
+  ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   fonts.fontconfig = {
     enable = true;
@@ -59,7 +60,7 @@ in {
     enable = true;
     package =
       if pkgs.stdenv.isLinux
-      then pkgs.ghostty
+      then ghostty
       else null;
     settings = baseSettings // linuxSettings;
   };
