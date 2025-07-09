@@ -16,6 +16,7 @@
     ./git.nix
     ./gpg.nix
     ./editors/neovim.nix
+    ./editors/zed.nix
 
     # Graphical elements (common and OS-specific)
     ./graphical/common.nix
