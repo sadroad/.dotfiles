@@ -53,6 +53,7 @@ in {
       pastel
       numbat
       railway
+      ngrok
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
