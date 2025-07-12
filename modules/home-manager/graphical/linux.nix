@@ -26,6 +26,7 @@ lib.mkIf pkgs.stdenv.isLinux {
     nsxiv
     code-cursor
     davinci-resolve-studio
+    kitty
   ];
 
   home.activation.installBerkeleyMonoFont = lib.mkIf secretsAvailable (let
