@@ -6,6 +6,7 @@
   ...
 }: {
   programs.zed-editor = {
+    extensions = ["nix"];
     enable = true;
     userSettings = {
       vim_mode = true;
@@ -17,11 +18,19 @@
       };
       lsp = {
         rust-analyzer = {
-          path_lookup = true;
+          binary = {
+            path_lookup = true;
+          };
+        };
+        nix = {
+          binary = {
+            path_lookup = true;
+          };
         };
       };
       ui_font_size = 14;
       buffer_font_size = 14;
+      load_direnv = "shell_hook";
     };
   };
 }

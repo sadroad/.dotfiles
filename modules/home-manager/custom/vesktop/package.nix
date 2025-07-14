@@ -24,13 +24,13 @@
 }:
 stdenv.mkDerivation (finalAttrs: {
   pname = "vesktop";
-  version = "6e7d912b9524ea8f104b7ecd0432a47e4835a95d";
+  version = "1.5.8";
 
   src = fetchFromGitHub {
     owner = "Vencord";
     repo = "Vesktop";
-    rev = "${finalAttrs.version}";
-    hash = "sha256-hY707k3kpfbDaRsLisVQFUeWgsxkYJ29GTdQtdeC0X4=";
+    tag = "v${finalAttrs.version}";
+    hash = "sha256-9wYIg1TGcntUMMp6SqYrgDRl3P41eeOqt76OMjSAi5M=";
   };
 
   pnpmDeps = pnpm_10.fetchDeps {
@@ -41,7 +41,7 @@ stdenv.mkDerivation (finalAttrs: {
       src
       patches
       ;
-    hash = "sha256-pL4pxIB+tF9Lv5eQdLilvg/T4knjzPqBMbTxoZ3RqbI=";
+    hash = "sha256-7hZkfIN7Q9AgR5HccLWumnhHYXXYUWa038JbfqSxdBI=";
   };
 
   nativeBuildInputs =
@@ -156,7 +156,7 @@ stdenv.mkDerivation (finalAttrs: {
     '';
 
   postPatch = ''
-    mkdir -p static #ensuring that the folder exists
+    mkdir -p static
     rm -f static/shiggy.gif
     cp ${../../../../assets/shiggy.gif} static/shiggy.gif
   '';

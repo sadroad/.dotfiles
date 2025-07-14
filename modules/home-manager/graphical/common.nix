@@ -7,7 +7,9 @@
   hostname,
   ...
 }: let
-  vesktop = pkgs.callPackage ../custom/vesktop/package.nix {};
+  vesktop = pkgs.callPackage ../custom/vesktop/package.nix {
+    electron = (pkgs.callPackage ../custom/electron/binary {}).electron_35-bin;
+  };
   ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   fonts.fontconfig = {
@@ -48,8 +50,6 @@ in {
       font-style = "Retina";
       font-size = "14";
       gtk-single-instance = "true";
-      # for claude-code: new line trick
-      keybind = "shift+enter=text:\n";
     };
     linuxSettings =
       lib.optionalAttrs pkgs.stdenv.isLinux

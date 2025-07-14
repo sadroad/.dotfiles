@@ -11,13 +11,11 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  claude-code-pkg = pkgs.callPackage ./custom/claude/package.nix {};
   glimpse = inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default;
   opencode-pkg = pkgs.callPackage ./custom/opencode/package.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
-    NH_NO_CHECKS = "1";
   };
   home.packages = with pkgs;
     [
@@ -41,7 +39,6 @@ in {
       hyperfine
       neofetch
       hydra-check
-      claude-code-pkg
       asciinema_3
       nix-output-monitor
       cloudflared

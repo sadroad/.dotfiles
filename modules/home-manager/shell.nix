@@ -68,6 +68,7 @@
         diff = "delta";
         gzip = "pigz";
         "rec" = "asciinema rec -c fish";
+        z = "zeditor";
       }
       // lib.optionalAttrs pkgs.stdenv.isDarwin {
         dns-down = "sudo -v && tailscale down && sudo networksetup -setdnsservers \"Wi-Fi\" empty && sudo killall -HUP mDNSResponder";
