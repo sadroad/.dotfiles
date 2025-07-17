@@ -7,9 +7,9 @@
   hostname,
   ...
 }: let
-  vesktop = pkgs.callPackage ../custom/vesktop/package.nix {
-    electron = (pkgs.callPackage ../custom/electron/binary {}).electron_35-bin;
-  };
+  vesktop =
+    pkgs.callPackage ../custom/vesktop/package.nix {
+    };
   ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   fonts.fontconfig = {

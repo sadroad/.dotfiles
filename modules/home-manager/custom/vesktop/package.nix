@@ -29,7 +29,7 @@ stdenv.mkDerivation (finalAttrs: {
   src = fetchFromGitHub {
     owner = "Vencord";
     repo = "Vesktop";
-    tag = "v${finalAttrs.version}";
+    rev = "v${finalAttrs.version}";
     hash = "sha256-9wYIg1TGcntUMMp6SqYrgDRl3P41eeOqt76OMjSAi5M=";
   };
 
@@ -41,7 +41,8 @@ stdenv.mkDerivation (finalAttrs: {
       src
       patches
       ;
-    hash = "sha256-dZEaw6sJMYl35aSi2RSxkCf/qo+S0z+m8EjsmgxyiAk=";
+    fetcherVersion = 2;
+    hash = "sha256-rJzXbIQUxCImTqeH8EsGiyGNGoHYUqoekoa+VXpob5Y=";
   };
 
   nativeBuildInputs =
@@ -79,6 +80,12 @@ stdenv.mkDerivation (finalAttrs: {
         inherit vencord;
       }
     );
+
+  postPatch = ''
+    mkdir -p static
+    rm -f static/shiggy.gif
+    cp ${../../../../assets/shiggy.gif} static/shiggy.gif
+  '';
 
   env = {
     ELECTRON_SKIP_BINARY_DOWNLOAD = 1;
@@ -154,12 +161,6 @@ stdenv.mkDerivation (finalAttrs: {
     + lib.optionalString stdenv.hostPlatform.isDarwin ''
       makeWrapper $out/Applications/Vesktop.app/Contents/MacOS/Vesktop $out/bin/vesktop
     '';
-
-  postPatch = ''
-    mkdir -p static
-    rm -f static/shiggy.gif
-    cp ${../../../../assets/shiggy.gif} static/shiggy.gif
-  '';
 
   desktopItems = lib.optional stdenv.hostPlatform.isLinux (makeDesktopItem {
     name = "vesktop";

@@ -13,6 +13,7 @@
   };
   glimpse = inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default;
   opencode-pkg = pkgs.callPackage ./custom/opencode/package.nix {};
+  nh-pkg = inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -62,6 +63,7 @@ in {
 
   programs.nh = {
     enable = true;
+    package = nh-pkg;
     clean.enable = true;
     flake = "${userDir}/.dotfiles";
   };
@@ -92,5 +94,10 @@ in {
         }
       ];
     };
+  };
+
+  xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
+    "$schema" = "https://opencode.ai/config.json";
+    layout = "stretch";
   };
 }
