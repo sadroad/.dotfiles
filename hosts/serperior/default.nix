@@ -2,23 +2,39 @@
   inputs,
   hostname,
   pkgs,
+  lib,
   ...
 }: {
-  imports = [
-    ./hardware-configuration.nix
-    inputs.disko.nixosModules.disko
-    ./disko-config.nix
+  imports =
+    [
+      ./hardware-configuration.nix
+      ./configuration.nix
+      ./secrets.nix
 
-    ./configuration.nix
-    ./secrets.nix
-
-    ../../modules/nixos/core.nix
-    ../../modules/nixos/graphical.nix
-
-    inputs.nvf.nixosModules.default
-    inputs.determinate.nixosModules.default
-    inputs.chaotic.nixosModules.default
-  ];
+      ../../modules/nixos/core.nix
+      ../../modules/nixos/graphical.nix
+    ]
+    ++ (
+      lib.optionals (inputs ? disko) [
+        inputs.disko.nixosModules.disko
+        ./disko-config.nix
+      ]
+    )
+    ++ (
+      lib.optionals (inputs ? nvf) [
+        inputs.nvf.nixosModules.default
+      ]
+    )
+    ++ (
+      lib.optionals (inputs ? determinate) [
+        inputs.determinate.nixosModules.default
+      ]
+    )
+    ++ (
+      lib.optionals (inputs ? chaotic) [
+        inputs.chaotic.nixosModules.default
+      ]
+    );
 
   networking.hostName = hostname;
 

@@ -8,7 +8,7 @@
 }: let
   sddm-eucalyptus-drop = pkgs.callPackage ./sddm-theme.nix {inherit config;};
 in {
-  programs.hyprland = {
+  programs.hyprland = lib.mkIf (inputs ? hyprland) {
     enable = true;
     withUWSM = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;

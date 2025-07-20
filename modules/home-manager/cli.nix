@@ -11,9 +11,9 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  glimpse = inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  glimpse = if inputs ? glimpse then inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default else null;
   opencode-pkg = pkgs.callPackage ./custom/opencode/package.nix {};
-  nh-pkg = inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  nh-pkg = if inputs ? nh then inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default else null;
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -43,7 +43,6 @@ in {
       asciinema_3
       nix-output-monitor
       cloudflared
-      glimpse
       pv
       zellij
       opencode-pkg
@@ -53,6 +52,7 @@ in {
       railway
       ngrok
     ]
+    ++ (lib.optional (glimpse != null) glimpse)
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
     ]);
@@ -61,7 +61,7 @@ in {
     enable = true;
   };
 
-  programs.nh = {
+  programs.nh = lib.mkIf (nh-pkg != null) {
     enable = true;
     package = nh-pkg;
     clean.enable = true;

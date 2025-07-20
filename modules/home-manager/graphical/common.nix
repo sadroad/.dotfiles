@@ -10,7 +10,10 @@
   vesktop =
     pkgs.callPackage ../custom/vesktop/package.nix {
     };
-  ghostty = inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  ghostty =
+    if inputs ? ghostty
+    then inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+    else null;
 in {
   fonts.fontconfig = {
     enable = true;
@@ -43,7 +46,7 @@ in {
     ]
     ++ lib.optionals pkgs.stdenv.isLinux [
     ];
-  programs.ghostty = let
+  programs.ghostty = lib.mkIf (ghostty != null) (let
     baseSettings = {
       shell-integration-features = "sudo";
       theme = "GruvboxDark";
@@ -64,7 +67,7 @@ in {
       then ghostty
       else null;
     settings = baseSettings // linuxSettings;
-  };
+  });
 
   gtk = {
     enable = true;

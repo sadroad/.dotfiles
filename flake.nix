@@ -89,100 +89,88 @@
       inherit username inputs secretsAvailable secretsPath;
       agenix = inputs.agenix;
     };
+
+    mkNixosSystem = {
+      hostname,
+      system,
+    }: let
+      userDir = "/home/${username}";
+      pkgs = mkPkgs system;
+    in
+      inputs.nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = commonSpecialArgs // {inherit hostname userDir;};
+        modules = [
+          ./hosts/${hostname}/default.nix
+          {nixpkgs.pkgs = pkgs;}
+          inputs.home-manager.nixosModules.home-manager
+          ({config, ...}: {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.users.${username} =
+              ./modules/home-manager/default.nix;
+            home-manager.extraSpecialArgs =
+              commonSpecialArgs
+              // {
+                inherit userDir system hostname;
+                osConfig = config;
+              };
+          })
+        ];
+      };
+
+    mkDarwinSystem = {
+      hostname,
+      system,
+    }: let
+      userDir = "/Users/${username}";
+      pkgs = mkPkgs system;
+    in
+      inputs.nix-darwin.lib.darwinSystem {
+        inherit system;
+        specialArgs = commonSpecialArgs // {inherit hostname userDir;};
+        modules = [
+          ./hosts/${hostname}/default.nix
+          {nixpkgs.pkgs = pkgs;}
+          inputs.home-manager.darwinModules.home-manager
+          ({config, ...}: {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "backup";
+            home-manager.users.${username} =
+              ./modules/home-manager/default.nix;
+            home-manager.sharedModules = [
+              inputs.mac-app-util.homeManagerModules.default
+            ];
+            home-manager.extraSpecialArgs =
+              commonSpecialArgs
+              // {
+                inherit userDir system hostname;
+                osConfig = config;
+              };
+          })
+        ];
+      };
   in {
     formatter = forAllSystems (system: (mkPkgs system).alejandra);
 
     nixosConfigurations = {
-      piplup = let
-        system = "x86_64-linux";
+      piplup = mkNixosSystem {
         hostname = "piplup";
-        userDir = "/home/${username}";
-        pkgs = mkPkgs system;
-      in
-        inputs.nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = commonSpecialArgs // {inherit hostname userDir;};
-          modules = [
-            ./hosts/${hostname}/default.nix
-            {nixpkgs.pkgs = pkgs;}
-            inputs.home-manager.nixosModules.home-manager
-            ({config, ...}: {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.${username} =
-                ./modules/home-manager/default.nix;
-              home-manager.extraSpecialArgs =
-                commonSpecialArgs
-                // {
-                  inherit userDir system hostname;
-                  osConfig = config;
-                };
-            })
-          ];
-        };
-      serperior = let
         system = "x86_64-linux";
+      };
+      serperior = mkNixosSystem {
         hostname = "serperior";
-        userDir = "/home/${username}";
-        pkgs = mkPkgs system;
-      in
-        inputs.nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = commonSpecialArgs // {inherit hostname userDir;};
-          modules = [
-            ./hosts/${hostname}/default.nix
-            {nixpkgs.pkgs = pkgs;}
-            inputs.home-manager.nixosModules.home-manager
-            ({config, ...}: {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.${username} =
-                ./modules/home-manager/default.nix;
-              home-manager.extraSpecialArgs =
-                commonSpecialArgs
-                // {
-                  inherit userDir system hostname;
-                  osConfig = config;
-                };
-            })
-          ];
-        };
+        system = "x86_64-linux";
+      };
     };
 
     darwinConfigurations = {
-      R2D2 = let
-        system = "aarch64-darwin";
+      R2D2 = mkDarwinSystem {
         hostname = "R2D2";
-        userDir = "/Users/${username}";
-        pkgs = mkPkgs system;
-      in
-        inputs.nix-darwin.lib.darwinSystem {
-          inherit system;
-          specialArgs = commonSpecialArgs // {inherit hostname userDir;};
-          modules = [
-            ./hosts/${hostname}/default.nix
-            {nixpkgs.pkgs = pkgs;}
-            inputs.home-manager.darwinModules.home-manager
-            ({config, ...}: {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
-              home-manager.users.${username} =
-                ./modules/home-manager/default.nix;
-              home-manager.sharedModules = [
-                inputs.mac-app-util.homeManagerModules.default
-              ];
-              home-manager.extraSpecialArgs =
-                commonSpecialArgs
-                // {
-                  inherit userDir system hostname;
-                  osConfig = config;
-                };
-            })
-          ];
-        };
+        system = "aarch64-darwin";
+      };
     };
   };
 }
