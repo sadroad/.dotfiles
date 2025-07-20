@@ -36,6 +36,7 @@ in {
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
       prismlauncher
+      hoppscotch
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective

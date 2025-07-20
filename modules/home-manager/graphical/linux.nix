@@ -17,7 +17,6 @@ lib.mkIf pkgs.stdenv.isLinux {
     caido
     ungoogled-chromium
     libreoffice-qt6-fresh
-    yaak
     protonmail-desktop
     proton-pass
     krita
