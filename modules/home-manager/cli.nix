@@ -46,7 +46,7 @@ in {
       glimpse
       pv
       zellij
-      opencode-pkg
+      #opencode-pkg
       caligula
       pastel
       numbat

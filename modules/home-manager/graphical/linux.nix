@@ -25,7 +25,6 @@ lib.mkIf pkgs.stdenv.isLinux {
     mpv
     nsxiv
     code-cursor
-    davinci-resolve-studio
     kitty
   ];
 
