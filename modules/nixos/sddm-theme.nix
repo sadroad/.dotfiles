@@ -22,10 +22,6 @@ stdenvNoCC.mkDerivation rec {
   nativeBuildInputs = [pkgs.makeWrapper];
   buildInputs = with pkgs.libsForQt5.qt5; [qtgraphicaleffects];
 
-  patches = [
-    ../../patches/sddm-transparency.patch
-  ];
-
   installPhase = let
     base = "$out/share/sddm/themes/eucalyptus-drop";
   in ''
@@ -37,5 +33,10 @@ stdenvNoCC.mkDerivation rec {
 
     substituteInPlace ${base}/theme.conf \
       --replace 'Background="Background.jpg"' 'Background="change.jpg"'
+    
+    # Make the login panel more transparent
+    substituteInPlace ${base}/Main.qml \
+      --replace 'opacity: config.PartialBlur == "true" ? 0.3 : 1' \
+                'opacity: config.PartialBlur == "true" ? 0.15 : 0.2'
   '';
 }
