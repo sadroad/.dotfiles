@@ -22,6 +22,10 @@ stdenvNoCC.mkDerivation rec {
   nativeBuildInputs = [pkgs.makeWrapper];
   buildInputs = with pkgs.libsForQt5.qt5; [qtgraphicaleffects];
 
+  patches = [
+    ../../patches/sddm-transparency.patch
+  ];
+
   installPhase = let
     base = "$out/share/sddm/themes/eucalyptus-drop";
   in ''
