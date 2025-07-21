@@ -15,9 +15,13 @@ in {
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
-  services.displayManager.sddm = {
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   theme = "eucalyptus-drop";
+  # };
+
+  services.displayManager.ly = {
     enable = true;
-    theme = "eucalyptus-drop";
   };
 
   services.xserver = {

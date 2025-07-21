@@ -11,9 +11,15 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  glimpse = if inputs ? glimpse then inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default else null;
+  glimpse =
+    if inputs ? glimpse
+    then inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default
+    else null;
   opencode-pkg = pkgs.callPackage ./custom/opencode/package.nix {};
-  nh-pkg = if inputs ? nh then inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default else null;
+  nh-pkg =
+    if inputs ? nh
+    then inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
+    else null;
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -51,6 +57,7 @@ in {
       numbat
       railway
       ngrok
+      gitleaks
     ]
     ++ (lib.optional (glimpse != null) glimpse)
     ++ (lib.optionals pkgs.stdenv.isLinux [

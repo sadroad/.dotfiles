@@ -6,7 +6,7 @@
   ...
 }: {
   programs.zed-editor = {
-    extensions = ["nix"];
+    extensions = ["nix" "kdl"];
     enable = true;
     userSettings = {
       vim_mode = true;
