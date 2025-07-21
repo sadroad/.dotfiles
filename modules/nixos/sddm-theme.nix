@@ -37,6 +37,6 @@ stdenvNoCC.mkDerivation rec {
     # Make the login panel more transparent
     substituteInPlace ${base}/Main.qml \
       --replace 'opacity: config.PartialBlur == "true" ? 0.3 : 1' \
-                'opacity: config.PartialBlur == "true" ? 0.15 : 0.2'
+                'opacity: config.PartialBlur == "true" ? 0.4 : 0.5'
   '';
 }
