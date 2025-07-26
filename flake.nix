@@ -54,7 +54,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     glimpse = {
-      url = "github:seatedro/glimpse/v0.7.8";
+      url = "path:./custom/glimpse";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty = {
@@ -95,14 +95,16 @@
       system,
     }: let
       userDir = "/home/${username}";
-      pkgs = mkPkgs system;
     in
       inputs.nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = commonSpecialArgs // {inherit hostname userDir;};
         modules = [
           ./hosts/${hostname}/default.nix
-          {nixpkgs.pkgs = pkgs;}
+          {
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [(import ./overlays/default.nix)];
+          }
           inputs.home-manager.nixosModules.home-manager
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;
@@ -125,14 +127,16 @@
       system,
     }: let
       userDir = "/Users/${username}";
-      pkgs = mkPkgs system;
     in
       inputs.nix-darwin.lib.darwinSystem {
         inherit system;
         specialArgs = commonSpecialArgs // {inherit hostname userDir;};
         modules = [
           ./hosts/${hostname}/default.nix
-          {nixpkgs.pkgs = pkgs;}
+          {
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.overlays = [(import ./overlays/default.nix)];
+          }
           inputs.home-manager.darwinModules.home-manager
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;
@@ -154,6 +158,17 @@
       };
   in {
     formatter = forAllSystems (system: (mkPkgs system).alejandra);
+
+    devShells = forAllSystems (system: let
+      pkgs = mkPkgs system;
+    in {
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          nixd
+          alejandra
+        ];
+      };
+    });
 
     nixosConfigurations = {
       piplup = mkNixosSystem {

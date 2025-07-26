@@ -33,7 +33,7 @@ stdenvNoCC.mkDerivation rec {
 
     substituteInPlace ${base}/theme.conf \
       --replace 'Background="Background.jpg"' 'Background="change.jpg"'
-    
+
     # Make the login panel more transparent
     substituteInPlace ${base}/Main.qml \
       --replace 'opacity: config.PartialBlur == "true" ? 0.3 : 1' \

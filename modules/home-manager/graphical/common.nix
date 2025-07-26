@@ -7,9 +7,6 @@
   hostname,
   ...
 }: let
-  vesktop =
-    pkgs.callPackage ../custom/vesktop/package.nix {
-    };
   ghostty =
     if inputs ? ghostty
     then inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default

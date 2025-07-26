@@ -15,7 +15,6 @@
     if inputs ? glimpse
     then inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default
     else null;
-  opencode-pkg = pkgs.callPackage ./custom/opencode/package.nix {};
   nh-pkg =
     if inputs ? nh
     then inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
@@ -51,7 +50,7 @@ in {
       cloudflared
       pv
       zellij
-      opencode-pkg
+      opencode
       caligula
       pastel
       numbat

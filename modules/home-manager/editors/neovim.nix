@@ -124,7 +124,10 @@
           html.enable = true;
           astro.enable = true;
 
-          nix.enable = true;
+          nix = {
+            enable = true;
+            lsp.server = "nixd";
+          };
           rust = {
             enable = true;
             crates.enable = true;
