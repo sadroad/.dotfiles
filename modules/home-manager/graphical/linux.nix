@@ -7,6 +7,25 @@
   ...
 }: {
   config = lib.mkIf pkgs.stdenv.isLinux {
+    home.packages = with pkgs; [
+      bemenu
+      wl-clipboard
+      grimblast
+      keymapp
+      pavucontrol
+
+      caido
+      ungoogled-chromium
+      libreoffice-qt6-fresh
+      protonmail-desktop
+      proton-pass
+      krita
+      typora
+      nsxiv
+      kitty
+      haruna
+    ];
+
     wayland.windowManager.hyprland = {
       enable = true;
 
@@ -136,25 +155,6 @@
         wallpaper = ["DP-3, ${wallpaperChange}" "DP-1, ${wallpaper1}"];
       };
     };
-    home.packages = with pkgs; [
-      bemenu
-      wl-clipboard
-      grimblast
-      keymapp
-      pavucontrol
-
-      caido
-      ungoogled-chromium
-      libreoffice-qt6-fresh
-      protonmail-desktop
-      proton-pass
-      krita
-      typora
-      mpv
-      nsxiv
-      code-cursor
-      kitty
-    ];
 
     home.activation.installBerkeleyMonoFont = lib.mkIf secretsAvailable (let
       installScript = ../../../scripts/install-berkeley-mono.sh;

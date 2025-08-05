@@ -11,15 +11,13 @@
       ./secrets.nix
 
       ../../modules/darwin/core.nix
-      ../../modules/darwin/homebrew.nix
     ]
     ++ (
-      lib.optionals (inputs ? mac-app-util && inputs ? nix-homebrew) [
+      lib.optionals (inputs ? mac-app-util) [
         inputs.mac-app-util.darwinModules.default
-        inputs.nix-homebrew.darwinModules.nix-homebrew
       ]
     );
-  nix.enable = false;
+  nix.enable = false; #required by determinate-nix
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];

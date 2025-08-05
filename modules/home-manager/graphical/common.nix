@@ -37,11 +37,11 @@ in {
       pkgs.nerd-fonts.symbols-only
       prismlauncher
       hoppscotch
+      imhex
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective
-    ]
-    ++ lib.optionals pkgs.stdenv.isLinux [
+      iina
     ];
   programs.ghostty = lib.mkIf (ghostty != null) (let
     baseSettings = {
@@ -62,7 +62,7 @@ in {
     package =
       if pkgs.stdenv.isLinux
       then ghostty
-      else null;
+      else pkgs.ghostty-bin;
     settings = baseSettings // linuxSettings;
   });
 

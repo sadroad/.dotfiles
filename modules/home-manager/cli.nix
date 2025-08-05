@@ -22,6 +22,7 @@
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
+    NH_SEARCH_PLATFORM = "true";
   };
   home.packages = with pkgs;
     [
@@ -57,6 +58,7 @@ in {
       railway
       ngrok
       gitleaks
+      gnupg
     ]
     ++ (lib.optional (glimpse != null) glimpse)
     ++ (lib.optionals pkgs.stdenv.isLinux [
