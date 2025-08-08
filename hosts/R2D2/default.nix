@@ -20,7 +20,14 @@
   nix.enable = false; #required by determinate-nix
 
   nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = ["nix-command" "flakes" "external-builders"];
+    external-builders = [
+      {
+        systems = ["aarch64-linux" "x86_64-linux"];
+        program = "/usr/local/bin/determinate-nixd";
+        args = ["builder"];
+      }
+    ];
   };
 
   networking.hostName = hostname;

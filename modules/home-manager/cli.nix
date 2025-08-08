@@ -19,6 +19,8 @@
     if inputs ? nh
     then inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
     else null;
+in let
+  opencodeLocal = pkgs.callPackage ./opencode.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -51,7 +53,7 @@ in {
       cloudflared
       pv
       zellij
-      opencode
+      opencodeLocal
       caligula
       pastel
       numbat
