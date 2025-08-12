@@ -5,6 +5,7 @@
   userDir,
   ...
 }: {
+  system.primaryUser = "sadroad";
   users = {
     knownUsers = [username];
     users.${username} = {

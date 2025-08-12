@@ -10,7 +10,7 @@
   writableTmpDirAsHomeHook,
 }: let
   opencode-node-modules-hash = {
-    "aarch64-darwin" = "sha256-LNp9sLhNUUC4ujLYPvfPx423GlXuIS0Z2H512H5oY8s=";
+    "aarch64-darwin" = "sha256-/s6eAI1VJ0kXrxP5yTi+jwNqHBCRcoltJC86AT7nVdI=";
     "aarch64-linux" = "";
     "x86_64-darwin" = "";
     "x86_64-linux" = "";
@@ -24,12 +24,12 @@
 in
   stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "opencode";
-    version = "0.4.1";
+    version = "0.4.37";
     src = fetchFromGitHub {
       owner = "sst";
       repo = "opencode";
       tag = "v${finalAttrs.version}";
-      hash = "sha256-LEFmfsqhCuGcRK7CEPZb6EZfjOHAyYpUHptXu04fjpQ=";
+      hash = "sha256-5mxtbAdCOttcddlHeHJngnjsxVXbPTc9ziVnkQ7Zk5o=";
     };
 
     tui = buildGoModule {
@@ -38,7 +38,7 @@ in
 
       modRoot = "packages/tui";
 
-      vendorHash = "sha256-jGaTgKyAvBMt8Js5JrPFUayhVt3QhgyclFoNatoHac4=";
+      vendorHash = "sha256-jINbGug/SPGBjsXNsC9X2r5TwvrOl5PJDL+lrOQP69Q=";
 
       subPackages = ["cmd/opencode"];
 
@@ -128,6 +128,7 @@ in
       bun build \
         --define OPENCODE_TUI_PATH="'${finalAttrs.tui}/bin/tui'" \
         --define OPENCODE_VERSION="'${finalAttrs.version}'" \
+        --define OPENCODE_DISABLE_AUTOUPDATE="false" \
         --compile \
         --target=${bun-target.${stdenvNoCC.hostPlatform.system}} \
         --outfile=opencode \

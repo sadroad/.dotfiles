@@ -8,9 +8,10 @@
 }: {
   home.packages = with pkgs; [
     nixd
+    alejandra
   ];
   programs.zed-editor = {
-    extensions = ["nix" "kdl"];
+    extensions = ["nix" "kdl" "tsgo"];
     enable = true;
     userSettings = {
       vim_mode = true;
@@ -27,6 +28,12 @@
             };
           };
         };
+        TypeScript = {
+          language_servers = ["tsgo" "!vtsls"];
+        };
+      };
+      vim = {
+        toggle_relative_line_numbers = true;
       };
       ui_font_size = 14;
       buffer_font_size = 14;
