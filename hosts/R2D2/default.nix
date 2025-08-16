@@ -17,7 +17,6 @@
         inputs.mac-app-util.darwinModules.default
       ]
     );
-  nix.enable = false; #required by determinate-nix
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes" "external-builders"];

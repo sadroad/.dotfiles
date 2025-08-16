@@ -19,7 +19,7 @@
 
     # nix-darwin
     nix-darwin = {
-      url = "github:LnL7/nix-darwin/master";
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mac-app-util = {
@@ -123,7 +123,11 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [(import ./overlays/default.nix)];
+            nix.enable = false;
+            determinate-nix.customSettings = {
+            };
           }
+          inputs.determinate.darwinModules.default
           inputs.home-manager.darwinModules.home-manager
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;

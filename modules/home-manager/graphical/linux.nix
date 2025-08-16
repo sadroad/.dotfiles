@@ -24,6 +24,7 @@
       nsxiv
       kitty
       haruna
+      handbrake
     ];
 
     wayland.windowManager.hyprland = {

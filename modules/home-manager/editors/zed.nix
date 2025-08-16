@@ -11,7 +11,7 @@
     alejandra
   ];
   programs.zed-editor = {
-    extensions = ["nix" "kdl" "tsgo"];
+    extensions = ["nix" "kdl" "tsgo" "oxc"];
     enable = true;
     userSettings = {
       vim_mode = true;
@@ -27,9 +27,6 @@
               arguments = ["--quiet" "--"];
             };
           };
-        };
-        TypeScript = {
-          language_servers = ["tsgo" "!vtsls"];
         };
       };
       vim = {

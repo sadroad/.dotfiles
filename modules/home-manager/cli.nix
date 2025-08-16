@@ -39,6 +39,7 @@ in {
       doggo
       pigz
       hexyl
+      ouch
 
       #deploy tools
       nixos-anywhere
@@ -61,6 +62,7 @@ in {
       ngrok
       gitleaks
       gnupg
+      mediainfo
     ]
     ++ (lib.optional (glimpse != null) glimpse)
     ++ (lib.optionals pkgs.stdenv.isLinux [

@@ -10,7 +10,7 @@
   writableTmpDirAsHomeHook,
 }: let
   opencode-node-modules-hash = {
-    "aarch64-darwin" = "sha256-/s6eAI1VJ0kXrxP5yTi+jwNqHBCRcoltJC86AT7nVdI=";
+    "aarch64-darwin" = "sha256-BZ7rVCcBMTbyYWx5VEfFQo3UguthDgxhIjZ+6T3jrIM=";
     "aarch64-linux" = "";
     "x86_64-darwin" = "";
     "x86_64-linux" = "";
@@ -24,12 +24,12 @@
 in
   stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "opencode";
-    version = "0.4.37";
+    version = "0.5.18";
     src = fetchFromGitHub {
       owner = "sst";
       repo = "opencode";
       tag = "v${finalAttrs.version}";
-      hash = "sha256-5mxtbAdCOttcddlHeHJngnjsxVXbPTc9ziVnkQ7Zk5o=";
+      hash = "sha256-vXIdh1A7gM9aweZriHAq3dk1gI69yx9T2WlB/+v5Iqs=";
     };
 
     tui = buildGoModule {
@@ -38,7 +38,7 @@ in
 
       modRoot = "packages/tui";
 
-      vendorHash = "sha256-jINbGug/SPGBjsXNsC9X2r5TwvrOl5PJDL+lrOQP69Q=";
+      vendorHash = "sha256-78MfWF0HSeLFLGDr1Zh74XeyY71zUmmazgG2MnWPucw=";
 
       subPackages = ["cmd/opencode"];
 
@@ -85,7 +85,9 @@ in
            --filter=opencode \
            --force \
            --frozen-lockfile \
-           --no-progress
+           --ignore-scripts \
+           --no-progress \
+           --production
 
         runHook postBuild
       '';
