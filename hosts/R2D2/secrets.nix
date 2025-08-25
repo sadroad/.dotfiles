@@ -9,7 +9,7 @@
   ...
 }:
 {
-  imports = [agenix.nixosModules.default];
+  imports = [agenix.darwinModules.default];
 }
 // (
   if secretsAvailable

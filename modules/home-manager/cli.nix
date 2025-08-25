@@ -47,7 +47,6 @@ in {
       compose2nix
 
       hyperfine
-      neofetch
       hydra-check
       asciinema_3
       nix-output-monitor

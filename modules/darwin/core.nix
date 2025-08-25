@@ -18,5 +18,9 @@
     universalaccess.reduceMotion = true;
   };
 
+  services.aerospace = {
+    enable = true;
+  };
+
   programs.fish.enable = true;
 }
