@@ -20,12 +20,12 @@
 in
   stdenvNoCC.mkDerivation (finalAttrs: {
     pname = "opencode";
-    version = "0.5.27";
+    version = "0.5.29";
     src = fetchFromGitHub {
       owner = "sst";
       repo = "opencode";
       tag = "v${finalAttrs.version}";
-      hash = "sha256-l7V1BfSH+PxySFrdbsAA3Kouz1yJMZjbSLZ9iA4QwHE=";
+      hash = "sha256-l9yi+98fsFWERKsJPfhNoCTG9vKawE4aKngwBkCJupE=";
     };
 
     tui = buildGoModule {
@@ -101,7 +101,7 @@ in
       # Required else we get errors that our fixed-output derivation references store paths
       dontFixup = true;
 
-      outputHash = "sha256-BZ7rVCcBMTbyYWx5VEfFQo3UguthDgxhIjZ+6T3jrIM=";
+      outputHash = "sha256-PmLO0aU2E7NlQ7WtoiCQzLRw4oKdKxS5JI571lvbhHo=";
       outputHashAlgo = "sha256";
       outputHashMode = "recursive";
     };
