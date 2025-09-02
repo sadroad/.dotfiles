@@ -2,56 +2,29 @@
   inputs = {
     # core
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager";
 
     # nixos
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    hyprland.url = "github:hyprwm/Hyprland/v0.50.0";
+    disko.url = "github:nix-community/disko";
+    hyprland.url = "github:hyprwm/Hyprland/v0.50.1";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     #chaotic.url = "github:chaotic-cx/nyx/ffeb9f4b6a4bfbf33e9c3f9494aa9f08b4a2da61";
 
     # nix-darwin
-    nix-darwin = {
-      url = "github:nix-darwin/nix-darwin/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    mac-app-util = {
-      url = "github:hraban/mac-app-util";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    mac-app-util.url = "github:hraban/mac-app-util";
 
     # shared
-    agenix = {
-      url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    agenix.url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
     my_secrets = {
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
       flake = false;
     };
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    glimpse = {
-      url = "path:./custom/glimpse";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nh = {
-      url = "github:nix-community/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nvf.url = "github:notashelf/nvf";
+    glimpse.url = "path:./custom/glimpse";
+    ghostty.url = "github:ghostty-org/ghostty/v1.1.3";
+    nh.url = "github:nix-community/nh";
   };
 
   outputs = inputs: let
@@ -91,6 +64,11 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [(import ./overlays/default.nix)];
+            nix.settings = {
+              substituters = ["https://hyprland.cachix.org" "https://ghostty.cachix.org"];
+              trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
+              trusted-users = ["@wheel"];
+            };
           }
           inputs.home-manager.nixosModules.home-manager
           ({config, ...}: {

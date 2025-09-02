@@ -8,9 +8,9 @@
   ...
 }: let
   ghostty =
-    if inputs ? ghostty
+    if inputs ? ghostty && pkgs.stdenv.isLinux
     then inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
-    else null;
+    else pkgs.ghostty-bin;
 in {
   fonts.fontconfig = {
     enable = true;
@@ -43,7 +43,7 @@ in {
       grandperspective
       iina
     ];
-  programs.ghostty = lib.mkIf (ghostty != null) (let
+  programs.ghostty = let
     baseSettings = {
       shell-integration-features = "sudo";
       theme = "GruvboxDark";
@@ -59,12 +59,9 @@ in {
       };
   in {
     enable = true;
-    package =
-      if pkgs.stdenv.isLinux
-      then ghostty
-      else pkgs.ghostty-bin;
+    package = ghostty;
     settings = baseSettings // linuxSettings;
-  });
+  };
 
   gtk = {
     enable = true;

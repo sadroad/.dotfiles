@@ -39,14 +39,14 @@
       settings = {
         "$mainMod" = "SUPER";
 
-        monitor = ["DP-3, 2560x1440@180,0x0,1" "DP-2, 1920x1080@165,-1920x0,1" "HDMI-A-1, preferred, auto, 1, mirror, DP-3"];
+        monitor = ["DP-2, 2560x1440@180,0x0,1" "DP-3, 1920x1080@165,-1920x0,1" "HDMI-A-1, preferred, auto, 1, mirror, DP-3"];
 
         "$menu" = "bemenu-run -b";
         "$terminal" = "ghostty";
         "$screenshot" = "grimblast --freeze copy area";
 
         # hack to make main monitor have initial focus
-        workspace = "name:1, monitor:DP-3";
+        workspace = "name:1, monitor:DP-2";
 
         exec-once = [
           "hyprctl dispatch workspace 1"
@@ -153,7 +153,7 @@
       in {
         ipc = "on";
         preload = [wallpaper1 wallpaperChange];
-        wallpaper = ["DP-3, ${wallpaperChange}" "DP-2, ${wallpaper1}"];
+        wallpaper = ["DP-2, ${wallpaperChange}" "DP-3, ${wallpaper1}"];
       };
     };
 
