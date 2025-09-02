@@ -39,7 +39,7 @@
       settings = {
         "$mainMod" = "SUPER";
 
-        monitor = ["DP-3, 2560x1440@180,0x0,1" "DP-1, 1920x1080@165,0x-1080,1" "HDMI-A-1, preferred, auto, 1, mirror, DP-3"];
+        monitor = ["DP-3, 2560x1440@180,0x0,1" "DP-2, 1920x1080@165,-1920x0,1" "HDMI-A-1, preferred, auto, 1, mirror, DP-3"];
 
         "$menu" = "bemenu-run -b";
         "$terminal" = "ghostty";
@@ -153,7 +153,7 @@
       in {
         ipc = "on";
         preload = [wallpaper1 wallpaperChange];
-        wallpaper = ["DP-3, ${wallpaperChange}" "DP-1, ${wallpaper1}"];
+        wallpaper = ["DP-3, ${wallpaperChange}" "DP-2, ${wallpaper1}"];
       };
     };
 
