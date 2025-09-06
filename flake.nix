@@ -22,9 +22,9 @@
       flake = false;
     };
     nvf.url = "github:notashelf/nvf";
-    glimpse.url = "path:./custom/glimpse";
     ghostty.url = "github:ghostty-org/ghostty/v1.1.3";
     nh.url = "github:nix-community/nh";
+    glimpse.url = "path:./custom/glimpse";
   };
 
   outputs = inputs: let
