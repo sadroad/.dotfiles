@@ -10,7 +10,10 @@
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # nix-darwin
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     mac-app-util.url = "github:hraban/mac-app-util";
 
     # shared
