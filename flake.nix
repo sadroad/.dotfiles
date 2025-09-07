@@ -8,8 +8,6 @@
     disko.url = "github:nix-community/disko";
     hyprland.url = "github:hyprwm/Hyprland/v0.50.1";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-    #chaotic.url = "github:chaotic-cx/nyx/ffeb9f4b6a4bfbf33e9c3f9494aa9f08b4a2da61";
 
     # nix-darwin
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
@@ -64,11 +62,6 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [(import ./overlays/default.nix)];
-            nix.settings = {
-              substituters = ["https://hyprland.cachix.org" "https://ghostty.cachix.org"];
-              trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="];
-              trusted-users = ["@wheel"];
-            };
           }
           inputs.home-manager.nixosModules.home-manager
           ({config, ...}: {
