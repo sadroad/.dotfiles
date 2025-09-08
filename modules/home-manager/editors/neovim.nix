@@ -19,7 +19,6 @@
         };
 
         utility = {
-          leetcode-nvim.enable = true;
           yazi-nvim = {
             enable = true;
             mappings.openYazi = "<leader>e";
@@ -104,10 +103,20 @@
           style = "dark";
         };
 
+        formatter = {
+          conform-nvim.enable = true;
+        };
+
+        diagnostics = {
+          nvim-lint.enable = true;
+        };
+
         lsp = {
           enable = true;
           formatOnSave = true;
           trouble.enable = true;
+          lspsaga.enable = true;
+          otter-nvim.enable = true;
         };
 
         languages = {
@@ -138,6 +147,7 @@
           markdown.enable = true;
           yaml.enable = true;
           typst.enable = true;
+          sql.enable = true;
         };
       };
     };
