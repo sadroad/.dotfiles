@@ -6,7 +6,7 @@
 
     # nixos
     disko.url = "github:nix-community/disko";
-    hyprland.url = "github:hyprwm/Hyprland/v0.50.1";
+    hyprland.url = "github:hyprwm/Hyprland/v0.51.0";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # nix-darwin
