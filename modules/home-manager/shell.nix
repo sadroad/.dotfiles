@@ -4,76 +4,53 @@
   config,
   ...
 }: {
-  home.shell.enableFishIntegration = true;
+  home.shell.enableNushellIntegration = true;
 
-  programs.fish = {
+  programs.nushell = {
     enable = true;
-    plugins = [
-      {
-        name = "pure";
-        inherit (pkgs.fishPlugins.pure) src;
+    extraConfig = ''
+      def mkcd [dir_name?: string] {
+          if $dir_name == null {
+              print "Usage: mkcd <directory_name>"
+              return 1
+          }
+
+          mkdir $dir_name
+
+          if $env.LAST_EXIT_CODE == 0 {
+              cd $dir_name
+          } else {
+              print $"Error: Could not create directory '($dir_name)'."
+              return $env.LAST_EXIT_CODE
+          }
       }
-    ];
-    functions = {
-      y = ''
-        set tmp (mktemp -t "yazi-cwd.XXXXXX")
-        yazi $argv --cwd-file="$tmp"
-        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-            builtin cd -- "$cwd"
-        end
-        rm -f -- "$tmp"
-      '';
-      mkcd = ''
-        if test (count $argv) -eq 0
-          echo "Usage: mkcd <directory_name>"
-          return 1
-        end
+    '';
 
-        set -l dir_name "$argv[1]"
-
-        mkdir -p "$dir_name"
-
-        if test $status -eq 0
-          cd "$dir_name"
-        else
-          echo "Error: Could not create directory '$dir_name'."
-          return $status
-        end
-      '';
+    settings = {
+      show_banner = false;
     };
-    shellAbbrs =
-      {
-        reload = "source ~/.config/fish/config.fish";
-        mkdir = "mkdir -p";
-        type = "type -a";
-      }
-      // lib.optionalAttrs pkgs.stdenv.isDarwin {
-        dns-reset = "dns-down && dns-up";
-      };
+
     shellAliases =
       {
-        ls = "eza";
-        l = "eza -lah";
+        l = "ls -lat";
         cat = "bat";
         grep = "rg";
         tree = "eza --tree";
         top = "btop";
-        du = "dust";
         xxd = "hexyl";
-        find = "fd";
         cd = "z";
         dig = "doggo";
-        ps = "procs";
-        ping = "gping";
         diff = "delta";
         gzip = "pigz";
-        "rec" = "asciinema rec -c fish";
+        "rec" = "asciinema rec -c nu";
         zed = "zeditor";
         pkg-build = "nix-build -E \"with import <nixpkgs> {}; callPackage ./package.nix {}\"";
+        type = "type -a";
       }
       // lib.optionalAttrs pkgs.stdenv.isDarwin {
         dns-down = "sudo -v && tailscale down && sudo networksetup -setdnsservers \"Wi-Fi\" empty && sudo killall -HUP mDNSResponder";
         dns-up = "sudo -v && tailscale up && sudo networksetup -setdnsservers \"Wi-Fi\" 1.1.1.1 1.0.0.1 9.9.9.9 && sudo killall -HUP mDNSResponder";
+        dns-reset = "dns-down && dns-up";
       };
   };
 
@@ -95,10 +72,11 @@
     enable = true;
   };
 
+  programs.carapace.enable = true;
+
   home.sessionVariables = {
     PAGER = "delta";
     MANPAGER = ''sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman' '';
-    fish_greeting = "";
     pure_enable_nixdevshell = "true";
   };
 }

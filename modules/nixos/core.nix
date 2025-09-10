@@ -45,8 +45,6 @@
 
   programs.gamemode.enable = true;
 
-  programs.fish.enable = true;
-
   environment.variables.EDITOR = "nvim";
 
   programs.virt-manager.enable = true;

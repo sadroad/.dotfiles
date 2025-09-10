@@ -160,6 +160,4 @@
       };
     };
   };
-
-  programs.fish.enable = true;
 }

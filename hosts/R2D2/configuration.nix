@@ -10,7 +10,6 @@
     knownUsers = [username];
     users.${username} = {
       uid = 501;
-      shell = pkgs.fish;
       home = userDir;
     };
   };

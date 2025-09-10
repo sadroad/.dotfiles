@@ -55,7 +55,7 @@ in {
     linuxSettings =
       lib.optionalAttrs pkgs.stdenv.isLinux
       {
-        command = "fish --login --interactive";
+        command = "nu --login --interactive";
       };
   in {
     enable = true;
