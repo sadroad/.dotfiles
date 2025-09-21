@@ -15,10 +15,6 @@
     if inputs ? glimpse
     then inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default
     else null;
-  nh-pkg =
-    if inputs ? nh
-    then inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.default
-    else null;
 in let
   opencodeLocal = pkgs.callPackage ./opencode.nix {};
 in {
@@ -72,9 +68,8 @@ in {
     enable = true;
   };
 
-  programs.nh = lib.mkIf (nh-pkg != null) {
+  programs.nh = {
     enable = true;
-    package = nh-pkg;
     clean.enable = true;
     flake = "${userDir}/.dotfiles";
   };

@@ -24,7 +24,6 @@
     };
     nvf.url = "github:notashelf/nvf";
     ghostty.url = "github:ghostty-org/ghostty/v1.1.3";
-    nh.url = "github:nix-community/nh";
     glimpse.url = "path:./custom/glimpse";
   };
 
