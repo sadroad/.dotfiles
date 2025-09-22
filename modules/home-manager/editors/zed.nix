@@ -11,7 +11,7 @@
     alejandra
   ];
   programs.zed-editor = {
-    extensions = ["nix" "kdl" "tsgo" "oxc"];
+    extensions = ["nix" "kdl" "tsgo" "oxc" "make"];
     enable = true;
     userSettings = {
       vim_mode = true;

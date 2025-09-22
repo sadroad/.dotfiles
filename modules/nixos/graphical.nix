@@ -64,4 +64,5 @@ in {
     noto-fonts-emoji
     pkgs.nerd-fonts.jetbrains-mono
   ];
+  programs.localsend.enable = true;
 }

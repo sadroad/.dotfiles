@@ -46,7 +46,7 @@ in {
   programs.ghostty = let
     baseSettings = {
       shell-integration-features = "sudo";
-      theme = "GruvboxDark";
+      theme = "Gruvbox Dark";
       font-family = "Berkeley Mono Variable";
       font-style = "Retina";
       font-size = "14";

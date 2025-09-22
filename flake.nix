@@ -6,7 +6,7 @@
 
     # nixos
     disko.url = "github:nix-community/disko";
-    hyprland.url = "github:hyprwm/Hyprland/v0.51.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.51.1";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # nix-darwin
@@ -23,7 +23,7 @@
       flake = false;
     };
     nvf.url = "github:notashelf/nvf";
-    ghostty.url = "github:ghostty-org/ghostty/v1.1.3";
+    ghostty.url = "github:ghostty-org/ghostty/v1.2.0";
     glimpse.url = "path:./custom/glimpse";
   };
 
