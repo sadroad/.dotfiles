@@ -42,6 +42,7 @@
             ${lib.concatStringsSep " " config.home.sessionPath}
           ]
         '');
+
     shellAliases =
       {
         l = "ls -lat";

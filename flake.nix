@@ -24,7 +24,7 @@
     };
     nvf.url = "github:notashelf/nvf";
     ghostty.url = "github:ghostty-org/ghostty/v1.2.0";
-    glimpse.url = "path:./custom/glimpse";
+    glimpse.url = "github:seatedro/glimpse/v0.7.8";
   };
 
   outputs = inputs: let

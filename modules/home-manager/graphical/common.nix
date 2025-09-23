@@ -38,6 +38,7 @@ in {
       prismlauncher
       hoppscotch
       imhex
+      localsend
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective
