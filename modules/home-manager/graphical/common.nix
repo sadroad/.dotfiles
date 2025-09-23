@@ -55,7 +55,7 @@ in {
     linuxSettings =
       lib.optionalAttrs pkgs.stdenv.isLinux
       {
-        command = "nu --login --interactive";
+        command = "${pkgs.nushell}/bin/nu --login --interactive";
       };
   in {
     enable = true;

@@ -108,7 +108,7 @@ in
           x86_64-linux = "sha256-fGf2VldMlxbr9pb3B6zVL+fW1S8bRjefJW+jliTO73A=";
           aarch64-linux = "";
           x86_64-darwin = "";
-          aarch64-darwin = "";
+          aarch64-darwin = "sha256-sibjZaPzA4r/CjHg0ual5ueEELDUU1jeZjDnZEMrozI=";
         }
       .${
           stdenv.hostPlatform.system

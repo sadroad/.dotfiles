@@ -48,9 +48,9 @@
         type = "type -a";
       }
       // lib.optionalAttrs pkgs.stdenv.isDarwin {
-        dns-down = "sudo -v && tailscale down && sudo networksetup -setdnsservers \"Wi-Fi\" empty && sudo killall -HUP mDNSResponder";
-        dns-up = "sudo -v && tailscale up && sudo networksetup -setdnsservers \"Wi-Fi\" 1.1.1.1 1.0.0.1 9.9.9.9 && sudo killall -HUP mDNSResponder";
-        dns-reset = "dns-down && dns-up";
+        dns-down = "sudo -v and tailscale down and sudo networksetup -setdnsservers \"Wi-Fi\" empty and sudo killall -HUP mDNSResponder";
+        dns-up = "sudo -v and tailscale up and sudo networksetup -setdnsservers \"Wi-Fi\" 1.1.1.1 1.0.0.1 9.9.9.9 and sudo killall -HUP mDNSResponder";
+        dns-reset = "dns-down and dns-up";
       };
   };
 
