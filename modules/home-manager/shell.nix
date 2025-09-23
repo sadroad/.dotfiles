@@ -29,7 +29,19 @@
     settings = {
       show_banner = false;
     };
-
+    extraEnv = let
+      exportToNuEnv = vars:
+        lib.concatStringsSep "\n"
+        (lib.mapAttrsToList (n: v: "$env.${n} = ${builtins.toJSON v}") vars);
+    in
+      lib.mkBefore (''
+          ${exportToNuEnv config.home.sessionVariables}
+        ''
+        + lib.optionalString (config.home.sessionPath != []) ''
+          $env.PATH = $env.PATH | split row ':' | prepend [
+            ${lib.concatStringsSep " " config.home.sessionPath}
+          ]
+        '');
     shellAliases =
       {
         l = "ls -lat";
