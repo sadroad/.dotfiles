@@ -2,11 +2,20 @@
   inputs = {
     # core
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # nixos
-    disko.url = "github:nix-community/disko";
-    hyprland.url = "github:hyprwm/Hyprland/v0.51.1";
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hyprland = {
+      url = "github:hyprwm/Hyprland/v0.51.1";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # nix-darwin
@@ -14,17 +23,32 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mac-app-util.url = "github:hraban/mac-app-util";
+    mac-app-util = {
+      url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # shared
-    agenix.url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
+    agenix = {
+      url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     my_secrets = {
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
       flake = false;
     };
-    nvf.url = "github:notashelf/nvf";
-    ghostty.url = "github:ghostty-org/ghostty/v1.2.0";
-    glimpse.url = "github:seatedro/glimpse/v0.7.8";
+    nvf = {
+      url = "github:notashelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ghostty = {
+      url = "github:ghostty-org/ghostty/v1.2.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    glimpse = {
+      url = "github:seatedro/glimpse/v0.7.8";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
