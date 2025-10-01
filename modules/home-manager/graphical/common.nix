@@ -38,7 +38,7 @@ in {
       pkgs.nerd-fonts.symbols-only
       prismlauncher
       hoppscotch
-      imhex
+      #imhex
       localsend
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [

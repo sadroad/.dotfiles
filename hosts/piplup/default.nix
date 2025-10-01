@@ -29,11 +29,6 @@
       lib.optionals (inputs ? determinate) [
         inputs.determinate.nixosModules.default
       ]
-    )
-    ++ (
-      lib.optionals (inputs ? chaotic) [
-        inputs.chaotic.nixosModules.default
-      ]
     );
 
   networking.hostName = hostname;

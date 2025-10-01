@@ -8,7 +8,8 @@
 }: {
   config = lib.mkIf pkgs.stdenv.isLinux {
     home.packages = with pkgs; [
-      bemenu
+      wofi
+      wofi-emoji
       wl-clipboard
       grimblast
       keymapp
@@ -24,7 +25,8 @@
       nsxiv
       kitty
       haruna
-      handbrake
+      #handbrake
+      cameractrls-gtk4
     ];
 
     wayland.windowManager.hyprland = {
@@ -41,7 +43,7 @@
 
         monitor = ["DP-2, 2560x1440@180,0x0,1" "DP-3, 1920x1080@165,-1920x0,1" "HDMI-A-1, preferred, auto, 1, mirror, DP-2"];
 
-        "$menu" = "bemenu-run -b";
+        "$menu" = "wofi --show drun";
         "$terminal" = "ghostty";
         "$screenshot" = "grimblast --freeze copy area";
 

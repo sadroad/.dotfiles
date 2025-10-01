@@ -27,8 +27,14 @@
     useRoutingFeatures = "client";
   };
 
-  networking.nameservers = ["100.100.100.100" "192.168.2.1"];
+  networking.nameservers = ["192.168.2.1" "100.100.100.100"];
   networking.search = ["tail217ff.ts.net"];
+
+  services.resolved.enable = true;
+
+  programs.nix-ld = {
+    enable = true;
+  };
 
   # obs virtual cam
   boot.kernelModules = ["v4l2loopback"];

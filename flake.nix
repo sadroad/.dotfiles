@@ -13,12 +13,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.51.1";
+      # url = "github:hyprwm/Hyprland/v0.51.1";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
-    # nix-darwin
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,11 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty = {
-      url = "github:ghostty-org/ghostty/v1.2.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    glimpse = {
-      url = "github:seatedro/glimpse/v0.7.8";
+      url = "github:ghostty-org/ghostty/v1.2.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -11,11 +11,6 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  glimpse =
-    if inputs ? glimpse
-    then inputs.glimpse.packages.${pkgs.stdenv.hostPlatform.system}.default
-    else null;
-in let
   opencodeLocal = pkgs.callPackage ./opencode.nix {};
 in {
   home.sessionVariables = {
@@ -58,8 +53,8 @@ in {
       gitleaks
       gnupg
       mediainfo
+      tokei
     ]
-    ++ (lib.optional (glimpse != null) glimpse)
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
     ]);
