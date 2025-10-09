@@ -23,6 +23,7 @@
     ./os-specific.nix
 
     inputs.nvf.homeManagerModules.default
+    inputs.walker.homeManagerModules.default
   ];
 
   home.stateVersion = "24.11";
