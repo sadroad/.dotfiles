@@ -27,7 +27,7 @@ in {
     [
       brave
       vesktop
-      spotify
+      #spotify
       qbittorrent
 
       noto-fonts
@@ -36,7 +36,7 @@ in {
       font-awesome
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
-      prismlauncher
+      #prismlauncher
       hoppscotch
       #imhex
       localsend
