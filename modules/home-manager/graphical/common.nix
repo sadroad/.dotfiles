@@ -27,7 +27,7 @@ in {
     [
       brave
       vesktop
-      #spotify
+      spotify
       qbittorrent
 
       noto-fonts
@@ -36,11 +36,12 @@ in {
       font-awesome
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
-      #prismlauncher
+      prismlauncher
       hoppscotch
       #imhex
       localsend
       slack
+      zoom-us
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective
@@ -49,7 +50,7 @@ in {
     ];
   programs.ghostty = let
     baseSettings = {
-      shell-integration-features = "sudo";
+      shell-integration-features = "sudo, ssh-terminfo";
       theme = "Gruvbox Dark";
       font-family = "Berkeley Mono Variable";
       font-style = "Retina";

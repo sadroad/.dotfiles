@@ -11,7 +11,6 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  opencodeLocal = pkgs.callPackage ./opencode.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -44,7 +43,7 @@ in {
       cloudflared
       pv
       zellij
-      opencodeLocal
+      opencode
       caligula
       pastel
       numbat

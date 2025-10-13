@@ -111,6 +111,7 @@
           "float,class:git-butler"
           "float,class:org.pulseaudio.pavucontrol"
           "suppressevent maximize, class:.*"
+          "noscreenshare, class:^(Proton Pass|proton-pass)$"
         ];
 
         bind =

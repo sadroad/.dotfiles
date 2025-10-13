@@ -55,6 +55,10 @@
       url = "github:ghostty-org/ghostty/v1.2.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
@@ -96,6 +100,7 @@
             nixpkgs.overlays = [(import ./overlays/default.nix)];
           }
           inputs.home-manager.nixosModules.home-manager
+          inputs.nix-index-database.nixosModules.nix-index
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -131,6 +136,7 @@
             };
           }
           inputs.determinate.darwinModules.default
+          inputs.nix-index-database.darwinModules.nix-index
           inputs.home-manager.darwinModules.home-manager
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;

@@ -44,6 +44,8 @@
 
   '';
 
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   security.polkit.enable = true;
 
   virtualisation.docker.enable = true;
