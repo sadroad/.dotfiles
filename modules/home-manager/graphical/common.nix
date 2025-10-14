@@ -40,6 +40,7 @@ in {
       hoppscotch
       #imhex
       localsend
+      slack
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective
