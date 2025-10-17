@@ -70,7 +70,7 @@
       else null;
 
     username = "sadroad";
-    systems = ["x86_64-linux" "aarch64-darwin"];
+    systems = ["x86_64-linux" "aarch64-darwin" "aarch64-linux"];
     forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
 
     mkPkgs = system:
@@ -175,10 +175,10 @@
         hostname = "piplup";
         system = "x86_64-linux";
       };
-      serperior = mkNixosSystem {
-        hostname = "serperior";
-        system = "x86_64-linux";
-      };
+      # R2D2 = mkNixosSystem {
+      #   hostname = "R2D2";
+      #   system = "aarch64-linux";
+      # };
     };
 
     darwinConfigurations = {

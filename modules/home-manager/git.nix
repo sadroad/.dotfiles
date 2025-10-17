@@ -12,18 +12,22 @@ in {
     git-secrets
     mergiraf
   ];
+  programs.delta = {
+    enable = true;
+    options = {
+      navigate = true;
+    };
+    enableGitIntegration = true;
+  };
+
   programs.git = {
     enable = true;
-    userEmail = gitEmail;
-    userName = gitName;
-    delta = {
-      enable = true;
-      options = {
-        navigate = true;
-      };
-    };
     attributes = ["* merge=mergiraf"];
-    extraConfig = {
+    settings = {
+      user = {
+        email = gitEmail;
+        name = gitName;
+      };
       rerere = {
         enable = true;
       };
