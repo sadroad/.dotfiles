@@ -25,7 +25,6 @@ in {
 
   home.packages = with pkgs;
     [
-      brave
       vesktop
       spotify
       qbittorrent
@@ -38,7 +37,7 @@ in {
       pkgs.nerd-fonts.symbols-only
       prismlauncher
       hoppscotch
-      #imhex
+      imhex
       localsend
       slack
       zoom-us

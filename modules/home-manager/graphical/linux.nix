@@ -28,6 +28,7 @@
         haruna
         #handbrake
         cameractrls-gtk4
+        hyprsunset
         helium-src
       ];
 
@@ -60,6 +61,7 @@
           exec-once = [
             "hyprctl dispatch workspace 1"
             "[workspace 1 silent] $terminal"
+            "hyprsunset"
           ];
 
           general = {
@@ -154,6 +156,22 @@
           bindm = ["$mainMod, mouse:272, movewindow" "$mainMod, mouse:273, resizewindow"];
         };
       };
+
+      xdg.configFile."hypr/hyprsunset.conf".text = ''
+        max-gamma = 150
+
+        profile {
+          time = 07:30
+          identity = true
+        }
+
+        profile {
+           time = 21:00
+           temperature = 4500
+           gamma = 0.7
+         }
+
+      '';
 
       services.hyprpaper = {
         enable = true;
@@ -274,14 +292,14 @@
         };
       };
 
-      i18n.inputMethod = {
-        type = "fcitx5";
-        enable = true;
-        fcitx5 = {
-          waylandFrontend = true;
-          addons = with pkgs; [fcitx5-hangul];
-        };
-      };
+      # i18n.inputMethod = {
+      #   type = "fcitx5";
+      #   enable = true;
+      # fcitx5 = {
+      #   waylandFrontend = true;
+      #   addons = with pkgs; [fcitx5-hangul];
+      # };
+      # };
 
       home.pointerCursor = {
         enable = true;
@@ -335,7 +353,12 @@
                   value = program;
                 })
                 subt);
-          in [(subtypes "image" "nsxiv.desktop" ["png" "jpeg" "gif" "svg"])]);
+          in [
+            (subtypes "image" "nsxiv.desktop" ["png" "jpeg" "gif" "svg"])
+            (subtypes "x-scheme-handler" "helium-browser.desktop" ["http" "https" "webcal" "about" "unknown"])
+            (subtypes "text" "helium-browser.desktop" ["html" "xml"])
+            (subtypes "application" "helium-browser.desktop" ["x-extension-htm" "x-extension-html" "x-extension-shtml" "xhtml+xml"])
+          ]);
       };
     };
 }

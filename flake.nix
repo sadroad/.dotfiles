@@ -12,6 +12,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
       # url = "github:hyprwm/Hyprland/v0.51.1";
       url = "github:hyprwm/Hyprland";
@@ -175,10 +176,6 @@
         hostname = "piplup";
         system = "x86_64-linux";
       };
-      # R2D2 = mkNixosSystem {
-      #   hostname = "R2D2";
-      #   system = "aarch64-linux";
-      # };
     };
 
     darwinConfigurations = {

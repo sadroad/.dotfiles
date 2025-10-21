@@ -7,13 +7,19 @@
 }: {
   imports =
     [
-      ./hardware-configuration.nix
+      # ./hardware-configuration.nix
       ./configuration.nix
       ./secrets.nix
 
       ../../modules/nixos/core.nix
       ../../modules/nixos/graphical.nix
     ]
+    ++ (
+      lib.optionals (inputs ? nixos-facter-modules) [
+        inputs.nixos-facter-modules.nixosModules.facter
+        {config.facter.reportPath = ./facter.json;}
+      ]
+    )
     ++ (
       lib.optionals (inputs ? disko) [
         inputs.disko.nixosModules.disko

@@ -32,6 +32,4 @@
   networking.hostName = hostname;
 
   system.stateVersion = 6;
-
-  homebrew.taps = builtins.attrNames config.nix-homebrew.taps;
 }

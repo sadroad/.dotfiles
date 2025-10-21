@@ -14,6 +14,12 @@
     DO_NOT_TRACK = "1";
   };
 
+  home.file.".wakatime.cfg".text = ''
+    [settings]
+    api_url = https://wakapi.local.villablanca.tech/api
+    api_key = 26be6cc0-4d93-47ca-a5b8-4a04a3442be8
+  '';
+
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
