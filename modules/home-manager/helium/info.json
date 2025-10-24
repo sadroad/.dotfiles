@@ -1615,7 +1615,7 @@
     }
   },
   "helium": {
-    "version": "141.0.7390.107",
+    "version": "141.0.7390.122",
     "deps": {
       "depot_tools": {
         "rev": "3f41e54ae17d53d4a39feecad64c3d3e6871b219",
@@ -1627,8 +1627,8 @@
         "hash": "sha256-WERLGrReUATmn3RhxtmyZcJBxdIY/WZqBDranCLDYEg="
       },
       "ungoogled-patches": {
-        "rev": "0.5.7",
-        "hash": "sha256-FI4iNoS/7yzfWFiJws6fzltiLm4dvH0ztYd0P5GgYqM="
+        "rev": "0.5.8",
+        "hash": "sha256-MwLB8bI4ZHYx5pLqUYydSGyM34KRJX6wiKkS/+PkKl0="
       },
       "npmHash": "sha256-i1eQ4YlrWSgY522OlFtGDDPmxE2zd1hDM03AzR8RafE="
     },

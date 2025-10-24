@@ -17,7 +17,6 @@
         pavucontrol
 
         caido
-        #ungoogled-chromium
         libreoffice-qt6-fresh
         protonmail-desktop
         proton-pass
@@ -26,7 +25,7 @@
         nsxiv
         kitty
         haruna
-        #handbrake
+        handbrake
         cameractrls-gtk4
         hyprsunset
         helium-src
@@ -292,14 +291,14 @@
         };
       };
 
-      # i18n.inputMethod = {
-      #   type = "fcitx5";
-      #   enable = true;
-      # fcitx5 = {
-      #   waylandFrontend = true;
-      #   addons = with pkgs; [fcitx5-hangul];
-      # };
-      # };
+      i18n.inputMethod = {
+        type = "fcitx5";
+        enable = true;
+        fcitx5 = {
+          waylandFrontend = true;
+          addons = with pkgs; [fcitx5-hangul];
+        };
+      };
 
       home.pointerCursor = {
         enable = true;
