@@ -6,10 +6,9 @@
   inputs,
   ...
 }: {
-  config = let
+  config = lib.mkIf pkgs.stdenv.isLinux (let
     helium-src = pkgs.callPackage ../helium {variant = "helium";};
-  in
-    lib.mkIf pkgs.stdenv.isLinux {
+  in {
       home.packages = with pkgs; [
         wl-clipboard
         grimblast
@@ -359,5 +358,5 @@
             (subtypes "application" "helium-browser.desktop" ["x-extension-htm" "x-extension-html" "x-extension-shtml" "xhtml+xml"])
           ]);
       };
-    };
+  });
 }

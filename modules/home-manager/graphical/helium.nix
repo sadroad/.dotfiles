@@ -6,7 +6,7 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "helium";
-  version = "0.5.3.1";
+  version = "0.5.8.1";
 
   src = let
     inherit (finalAttrs) version;
@@ -15,7 +15,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       aarch64-darwin = fetchurl {
         name = "helium_${version}_arm64-macos.dmg";
         url = "https://github.com/imputnet/helium-macos/releases/download/${version}/helium_${version}_arm64-macos.dmg";
-        hash = "sha256-UGbsKjq/KDZF4VIAMFf6QdOtSR+/YbTAMp1KYeFFhls=";
+        hash = "sha256-ph3SQqIInSlZ9r6Px2jGABX0D+bCMeCwFB/8ieetXxs=";
       };
     }
     .${

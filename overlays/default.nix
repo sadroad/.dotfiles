@@ -4,8 +4,8 @@ final: prev: {
       (oldAttrs.postPatch or "")
       + ''
         mkdir -p static
-        rm -f static/shiggy.gif
-        cp ${../assets/shiggy.gif} static/shiggy.gif
+        rm -f static/splash.webp
+        cp ${../assets/splash.webp} static/splash.webp
       '';
   });
 }

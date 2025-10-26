@@ -46,6 +46,7 @@ in {
       iina
       helium
       localsend
+      orbstack
     ];
   programs.ghostty = let
     baseSettings = {
