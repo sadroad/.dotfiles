@@ -31,7 +31,7 @@ in {
 
       noto-fonts
       noto-fonts-cjk-sans
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       font-awesome
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only

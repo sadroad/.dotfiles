@@ -19,6 +19,7 @@
         };
 
         utility = {
+          vim-wakatime.enable = true;
           yazi-nvim = {
             enable = true;
             mappings.openYazi = "<leader>e";

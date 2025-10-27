@@ -17,7 +17,7 @@
   home.file.".wakatime.cfg".text = ''
     [settings]
     api_url = https://wakapi.local.villablanca.tech/api
-    api_key = 26be6cc0-4d93-47ca-a5b8-4a04a3442be8
+    api_key = 0b912f80-7a56-4f0a-8c3d-55573fcda2bd
   '';
 
   programs.direnv = {

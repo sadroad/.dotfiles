@@ -23,7 +23,7 @@
     enable = true;
     settings = {
       PermitRootLogin = "no";
-      PasswordAuthentication = false;
+      PasswordAuthentication = true; #disable once in clan
     };
     openFirewall = true;
   };

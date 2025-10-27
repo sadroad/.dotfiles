@@ -36,7 +36,7 @@ in {
     enable = true;
     enable32Bit = true;
     extraPackages = with pkgs; [
-      vaapiVdpau
+      libva-vdpau-driver
       nvidia-vaapi-driver
     ];
     extraPackages32 = with pkgs.pkgsi686Linux; [
@@ -66,7 +66,7 @@ in {
 
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     pkgs.nerd-fonts.jetbrains-mono
   ];
 }
