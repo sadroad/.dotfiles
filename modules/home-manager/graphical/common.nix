@@ -38,7 +38,6 @@ in {
       prismlauncher
       hoppscotch
       imhex
-      localsend
       slack
       zoom-us
     ]
@@ -46,6 +45,7 @@ in {
       grandperspective
       iina
       helium
+      localsend
     ];
   programs.ghostty = let
     baseSettings = {

@@ -20,7 +20,6 @@ in {
     [
       eza
       bat
-      delta
       dust
       fd
       ripgrep

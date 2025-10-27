@@ -53,6 +53,11 @@ in {
   };
   users.users.${username}.extraGroups = ["audio"];
 
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
+
   hardware.keyboard.zsa.enable = true;
 
   environment.systemPackages = with pkgs; [

@@ -12,12 +12,20 @@ in {
     git-secrets
     mergiraf
   ];
+
+  programs.difftastic = {
+    enable = true;
+    git = {
+      enable = true;
+      diffToolMode = true;
+    };
+  };
+
   programs.delta = {
     enable = true;
     options = {
       navigate = true;
     };
-    enableGitIntegration = true;
   };
 
   programs.git = {
@@ -56,6 +64,7 @@ in {
     settings = {
       ui = {
         pager = "delta";
+        diff-formatter = ["difft" "--color=always" "$left" "$right"];
         merge-editor = "mergiraf";
       };
       user = {
@@ -64,6 +73,7 @@ in {
       };
       git = {
         sign-on-push = true;
+        colocate = true;
       };
       signing = {
         behavior = "drop";
