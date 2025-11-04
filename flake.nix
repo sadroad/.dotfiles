@@ -16,17 +16,12 @@
     hyprland = {
       # url = "github:hyprwm/Hyprland/v0.51.1";
       url = "github:hyprwm/Hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    elephant = {
-      url = "github:abenz1267/elephant/v2.1.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    elephant.url = "github:abenz1267/elephant/v2.13.2";
     walker = {
-      url = "github:abenz1267/walker/v2.2.0";
+      url = "github:abenz1267/walker/v2.8.2";
       inputs.elephant.follows = "elephant";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     #darwin
@@ -40,10 +35,7 @@
     };
 
     # shared
-    agenix = {
-      url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    agenix.url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
     my_secrets = {
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
       flake = false;
@@ -52,14 +44,8 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty = {
-      url = "github:ghostty-org/ghostty/v1.2.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ghostty.url = "github:ghostty-org/ghostty/v1.2.3";
+    nix-index-database.url = "github:nix-community/nix-index-database";
   };
 
   outputs = inputs: let

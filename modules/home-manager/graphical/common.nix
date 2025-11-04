@@ -40,12 +40,12 @@ in {
       imhex
       slack
       zoom-us
+      helium
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective
       iina
-      helium
-      localsend
+      localsend # on nixos enabled through service
       orbstack
     ];
   programs.ghostty = let
