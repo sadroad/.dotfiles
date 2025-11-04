@@ -11,6 +11,7 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
+  nix-alien = inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}.nix-alien;
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -52,6 +53,7 @@ in {
       gnupg
       mediainfo
       tokei
+      nix-alien
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk

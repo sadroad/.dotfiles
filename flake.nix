@@ -45,7 +45,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty.url = "github:ghostty-org/ghostty/v1.2.3";
-    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix-index-database.follows = "nix-index-database";
+    };
   };
 
   outputs = inputs: let
@@ -92,6 +100,9 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
+            home-manager.sharedModules = [
+              inputs.nix-index-database.homeModules.nix-index
+            ];
             home-manager.users.${username} =
               ./modules/home-manager/default.nix;
             home-manager.extraSpecialArgs =
@@ -133,6 +144,7 @@
               ./modules/home-manager/default.nix;
             home-manager.sharedModules = [
               inputs.mac-app-util.homeManagerModules.default
+              inputs.nix-index-database.homeModules.nix-index
             ];
             home-manager.extraSpecialArgs =
               commonSpecialArgs
