@@ -19,7 +19,7 @@
       StandardOutPath = "/Library/Logs/org.nixos.activate-agenix.stdout.log";
     };
 
-    environment.systemPackages = [inputs.agenix.packages."${pkgs.system}".default];
+    environment.systemPackages = [inputs.agenix.packages."${pkgs.stdenv.hostPlatform.system}".default];
 
     age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
 

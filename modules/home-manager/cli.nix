@@ -12,6 +12,7 @@
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
   nix-alien = inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}.nix-alien;
+  opencode = pkgs.callPackage ./opencode.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";

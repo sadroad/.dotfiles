@@ -23,7 +23,7 @@ in
             url = "https://github.com/imputnet/helium-macos/releases/download/${version}/helium_${version}_arm64-macos.dmg";
             hash = "sha256-ph3SQqIInSlZ9r6Px2jGABX0D+bCMeCwFB/8ieetXxs=";
           };
-        }."${stdenvNoCC.system}" or (throw "helium: ${stdenvNoCC.system} is unsupported.");
+        }."${stdenvNoCC.hostPlatform.system}" or (throw "helium: ${stdenvNoCC.hostPlatform.system} is unsupported.");
 
       nativeBuildInputs = [_7zz];
 
@@ -51,12 +51,12 @@ in
           "x86_64-linux" = "x86_64";
           "aarch64-linux" = "arm64";
         };
-        platform = platformMap.${pkgs.system};
+        platform = platformMap.${pkgs.stdenv.hostPlatform.system};
         hashes = {
           "x86_64-linux" = "sha256-d8kwLEU6qgEgp7nlEwdfRevB1JrbEKHRe8+GhGpGUig=";
           "aarch64-linux" = "sha256-/ZnLJNS/WBcWjUXUfqylqJCVh8HUNlIrVQCrb/QoL2I=";
         };
-        hash = hashes.${pkgs.system};
+        hash = hashes.${pkgs.stdenv.hostPlatform.system};
       in
         pkgs.fetchurl {
           url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-${platform}.AppImage";

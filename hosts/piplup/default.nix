@@ -7,7 +7,6 @@
 }: {
   imports =
     [
-      # ./hardware-configuration.nix
       ./configuration.nix
       ./secrets.nix
 
@@ -46,8 +45,8 @@
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    substituters = ["https://cache.flox.dev" "https://hyprland.cachix.org"];
-    trusted-public-keys = ["flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs=" "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
 
   system.stateVersion = "24.11";
