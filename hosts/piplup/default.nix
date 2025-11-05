@@ -29,11 +29,6 @@
       lib.optionals (inputs ? nvf) [
         inputs.nvf.nixosModules.default
       ]
-    )
-    ++ (
-      lib.optionals (inputs ? determinate) [
-        inputs.determinate.nixosModules.default
-      ]
     );
 
   networking.hostName = hostname;

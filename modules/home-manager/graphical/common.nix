@@ -39,7 +39,6 @@ in {
       hoppscotch
       imhex
       slack
-      zoom-us
       helium
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [

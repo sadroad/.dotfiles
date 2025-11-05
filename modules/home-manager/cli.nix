@@ -115,4 +115,9 @@ in {
     "$schema" = "https://opencode.ai/config.json";
     layout = "stretch";
   };
+  xdg.configFile."opencode/AGENTS.md".text = ''
+    Never touch the git history or make any modifications. If you want to make a change, ask the user first to confirm it.
+
+    Try to use jj instead of git directly
+  '';
 }

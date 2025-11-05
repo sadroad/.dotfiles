@@ -95,6 +95,7 @@
             nixpkgs.overlays = [(import ./overlays/default.nix)];
           }
           inputs.home-manager.nixosModules.home-manager
+          inputs.determinate.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;
