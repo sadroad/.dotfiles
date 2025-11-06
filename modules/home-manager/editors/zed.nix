@@ -11,7 +11,7 @@
     alejandra
   ];
   programs.zed-editor = {
-    extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime"];
+    extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml"];
     enable = true;
     userSettings = {
       vim_mode = true;
