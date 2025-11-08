@@ -14,8 +14,7 @@
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
-      # url = "github:hyprwm/Hyprland/v0.51.1";
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.52.0";
     };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
     elephant.url = "github:abenz1267/elephant/v2.13.2";
