@@ -28,6 +28,9 @@
             };
           };
         };
+        Python = {
+          language_servers = ["ty" "basedpyright" "..."];
+        };
       };
       vim = {
         toggle_relative_line_numbers = true;

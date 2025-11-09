@@ -22,6 +22,7 @@
       url = "github:abenz1267/walker/v2.8.2";
       inputs.elephant.follows = "elephant";
     };
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     #darwin
     nix-darwin = {
@@ -96,6 +97,7 @@
           inputs.home-manager.nixosModules.home-manager
           inputs.determinate.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
+          inputs.chaotic.nixosModules.default
           ({config, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

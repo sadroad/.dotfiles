@@ -13,7 +13,7 @@
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
   pname = "opencode";
-  version = "1.0.44";
+  version = "1.0.61";
 
   src =
     finalAttrs.passthru.sources.${stdenvNoCC.hostPlatform.system}
@@ -48,7 +48,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       };
       "x86_64-linux" = fetchurl {
         url = "https://github.com/sst/opencode/releases/download/v${finalAttrs.version}/opencode-linux-x64.zip";
-        hash = "sha256-s4YQBDWm6zjcL/yy6SE00MH67bEM55Zrwpy4kXfrC8c=";
+        hash = "sha256-pWFf9nTn3xGzyjfxiaISWDsnK1JaObAKohiDt5si5ew=";
       };
     };
     tests.version = testers.testVersion {

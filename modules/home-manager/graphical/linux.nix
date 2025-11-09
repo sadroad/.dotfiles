@@ -15,7 +15,6 @@
       pavucontrol
 
       caido
-      libreoffice-qt6-fresh
       protonmail-desktop
       proton-pass
       krita
@@ -26,6 +25,7 @@
       handbrake
       cameractrls-gtk4
       hyprsunset
+      winboat
     ];
 
     programs.walker = {
