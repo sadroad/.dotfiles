@@ -54,10 +54,10 @@ in {
       gnupg
       mediainfo
       tokei
-      nix-alien
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
+      nix-alien
     ]);
 
   programs.fzf = {
