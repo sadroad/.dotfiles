@@ -12,7 +12,7 @@
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
   nix-alien = inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}.nix-alien;
-  opencode = pkgs.callPackage ./opencode.nix {};
+  opencode = pkgs.callPackage ./opencode/package.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -54,6 +54,7 @@ in {
       gnupg
       mediainfo
       tokei
+      typos
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
@@ -65,6 +66,7 @@ in {
   };
 
   programs.nh = {
+    package = inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.nh;
     enable = true;
     clean.enable = true;
     flake = "${userDir}/.dotfiles";
@@ -114,6 +116,20 @@ in {
   xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
     "$schema" = "https://opencode.ai/config.json";
     layout = "stretch";
+    provider = {
+      openai = {
+        models = {
+          "gpt-5.1-codex" = {
+            options = {
+              store = true;
+              reasoningEffort = "high";
+              reasoningSummary = "auto";
+              textVerbosity = "medium";
+            };
+          };
+        };
+      };
+    };
   };
   xdg.configFile."opencode/AGENTS.md".text = ''
     Never touch the git history or make any modifications. If you want to make a change, ask the user first to confirm it.

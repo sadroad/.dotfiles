@@ -11,13 +11,16 @@
     alejandra
   ];
   programs.zed-editor = {
-    extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml"];
+    extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml" "comment"];
     enable = true;
     userSettings = {
       vim_mode = true;
       telemetry = {
         metrics = false;
       };
+          inlay_hints = {
+            enabled = true;
+          };
       languages = {
         Nix = {
           language_servers = ["nixd"];

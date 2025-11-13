@@ -42,6 +42,14 @@
 
   security.polkit.enable = true;
 
+  security.tpm2 = {
+    enable = true;
+    abrmd.enable = true;
+    pkcs11.enable = true;
+    tctiEnvironment.enable = true;
+    tctiEnvironment.interface = "tabrmd";
+  };
+
   virtualisation.docker.enable = true;
 
   users.users.${username}.extraGroups = ["video" "docker"];

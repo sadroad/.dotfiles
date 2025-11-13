@@ -7,7 +7,7 @@
   ...
 }: let
   pname = "helium";
-  version = "0.5.8.1";
+  version = "0.6.5.1";
 in
   if pkgs.stdenv.isDarwin
   then
@@ -21,7 +21,7 @@ in
           aarch64-darwin = fetchurl {
             name = "helium_${version}_arm64-macos.dmg";
             url = "https://github.com/imputnet/helium-macos/releases/download/${version}/helium_${version}_arm64-macos.dmg";
-            hash = "sha256-ph3SQqIInSlZ9r6Px2jGABX0D+bCMeCwFB/8ieetXxs=";
+            hash = "";
           };
         }."${stdenvNoCC.hostPlatform.system}" or (throw "helium: ${stdenvNoCC.hostPlatform.system} is unsupported.");
 
@@ -49,12 +49,10 @@ in
       src = let
         platformMap = {
           "x86_64-linux" = "x86_64";
-          "aarch64-linux" = "arm64";
         };
         platform = platformMap.${pkgs.stdenv.hostPlatform.system};
         hashes = {
-          "x86_64-linux" = "sha256-d8kwLEU6qgEgp7nlEwdfRevB1JrbEKHRe8+GhGpGUig=";
-          "aarch64-linux" = "sha256-/ZnLJNS/WBcWjUXUfqylqJCVh8HUNlIrVQCrb/QoL2I=";
+          "x86_64-linux" = "sha256-EHhIwNnLm7sTlbm5+OTWQl2FGnb1iaAD8S7P5RtIPu4=";
         };
         hash = hashes.${pkgs.stdenv.hostPlatform.system};
       in

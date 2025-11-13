@@ -25,7 +25,8 @@
       handbrake
       cameractrls-gtk4
       hyprsunset
-      winboat
+      #winboat
+      inputs.winboat-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.winboat
     ];
 
     programs.walker = {

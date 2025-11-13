@@ -125,29 +125,48 @@
           enableTreesitter = true;
           enableExtraDiagnostics = true;
 
-          # web stuff
           ts = {
             enable = true;
-            format.type = "biome";
+            format.type = ["biome"];
           };
-          css.enable = true;
+          css = {
+            enable = true;
+            format.type = ["biome"];
+          };
           tailwind.enable = true;
           html.enable = true;
-          astro.enable = true;
+          astro = {
+            enable = true;
+            format.type = ["biome"];
+          };
 
           nix = {
             enable = true;
-            lsp.server = "nixd";
+            lsp.servers = ["nixd"];
           };
           rust = {
             enable = true;
-            crates.enable = true;
+            extensions = {
+              crates-nvim.enable = true;
+            };
           };
           assembly.enable = true;
-          python.enable = true;
-          markdown.enable = true;
+          python = {
+            enable = true;
+            format.type = ["ruff"];
+            lsp.servers = ["basedpyright"];
+          };
+          markdown = {
+            enable = true;
+            extensions = {
+              markview-nvim.enable = true;
+            };
+          };
           yaml.enable = true;
-          typst.enable = true;
+          typst = {
+            enable = true;
+            format.type = ["typstyle"];
+          };
           sql.enable = true;
         };
       };
