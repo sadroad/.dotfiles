@@ -1,4 +1,5 @@
 final: prev: {
+  helium = final.callPackage ../pkgs/helium/default.nix {};
   vesktop = prev.vesktop.overrideAttrs (oldAttrs: {
     postPatch =
       (oldAttrs.postPatch or "")

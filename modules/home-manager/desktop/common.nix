@@ -11,7 +11,6 @@
     if inputs ? ghostty && pkgs.stdenv.isLinux
     then inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
     else pkgs.ghostty-bin;
-  helium = pkgs.callPackage ./helium.nix {};
 in {
   fonts.fontconfig = {
     enable = true;

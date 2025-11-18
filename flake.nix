@@ -41,7 +41,7 @@
           inputs.determinate.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.chaotic.nixosModules.default
-          ({config, ...}: {
+          ({config, pkgs, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
@@ -53,7 +53,7 @@
             home-manager.extraSpecialArgs =
               commonSpecialArgs
               // {
-                inherit userDir system hostname;
+                inherit userDir system hostname pkgs;
                 osConfig = config;
               };
           })
@@ -81,7 +81,7 @@
           inputs.determinate.darwinModules.default
           inputs.nix-index-database.darwinModules.nix-index
           inputs.home-manager.darwinModules.home-manager
-          ({config, ...}: {
+          ({config, pkgs, ...}: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
@@ -94,7 +94,7 @@
             home-manager.extraSpecialArgs =
               commonSpecialArgs
               // {
-                inherit userDir system hostname;
+                inherit userDir system hostname pkgs;
                 osConfig = config;
               };
           })
