@@ -8,76 +8,86 @@
 }: let
   pname = "helium";
   version = "0.6.5.1";
-in
-  if pkgs.stdenv.isDarwin
-  then
-    stdenvNoCC.mkDerivation (finalAttrs: {
-      inherit pname version;
+  system = pkgs.stdenv.hostPlatform.system;
 
-      src = let
-        inherit (finalAttrs) version;
-      in
-        {
-          aarch64-darwin = fetchurl {
-            name = "helium_${version}_arm64-macos.dmg";
-            url = "https://github.com/imputnet/helium-macos/releases/download/${version}/helium_${version}_arm64-macos.dmg";
-            hash = "";
+  baseMeta = {
+    description = "Private, fast, and honest web browser based on Chromium";
+    homepage = "https://github.com/imputnet/helium-chromium";
+    license = lib.licenses.gpl3;
+  };
+
+  builders = {
+    "aarch64-darwin" = _:
+      stdenvNoCC.mkDerivation {
+        inherit pname version;
+
+        src = fetchurl {
+          name = "helium_${version}_arm64-macos.dmg";
+          url = "https://github.com/imputnet/helium-macos/releases/download/${version}/helium_${version}_arm64-macos.dmg";
+          hash = "";
+        };
+
+        nativeBuildInputs = [_7zz];
+
+        installPhase = ''
+          runHook preInstall
+          mkdir -p $out/Applications/Helium.app
+          cp -R . $out/Applications/Helium.app
+          runHook postInstall
+        '';
+
+        meta =
+          baseMeta
+          // {
+            description = "${baseMeta.description} (macOS build)";
+            platforms = ["aarch64-darwin"];
+            mainProgram = "Helium.app";
           };
-        }."${stdenvNoCC.hostPlatform.system}" or (throw "helium: ${stdenvNoCC.hostPlatform.system} is unsupported.");
-
-      nativeBuildInputs = [_7zz];
-
-      installPhase = ''
-        runHook preInstall
-        mkdir -p $out/Applications/Helium.app
-        cp -R . $out/Applications/Helium.app
-        runHook postInstall
-      '';
-
-      meta = {
-        description = "Private, fast, and honest web browser based on Chromium (macOS build)";
-        homepage = "https://github.com/imputnet/helium-chromium";
-        license = lib.licenses.gpl3;
-        platforms = ["aarch64-darwin"];
-        mainProgram = "Helium.app";
       };
-    })
-  else
-    pkgs.appimageTools.wrapType2 rec {
-      inherit pname version;
 
-      src = let
-        platformMap = {
-          "x86_64-linux" = "x86_64";
-        };
-        platform = platformMap.${pkgs.stdenv.hostPlatform.system};
-        hashes = {
-          "x86_64-linux" = "sha256-EHhIwNnLm7sTlbm5+OTWQl2FGnb1iaAD8S7P5RtIPu4=";
-        };
-        hash = hashes.${pkgs.stdenv.hostPlatform.system};
-      in
-        pkgs.fetchurl {
-          url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-${platform}.AppImage";
-          inherit hash;
-        };
+    "x86_64-linux" = system':
+      pkgs.appimageTools.wrapType2 rec {
+        inherit pname version;
 
-      extraInstallCommands = let
-        contents = pkgs.appimageTools.extractType2 {inherit pname version src;};
-      in ''
-        mkdir -p "$out/share/applications"
-        mkdir -p "$out/share/lib/helium"
-        cp -r ${contents}/opt/helium/locales "$out/share/lib/helium"
-        cp -r ${contents}/usr/share/* "$out/share"
-        cp "${contents}/${pname}.desktop" "$out/share/applications/"
-        substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
-      '';
+        src = let
+          platformMap = {
+            "x86_64-linux" = "x86_64";
+          };
+          platform =
+            platformMap.${system'}
+          or (throw "helium: ${system'} is unsupported for AppImage builds.");
+          hashes = {
+            "x86_64-linux" = "sha256-EHhIwNnLm7sTlbm5+OTWQl2FGnb1iaAD8S7P5RtIPu4=";
+          };
+          hash =
+            hashes.${system'}
+          or (throw "helium: missing hash for ${system'}.");
+        in
+          pkgs.fetchurl {
+            url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-${platform}.AppImage";
+            inherit hash;
+          };
 
-      meta = {
-        description = "Private, fast, and honest web browser based on Chromium (Linux build)";
-        homepage = "https://github.com/imputnet/helium-chromium";
-        changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
-        license = lib.licenses.gpl3;
-        platforms = ["x86_64-linux" "aarch64-linux"];
-        mainProgram = "helium";
+        extraInstallCommands = let
+          contents = pkgs.appimageTools.extractType2 {inherit pname version src;};
+        in ''
+          mkdir -p "$out/share/applications"
+          mkdir -p "$out/share/lib/helium"
+          cp -r ${contents}/opt/helium/locales "$out/share/lib/helium"
+          cp -r ${contents}/usr/share/* "$out/share"
+          cp "${contents}/${pname}.desktop" "$out/share/applications/"
+          substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
+        '';
+
+        meta =
+          baseMeta
+          // {
+            description = "${baseMeta.description} (Linux build)";
+            changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
+            platforms = ["x86_64-linux" "aarch64-linux"];
+            mainProgram = "helium";
+          };
       };
-    }
+  };
+in
+  (builders.${system} or (throw "helium: ${system} is unsupported.")) system

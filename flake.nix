@@ -103,17 +103,6 @@
   in {
     formatter = forAllSystems (system: (mkPkgs system).alejandra);
 
-    devShells = forAllSystems (system: let
-      pkgs = mkPkgs system;
-    in {
-      default = pkgs.mkShell {
-        buildInputs = with pkgs; [
-          nixd
-          alejandra
-        ];
-      };
-    });
-
     nixosConfigurations = {
       piplup = mkNixosSystem {
         hostname = "piplup";
@@ -187,6 +176,10 @@
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
+    };
+    opencode = {
+      url = "github:sst/opencode/v1.0.76";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }

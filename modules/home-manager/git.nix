@@ -8,11 +8,6 @@
   gitEmail = "alex@villablanca.tech";
   gitSigningKey = "2B826E3C035C8BB5";
 in {
-  home.packages = with pkgs; [
-    git-secrets
-    mergiraf
-  ];
-
   programs.difftastic = {
     enable = true;
     git = {
@@ -26,6 +21,10 @@ in {
     options = {
       navigate = true;
     };
+  };
+
+  programs.mergiraf = {
+    enable = true;
   };
 
   programs.git = {

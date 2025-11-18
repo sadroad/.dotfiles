@@ -14,7 +14,6 @@
       keymapp
       pavucontrol
 
-      caido
       protonmail-desktop
       proton-pass
       krita
@@ -24,7 +23,6 @@
       haruna
       handbrake
       cameractrls-gtk4
-      hyprsunset
       #winboat
       inputs.winboat-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.winboat
     ];
@@ -58,7 +56,6 @@
         exec-once = [
           "hyprctl dispatch workspace 1"
           "[workspace 1 silent] $terminal"
-          "hyprsunset"
         ];
 
         general = {
@@ -154,21 +151,25 @@
       };
     };
 
-    xdg.configFile."hypr/hyprsunset.conf".text = ''
-      max-gamma = 150
+    services.hyprsunset = {
+      enable = true;
+      settings = {
+        max-gamma = 150;
 
-      profile {
-        time = 07:30
-        identity = true
-      }
+        profile = [
+          {
+            time = "07:30";
+            identity = true;
+          }
 
-      profile {
-         time = 21:00
-         temperature = 4500
-         gamma = 0.7
-       }
-
-    '';
+          {
+            time = "21:00";
+            temperature = 4500;
+            gamma = 0.7;
+          }
+        ];
+      };
+    };
 
     services.hyprpaper = {
       enable = true;
@@ -179,6 +180,80 @@
         ipc = "on";
         preload = [wallpaper1 wallpaperChange];
         wallpaper = ["DP-2, ${wallpaperChange}" "DP-3, ${wallpaper1}"];
+      };
+    };
+
+    services.hyprpolkitagent.enable = true;
+
+    programs.hyprlock = {
+      enable = true;
+      settings = {
+        general = {
+          hide_cursor = true;
+          ignore_empty_input = true;
+        };
+
+        animations = {
+          enabled = true;
+          fade_in = {
+            duration = 300;
+            bezier = "easeOutQuint";
+          };
+          fade_out = {
+            duration = 300;
+            bezier = "easeOutQuint";
+          };
+        };
+
+        background = [
+          {
+            path = "screenshot";
+            blur_passes = 3;
+            blur_size = 8;
+          }
+        ];
+
+        input-field = [
+          {
+            size = "200, 50";
+            position = "0, -80";
+            monitor = "";
+            dots_center = true;
+            fade_on_empty = false;
+            font_color = "rgb(202, 211, 245)";
+            inner_color = "rgb(91, 96, 120)";
+            outer_color = "rgb(24, 25, 38)";
+            outline_thickness = 5;
+            shadow_passes = 2;
+          }
+        ];
+      };
+    };
+
+    services.hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          lock_cmd = "pidof hyprlock || hyprlock";
+        };
+
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "loginctl lock-session";
+          }
+          {
+            timeout = 330;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 1800;
+            on-timeout = "systemctl suspend";
+          }
+        ];
       };
     };
 
@@ -302,6 +377,7 @@
       enable = true;
       name = "BreezeX-RosePine-Linux";
       package = pkgs.rose-pine-cursor;
+      hyprcursor.enable = true;
       size = 24;
       gtk.enable = true;
       x11.enable = true;

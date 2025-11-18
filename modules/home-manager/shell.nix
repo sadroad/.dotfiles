@@ -48,7 +48,7 @@
         l = "ls -lat";
         cat = "bat";
         grep = "rg";
-        tree = "eza --tree";
+        tree = "${pkgs.eza}/bin/eza --tree";
         top = "btop";
         xxd = "hexyl";
         cd = "z";

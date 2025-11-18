@@ -36,7 +36,6 @@ in {
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
       prismlauncher
-      hoppscotch
       imhex
       slack
       helium

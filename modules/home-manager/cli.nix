@@ -12,7 +12,7 @@
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
   nix-alien = inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}.nix-alien;
-  opencode = pkgs.callPackage ./opencode/package.nix {};
+  opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -20,38 +20,24 @@ in {
   };
   home.packages = with pkgs;
     [
-      eza
       bat
       dust
-      fd
-      ripgrep
       procs
-      gping
       doggo
       pigz
       hexyl
       ouch
 
-      #deploy tools
-      nixos-anywhere
-      deploy-rs
-      compose2nix
-
       hyperfine
       hydra-check
-      asciinema_3
       nix-output-monitor
       cloudflared
       pv
-      zellij
-      opencode
       caligula
       pastel
-      numbat
       railway
       ngrok
       gitleaks
-      gnupg
       mediainfo
       tokei
       typos
@@ -61,7 +47,28 @@ in {
       nix-alien
     ]);
 
+  programs.numbat = {
+    enable = true;
+  };
+
   programs.fzf = {
+    enable = true;
+  };
+
+  programs.asciinema = {
+    enable = true;
+    package = pkgs.asciinema_3;
+  };
+
+  programs.zellij = {
+    enable = true;
+  };
+
+  programs.ripgrep = {
+    enable = true;
+  };
+
+  programs.fd = {
     enable = true;
   };
 
@@ -113,27 +120,16 @@ in {
     };
   };
 
-  xdg.configFile."opencode/opencode.json".text = builtins.toJSON {
-    "$schema" = "https://opencode.ai/config.json";
-    layout = "stretch";
-    provider = {
-      openai = {
-        models = {
-          "gpt-5.1-codex" = {
-            options = {
-              store = true;
-              reasoningEffort = "high";
-              reasoningSummary = "auto";
-              textVerbosity = "medium";
-            };
-          };
-        };
-      };
+  programs.opencode = {
+    enable = true;
+    package = opencode;
+    rules = ''
+      Never touch the git history or make any git modifications. If you want to make a change, ask the user first to confirm it.
+
+      Try to use jj instead of git directly
+    '';
+    settings = {
+      layout = "stretch";
     };
   };
-  xdg.configFile."opencode/AGENTS.md".text = ''
-    Never touch the git history or make any modifications. If you want to make a change, ask the user first to confirm it.
-
-    Try to use jj instead of git directly
-  '';
 }

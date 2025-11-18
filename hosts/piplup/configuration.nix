@@ -42,6 +42,8 @@
 
   security.polkit.enable = true;
 
+  security.pam.services.hyprlock = {};
+
   security.tpm2 = {
     enable = true;
     abrmd.enable = true;

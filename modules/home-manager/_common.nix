@@ -28,7 +28,6 @@
   programs.nix-index.enable = true;
   programs.command-not-found.enable = false;
 
-  # Basic packages needed by almost all setups
   home.packages = with pkgs; [
     coreutils
     file
@@ -37,9 +36,12 @@
     jq
     wget
     curl
-    btop
     man-db
   ];
+
+  programs.btop = {
+    enable = true;
+  };
 
   programs.tealdeer = {
     enable = true;

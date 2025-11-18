@@ -18,9 +18,9 @@
       telemetry = {
         metrics = false;
       };
-          inlay_hints = {
-            enabled = true;
-          };
+      inlay_hints = {
+        enabled = true;
+      };
       languages = {
         Nix = {
           language_servers = ["nixd"];
