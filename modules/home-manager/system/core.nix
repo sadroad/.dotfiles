@@ -34,8 +34,6 @@
     unzip
     zip
     jq
-    wget
-    curl
     man-db
   ];
 

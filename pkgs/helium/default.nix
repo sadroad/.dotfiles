@@ -7,7 +7,7 @@
   ...
 }: let
   pname = "helium";
-  version = "0.6.5.1";
+  version = "0.6.7.1";
   system = pkgs.stdenv.hostPlatform.system;
 
   baseMeta = {
@@ -57,7 +57,7 @@
             platformMap.${system'}
           or (throw "helium: ${system'} is unsupported for AppImage builds.");
           hashes = {
-            "x86_64-linux" = "sha256-EHhIwNnLm7sTlbm5+OTWQl2FGnb1iaAD8S7P5RtIPu4=";
+            "x86_64-linux" = "sha256-fZTBNhaDk5EeYcxZDJ83tweMZqtEhd7ws8AFUcHjFLs=";
           };
           hash =
             hashes.${system'}

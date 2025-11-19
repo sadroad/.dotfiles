@@ -5,9 +5,7 @@
   username,
   inputs,
   ...
-}: let
-  sddm-eucalyptus-drop = pkgs.callPackage ./sddm-theme.nix {inherit config;};
-in {
+}: {
   programs.hyprland = lib.mkIf (inputs ? hyprland) {
     enable = true;
     withUWSM = true;
@@ -17,7 +15,6 @@ in {
 
   services.displayManager.sddm = {
     enable = true;
-    theme = "eucalyptus-drop";
   };
 
   services.xserver = {
@@ -29,6 +26,11 @@ in {
     open = true;
     nvidiaSettings = true;
     modesetting.enable = true;
+    powerManagement = {
+      enable = true;
+      finegrained = false;
+    };
+
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
@@ -51,7 +53,17 @@ in {
     alsa.support32Bit = true;
     wireplumber.enable = true;
   };
-  users.users.${username}.extraGroups = ["audio"];
+  users.users.${username}.extraGroups = ["audio" "video"];
+
+  # obs virtual cam
+  boot.kernelModules = ["v4l2loopback"];
+  boot.extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+  boot.extraModprobeConfig = ''
+    options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
+
+  '';
+
+  security.pam.services.hyprlock = {};
 
   programs.localsend = {
     enable = true;
@@ -59,14 +71,4 @@ in {
   };
 
   hardware.keyboard.zsa.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    sddm-eucalyptus-drop
-    libsForQt5.qt5.qtgraphicaleffects # required for sddm-eucalyptus-drop
-
-    noto-fonts
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    pkgs.nerd-fonts.jetbrains-mono
-  ];
 }
