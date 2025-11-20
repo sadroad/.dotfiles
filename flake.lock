@@ -180,11 +180,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1762276996,
-        "narHash": "sha256-TtcPgPmp2f0FAnc+DMEw4ardEgv1SGNR3/WFGH0N19M=",
+        "lastModified": 1763651264,
+        "narHash": "sha256-8vvwZbw0s7YvBMJeyPVpWke6lg6ROgtts5N2/SMCcv4=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "af087d076d3860760b3323f6b583f4d828c1ac17",
+        "rev": "e86a89079587497174ccab6d0d142a65811a4fd9",
         "type": "github"
       },
       "original": {
@@ -1149,22 +1149,6 @@
     },
     "nixpkgs_12": {
       "locked": {
-        "lastModified": 1762156382,
-        "narHash": "sha256-Yg7Ag7ov5+36jEFC1DaZh/12SEXo6OO3/8rqADRxiqs=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "7241bcbb4f099a66aafca120d37c65e8dda32717",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_13": {
-      "locked": {
         "lastModified": 1757068644,
         "narHash": "sha256-NOrUtIhTkIIumj1E/Rsv1J37Yi3xGStISEo8tZm3KW4=",
         "owner": "NixOS",
@@ -1324,18 +1308,21 @@
     },
     "opencode": {
       "inputs": {
-        "nixpkgs": "nixpkgs_12"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1763618320,
-        "narHash": "sha256-2aKstVeKdwlGSOaFkYJ45oRkT1AZS3NqI5lZY2LRWL0=",
+        "lastModified": 1763658991,
+        "narHash": "sha256-/7JzXO7CTtCNyBGtcnIWBhyqaqluX+0h+Qm24ArSR/E=",
         "owner": "sst",
         "repo": "opencode",
-        "rev": "6b3f424e4d73411c1d047625c14142751c3391eb",
+        "rev": "447a4ca8c3fe5d40ae7a270c8f76727cfd346524",
         "type": "github"
       },
       "original": {
         "owner": "sst",
+        "ref": "v1.0.81",
         "repo": "opencode",
         "type": "github"
       }
@@ -1536,7 +1523,7 @@
         "elephant": [
           "elephant"
         ],
-        "nixpkgs": "nixpkgs_13",
+        "nixpkgs": "nixpkgs_12",
         "systems": "systems_7"
       },
       "locked": {
