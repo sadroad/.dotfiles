@@ -9,8 +9,15 @@
     settings = {
       max-gamma = 150;
       profile = [
-        { time = "07:30"; identity = true; }
-        { time = "21:00"; temperature = 4500; gamma = 0.7; }
+        {
+          time = "07:30";
+          identity = true;
+        }
+        {
+          time = "21:00";
+          temperature = 4500;
+          gamma = 0.7;
+        }
       ];
     };
   };
@@ -38,27 +45,37 @@
       };
       animations = {
         enabled = true;
-        fade_in = { duration = 300; bezier = "easeOutQuint"; };
-        fade_out = { duration = 300; bezier = "easeOutQuint"; };
+        fade_in = {
+          duration = 300;
+          bezier = "easeOutQuint";
+        };
+        fade_out = {
+          duration = 300;
+          bezier = "easeOutQuint";
+        };
       };
-      background = [{
-        path = "screenshot";
-        blur_passes = 3;
-        blur_size = 8;
-      }];
-      input-field = [{
-        size = "200, 50";
-        position = "0, -80";
-        monitor = "";
-        dots_center = true;
-        fade_on_empty = false;
-        font_color = "rgb(202, 211, 245)";
-        inner_color = "rgb(91, 96, 120)";
-        outer_color = "rgb(24, 25, 38)";
-        outline_thickness = 5;
-        placeholder_text = "...";
-        shadow_passes = 2;
-      }];
+      background = [
+        {
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+        }
+      ];
+      input-field = [
+        {
+          size = "200, 50";
+          position = "0, -80";
+          monitor = "";
+          dots_center = true;
+          fade_on_empty = false;
+          font_color = "rgb(202, 211, 245)";
+          inner_color = "rgb(91, 96, 120)";
+          outer_color = "rgb(24, 25, 38)";
+          outline_thickness = 5;
+          placeholder_text = "...";
+          shadow_passes = 2;
+        }
+      ];
     };
   };
 
@@ -71,9 +88,19 @@
         lock_cmd = "pidof hyprlock || hyprlock";
       };
       listener = [
-        { timeout = 300; on-timeout = "loginctl lock-session"; }
-        { timeout = 330; on-timeout = "hyprctl dispatch dpms off"; on-resume = "hyprctl dispatch dpms on"; }
-        { timeout = 1800; on-timeout = "systemctl suspend"; }
+        {
+          timeout = 300;
+          on-timeout = "loginctl lock-session";
+        }
+        {
+          timeout = 330;
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 1800;
+          on-timeout = "systemctl suspend";
+        }
       ];
     };
   };

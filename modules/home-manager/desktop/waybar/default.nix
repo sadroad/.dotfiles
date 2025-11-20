@@ -1,4 +1,8 @@
-{ pkgs, lib, ... }: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -11,7 +15,7 @@
         "hyprland/submap" = {
           format = "<span style=\"italic\">{}</span>";
         };
-        tray = { spacing = 10; };
+        tray = {spacing = 10;};
         clock = {
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format = "{:L%Y-%m-%d<small>[%a]</small> %H:%M}";
@@ -24,7 +28,7 @@
           format-muted = "  {format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
-          format-icons = { default = ["" "" ""]; };
+          format-icons = {default = ["" "" ""];};
           on-click = "pavucontrol";
           on-click-right = "foot -a pw-top pw-top";
         };

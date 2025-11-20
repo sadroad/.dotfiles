@@ -1,4 +1,9 @@
-{ pkgs, lib, secretsAvailable, ... }: {
+{
+  pkgs,
+  lib,
+  secretsAvailable,
+  ...
+}: {
   home.activation.installBerkeleyMonoFont = lib.mkIf secretsAvailable (let
     installScript = ../../../scripts/install-berkeley-mono.sh;
   in

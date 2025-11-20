@@ -1,20 +1,27 @@
-{ pkgs, lib, secretsAvailable, inputs, username, ... }: {
+{
+  pkgs,
+  lib,
+  secretsAvailable,
+  inputs,
+  username,
+  ...
+}: {
   home.packages = with pkgs; [
-      wl-clipboard
-      grimblast
-      keymapp
-      pavucontrol
-      protonmail-desktop
-      proton-pass
-      krita
-      typora
-      nsxiv
-      kitty
-      haruna
-      handbrake
-      cameractrls-gtk4
-      inputs.winboat-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.winboat
-      protonup-ng
+    wl-clipboard
+    grimblast
+    keymapp
+    pavucontrol
+    protonmail-desktop
+    proton-pass
+    krita
+    typora
+    nsxiv
+    kitty
+    haruna
+    handbrake
+    cameractrls-gtk4
+    inputs.winboat-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.winboat
+    protonup-ng
   ];
 
   services.dunst = {
@@ -54,15 +61,27 @@
         hide_duplicate_count = true;
         show_indicators = "no";
       };
-      urgency_low = { background = "#080808"; foreground = "#f0f0f0"; frame_color = "#ffffff"; };
-      urgency_normal = { background = "#080808"; foreground = "#f0f0f0"; frame_color = "#ffffff"; };
-      urgency_critical = { background = "#080808"; foreground = "#db4b4b"; frame_color = "#db4b4b"; };
+      urgency_low = {
+        background = "#080808";
+        foreground = "#f0f0f0";
+        frame_color = "#ffffff";
+      };
+      urgency_normal = {
+        background = "#080808";
+        foreground = "#f0f0f0";
+        frame_color = "#ffffff";
+      };
+      urgency_critical = {
+        background = "#080808";
+        foreground = "#db4b4b";
+        frame_color = "#db4b4b";
+      };
     };
   };
 
   programs.obs-studio = {
     enable = true;
-    package = pkgs.obs-studio.override { cudaSupport = true; };
+    package = pkgs.obs-studio.override {cudaSupport = true;};
     plugins = with pkgs.obs-studio-plugins; [wlrobs obs-pipewire-audio-capture];
   };
 
@@ -105,8 +124,8 @@
         (subtypes "application" "helium-browser.desktop" ["x-extension-htm" "x-extension-html" "x-extension-shtml" "xhtml+xml"])
       ]);
   };
-  
+
   home.sessionVariables = {
-      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/${username}/.steam/root/compatibilitytools.d";
+    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/${username}/.steam/root/compatibilitytools.d";
   };
 }

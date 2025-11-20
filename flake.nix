@@ -41,7 +41,11 @@
           inputs.determinate.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.chaotic.nixosModules.default
-          ({config, pkgs, ...}: {
+          ({
+            config,
+            pkgs,
+            ...
+          }: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
@@ -81,7 +85,11 @@
           inputs.determinate.darwinModules.default
           inputs.nix-index-database.darwinModules.nix-index
           inputs.home-manager.darwinModules.home-manager
-          ({config, pkgs, ...}: {
+          ({
+            config,
+            pkgs,
+            ...
+          }: {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.backupFileExtension = "backup";
