@@ -24,7 +24,7 @@
         src = fetchurl {
           name = "helium_${version}_arm64-macos.dmg";
           url = "https://github.com/imputnet/helium-macos/releases/download/${version}/helium_${version}_arm64-macos.dmg";
-          hash = "";
+          hash = "sha256-eU+A9U9eONushaR1cnOtHGw7qejsN0OswJ5hd7CIbow=";
         };
 
         nativeBuildInputs = [_7zz];
