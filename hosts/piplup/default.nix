@@ -44,6 +44,7 @@
     experimental-features = ["nix-command" "flakes"];
     substituters = [];
     trusted-public-keys = [];
+    use-xdg-base-directories = true;
   };
 
   system.stateVersion = "24.11";

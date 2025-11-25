@@ -46,7 +46,6 @@
   };
 
   nix.settings = lib.mkIf secretsAvailable {
-    use-xdg-base-directories = true;
     access-tokens = "!include ${osConfig.age.secrets."github_oauth".path}";
   };
 }
