@@ -8,7 +8,7 @@
 }: let
   pname = "helium";
   version = "0.6.7.1";
-  system = pkgs.stdenv.hostPlatform.system;
+  inherit (pkgs.stdenv.hostPlatform) system;
 
   baseMeta = {
     description = "Private, fast, and honest web browser based on Chromium";

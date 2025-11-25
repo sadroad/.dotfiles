@@ -4,37 +4,62 @@
   secretsAvailable,
   ...
 }: {
-  services.hyprsunset = {
-    enable = true;
-    settings = {
-      max-gamma = 150;
-      profile = [
-        {
-          time = "07:30";
-          identity = true;
-        }
-        {
-          time = "21:00";
-          temperature = 4500;
-          gamma = 0.7;
-        }
-      ];
+  services = {
+    hyprsunset = {
+      enable = true;
+      settings = {
+        max-gamma = 150;
+        profile = [
+          {
+            time = "07:30";
+            identity = true;
+          }
+          {
+            time = "21:00";
+            temperature = 4500;
+            gamma = 0.7;
+          }
+        ];
+      };
+    };
+    hyprpaper = {
+      enable = true;
+      settings = let
+        wallpaper1 = pkgs.copyPathToStore ../../../../assets/1.jpg;
+        wallpaperChange = pkgs.copyPathToStore ../../../../assets/change.jpg;
+      in {
+        ipc = "on";
+        preload = [wallpaper1 wallpaperChange];
+        wallpaper = ["DP-2, ${wallpaperChange}" "DP-3, ${wallpaper1}"];
+      };
+    };
+    hyprpolkitagent.enable = true;
+    hypridle = {
+      enable = true;
+      settings = {
+        general = {
+          before_sleep_cmd = "loginctl lock-session";
+          after_sleep_cmd = "hyprctl dispatch dpms on";
+          lock_cmd = "pidof hyprlock || hyprlock";
+        };
+        listener = [
+          {
+            timeout = 300;
+            on-timeout = "loginctl lock-session";
+          }
+          {
+            timeout = 330;
+            on-timeout = "hyprctl dispatch dpms off";
+            on-resume = "hyprctl dispatch dpms on";
+          }
+          {
+            timeout = 1800;
+            on-timeout = "systemctl suspend";
+          }
+        ];
+      };
     };
   };
-
-  services.hyprpaper = {
-    enable = true;
-    settings = let
-      wallpaper1 = pkgs.copyPathToStore ../../../../assets/1.jpg;
-      wallpaperChange = pkgs.copyPathToStore ../../../../assets/change.jpg;
-    in {
-      ipc = "on";
-      preload = [wallpaper1 wallpaperChange];
-      wallpaper = ["DP-2, ${wallpaperChange}" "DP-3, ${wallpaper1}"];
-    };
-  };
-
-  services.hyprpolkitagent.enable = true;
 
   programs.hyprlock = {
     enable = true;
@@ -74,32 +99,6 @@
           outline_thickness = 5;
           placeholder_text = "...";
           shadow_passes = 2;
-        }
-      ];
-    };
-  };
-
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        before_sleep_cmd = "loginctl lock-session";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        lock_cmd = "pidof hyprlock || hyprlock";
-      };
-      listener = [
-        {
-          timeout = 300;
-          on-timeout = "loginctl lock-session";
-        }
-        {
-          timeout = 330;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-        {
-          timeout = 1800;
-          on-timeout = "systemctl suspend";
         }
       ];
     };

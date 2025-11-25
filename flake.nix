@@ -19,7 +19,7 @@
 
     commonSpecialArgs = {
       inherit username inputs secretsAvailable secretsPath;
-      agenix = inputs.agenix;
+      inherit (inputs) agenix;
     };
 
     mkNixosSystem = {
@@ -46,20 +46,22 @@
             pkgs,
             ...
           }: {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.sharedModules = [
-              inputs.nix-index-database.homeModules.nix-index
-            ];
-            home-manager.users.${username} =
-              ./modules/home-manager/default.nix;
-            home-manager.extraSpecialArgs =
-              commonSpecialArgs
-              // {
-                inherit userDir system hostname pkgs;
-                osConfig = config;
-              };
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              sharedModules = [
+                inputs.nix-index-database.homeModules.nix-index
+              ];
+              users.${username} =
+                ./modules/home-manager/default.nix;
+              extraSpecialArgs =
+                commonSpecialArgs
+                // {
+                  inherit userDir system hostname pkgs;
+                  osConfig = config;
+                };
+            };
           })
         ];
       };
@@ -90,21 +92,23 @@
             pkgs,
             ...
           }: {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.backupFileExtension = "backup";
-            home-manager.users.${username} =
-              ./modules/home-manager/default.nix;
-            home-manager.sharedModules = [
-              inputs.mac-app-util.homeManagerModules.default
-              inputs.nix-index-database.homeModules.nix-index
-            ];
-            home-manager.extraSpecialArgs =
-              commonSpecialArgs
-              // {
-                inherit userDir system hostname pkgs;
-                osConfig = config;
-              };
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              users.${username} =
+                ./modules/home-manager/default.nix;
+              sharedModules = [
+                inputs.mac-app-util.homeManagerModules.default
+                inputs.nix-index-database.homeModules.nix-index
+              ];
+              extraSpecialArgs =
+                commonSpecialArgs
+                // {
+                  inherit userDir system hostname pkgs;
+                  osConfig = config;
+                };
+            };
           })
         ];
       };
@@ -169,7 +173,7 @@
     };
     nvf = {
       url = "github:notashelf/nvf/v0.8";
-      inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty.url = "github:ghostty-org/ghostty/v1.2.3";
     nix-index-database = {

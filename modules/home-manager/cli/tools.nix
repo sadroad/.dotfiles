@@ -11,7 +11,7 @@
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  nix-alien = inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}.nix-alien;
+  inherit (inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}) nix-alien;
   opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.sessionVariables = {
@@ -47,89 +47,72 @@ in {
       nix-alien
     ]);
 
-  programs.numbat = {
-    enable = true;
-  };
-
-  programs.fzf = {
-    enable = true;
-  };
-
-  programs.asciinema = {
-    enable = true;
-    package = pkgs.asciinema_3;
-  };
-
-  programs.zellij = {
-    enable = true;
-  };
-
-  programs.ripgrep = {
-    enable = true;
-  };
-
-  programs.fd = {
-    enable = true;
-  };
-
-  programs.nh = {
-    package = inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.nh;
-    enable = true;
-    clean.enable = true;
-    flake = "${userDir}/.dotfiles";
-  };
-
-  programs.ssh = {
-    enable = true;
-    enableDefaultConfig = false;
-    matchBlocks = {
-      "*" = {
-        addKeysToAgent = "yes";
-        forwardAgent = false;
-        serverAliveInterval = 0;
-        serverAliveCountMax = 3;
-        compression = false;
-        hashKnownHosts = false;
-        userKnownHostsFile = "~/.ssh/known_hosts";
-        controlMaster = "no";
-        controlPath = "~/.ssh/master-%r@%n:%p";
-        controlPersist = "no";
-        extraOptions = lib.optionalAttrs pkgs.stdenv.isDarwin {
-          "UseKeychain" = "yes";
+  programs = {
+    numbat.enable = true;
+    fzf.enable = true;
+    asciinema = {
+      enable = true;
+      package = pkgs.asciinema_3;
+    };
+    zellij.enable = true;
+    ripgrep.enable = true;
+    fd.enable = true;
+    nh = {
+      package = inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.nh;
+      enable = true;
+      clean.enable = true;
+      flake = "${userDir}/.dotfiles";
+    };
+    ssh = {
+      enable = true;
+      enableDefaultConfig = false;
+      matchBlocks = {
+        "*" = {
+          addKeysToAgent = "yes";
+          forwardAgent = false;
+          serverAliveInterval = 0;
+          serverAliveCountMax = 3;
+          compression = false;
+          hashKnownHosts = false;
+          userKnownHostsFile = "~/.ssh/known_hosts";
+          controlMaster = "no";
+          controlPath = "~/.ssh/master-%r@%n:%p";
+          controlPersist = "no";
+          extraOptions = lib.optionalAttrs pkgs.stdenv.isDarwin {
+            "UseKeychain" = "yes";
+          };
+        };
+        "tux" = {
+          hostname = "tux.cs.drexel.edu";
+          user = "av676";
         };
       };
-      "tux" = {
-        hostname = "tux.cs.drexel.edu";
-        user = "av676";
+    };
+    yazi = {
+      enable = true;
+      plugins = {
+        save-clipboard-to-file = saveClipbordToFileYaziPlugin;
+      };
+      keymap = {
+        mgr.prepend_keymap = [
+          {
+            on = ["p" "c"];
+            run = "plugin save-clipboard-to-file";
+          }
+        ];
       };
     };
-  };
+    opencode = {
+      enable = true;
+      package = opencode;
+      rules = ''
+        Never touch the git history or make any git modifications. If you want to make a change, ask the user first to confirm it.
 
-  programs.yazi = {
-    enable = true;
-    plugins = {
-      save-clipboard-to-file = saveClipbordToFileYaziPlugin;
-    };
-    keymap = {
-      mgr.prepend_keymap = [
-        {
-          on = ["p" "c"];
-          run = "plugin save-clipboard-to-file";
-        }
-      ];
-    };
-  };
-
-  programs.opencode = {
-    enable = true;
-    package = opencode;
-    rules = ''
-      Never touch the git history or make any git modifications. If you want to make a change, ask the user first to confirm it.
-
-      Try to use jj instead of git directly
-    '';
-    settings = {
-      layout = "stretch";
+        Try to use jj instead of git directly
+      '';
+      settings = {
+        layout = "stretch";
+      };
     };
   };
 }

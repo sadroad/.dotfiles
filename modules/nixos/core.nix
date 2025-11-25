@@ -11,54 +11,67 @@
     extraGroups = ["networkmanager" "wheel" "libvirtd" "docker"];
   };
 
-  programs.ssh.startAgent = true;
-
-  services.tailscale = {
-    enable = true;
-    useRoutingFeatures = "client";
+  programs = {
+    ssh.startAgent = true;
+    nix-ld = {
+      enable = true;
+      libraries = with pkgs; [
+      ];
+    };
+    steam = {
+      enable = true;
+      gamescopeSession.enable = true;
+    };
+    gamemode.enable = true;
+    virt-manager.enable = true;
   };
 
-  networking.nameservers = ["192.168.2.1" "100.100.100.100"];
-  networking.search = ["tail217ff.ts.net"];
-
-  services.resolved.enable = true;
-
-  programs.nix-ld = {
-    enable = true;
-    libraries = with pkgs; [
-    ];
+  services = {
+    tailscale = {
+      enable = true;
+      useRoutingFeatures = "client";
+    };
+    resolved.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        PermitRootLogin = "no";
+        PasswordAuthentication = true; #disable once in clan
+      };
+      openFirewall = true;
+    };
   };
 
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
-
-  security.polkit.enable = true;
-
-  security.tpm2 = {
-    enable = true;
-    abrmd.enable = true;
-    pkcs11.enable = true;
-    tctiEnvironment.enable = true;
-    tctiEnvironment.interface = "tabrmd";
+  networking = {
+    nameservers = ["192.168.2.1" "100.100.100.100"];
+    search = ["tail217ff.ts.net"];
+    networkmanager.enable = true;
+    nftables.enable = true;
+    firewall.enable = true;
   };
 
-  virtualisation.docker.enable = true;
+  boot = {
+    binfmt.emulatedSystems = ["aarch64-linux"];
+  };
 
-  networking.networkmanager.enable = true;
+  security = {
+    polkit.enable = true;
+    tpm2 = {
+      enable = true;
+      abrmd.enable = true;
+      pkcs11.enable = true;
+      tctiEnvironment.enable = true;
+      tctiEnvironment.interface = "tabrmd";
+    };
+  };
 
-  networking.nftables.enable = true;
-
-  networking.firewall.enable = true;
+  virtualisation = {
+    docker.enable = true;
+    libvirtd.enable = true;
+    spiceUSBRedirection.enable = true;
+  };
 
   time.timeZone = "America/New_York";
-
-  services.openssh = {
-    enable = true;
-    settings = {
-      PermitRootLogin = "no";
-      PasswordAuthentication = true; #disable once in clan
-    };
-    openFirewall = true;
-  };
 
   i18n.defaultLocale = "en_US.UTF-8";
 
@@ -72,17 +85,7 @@
     mangohud
   ];
 
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-  };
-
-  programs.gamemode.enable = true;
-
   environment.variables.EDITOR = "nvim";
 
-  programs.virt-manager.enable = true;
   users.groups.libvirtd.members = [username];
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
 }

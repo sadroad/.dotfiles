@@ -33,10 +33,12 @@
 
   networking.hostName = hostname;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.supportedFilesystems = ["ntfs"];
-  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  boot = {
+    loader.systemd-boot.enable = true;
+    loader.efi.canTouchEfiVariables = true;
+    supportedFilesystems = ["ntfs"];
+    kernelPackages = pkgs.linuxPackages_cachyos-lto;
+  };
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];

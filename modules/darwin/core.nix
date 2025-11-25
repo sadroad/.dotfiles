@@ -12,6 +12,7 @@
     users.${username} = {
       uid = 501;
       home = userDir;
+      shell = pkgs.zsh;
     };
   };
 
