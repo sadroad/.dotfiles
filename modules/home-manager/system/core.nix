@@ -34,7 +34,6 @@
       nix-direnv.enable = true;
     };
     nix-index.enable = true;
-    command-not-found.enable = false;
     btop = {
       enable = true;
     };

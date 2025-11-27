@@ -14,6 +14,12 @@
     extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml" "comment"];
     enable = true;
     userSettings = {
+      agent_servers = {
+        OpenCode = {
+          command = "opencode";
+          args = ["acp"];
+        };
+      };
       vim_mode = true;
       telemetry = {
         metrics = false;

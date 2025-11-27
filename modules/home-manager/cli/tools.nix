@@ -22,9 +22,7 @@ in {
     [
       bat
       dust
-      procs
       doggo
-      pigz
       hexyl
       ouch
 
@@ -35,12 +33,12 @@ in {
       pv
       caligula
       pastel
-      railway
-      ngrok
       gitleaks
+      trufflehog
       mediainfo
       tokei
       typos
+      amp-cli
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
