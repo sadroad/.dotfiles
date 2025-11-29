@@ -148,9 +148,13 @@
       url = "github:hyprwm/Hyprland/v0.52.1";
     };
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-    elephant.url = "github:abenz1267/elephant/v2.13.2";
+    elephant = {
+      url = "github:abenz1267/elephant/v2.13.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     walker = {
       url = "github:abenz1267/walker/v2.8.2";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.elephant.follows = "elephant";
     };
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -162,20 +166,27 @@
     };
     mac-app-util = {
       url = "github:hraban/mac-app-util";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
     };
 
     # shared
-    agenix.url = "github:ryantm/agenix/96e078c646b711aee04b82ba01aefbff87004ded";
+    agenix = {
+      url = "github:yaxitech/ragenix/83bccfdea758241999f32869fb6b36f7ac72f1ac";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     my_secrets = {
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
       flake = false;
     };
     nvf = {
       url = "github:notashelf/nvf/v0.8";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    ghostty.url = "github:ghostty-org/ghostty/v1.2.3";
+    ghostty = {
+      url = "github:ghostty-org/ghostty/v1.2.3";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -189,6 +200,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:sst/opencode/v1.0.119";
+    opencode = {
+      url = "github:sst/opencode/v1.0.120";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
