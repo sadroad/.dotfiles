@@ -20,7 +20,7 @@
     haruna
     handbrake
     cameractrls-gtk4
-    inputs.winboat-nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.winboat
+    winboat
     protonup-ng
   ];
 

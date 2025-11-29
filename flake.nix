@@ -136,7 +136,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    winboat-nixpkgs.url = "github:nixos/nixpkgs/c5ae371f1a6a7fd27823bc500d9390b38c05fa55";
 
     # nixos
     disko = {
@@ -146,18 +145,26 @@
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.52.1";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    determinate = {
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+      inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     elephant = {
-      url = "github:abenz1267/elephant/v2.13.2";
+      url = "github:abenz1267/elephant/v2.16.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     walker = {
-      url = "github:abenz1267/walker/v2.8.2";
+      url = "github:abenz1267/walker/v2.11.3";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.elephant.follows = "elephant";
     };
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+    chaotic = {
+      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     #darwin
     nix-darwin = {
@@ -168,6 +175,7 @@
       url = "github:hraban/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
+      inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # shared
@@ -186,6 +194,7 @@
     ghostty = {
       url = "github:ghostty-org/ghostty/v1.2.3";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.zon2nix.inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
