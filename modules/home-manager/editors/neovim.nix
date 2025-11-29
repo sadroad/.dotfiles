@@ -151,6 +151,7 @@
             };
           };
           assembly.enable = true;
+          nu.enable = true;
           python = {
             enable = true;
             format.type = ["ruff"];

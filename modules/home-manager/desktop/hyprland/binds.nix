@@ -22,6 +22,7 @@
 
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
+        "$mainMod, F1, exec, ${./kvm-monitor-toggle.nu}"
       ]
       ++ (
         builtins.concatLists (builtins.genList (
