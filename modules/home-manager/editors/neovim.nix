@@ -152,6 +152,7 @@
           };
           assembly.enable = true;
           nu.enable = true;
+          haskell.enable = true;
           python = {
             enable = true;
             format.type = ["ruff"];

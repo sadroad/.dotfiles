@@ -6,6 +6,10 @@
   userDir,
   ...
 }: {
+  nix.settings = {
+    accept-flake-config = true;
+  };
+
   system.primaryUser = username;
   users = {
     knownUsers = [username];

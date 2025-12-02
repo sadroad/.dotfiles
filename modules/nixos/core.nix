@@ -5,6 +5,8 @@
   userDir,
   ...
 }: {
+  nix.settings.accept-flake-config = true;
+
   users.users.${username} = {
     isNormalUser = true;
     description = username;
