@@ -38,7 +38,6 @@ in {
       mediainfo
       tokei
       typos
-      amp-cli
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
