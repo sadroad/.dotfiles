@@ -7,6 +7,10 @@
   secretsAvailable,
   ...
 }: {
+  xdg.configFile."nixpkgs/config.nix".text = ''
+    { allowUnfree = true; }
+  '';
+
   home = {
     inherit username;
     homeDirectory = userDir;

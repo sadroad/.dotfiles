@@ -22,6 +22,7 @@
     cameractrls-gtk4
     winboat
     protonup-ng
+    aseprite
   ];
 
   services.dunst = {
