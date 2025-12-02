@@ -1223,16 +1223,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1764615600,
-        "narHash": "sha256-eW/+MoGh5V1t+4m+EDAm7dhTwJ+yqYmbLkZ9blYeXqQ=",
-        "owner": "sst",
+        "lastModified": 1764702609,
+        "narHash": "sha256-ZFGonSzY+EF/Ta0i73uArNuRGsHU/LeQRBMcQa7knU8=",
+        "owner": "sadroad",
         "repo": "opencode",
-        "rev": "729a6eda23a431a287aed28307e248ec3561cb1b",
+        "rev": "10d69c2f3dfff5ae7ff8e2ad7bc6f00e17a9c064",
         "type": "github"
       },
       "original": {
-        "owner": "sst",
-        "ref": "v1.0.126",
+        "owner": "sadroad",
         "repo": "opencode",
         "type": "github"
       }
