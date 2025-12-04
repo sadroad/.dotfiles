@@ -144,12 +144,12 @@
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.52.1";
+      url = "github:hyprwm/Hyprland/v0.52.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     determinate = {
-      url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
-      inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/3.13.2";
+      # inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     elephant = {
@@ -210,7 +210,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sadroad/opencode";
+      url = "github:sadroad/opencode/patch";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

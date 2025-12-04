@@ -37,7 +37,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
-    #kernelPackages = pkgs.linuxPackages_cachyos-lto;
+    # kernelPackages = pkgs.linuxPackages_cachyos-lto;
   };
 
   nix.settings = {

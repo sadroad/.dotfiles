@@ -38,6 +38,7 @@ in {
       mediainfo
       tokei
       typos
+      gh
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       dysk
