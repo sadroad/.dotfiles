@@ -35,7 +35,7 @@
           ./hosts/${hostname}/default.nix
           {
             nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = [(import ./overlays/default.nix)];
+            nixpkgs.overlays = [(import ./overlays/default.nix inputs)];
           }
           inputs.home-manager.nixosModules.home-manager
           inputs.determinate.nixosModules.default
@@ -79,7 +79,7 @@
           ./hosts/${hostname}/default.nix
           {
             nixpkgs.config.allowUnfree = true;
-            nixpkgs.overlays = [(import ./overlays/default.nix)];
+            nixpkgs.overlays = [(import ./overlays/default.nix inputs)];
             nix.enable = false;
             determinate-nix.customSettings = {
             };
@@ -144,26 +144,18 @@
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.52.2";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     determinate = {
       url = "https://flakehub.com/f/DeterminateSystems/determinate/3.13.2";
-      # inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    elephant = {
-      url = "github:abenz1267/elephant/v2.16.1";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    walker = {
-      url = "github:abenz1267/walker/v2.11.3";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.elephant.follows = "elephant";
     };
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     #darwin
@@ -174,7 +166,7 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
+      #inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
       inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -210,7 +202,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sadroad/opencode/patch";
+      url = "github:sst/opencode";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

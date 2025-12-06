@@ -18,10 +18,10 @@
     nsxiv
     kitty
     haruna
-    handbrake
     cameractrls-gtk4
     winboat
     protonup-ng
+    hyprpicker
   ];
 
   services.dunst = {

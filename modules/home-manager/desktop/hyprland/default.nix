@@ -4,11 +4,6 @@
   secretsAvailable,
   ...
 }: {
-  programs.walker = {
-    enable = true;
-    runAsService = true;
-  };
-
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.variables = ["--all"];
@@ -18,7 +13,7 @@
     settings = {
       "$mainMod" = "SUPER";
       monitor = ["DP-2, 2560x1440@180,0x0,1" "DP-3, 1920x1080@165,-1920x0,1" "HDMI-A-1, preferred, auto, 1, mirror, DP-2"];
-      "$menu" = "nc -U /run/user/1000/walker/walker.sock";
+      "$menu" = "hyprlauncher";
       "$terminal" = "ghostty";
       "$screenshot" = "grimblast --freeze copy area";
       workspace = "name:1, monitor:DP-2";

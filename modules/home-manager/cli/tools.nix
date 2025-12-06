@@ -17,6 +17,7 @@ in {
   home.sessionVariables = {
     EDITOR = "nvim";
     NH_SEARCH_PLATFORM = "true";
+    OPENCODE_ENABLE_EXA = "1";
   };
   home.packages = with pkgs;
     [
@@ -39,9 +40,10 @@ in {
       tokei
       typos
       gh
+      ffmpeg-full
+      dysk
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
-      dysk
       nix-alien
     ]);
 

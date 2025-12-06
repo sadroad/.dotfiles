@@ -14,7 +14,6 @@
     ./desktop
 
     inputs.nvf.homeManagerModules.default
-    inputs.walker.homeManagerModules.default
   ];
 
   home.stateVersion = "25.11";

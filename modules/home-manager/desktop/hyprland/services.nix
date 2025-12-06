@@ -22,6 +22,9 @@
         ];
       };
     };
+    hyprlauncher = {
+      enable = true;
+    };
     hyprpaper = {
       enable = true;
       settings = let
@@ -75,9 +78,11 @@
           bezier = "easeOutQuint";
         };
       };
-      background = [
+      background = let
+        wallpaper = pkgs.copyPathToStore ../../../../assets/1.jpg;
+      in [
         {
-          path = "screenshot";
+          path = "${wallpaper}";
           blur_passes = 3;
           blur_size = 8;
         }
