@@ -4,10 +4,15 @@
   lib,
   username,
   userDir,
+  secretsAvailable,
   ...
 }: {
   nix.settings = {
     accept-flake-config = true;
+  };
+
+  determinate-nix.customSettings = lib.mkIf secretsAvailable {
+    access-tokens = "!include ${config.age.secrets."github_oauth".path}";
   };
 
   system.primaryUser = username;

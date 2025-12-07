@@ -48,7 +48,4 @@
     home-manager.enable = true;
   };
 
-  nix.settings = lib.mkIf secretsAvailable {
-    access-tokens = "!include ${osConfig.age.secrets."github_oauth".path}";
-  };
 }

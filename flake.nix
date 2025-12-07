@@ -81,8 +81,6 @@
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [(import ./overlays/default.nix inputs)];
             nix.enable = false;
-            determinate-nix.customSettings = {
-            };
           }
           inputs.determinate.darwinModules.default
           inputs.nix-index-database.darwinModules.nix-index
@@ -166,7 +164,7 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
       inputs.nixpkgs.follows = "nixpkgs";
-      #inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
+      inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
       inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -1,11 +1,16 @@
 {
   config,
   pkgs,
+  lib,
   username,
   userDir,
+  secretsAvailable,
   ...
 }: {
-  nix.settings.accept-flake-config = true;
+  nix.settings = {
+    accept-flake-config = true;
+    access-tokens = lib.mkIf secretsAvailable "!include ${config.age.secrets."github_oauth".path}";
+  };
 
   users.users.${username} = {
     isNormalUser = true;
