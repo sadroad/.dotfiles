@@ -142,7 +142,7 @@
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
-      url = "github:hyprwm/Hyprland";
+      url = "github:hyprwm/Hyprland/v0.52.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     determinate = {
@@ -200,7 +200,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode";
+      url = "github:sst/opencode/v1.0.137";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

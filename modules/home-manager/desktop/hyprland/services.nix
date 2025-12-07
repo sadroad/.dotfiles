@@ -50,11 +50,6 @@
             timeout = 300;
             on-timeout = "loginctl lock-session";
           }
-          {
-            timeout = 330;
-            on-timeout = "hyprctl dispatch dpms off";
-            on-resume = "hyprctl dispatch dpms on";
-          }
         ];
       };
     };
@@ -79,7 +74,7 @@
         };
       };
       background = let
-        wallpaper = pkgs.copyPathToStore ../../../../assets/1.jpg;
+        wallpaper = pkgs.copyPathToStore ../../../../assets/change.jpg;
       in [
         {
           path = "${wallpaper}";

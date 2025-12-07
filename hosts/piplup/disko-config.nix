@@ -20,7 +20,7 @@
             };
             root = {
               name = "NixOS_Root";
-              size = "250G";
+              size = "500G";
               content = {
                 type = "filesystem";
                 format = "ext4";
