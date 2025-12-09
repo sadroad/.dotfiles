@@ -11,11 +11,12 @@
     alejandra
   ];
   programs.zed-editor = {
-    extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml" "comment" "haskell"];
+    extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml" "comment" "haskell" "typst"];
     enable = true;
     userSettings = {
       agent_servers = {
         OpenCode = {
+          type = "custom";
           command = "opencode";
           args = ["acp"];
         };

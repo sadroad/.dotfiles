@@ -3,7 +3,11 @@
   lib,
   config,
   ...
-}: {
+}: let
+  manpager = pkgs.writeShellScriptBin "manpager" ''
+    awk '{ gsub(/\x1B\[[0-9;]*m/, "", $0); gsub(/.\x08/, "", $0); print }' | ${pkgs.bat}/bin/bat -p -lman
+  '';
+in {
   home.shell.enableNushellIntegration = true;
 
   programs = {
@@ -88,7 +92,7 @@
 
   home.sessionVariables = {
     PAGER = "delta";
-    MANPAGER = ''sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman' '';
+    MANPAGER = "${manpager}/bin/manpager";
     pure_enable_nixdevshell = "true";
   };
 }

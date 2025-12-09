@@ -147,7 +147,7 @@
     };
     determinate = {
       url = "https://flakehub.com/f/DeterminateSystems/determinate/3.13.2";
-      #inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic = {
@@ -200,7 +200,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.137";
+      url = "github:sst/opencode/v1.0.138";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

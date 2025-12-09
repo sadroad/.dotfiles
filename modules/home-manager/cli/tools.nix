@@ -42,6 +42,8 @@ in {
       gh
       ffmpeg-full
       dysk
+      typst
+      typst-live
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       nix-alien

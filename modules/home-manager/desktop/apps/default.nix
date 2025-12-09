@@ -122,6 +122,7 @@
         (subtypes "x-scheme-handler" "helium-browser.desktop" ["http" "https" "webcal" "about" "unknown"])
         (subtypes "text" "helium-browser.desktop" ["html" "xml"])
         (subtypes "application" "helium-browser.desktop" ["x-extension-htm" "x-extension-html" "x-extension-shtml" "xhtml+xml"])
+        (subtypes "application" "org.pwmt.zathura.desktop" ["pdf" "postscript"])
       ]);
   };
 

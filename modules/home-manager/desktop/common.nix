@@ -32,6 +32,8 @@ in {
       noto-fonts-cjk-sans
       noto-fonts-color-emoji
       font-awesome
+      corefonts
+      vista-fonts
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
       prismlauncher
@@ -75,5 +77,9 @@ in {
       name = "Adwaita";
       package = pkgs.adwaita-icon-theme;
     };
+  };
+
+  programs.zathura = {
+    enable = true;
   };
 }
