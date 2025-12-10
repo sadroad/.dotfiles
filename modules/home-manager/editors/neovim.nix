@@ -158,12 +158,7 @@
             format.type = ["ruff"];
             lsp.servers = ["basedpyright"];
           };
-          markdown = {
-            enable = true;
-            extensions = {
-              markview-nvim.enable = true;
-            };
-          };
+          markdown.enable = true;
           yaml.enable = true;
           typst = {
             enable = true;

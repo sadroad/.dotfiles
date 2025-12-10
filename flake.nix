@@ -180,6 +180,7 @@
     nvf = {
       url = "github:notashelf/nvf/v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.ndg.inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty = {
       url = "github:ghostty-org/ghostty/v1.2.3";
@@ -200,7 +201,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.138";
+      url = "github:sst/opencode/v1.0.150";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
