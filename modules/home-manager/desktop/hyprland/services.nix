@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  secretsAvailable,
-  ...
-}: {
+{pkgs, ...}: {
   services = {
     hyprsunset = {
       enable = true;

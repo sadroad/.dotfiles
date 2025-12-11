@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  secretsAvailable,
-  ...
-}: {
+_: {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.variables = ["--all"];

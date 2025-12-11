@@ -1,10 +1,7 @@
 {
   pkgs,
-  lib,
   username,
   userDir,
-  osConfig,
-  secretsAvailable,
   ...
 }: {
   xdg.configFile."nixpkgs/config.nix".text = ''

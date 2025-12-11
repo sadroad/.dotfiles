@@ -1,9 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  ...
-}: let
+_: let
   gitName = "Alex Villablanca";
   gitEmail = "alex@villablanca.tech";
   gitSigningKey = "2B826E3C035C8BB5";

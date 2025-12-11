@@ -1,8 +1,6 @@
 {
   pkgs,
   lib,
-  secretsAvailable,
-  inputs,
   username,
   ...
 }: {

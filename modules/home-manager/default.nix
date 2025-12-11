@@ -1,11 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  username,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     ./system
     ./cli

@@ -1,22 +1,16 @@
 {
   inputs,
-  config,
   hostname,
-  lib,
   ...
 }: {
-  imports =
-    [
-      ./configuration.nix
-      ./secrets.nix
+  imports = [
+    ./configuration.nix
+    ./secrets.nix
 
-      ../../modules/darwin/core.nix
-    ]
-    ++ (
-      lib.optionals (inputs ? mac-app-util) [
-        inputs.mac-app-util.darwinModules.default
-      ]
-    );
+    ../../modules/darwin/core.nix
+
+    inputs.mac-app-util.darwinModules.default
+  ];
 
   nix.settings = {
     experimental-features = ["nix-command" "flakes" "external-builders"];

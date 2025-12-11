@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+_: {
   wayland.windowManager.hyprland.settings = {
     bind =
       [

@@ -1,35 +1,21 @@
 {
   inputs,
   hostname,
-  pkgs,
-  lib,
   ...
 }: {
-  imports =
-    [
-      ./configuration.nix
-      ./secrets.nix
+  imports = [
+    ./configuration.nix
+    ./secrets.nix
+    ./disko-config.nix
 
-      ../../modules/nixos/core.nix
-      ../../modules/nixos/graphical.nix
-    ]
-    ++ (
-      lib.optionals (inputs ? nixos-facter-modules) [
-        inputs.nixos-facter-modules.nixosModules.facter
-        {config.facter.reportPath = ./facter.json;}
-      ]
-    )
-    ++ (
-      lib.optionals (inputs ? disko) [
-        inputs.disko.nixosModules.disko
-        ./disko-config.nix
-      ]
-    )
-    ++ (
-      lib.optionals (inputs ? nvf) [
-        inputs.nvf.nixosModules.default
-      ]
-    );
+    ../../modules/nixos/core.nix
+    ../../modules/nixos/graphical.nix
+
+    inputs.nixos-facter-modules.nixosModules.facter
+    {config.facter.reportPath = ./facter.json;}
+    inputs.disko.nixosModules.disko
+    inputs.nvf.nixosModules.default
+  ];
 
   networking.hostName = hostname;
 
@@ -37,6 +23,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
+    # not building currently
     #kernelPackages = pkgs.linuxPackages_cachyos-lto;
   };
 

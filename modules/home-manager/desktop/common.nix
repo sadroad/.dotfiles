@@ -2,13 +2,10 @@
   pkgs,
   lib,
   inputs,
-  config,
-  username,
-  hostname,
   ...
 }: let
   ghostty =
-    if inputs ? ghostty && pkgs.stdenv.isLinux
+    if pkgs.stdenv.isLinux
     then inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
     else pkgs.ghostty-bin;
 in {

@@ -1,11 +1,4 @@
-{
-  pkgs,
-  lib,
-  config,
-  inputs,
-  home-manager,
-  ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     nixd
     alejandra

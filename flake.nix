@@ -163,9 +163,11 @@
     };
     mac-app-util = {
       url = "github:hraban/mac-app-util";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
-      inputs.treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
+        treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
+      };
     };
 
     # shared

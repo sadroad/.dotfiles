@@ -3,7 +3,6 @@
   pkgs,
   lib,
   username,
-  userDir,
   secretsAvailable,
   ...
 }: {
@@ -88,7 +87,6 @@
     wget
     ntfs3g
 
-    #steam
     mangohud
   ];
 

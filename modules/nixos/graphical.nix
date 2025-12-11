@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  lib,
   username,
   inputs,
   ...
@@ -62,7 +61,6 @@
 
   users.users.${username}.extraGroups = ["audio" "video"];
 
-  # obs virtual cam
   boot = {
     kernelModules = ["v4l2loopback"];
     extraModulePackages = [config.boot.kernelPackages.v4l2loopback];

@@ -4,7 +4,6 @@
   username,
   secretsPath,
   secretsAvailable,
-  lib,
   agenix,
   ...
 }:
