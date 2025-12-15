@@ -106,6 +106,100 @@ in {
     opencode = {
       enable = true;
       package = opencode;
+      enableMcpIntegration = true;
+      agents = {
+        git-committer = ''
+          ---
+          description: Use this agent when you are asked to commit and push code changes to a git repository.
+          mode: subagent
+          ---
+
+          You commit and push to git
+
+          Commit messages should be brief since they are used to generate release notes.
+
+          Messages should say WHY the change was made and not WHAT was changed.
+        '';
+        docs = ''
+          ---
+          description: ALWAYS use this when writing docs
+          ---
+
+          You are an expert technical documentation writer
+
+          You are not verbose
+
+          The title of the page should be a word or a 2-3 word phrase
+
+          The description should be one short line, should not start with "The", should avoid repeating the title of the page, should be 5-10 words long
+
+          Chunks of text should not be more than 2 sentences long
+
+          Each section is separated by a divider of 3 dashes
+
+          The section titles are short with only the first letter of the word capitalized
+
+          The section titles are in the imperative mood
+
+          The section titles should not repeat the term used in the page title, for example, if the page title is "Models", avoid using a section title like "Add new models". This might be unavoidable in some cases, but try to avoid it.
+
+          For JS or TS code snippets remove trailing semicolons and any trailing commas that might not be needed.
+
+          If you are making a commit prefix the commit message with `docs:`
+
+        '';
+      };
+      commands = {
+        rmslop = ''
+          ---
+          description: Remove AI code slop
+          ---
+
+          Check the diff against main/master/dev, and remove all AI generated slop introduced in this branch.
+
+          This includes:
+
+          - Extra comments that a human wouldn't add or is inconsistent with the rest of the file
+          - Extra defensive checks or try/catch blocks that are abnormal for that area of the codebase (especially if called by trusted / validated codepaths)
+          - Casts to any to get around type issues
+          - Any other style that is inconsistent with the file
+          - Unnecessary emoji usage
+
+          Report at the end with only a 1-3 sentence summary of what you changed
+        '';
+        commit = ''
+          ---
+          description: git commit and push
+          model: opencode/big-pickle
+          ---
+
+          commit and push
+
+          make sure it includes a prefix like
+          docs:
+          tui:
+          core:
+          ci:
+          ignore:
+          wip:
+
+          prefer to explain WHY something was done from an end user perspective instead of WHAT was done.
+
+          do not do generic messages like "improved agent experience" be very specific about what user facing changes were made
+
+          if there are changes do a jj git fetch and then jj rebase
+          if there are conflicts DO NOT FIX THEM. notify me and I will fix them
+
+        '';
+        spellcheck = ''
+
+          ---
+          description: spellcheck all markdown file changes
+          ---
+
+          Look at all the unstaged changes to markdown (.md, .mdx) files, pull out the lines that have changed, and check for spelling and grammar errors.
+        '';
+      };
       rules = ''
         Never touch the git history or make any git modifications. If you want to make a change, ask the user first to confirm it.
 
@@ -113,6 +207,7 @@ in {
       '';
       settings = {
         layout = "stretch";
+        theme = "mercury";
       };
     };
   };

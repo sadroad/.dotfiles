@@ -129,7 +129,7 @@
   };
   inputs = {
     # core
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -203,7 +203,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.150";
+      url = "github:sst/opencode/v1.0.162";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

@@ -8,7 +8,10 @@
 }: {
   nix.settings = {
     accept-flake-config = true;
-    access-tokens = lib.mkIf secretsAvailable "!include ${config.age.secrets."github_oauth".path}";
+    eval-cores = 0;
+    experimental-features = ["nix-command" "flakes"];
+  } // lib.optionalAttrs secretsAvailable {
+    access-tokens = "!include ${config.age.secrets."github_oauth".path}";
   };
 
   users.users.${username} = {

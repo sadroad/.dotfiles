@@ -11,9 +11,27 @@
     accept-flake-config = true;
   };
 
-  determinate-nix.customSettings = lib.mkIf secretsAvailable {
-    access-tokens = "!include ${config.age.secrets."github_oauth".path}";
+    nix.settings = {
+    experimental-features = ["nix-command" "flakes" "external-builders"];
+    external-builders = [
+      {
+        systems = ["aarch64-linux" "x86_64-linux"];
+        program = "/usr/local/bin/determinate-nixd";
+        args = ["builder"];
+      }
+    ];
   };
+
+  determinate-nix.customSettings =
+    {
+      eval-cores = 0;
+      substituters = [];
+      trusted-public-keys = [];
+    }
+    // lib.optionalAttrs
+    secretsAvailable {
+      access-tokens = "!include ${config.age.secrets."github_oauth".path}";
+    };
 
   system.primaryUser = username;
   users = {

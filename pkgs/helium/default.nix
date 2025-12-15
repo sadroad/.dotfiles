@@ -6,12 +6,12 @@
   _7zz,
 }: let
   pname = "helium";
-  version = "0.7.2.1";
+  version = "0.7.5.1";
   inherit (pkgs.stdenv.hostPlatform) system;
 
   hashes = {
-    "aarch64-darwin" = "sha256-ppcz7JM6i2aNqimGrT9l+Eu41oirff0WV93wBI7PLYA=";
-    "x86_64-linux" = "sha256-PwXgpmauBN6EXoZE6HnpgrisrO5a9VzQEDv3T2OsPnc=";
+    "aarch64-darwin" = "sha256-clP9xrinrpvsiWKBI1oD4DIJSGHzoPmOqTJv2j1Pykc=";
+    "x86_64-linux" = "sha256-Rn08KobbfMh3vlM2o0PA9OhQx/syMTBKWG/eapF45eo=";
   };
 
   baseMeta = {

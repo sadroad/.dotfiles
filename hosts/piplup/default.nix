@@ -27,12 +27,7 @@
     #kernelPackages = pkgs.linuxPackages_cachyos-lto;
   };
 
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-    substituters = [];
-    trusted-public-keys = [];
-    use-xdg-base-directories = true;
-  };
+  nix.settings.use-xdg-base-directories = true;
 
   system.stateVersion = "25.11";
 }
