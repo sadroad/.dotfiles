@@ -45,7 +45,7 @@
         horizontal_padding = 8;
         text_icon_padding = 0;
         frame_width = 2;
-        frame_collor = "#FFFFFF";
+        frame_color = "#FFFFFF";
         idle_threshold = 0;
         font = "Berkeley Mono Variable";
         line_height = 0;

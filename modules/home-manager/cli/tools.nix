@@ -5,7 +5,7 @@
   userDir,
   ...
 }: let
-  saveClipbordToFileYaziPlugin = pkgs.fetchFromGitHub {
+  saveClipboardToFileYaziPlugin = pkgs.fetchFromGitHub {
     owner = "boydaihungst";
     repo = "save-clipboard-to-file.yazi";
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
@@ -92,7 +92,7 @@ in {
     yazi = {
       enable = true;
       plugins = {
-        save-clipboard-to-file = saveClipbordToFileYaziPlugin;
+        save-clipboard-to-file = saveClipboardToFileYaziPlugin;
       };
       keymap = {
         mgr.prepend_keymap = [
@@ -161,7 +161,7 @@ in {
 
           - Extra comments that a human wouldn't add or is inconsistent with the rest of the file
           - Extra defensive checks or try/catch blocks that are abnormal for that area of the codebase (especially if called by trusted / validated codepaths)
-          - Casts to any to get around type issues
+          - Casts to any to bypass type issues
           - Any other style that is inconsistent with the file
           - Unnecessary emoji usage
 

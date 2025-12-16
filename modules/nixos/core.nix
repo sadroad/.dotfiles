@@ -6,13 +6,15 @@
   secretsAvailable,
   ...
 }: {
-  nix.settings = {
-    accept-flake-config = true;
-    eval-cores = 0;
-    experimental-features = ["nix-command" "flakes"];
-  } // lib.optionalAttrs secretsAvailable {
-    access-tokens = "!include ${config.age.secrets."github_oauth".path}";
-  };
+  nix.settings =
+    {
+      accept-flake-config = true;
+      eval-cores = 0;
+      experimental-features = ["nix-command" "flakes"];
+    }
+    // lib.optionalAttrs secretsAvailable {
+      access-tokens = "!include ${config.age.secrets."github_oauth".path}";
+    };
 
   users.users.${username} = {
     isNormalUser = true;

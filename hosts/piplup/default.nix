@@ -23,7 +23,7 @@
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = ["ntfs"];
-    # not building currently
+
     #kernelPackages = pkgs.linuxPackages_cachyos-lto;
   };
 

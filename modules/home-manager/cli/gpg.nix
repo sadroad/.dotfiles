@@ -19,7 +19,7 @@ in {
       if pkgs.stdenv.isDarwin
       then pkgs.pinentry_mac
       else pkgs.pinentry-tty;
-    defaultCacheTtl = 4 * 60 * 60; # 4 hours
+    defaultCacheTtl = 4 * 60 * 60;
   };
 
   home.activation.importGpgKey = lib.hm.dag.entryAfter ["writeBoundary"] ''

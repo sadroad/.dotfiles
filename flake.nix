@@ -156,7 +156,7 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    #darwin
+    # darwin
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -203,7 +203,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.162";
+      url = "github:sst/opencode/v1.0.164";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
