@@ -19,6 +19,8 @@ _: {
         "$mainMod, S, togglespecialworkspace, magic"
         "$mainMod SHIFT, S, movetoworkspace, special:magic"
         "$mainMod, F1, exec, ${./kvm-monitor-toggle.nu}"
+
+        "CTRL, space, pass, class:^(Handy)$"
       ]
       ++ (
         builtins.concatLists (builtins.genList (

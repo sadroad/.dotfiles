@@ -55,7 +55,12 @@ in {
       enable = true;
       package = pkgs.asciinema_3;
     };
-    zellij.enable = true;
+    zellij = {
+      enable = true;
+      settings = {
+        default_shell = "nu";
+      };
+    };
     ripgrep.enable = true;
     fd.enable = true;
     nh = {
