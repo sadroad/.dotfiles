@@ -13,42 +13,44 @@ in {
   programs = {
     nushell = {
       enable = true;
-      extraConfig = ''
-        def mkcd [dir_name?: string] {
-            if $dir_name == null {
-                print "Usage: mkcd <directory_name>"
-                return 1
-            }
+      extraConfig =
+        ''
+          def mkcd [dir_name?: string] {
+              if $dir_name == null {
+                  print "Usage: mkcd <directory_name>"
+                  return 1
+              }
 
-            mkdir $dir_name
+              mkdir $dir_name
 
-            if $env.LAST_EXIT_CODE == 0 {
-                cd $dir_name
-            } else {
-                print $"Error: Could not create directory '($dir_name)'."
-                return $env.LAST_EXIT_CODE
-            }
-        }
-      '' + lib.optionalString pkgs.stdenv.isDarwin ''
-        def dns-down [] {
-            sudo -v
-            tailscale down
-            sudo networksetup -setdnsservers "Wi-Fi" empty
-            sudo killall -HUP mDNSResponder
-        }
+              if $env.LAST_EXIT_CODE == 0 {
+                  cd $dir_name
+              } else {
+                  print $"Error: Could not create directory '($dir_name)'."
+                  return $env.LAST_EXIT_CODE
+              }
+          }
+        ''
+        + lib.optionalString pkgs.stdenv.isDarwin ''
+          def dns-down [] {
+              sudo -v
+              tailscale down
+              sudo networksetup -setdnsservers "Wi-Fi" empty
+              sudo killall -HUP mDNSResponder
+          }
 
-        def dns-up [] {
-            sudo -v
-            tailscale up
-            sudo networksetup -setdnsservers "Wi-Fi" 1.1.1.1 1.0.0.1 9.9.9.9
-            sudo killall -HUP mDNSResponder
-        }
+          def dns-up [] {
+              sudo -v
+              tailscale up
+              sudo networksetup -setdnsservers "Wi-Fi" 1.1.1.1 1.0.0.1 9.9.9.9
+              sudo killall -HUP mDNSResponder
+          }
 
-        def dns-reset [] {
-            dns-down
-            dns-up
-        }
-      '';
+          def dns-reset [] {
+              dns-down
+              dns-up
+          }
+        '';
 
       settings = {
         show_banner = false;
@@ -67,24 +69,22 @@ in {
             ]
           '');
 
-      shellAliases =
-        {
-          l = "ls -lat";
-          cat = "bat";
-          grep = "rg";
-          tree = "${pkgs.eza}/bin/eza --tree";
-          top = "btop";
-          xxd = "hexyl";
-          cd = "z";
-          dig = "doggo";
-          diff = "delta";
-          gzip = "pigz";
-          "rec" = "asciinema rec -c nu";
-          zed = "zeditor";
-          pkg-build = "nix-build -E \"with import <nixpkgs> {}; callPackage ./package.nix {}\"";
-          type = "type -a";
-        }
-;
+      shellAliases = {
+        l = "ls -lat";
+        cat = "bat";
+        grep = "rg";
+        tree = "${pkgs.eza}/bin/eza --tree";
+        top = "btop";
+        xxd = "hexyl";
+        cd = "z";
+        dig = "doggo";
+        diff = "delta";
+        gzip = "pigz";
+        "rec" = "asciinema rec -c nu";
+        zed = "zeditor";
+        pkg-build = "nix-build -E \"with import <nixpkgs> {}; callPackage ./package.nix {}\"";
+        type = "type -a";
+      };
     };
 
     atuin = {

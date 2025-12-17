@@ -11,7 +11,7 @@
     accept-flake-config = true;
   };
 
-    nix.settings = {
+  nix.settings = {
     experimental-features = ["nix-command" "flakes" "external-builders"];
     external-builders = [
       {
@@ -25,8 +25,6 @@
   determinate-nix.customSettings =
     {
       eval-cores = 0;
-      substituters = [];
-      trusted-public-keys = [];
     }
     // lib.optionalAttrs
     secretsAvailable {

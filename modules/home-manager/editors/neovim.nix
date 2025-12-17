@@ -146,7 +146,6 @@
           };
           assembly.enable = true;
           nu.enable = true;
-          haskell.enable = true;
           python = {
             enable = true;
             format.type = ["ruff"];
@@ -158,7 +157,9 @@
             enable = true;
             format.type = ["typstyle"];
           };
+          haskell.enable = true;
           sql.enable = true;
+          zig.enable = true;
         };
       };
     };

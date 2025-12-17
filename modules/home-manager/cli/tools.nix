@@ -113,18 +113,6 @@ in {
       package = opencode;
       enableMcpIntegration = true;
       agents = {
-        git-committer = ''
-          ---
-          description: Use this agent when you are asked to commit and push code changes to a git repository.
-          mode: subagent
-          ---
-
-          You commit and push to git
-
-          Commit messages should be brief since they are used to generate release notes.
-
-          Messages should say WHY the change was made and not WHAT was changed.
-        '';
         docs = ''
           ---
           description: ALWAYS use this when writing docs
@@ -171,30 +159,6 @@ in {
           - Unnecessary emoji usage
 
           Report at the end with only a 1-3 sentence summary of what you changed
-        '';
-        commit = ''
-          ---
-          description: git commit and push
-          model: opencode/big-pickle
-          ---
-
-          commit and push
-
-          make sure it includes a prefix like
-          docs:
-          tui:
-          core:
-          ci:
-          ignore:
-          wip:
-
-          prefer to explain WHY something was done from an end user perspective instead of WHAT was done.
-
-          do not do generic messages like "improved agent experience" be very specific about what user facing changes were made
-
-          if there are changes do a jj git fetch and then jj rebase
-          if there are conflicts DO NOT FIX THEM. notify me and I will fix them
-
         '';
         spellcheck = ''
 

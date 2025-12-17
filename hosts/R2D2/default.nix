@@ -12,8 +12,6 @@
     inputs.mac-app-util.darwinModules.default
   ];
 
-  
-
   networking.hostName = hostname;
 
   system.stateVersion = 6;

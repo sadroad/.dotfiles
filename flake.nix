@@ -129,7 +129,7 @@
   };
   inputs = {
     # core
-    nixpkgs.url = "https://flakehub.com/f/NixOS/nixpkgs/0.1.*.tar.gz";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -146,7 +146,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     determinate = {
-      url = "https://flakehub.com/f/DeterminateSystems/determinate/3.13.2";
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/3.15";
       inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -180,7 +180,7 @@
       flake = false;
     };
     nvf = {
-      url = "github:notashelf/nvf/v0.8";
+      url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.ndg.inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -203,7 +203,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.164";
+      url = "github:sst/opencode/v1.0.185";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

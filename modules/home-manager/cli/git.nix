@@ -50,6 +50,9 @@ in {
         format = "openpgp";
       };
     };
+    jjui = {
+      enable = true;
+    };
     jujutsu = {
       enable = true;
       settings = {

@@ -4,6 +4,7 @@
     ./cli
     ./editors/neovim.nix
     ./editors/zed.nix
+    ./editors/helix.nix
     ./desktop
 
     inputs.nvf.homeManagerModules.default

@@ -44,5 +44,4 @@
     };
     home-manager.enable = true;
   };
-
 }
