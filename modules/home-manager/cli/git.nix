@@ -74,6 +74,9 @@ in {
           key = gitSigningKey;
           backend = "gpg";
         };
+        snapshot = {
+          auto-track = "~ glob:'**/AGENTS.md'";
+        };
       };
     };
   };

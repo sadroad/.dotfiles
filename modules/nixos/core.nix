@@ -51,6 +51,7 @@
       };
       openFirewall = true;
     };
+    fwupd.enable = true;
   };
 
   networking = {

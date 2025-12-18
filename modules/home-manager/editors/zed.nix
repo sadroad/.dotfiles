@@ -6,6 +6,7 @@
   programs.zed-editor = {
     extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml" "comment" "haskell" "typst"];
     enable = true;
+    installRemoteServer = true;
     userSettings = {
       agent_servers = {
         OpenCode = {
