@@ -203,7 +203,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.185";
+      url = "github:sst/opencode/v1.0.191";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
