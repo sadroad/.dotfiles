@@ -38,7 +38,6 @@
             nixpkgs.overlays = [(import ./overlays/default.nix inputs)];
           }
           inputs.home-manager.nixosModules.home-manager
-          inputs.determinate.nixosModules.default
           inputs.nix-index-database.nixosModules.nix-index
           inputs.chaotic.nixosModules.default
           ({
@@ -80,9 +79,8 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [(import ./overlays/default.nix inputs)];
-            nix.enable = false;
+            nix.linux-builder.enable = true;
           }
-          inputs.determinate.darwinModules.default
           inputs.nix-index-database.darwinModules.nix-index
           inputs.home-manager.darwinModules.home-manager
           ({
@@ -129,6 +127,7 @@
   };
   inputs = {
     # core
+    nix.url = "github:DeterminateSystems/nix-src";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -143,11 +142,6 @@
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.52.2";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    determinate = {
-      url = "https://flakehub.com/f/DeterminateSystems/determinate/3.15";
-      inputs.nix.inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic = {
@@ -203,7 +197,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.191";
+      url = "github:sst/opencode/v1.0.202";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

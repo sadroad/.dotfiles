@@ -160,14 +160,6 @@ in {
 
           Report at the end with only a 1-3 sentence summary of what you changed
         '';
-        spellcheck = ''
-
-          ---
-          description: spellcheck all markdown file changes
-          ---
-
-          Look at all the unstaged changes to markdown (.md, .mdx) files, pull out the lines that have changed, and check for spelling and grammar errors.
-        '';
       };
       rules = ''
         Never touch the git history or make any git modifications. If you want to make a change, ask the user first to confirm it.

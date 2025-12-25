@@ -2,34 +2,63 @@
   config,
   pkgs,
   lib,
+  inputs,
   username,
   userDir,
   secretsAvailable,
   ...
-}: {
-  nix.settings = {
-    accept-flake-config = true;
-  };
+}: let
+  inherit (lib) concatStringsSep filterAttrs isType mapAttrs mapAttrsToList;
+  registryMap = filterAttrs (_: v: isType v "flake") inputs;
+in {
+  nix.package = inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes" "external-builders"];
-    external-builders = [
-      {
-        systems = ["aarch64-linux" "x86_64-linux"];
-        program = "/usr/local/bin/determinate-nixd";
-        args = ["builder"];
-      }
-    ];
-  };
-
-  determinate-nix.customSettings =
+  nix.settings =
     {
-      eval-cores = 0;
+      accept-flake-config = true;
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["@admin"];
+      http-connections = 50;
+      lazy-trees = true;
+      builders-use-substitutes = true;
+      flake-registry = "";
+      show-trace = true;
+      warn-dirty = false;
     }
-    // lib.optionalAttrs
-    secretsAvailable {
+    // lib.optionalAttrs secretsAvailable {
       access-tokens = "!include ${config.age.secrets."github_oauth".path}";
     };
+
+  nix.optimise.automatic = true;
+
+  nix.nixPath = concatStringsSep ":" (mapAttrsToList (name: value: "${name}=${value}") registryMap);
+
+  nix.registry = mapAttrs (_: flake: {inherit flake;}) (registryMap // {default = inputs.nixpkgs;});
+
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 3d";
+  };
+
+  nix.linux-builder = {
+    enable = true;
+    ephemeral = true;
+    maxJobs = 4;
+    systems = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+    config = {lib, ...}: {
+      boot.binfmt.emulatedSystems = ["x86_64-linux"];
+      virtualisation = {
+        darwin-builder = {
+          diskSize = 40 * 1024;
+          memorySize = lib.mkForce (16 * 1024);
+        };
+        cores = 6;
+      };
+    };
+  };
 
   system.primaryUser = username;
   users = {

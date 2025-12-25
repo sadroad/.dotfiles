@@ -2,19 +2,44 @@
   config,
   pkgs,
   lib,
+  inputs,
   username,
   secretsAvailable,
   ...
-}: {
+}: let
+  inherit (lib) concatStringsSep filterAttrs isType mapAttrs mapAttrsToList;
+  registryMap = filterAttrs (_: v: isType v "flake") inputs;
+in {
+  nix.package = inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
+
   nix.settings =
     {
       accept-flake-config = true;
       eval-cores = 0;
       experimental-features = ["nix-command" "flakes"];
+      http-connections = 50;
+      lazy-trees = true;
+      builders-use-substitutes = true;
+      flake-registry = "";
+      show-trace = true;
+      warn-dirty = false;
     }
     // lib.optionalAttrs secretsAvailable {
       access-tokens = "!include ${config.age.secrets."github_oauth".path}";
     };
+
+  nix.optimise.automatic = true;
+
+  nix.nixPath = mapAttrsToList (name: value: "${name}=${value}") registryMap;
+
+  nix.registry = mapAttrs (_: flake: { inherit flake; }) (registryMap // { default = inputs.nixpkgs; });
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 3d";
+    persistent = true;
+  };
 
   users.users.${username} = {
     isNormalUser = true;
