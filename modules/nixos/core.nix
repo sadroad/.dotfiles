@@ -32,7 +32,7 @@ in {
 
   nix.nixPath = mapAttrsToList (name: value: "${name}=${value}") registryMap;
 
-  nix.registry = mapAttrs (_: flake: { inherit flake; }) (registryMap // { default = inputs.nixpkgs; });
+  nix.registry = mapAttrs (_: flake: {inherit flake;}) (registryMap // {default = inputs.nixpkgs;});
 
   nix.gc = {
     automatic = true;

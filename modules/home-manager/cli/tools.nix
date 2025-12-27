@@ -168,7 +168,22 @@ in {
       settings = {
         layout = "stretch";
         theme = "mercury";
+        plugin = ["oh-my-opencode@v2.6.2"];
       };
     };
+  };
+  xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
+    agents = lib.listToAttrs (map (agent: {
+        name = agent;
+        value = {model = "zai-coding-plan/glm-4.7";};
+      }) [
+        "Sisyphus"
+        "librarian"
+        "oracle"
+        "frontend-ui-ux-engineer"
+        "document-writer"
+        "explore"
+        "multimodal-looker"
+      ]);
   };
 }
