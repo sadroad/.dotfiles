@@ -40,26 +40,6 @@ in {
     options = "--delete-older-than 3d";
   };
 
-  nix.linux-builder = {
-    enable = true;
-    ephemeral = true;
-    maxJobs = 4;
-    systems = [
-      "aarch64-linux"
-      "x86_64-linux"
-    ];
-    config = {lib, ...}: {
-      boot.binfmt.emulatedSystems = ["x86_64-linux"];
-      virtualisation = {
-        darwin-builder = {
-          diskSize = 40 * 1024;
-          memorySize = lib.mkForce (16 * 1024);
-        };
-        cores = 6;
-      };
-    };
-  };
-
   system.primaryUser = username;
   users = {
     knownUsers = [username];

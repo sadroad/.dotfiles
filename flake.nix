@@ -79,7 +79,10 @@
           {
             nixpkgs.config.allowUnfree = true;
             nixpkgs.overlays = [(import ./overlays/default.nix inputs)];
-            nix.linux-builder.enable = true;
+          }
+          inputs.nix-rosetta-builder.darwinModules.default
+          {
+            nix-rosetta-builder.onDemand = true;
           }
           inputs.nix-index-database.darwinModules.nix-index
           inputs.home-manager.darwinModules.home-manager
@@ -198,6 +201,10 @@
     };
     opencode = {
       url = "github:sst/opencode/v1.0.202";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-rosetta-builder = {
+      url = "github:cpick/nix-rosetta-builder/ebb7162a975074fb570a2c3ac02bc543ff2e9df4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

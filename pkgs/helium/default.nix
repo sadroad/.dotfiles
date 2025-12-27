@@ -11,7 +11,7 @@
 
   hashes = {
     "aarch64-darwin" = "sha256-iFE2OigeG+sDfGKmuqqb6LKUyxhZ2Jcti+jLzeHMLYM=";
-    "x86_64-linux" = "";
+    "x86_64-linux" = "sha256-qEHUFzCwsCyFNLFCC62wo2x1lr/boAI/UDsaaNP1vrc=";
   };
 
   baseMeta = {
