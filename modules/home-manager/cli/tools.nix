@@ -15,7 +15,6 @@
   opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in {
   home.sessionVariables = {
-    EDITOR = "nvim";
     NH_SEARCH_PLATFORM = "true";
     OPENCODE_ENABLE_EXA = "1";
   };

@@ -121,7 +121,7 @@ in {
     mangohud
   ];
 
-  environment.variables.EDITOR = "nvim";
+  environment.variables.EDITOR = "hx";
 
   users.groups.libvirtd.members = [username];
 }

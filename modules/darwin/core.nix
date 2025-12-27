@@ -63,6 +63,8 @@ in {
     };
   };
 
+  environment.variables.EDITOR = "hx";
+
   environment.shellInit = ''
     ulimit -n 524288
   '';
