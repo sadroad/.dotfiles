@@ -200,7 +200,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.206";
+      url = "github:sst/opencode/v1.0.209";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-rosetta-builder = {
