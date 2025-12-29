@@ -147,7 +147,7 @@ in {
           description: Remove AI code slop
           ---
 
-          Check the diff against main/master/dev, and remove all AI generated slop introduced in this branch.
+          Check the diff using `jj diff`, and remove all AI generated slop introduced in this branch.
 
           This includes:
 
@@ -168,7 +168,7 @@ in {
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = ["oh-my-opencode@v2.6.2"];
+        plugin = ["oh-my-opencode@v2.7.1"];
       };
     };
   };
