@@ -171,7 +171,7 @@ in {
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = ["oh-my-opencode@v2.12.2"];
+        plugin = ["oh-my-opencode@v2.13.0"];
       };
     };
   };

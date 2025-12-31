@@ -56,11 +56,10 @@ _: {
         follow_mouse = "1";
         accel_profile = "flat";
       };
-      windowrulev2 = [
-        "float,class:git-butler"
-        "float,class:org.pulseaudio.pavucontrol"
-        "suppressevent maximize, class:.*"
-        "noscreenshare, class:^(Proton Pass|proton-pass)$"
+      windowrule = [
+        "match:class org.pulseaudio.pavucontrol, float on"
+        "match:class .*, suppress_event maximize"
+        "match:class ^(Proton Pass|proton-pass)$, no_screen_share on"
       ];
     };
   };

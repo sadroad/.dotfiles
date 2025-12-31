@@ -131,7 +131,8 @@
   inputs = {
     # core
     nix.url = "github:DeterminateSystems/nix-src";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -194,11 +195,11 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:anomalyco/opencode/v1.1.1";
+      url = "github:anomalyco/opencode/v1.1.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-rosetta-builder = {
-       url = "github:cpick/nix-rosetta-builder/ebb7162a975074fb570a2c3ac02bc543ff2e9df4";
+      url = "github:cpick/nix-rosetta-builder/ebb7162a975074fb570a2c3ac02bc543ff2e9df4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

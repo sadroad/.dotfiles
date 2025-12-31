@@ -66,7 +66,7 @@ in {
     tailscale = {
       enable = true;
       useRoutingFeatures = "client";
-      extraUpFlags = ["--ssh"];
+      extraSetFlags = ["--ssh"];
     };
     resolved.enable = true;
     openssh = {

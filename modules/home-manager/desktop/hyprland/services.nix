@@ -27,8 +27,16 @@
         wallpaperChange = pkgs.copyPathToStore ../../../../assets/change.jpg;
       in {
         ipc = "on";
-        preload = [wallpaper1 wallpaperChange];
-        wallpaper = ["DP-2, ${wallpaperChange}" "DP-3, ${wallpaper1}"];
+        wallpaper = [
+          {
+            monitor = "DP-2";
+            path = wallpaperChange;
+          }
+          {
+            monitor = "DP-3";
+            path = wallpaper1;
+          }
+        ];
       };
     };
     hyprpolkitagent.enable = true;

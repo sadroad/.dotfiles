@@ -15,7 +15,6 @@
           "${pkgs.coreutils}/bin/cp" \
           "${pkgs.coreutils}/bin/rm" \
           "${pkgs.coreutils}/bin/chmod" \
-          "${pkgs.findutils}/bin/find" \
           "${pkgs.coreutils}/bin/mktemp" \
           "${pkgs.fontconfig.bin}/bin/fc-cache" \
       '');
