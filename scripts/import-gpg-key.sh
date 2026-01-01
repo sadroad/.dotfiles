@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
 set -e
 
@@ -11,6 +11,7 @@ fi
 
 if [ ! -f "$DECRYPTED_KEY_PATH" ]; then
   echo "Error: Key file not found at '$DECRYPTED_KEY_PATH'" >&2
+  exit 1
 fi
 
 echo "Processing GPG key from $DECRYPTED_KEY_PATH"
@@ -36,6 +37,4 @@ gpg --import-ownertrust "$TRUST_FILE"
 rm -f "$TRUST_FILE"
 
 echo "GPG key import and trust setting complete."
-
-exit 0
 

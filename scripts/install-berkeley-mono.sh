@@ -2,9 +2,9 @@
 
 set -e
 
-if [ "$#" -ne 8 ]; then
-    echo "Error: Expected 8 command path arguments, but received $#." >&2
-    echo "Usage: $0 <unzip_path> <mkdir_path> <cp_path> <rm_path> <chmod_path> <find_path_ignored> <mktemp_path> <fc_cache_path>" >&2
+if [ "$#" -ne 7 ]; then
+    echo "Error: Expected 7 command path arguments, but received $#." >&2
+    echo "Usage: $0 <unzip_path> <mkdir_path> <cp_path> <rm_path> <chmod_path> <mktemp_path> <fc_cache_path>" >&2
     exit 1
 fi
 
@@ -13,9 +13,8 @@ mkdir_cmd="$2"
 cp_cmd="$3"
 rm_cmd="$4"
 chmod_cmd="$5"
-# find_cmd="$6" # We won't use this argument
-mktemp_cmd="$7"
-fc_cache_cmd="$8"
+mktemp_cmd="$6"
+fc_cache_cmd="$7"
 
 run_cmd() {
     local cmd_path="$1"
@@ -56,7 +55,7 @@ else
     if [ -z "$temp_unzip_dir" ]; then
         echo "Activation Script: Failed to create temporary directory" >&2; exit 1
     fi
-    trap '$rm_cmd -rf "$temp_unzip_dir"' EXIT
+    trap "$rm_cmd -rf '$temp_unzip_dir'" EXIT
 fi
 
 echo "Unzipping to temporary directory: $temp_unzip_dir"
@@ -77,7 +76,7 @@ if [ "$DRY_RUN" != "1" ]; then
     otf_files=("$expected_otf_source_dir"/*.otf)
     shopt -u nullglob
 
-    if [ ''${#otf_files[@]} -eq 0 ]; then
+    if [ ${#otf_files[@]} -eq 0 ]; then
         echo "Error: No .otf files found in '$expected_otf_source_dir'." >&2
         exit 1
     fi

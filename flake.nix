@@ -144,7 +144,7 @@
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
-      url = "github:hyprwm/Hyprland/v0.52.2";
+      url = "github:hyprwm/Hyprland/v0.53.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic = {
@@ -176,11 +176,7 @@
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
       flake = false;
     };
-    nvf = {
-      url = "github:notashelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.ndg.inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nvf.url = "github:notashelf/nvf/v0.8";
     ghostty = {
       url = "github:ghostty-org/ghostty/v1.2.3";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -200,7 +196,8 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:sst/opencode/v1.0.218";
+      url = "github:anomalyco/opencode";
+      # url = "github:anomalyco/opencode/v1.0.224";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-rosetta-builder = {

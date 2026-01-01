@@ -45,6 +45,8 @@ in {
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       nix-alien
+      gf
+      rr
     ]);
 
   programs = {
@@ -168,7 +170,7 @@ in {
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = ["oh-my-opencode@v2.9.0"];
+        plugin = ["oh-my-opencode@v2.12.2"];
       };
     };
   };

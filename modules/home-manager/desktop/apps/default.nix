@@ -20,6 +20,7 @@
     winboat
     protonup-ng
     hyprpicker
+    calibre
   ];
 
   services.dunst = {
