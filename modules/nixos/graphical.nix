@@ -39,12 +39,13 @@
       nvidiaSettings = true;
       modesetting.enable = true;
       powerManagement = {
-        enable = true;
+        enable = false;
         finegrained = false;
       };
 
       package = config.boot.kernelPackages.nvidiaPackages.stable;
     };
+
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -66,8 +67,11 @@
     extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
     extraModprobeConfig = ''
       options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
-
+      options nvidia_modeset vblank_sem_control=0
     '';
+    kernelParams = [
+      "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+    ];
   };
 
   security.pam.services.hyprlock = {};

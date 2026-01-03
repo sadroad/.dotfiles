@@ -42,6 +42,7 @@ in {
       ffmpeg-full
       dysk
       typst
+      binsider
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       nix-alien

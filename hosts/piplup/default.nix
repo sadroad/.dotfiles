@@ -11,6 +11,7 @@
 
     ../../modules/nixos/core.nix
     ../../modules/nixos/graphical.nix
+    ../../modules/nixos/performance.nix
 
     inputs.nixos-facter-modules.nixosModules.facter
     {config.facter.reportPath = ./facter.json;}

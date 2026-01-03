@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   programs.nvf = {
-    enable = false;
+    enable = true;
     enableManpages = true;
     settings = {
       vim = {

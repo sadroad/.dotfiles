@@ -161,9 +161,7 @@
     mac-app-util = {
       url = "github:hraban/mac-app-util";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
         cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
-        treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
       };
     };
 
@@ -196,12 +194,11 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:anomalyco/opencode";
-      # url = "github:anomalyco/opencode/v1.0.224";
+      url = "github:anomalyco/opencode/v1.1.1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-rosetta-builder = {
-      url = "github:cpick/nix-rosetta-builder/ebb7162a975074fb570a2c3ac02bc543ff2e9df4";
+       url = "github:cpick/nix-rosetta-builder/ebb7162a975074fb570a2c3ac02bc543ff2e9df4";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
