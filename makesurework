@@ -1,0 +1,193 @@
+#### Communication
+- vesktop (Discord client)
+- spotify (Music streaming) -> spotifyd + webclient??
+- slack (Team communication) -> slacky?
+
+#### Media
+- iina (Video player for macOS) -> haruna
+
+#### Browsing
+- helium (Custom package - Private Chromium-based browser)
+
+#### Torrent
+- qbittorrent (Bittorrent client)
+
+#### Gaming
+- prismlauncher (Minecraft launcher)
+
+#### System
+- localsend (File transfer)
+
+### Fonts
+- noto-fonts
+- noto-fonts-cjk-sans
+- noto-fonts-color-emoji
+- font-awesome
+- corefonts
+- vista-fonts
+- nerd-fonts.jetbrains-mono
+- nerd-fonts.symbols-only
+
+### CLI Tools
+
+#### File Operations
+- bat (Cat replacement with syntax highlighting)
+- dust (du replacement)
+- hexyl (Hex viewer)
+- ouch (Compression tool)
+
+#### Network
+- doggo (dig replacement)
+- cloudflared (Cloudflare tunnel)
+
+#### Benchmarking
+- hyperfine (Benchmarking tool)
+- pv (Pipe viewer)
+
+#### Nix Tools
+- hydra-check (Nix Hydra CI checker)
+- nix-output-monitor (Nix build output beautifier)
+
+#### Security
+- gitleaks (Git secret scanner)
+- trufflehog (Secret scanner)
+
+#### Analysis
+- mediainfo (Media file info)
+- tokei (Code counter)
+- dysk (Disk info)
+- binsider (Binary inspector)
+
+#### Development
+- typos (Code spell checker)
+- gh (GitHub CLI)
+- typst (Typesetting system)
+
+#### Media
+- ffmpeg-full (Complete FFmpeg suite)
+
+### Editor Packages
+
+#### Zed Editor
+- nixd (Nix language server)
+- alejandra (Nix formatter)
+
+#### Helix Editor
+- nodePackages.typescript-language-server
+
+---
+
+## Program-Enabled Packages
+
+### Terminal
+- **ghostty-bin** - Terminal emulator
+- **adwaita-icon-theme** - GTK icon theme
+
+### File/Docs
+- **zathura** - PDF viewer
+
+### Shell
+- **nushell** - Modern shell
+- **atuin** - Shell history
+- **zoxide** - Smart cd
+- **carapace** - Shell completion
+- **pinentry-mac** - GPG pinentry (macOS-specific) -> linux tty version
+
+### Version Control
+- **git** - Version control (with signing support)
+- **difftastic** - Semantic diff
+- **delta** - Git pager
+- **mergiraf** - Merge tool
+- **jujutsu** (jj) - Git alternative
+- **jjui** - Jujutsu UI
+- **ssh** - SSH client with Darwin keychain support
+
+### Utility
+- **numbat** - Calculator
+- **fzf** - Fuzzy finder
+- **asciinema_3** - Terminal recorder
+- **zellij** - Terminal multiplexer
+- **ripgrep** (rg) - Code search
+- **fd** - File search
+- **nh** - Nix helper (from input)
+- **yazi** - Terminal file manager
+- **nix-index** - Command-not-finder
+- **btop** - System monitor
+- **tealdeer** (tldr) - Simplified man pages
+- **gnupg** - GPG encryption
+- **gpg-agent** - GPG agent
+
+### Editors
+- **helix** - Modal editor
+- **zed-editor** - Modern editor
+- **nvf** - Neovim framework
+
+### Dev Tools
+- **direnv** - Environment switcher
+- **nix-direnv** - Nix integration with direnv
+
+### OpenCode
+- **opencode** - AI coding assistant (from input)
+
+---
+
+## Linux-Only Packages
+
+⚠️ *These packages are NOT installed on R2D2 (macOS) - they only apply to Linux (piplup)*
+
+### Desktop Applications (Linux)
+- wl-clipboard (Wayland clipboard)
+- grimblast (Screenshot tool)
+- keymapp (Keyboard mapper)
+- pavucontrol (PulseAudio volume control)
+- protonmail-desktop (ProtonMail client)
+- proton-pass (Password manager)
+- krita (Digital painting)
+- typora (Markdown editor)
+- nsxiv (Image viewer)
+- kitty (Terminal emulator)
+- haruna (Video player)
+- cameractrls-gtk4 (Camera controls)
+- winboat (Windows emulator)
+- protonup-ng (Proton updater)
+- hyprpicker (Color picker)
+- calibre (E-book manager)
+- obs-studio (Screen recording/streaming) - with CUDA support
+
+### Fonts (Linux)
+- fcitx5-hangul (Korean input)
+- rose-pine-cursor (Cursor theme)
+
+### CLI Tools (Linux)
+- nix-alien (Run non-Nix binaries on NixOS)
+- gf (Fuzzy finder)
+- rr (Time-travel debugger)
+
+### Desktop Environment (Linux)
+- Hyprland (Wayland compositor) and all its plugins
+- Waybar (Wayland status bar)
+- dunst (Notification daemon)
+- rofi-wayland (Application launcher)
+- wlogout (Logout menu)
+
+---
+
+## Package Statistics
+
+### macOS (R2D2)
+- **System packages**: 3-4 (with secrets)
+- **User packages**: 60+
+- **Program packages**: 30+
+- **Total unique packages**: ~95+
+
+### Linux (piplup)
+- Additional Linux-specific packages: 25+
+
+---
+
+## Notes
+
+1. **Custom Packages**: `helium` is defined in `pkgs/helium/default.nix`
+2. **Input Packages**: Some packages come from flake inputs (nh, opencode, ghostty)
+3. **Platform-Specific**: Many packages use conditional logic (`lib.optionals pkgs.stdenv.isDarwin`)
+4. **Secrets-Dependent**: agenix and some configurations require `secretsAvailable`

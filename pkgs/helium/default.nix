@@ -11,7 +11,7 @@ let
   inherit (pkgs.stdenv.hostPlatform) system;
 
   hashes = {
-    "aarch64-darwin" = "sha256-swFxWgHONhdzfLpwGVoje/ceTwCZFmoO3FBeIbjqIaY=";
+    "aarch64-darwin" = "sha256-h3nWjmoiKCmPa7xkMn02uxRtEwKhcOrTTtBspQqR/Hs=";
     "x86_64-linux" = "sha256-11xSlHIqmyyVwjjwt5FmLhp72P3m07PppOo7a9DbTcE=";
   };
 
