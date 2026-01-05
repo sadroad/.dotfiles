@@ -1,8 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.helix = {
     defaultEditor = true;
     enable = true;
-    extraPackages = [pkgs.nodePackages.typescript-language-server];
+    extraPackages = [ pkgs.nodePackages.typescript-language-server ];
     settings = {
       theme = "gruvbox";
       editor = {
@@ -21,9 +22,9 @@
           name = "numbat";
           scope = "source.numbat";
           injection-regex = "numbat";
-          file-types = ["nbt"];
+          file-types = [ "nbt" ];
           comment-token = "#";
-          roots = ["."];
+          roots = [ "." ];
         }
       ];
       grammar = [

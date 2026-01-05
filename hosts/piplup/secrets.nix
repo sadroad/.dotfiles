@@ -8,12 +8,12 @@
   ...
 }:
 {
-  imports = [agenix.nixosModules.default];
+  imports = [ agenix.nixosModules.default ];
 }
 // lib.mkIf secretsAvailable {
-  environment.systemPackages = [agenix.packages."${pkgs.stdenv.hostPlatform.system}".default];
+  environment.systemPackages = [ agenix.packages."${pkgs.stdenv.hostPlatform.system}".default ];
 
-  age.identityPaths = ["/etc/ssh/ssh_host_ed25519_key"];
+  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   age.secrets = {
     "sadroad-gpg-private" = {

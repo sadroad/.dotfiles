@@ -1,8 +1,10 @@
-_: let
+_:
+let
   gitName = "Alex Villablanca";
   gitEmail = "alex@villablanca.tech";
   gitSigningKey = "2B826E3C035C8BB5";
-in {
+in
+{
   programs = {
     difftastic = {
       enable = true;
@@ -22,7 +24,7 @@ in {
     };
     git = {
       enable = true;
-      attributes = ["* merge=mergiraf"];
+      attributes = [ "* merge=mergiraf" ];
       settings = {
         user = {
           email = gitEmail;
@@ -58,7 +60,12 @@ in {
       settings = {
         ui = {
           pager = "delta";
-          diff-formatter = ["difft" "--color=always" "$left" "$right"];
+          diff-formatter = [
+            "difft"
+            "--color=always"
+            "$left"
+            "$right"
+          ];
           merge-editor = "mergiraf";
         };
         user = {

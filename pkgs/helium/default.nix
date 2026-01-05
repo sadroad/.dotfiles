@@ -4,7 +4,8 @@
   pkgs,
   fetchurl,
   _7zz,
-}: let
+}:
+let
   pname = "helium";
   version = "0.7.9.1";
   inherit (pkgs.stdenv.hostPlatform) system;
@@ -30,7 +31,7 @@
         hash = hashes."aarch64-darwin";
       };
 
-      nativeBuildInputs = [_7zz];
+      nativeBuildInputs = [ _7zz ];
 
       installPhase = ''
         runHook preInstall
@@ -39,13 +40,11 @@
         runHook postInstall
       '';
 
-      meta =
-        baseMeta
-        // {
-          description = "${baseMeta.description} (macOS build)";
-          platforms = ["aarch64-darwin"];
-          mainProgram = "Helium.app";
-        };
+      meta = baseMeta // {
+        description = "${baseMeta.description} (macOS build)";
+        platforms = [ "aarch64-darwin" ];
+        mainProgram = "Helium.app";
+      };
     };
 
     "x86_64-linux" = pkgs.appimageTools.wrapType2 rec {
@@ -56,26 +55,26 @@
         hash = hashes."x86_64-linux";
       };
 
-      extraInstallCommands = let
-        contents = pkgs.appimageTools.extractType2 {inherit pname version src;};
-      in ''
-        mkdir -p "$out/share/applications"
-        mkdir -p "$out/share/lib/helium"
-        cp -r ${contents}/opt/helium/locales "$out/share/lib/helium"
-        cp -r ${contents}/usr/share/* "$out/share"
-        cp "${contents}/${pname}.desktop" "$out/share/applications/"
-        substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
-      '';
+      extraInstallCommands =
+        let
+          contents = pkgs.appimageTools.extractType2 { inherit pname version src; };
+        in
+        ''
+          mkdir -p "$out/share/applications"
+          mkdir -p "$out/share/lib/helium"
+          cp -r ${contents}/opt/helium/locales "$out/share/lib/helium"
+          cp -r ${contents}/usr/share/* "$out/share"
+          cp "${contents}/${pname}.desktop" "$out/share/applications/"
+          substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
+        '';
 
-      meta =
-        baseMeta
-        // {
-          description = "${baseMeta.description} (Linux build)";
-          changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
-          platforms = ["x86_64-linux"];
-          mainProgram = "helium";
-        };
+      meta = baseMeta // {
+        description = "${baseMeta.description} (Linux build)";
+        changelog = "https://github.com/imputnet/helium-linux/releases/tag/${version}";
+        platforms = [ "x86_64-linux" ];
+        mainProgram = "helium";
+      };
     };
   };
 in
-  builders.${system} or (throw "helium: ${system} is unsupported.")
+builders.${system} or (throw "helium: ${system} is unsupported.")

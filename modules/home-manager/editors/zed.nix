@@ -1,10 +1,19 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    nixd
-    alejandra
-  ];
+{ pkgs, ... }:
+{
   programs.zed-editor = {
-    extensions = ["nix" "kdl" "tsgo" "oxc" "make" "catppuccin-icons" "wakatime" "toml" "comment" "haskell" "typst"];
+    extensions = [
+      "nix"
+      "kdl"
+      "tsgo"
+      "oxc"
+      "make"
+      "catppuccin-icons"
+      "wakatime"
+      "toml"
+      "comment"
+      "haskell"
+      "typst"
+    ];
     enable = true;
     installRemoteServer = true;
     userSettings = {
@@ -12,7 +21,7 @@
         OpenCode = {
           type = "custom";
           command = "opencode";
-          args = ["acp"];
+          args = [ "acp" ];
         };
       };
       vim_mode = true;
@@ -23,17 +32,12 @@
         enabled = true;
       };
       languages = {
-        Nix = {
-          language_servers = ["nixd"];
-          formatter = {
-            external = {
-              command = "alejandra";
-              arguments = ["--quiet" "--"];
-            };
-          };
-        };
         Python = {
-          language_servers = ["ty" "basedpyright" "..."];
+          language_servers = [
+            "ty"
+            "basedpyright"
+            "..."
+          ];
         };
       };
       vim = {

@@ -3,7 +3,8 @@
   hostname,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./configuration.nix
     ./secrets.nix
@@ -14,7 +15,7 @@
     ../../modules/nixos/performance.nix
 
     inputs.nixos-facter-modules.nixosModules.facter
-    {config.facter.reportPath = ./facter.json;}
+    { config.facter.reportPath = ./facter.json; }
     inputs.disko.nixosModules.disko
     inputs.nvf.nixosModules.default
   ];
@@ -24,7 +25,7 @@
   boot = {
     loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    supportedFilesystems = ["ntfs"];
+    supportedFilesystems = [ "ntfs" ];
 
     kernelPackages = pkgs.linuxPackages_cachyos-lto;
   };

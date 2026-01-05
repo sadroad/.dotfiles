@@ -3,23 +3,36 @@
   lib,
   inputs,
   ...
-}: let
+}:
+let
   ghostty =
-    if pkgs.stdenv.isLinux
-    then inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
-    else pkgs.ghostty-bin;
-in {
+    if pkgs.stdenv.isLinux then
+      inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
+    else
+      pkgs.ghostty-bin;
+in
+{
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
-      monospace = ["Berkeley Mono Variable" "Noto Sans Mono"];
+      monospace = [
+        "Berkeley Mono Variable"
+        "Noto Sans Mono"
+      ];
 
-      sansSerif = ["Berkeley Mono Variable" "Noto Sans"];
-      serif = ["Berkeley Mono Variable" "Noto Serif"];
+      sansSerif = [
+        "Berkeley Mono Variable"
+        "Noto Sans"
+      ];
+      serif = [
+        "Berkeley Mono Variable"
+        "Noto Serif"
+      ];
     };
   };
 
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       vesktop
       spotify
@@ -44,25 +57,25 @@ in {
       localsend # on nixos enabled through service
       orbstack
     ];
-  programs.ghostty = let
-    baseSettings = {
-      shell-integration-features = "sudo, ssh-terminfo";
-      theme = "Gruvbox Dark";
-      font-family = "Berkeley Mono Variable";
-      font-style = "Retina";
-      font-size = "14";
-      gtk-single-instance = "true";
-    };
-    linuxSettings =
-      lib.optionalAttrs pkgs.stdenv.isLinux
-      {
+  programs.ghostty =
+    let
+      baseSettings = {
+        shell-integration-features = "sudo, ssh-terminfo";
+        theme = "Gruvbox Dark";
+        font-family = "Berkeley Mono Variable";
+        font-style = "Retina";
+        font-size = "14";
+        gtk-single-instance = "true";
+      };
+      linuxSettings = lib.optionalAttrs pkgs.stdenv.isLinux {
         command = "${pkgs.nushell}/bin/nu --login --interactive";
       };
-  in {
-    enable = true;
-    package = ghostty;
-    settings = baseSettings // linuxSettings;
-  };
+    in
+    {
+      enable = true;
+      package = ghostty;
+      settings = baseSettings // linuxSettings;
+    };
 
   gtk = {
     enable = true;

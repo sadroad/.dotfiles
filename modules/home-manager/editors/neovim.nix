@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nvf = {
     enable = true;
     enableManpages = true;
@@ -37,10 +38,7 @@
 
         keymaps = [
           {
-            key =
-              if pkgs.stdenv.isDarwin
-              then "<D-/>"
-              else "<C-/>";
+            key = if pkgs.stdenv.isDarwin then "<D-/>" else "<C-/>";
             desc = "Toggle Line Comment";
             mode = "n";
             action = ''
@@ -51,10 +49,7 @@
             lua = true;
           }
           {
-            key =
-              if pkgs.stdenv.isDarwin
-              then "<D-/>"
-              else "<C-/>";
+            key = if pkgs.stdenv.isDarwin then "<D-/>" else "<C-/>";
             desc = "Toggle Line Comment";
             mode = "v";
             action = ''
@@ -121,22 +116,22 @@
 
           ts = {
             enable = true;
-            format.type = ["biome"];
+            format.type = [ "biome" ];
           };
           css = {
             enable = true;
-            format.type = ["biome"];
+            format.type = [ "biome" ];
           };
           tailwind.enable = true;
           html.enable = true;
           astro = {
             enable = true;
-            format.type = ["biome"];
+            format.type = [ "biome" ];
           };
 
           nix = {
             enable = true;
-            lsp.servers = ["nixd"];
+            lsp.servers = [ "nixd" ];
           };
           rust = {
             enable = true;
@@ -148,14 +143,14 @@
           nu.enable = true;
           python = {
             enable = true;
-            format.type = ["ruff"];
-            lsp.servers = ["basedpyright"];
+            format.type = [ "ruff" ];
+            lsp.servers = [ "basedpyright" ];
           };
           markdown.enable = true;
           yaml.enable = true;
           typst = {
             enable = true;
-            format.type = ["typstyle"];
+            format.type = [ "typstyle" ];
           };
           haskell.enable = true;
           sql.enable = true;

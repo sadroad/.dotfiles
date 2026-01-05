@@ -4,7 +4,8 @@
   lib,
   userDir,
   ...
-}: let
+}:
+let
   saveClipboardToFileYaziPlugin = pkgs.fetchFromGitHub {
     owner = "boydaihungst";
     repo = "save-clipboard-to-file.yazi";
@@ -13,12 +14,14 @@
   };
   inherit (inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}) nix-alien;
   opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
-in {
+in
+{
   home.sessionVariables = {
     NH_SEARCH_PLATFORM = "true";
     OPENCODE_ENABLE_EXA = "1";
   };
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       bat
       dust
@@ -104,7 +107,10 @@ in {
       keymap = {
         mgr.prepend_keymap = [
           {
-            on = ["p" "c"];
+            on = [
+              "p"
+              "c"
+            ];
             run = "plugin save-clipboard-to-file";
           }
         ];
@@ -171,22 +177,28 @@ in {
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = ["oh-my-opencode@v2.13.0"];
+        plugin = [ "oh-my-opencode@v2.14.0" ];
       };
     };
   };
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
-    agents = lib.listToAttrs (map (agent: {
-        name = agent;
-        value = {model = "zai-coding-plan/glm-4.7";};
-      }) [
-        "Sisyphus"
-        "librarian"
-        "oracle"
-        "frontend-ui-ux-engineer"
-        "document-writer"
-        "explore"
-        "multimodal-looker"
-      ]);
+    agents = lib.listToAttrs (
+      map
+        (agent: {
+          name = agent;
+          value = {
+            model = "zai-coding-plan/glm-4.7";
+          };
+        })
+        [
+          "Sisyphus"
+          "librarian"
+          "oracle"
+          "frontend-ui-ux-engineer"
+          "document-writer"
+          "explore"
+          "multimodal-looker"
+        ]
+    );
   };
 }

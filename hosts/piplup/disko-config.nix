@@ -15,7 +15,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["umask=0077"];
+                mountOptions = [ "umask=0077" ];
               };
             };
             root = {
@@ -115,7 +115,12 @@
                 type = "filesystem";
                 format = "ntfs";
                 mountpoint = "/data";
-                mountOptions = ["rw" "uid=1000" "gid=100" "umask=007"];
+                mountOptions = [
+                  "rw"
+                  "uid=1000"
+                  "gid=100"
+                  "umask=007"
+                ];
               };
             };
           };

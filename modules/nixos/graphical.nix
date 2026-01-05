@@ -4,7 +4,8 @@
   username,
   inputs,
   ...
-}: {
+}:
+{
   programs = {
     localsend = {
       enable = true;
@@ -14,7 +15,8 @@
       enable = true;
       withUWSM = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      portalPackage =
+        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
   };
 
@@ -22,7 +24,7 @@
     displayManager.sddm.enable = true;
     xserver = {
       enable = true;
-      videoDrivers = ["nvidia"];
+      videoDrivers = [ "nvidia" ];
     };
     pipewire = {
       enable = true;
@@ -60,11 +62,14 @@
     keyboard.zsa.enable = true;
   };
 
-  users.users.${username}.extraGroups = ["audio" "video"];
+  users.users.${username}.extraGroups = [
+    "audio"
+    "video"
+  ];
 
   boot = {
-    kernelModules = ["v4l2loopback"];
-    extraModulePackages = [config.boot.kernelPackages.v4l2loopback];
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     extraModprobeConfig = ''
       options v4l2loopback exclusive_caps=1 card_label="Virtual Camera"
       options nvidia_modeset vblank_sem_control=0
@@ -74,5 +79,5 @@
     ];
   };
 
-  security.pam.services.hyprlock = {};
+  security.pam.services.hyprlock = { };
 }

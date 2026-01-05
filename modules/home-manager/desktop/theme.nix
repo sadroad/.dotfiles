@@ -3,12 +3,14 @@
   lib,
   secretsAvailable,
   ...
-}: {
+}:
+{
   home = {
-    activation.installBerkeleyMonoFont = lib.mkIf secretsAvailable (let
-      installScript = ../../../scripts/install-berkeley-mono.sh;
-    in
-      lib.hm.dag.entryAfter ["writeBoundary"] ''
+    activation.installBerkeleyMonoFont = lib.mkIf secretsAvailable (
+      let
+        installScript = ../../../scripts/install-berkeley-mono.sh;
+      in
+      lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         ${installScript} \
           "${pkgs.unzip}/bin/unzip" \
           "${pkgs.coreutils}/bin/mkdir" \
@@ -17,7 +19,8 @@
           "${pkgs.coreutils}/bin/chmod" \
           "${pkgs.coreutils}/bin/mktemp" \
           "${pkgs.fontconfig.bin}/bin/fc-cache" \
-      '');
+      ''
+    );
     pointerCursor = {
       enable = true;
       name = "BreezeX-RosePine-Linux";
@@ -37,7 +40,7 @@
     enable = true;
     fcitx5 = {
       waylandFrontend = true;
-      addons = with pkgs; [fcitx5-hangul];
+      addons = with pkgs; [ fcitx5-hangul ];
     };
   };
 }

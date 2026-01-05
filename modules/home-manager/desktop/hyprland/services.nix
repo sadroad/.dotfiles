@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   services = {
     hyprsunset = {
       enable = true;
@@ -22,22 +23,24 @@
     };
     hyprpaper = {
       enable = true;
-      settings = let
-        wallpaper1 = pkgs.copyPathToStore ../../../../assets/1.jpg;
-        wallpaperChange = pkgs.copyPathToStore ../../../../assets/change.jpg;
-      in {
-        ipc = "on";
-        wallpaper = [
-          {
-            monitor = "DP-2";
-            path = wallpaperChange;
-          }
-          {
-            monitor = "DP-3";
-            path = wallpaper1;
-          }
-        ];
-      };
+      settings =
+        let
+          wallpaper1 = pkgs.copyPathToStore ../../../../assets/1.jpg;
+          wallpaperChange = pkgs.copyPathToStore ../../../../assets/change.jpg;
+        in
+        {
+          splash = false;
+          wallpaper = [
+            {
+              monitor = "DP-2";
+              path = wallpaperChange;
+            }
+            {
+              monitor = "DP-3";
+              path = wallpaper1;
+            }
+          ];
+        };
     };
     hyprpolkitagent.enable = true;
     hypridle = {
@@ -76,15 +79,17 @@
           bezier = "easeOutQuint";
         };
       };
-      background = let
-        wallpaper = pkgs.copyPathToStore ../../../../assets/change.jpg;
-      in [
-        {
-          path = "${wallpaper}";
-          blur_passes = 3;
-          blur_size = 8;
-        }
-      ];
+      background =
+        let
+          wallpaper = pkgs.copyPathToStore ../../../../assets/change.jpg;
+        in
+        [
+          {
+            path = "${wallpaper}";
+            blur_passes = 3;
+            blur_size = 8;
+          }
+        ];
       input-field = [
         {
           size = "200, 50";

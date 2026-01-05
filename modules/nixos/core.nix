@@ -6,33 +6,45 @@
   username,
   secretsAvailable,
   ...
-}: let
-  inherit (lib) concatStringsSep filterAttrs isType mapAttrs mapAttrsToList;
+}:
+let
+  inherit (lib)
+    concatStringsSep
+    filterAttrs
+    isType
+    mapAttrs
+    mapAttrsToList
+    ;
   registryMap = filterAttrs (_: v: isType v "flake") inputs;
-in {
+in
+{
   nix.package = inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
-  nix.settings =
-    {
-      accept-flake-config = true;
-      eval-cores = 0;
-      experimental-features = ["nix-command" "flakes"];
-      http-connections = 50;
-      lazy-trees = true;
-      builders-use-substitutes = true;
-      flake-registry = "";
-      show-trace = true;
-      warn-dirty = false;
-    }
-    // lib.optionalAttrs secretsAvailable {
-      access-tokens = "!include ${config.age.secrets."github_oauth".path}";
-    };
+  nix.settings = {
+    accept-flake-config = true;
+    eval-cores = 0;
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
+    http-connections = 50;
+    lazy-trees = true;
+    builders-use-substitutes = true;
+    flake-registry = "";
+    show-trace = true;
+    warn-dirty = false;
+  }
+  // lib.optionalAttrs secretsAvailable {
+    access-tokens = "!include ${config.age.secrets."github_oauth".path}";
+  };
 
   nix.optimise.automatic = true;
 
   nix.nixPath = mapAttrsToList (name: value: "${name}=${value}") registryMap;
 
-  nix.registry = mapAttrs (_: flake: {inherit flake;}) (registryMap // {default = inputs.nixpkgs;});
+  nix.registry = mapAttrs (_: flake: { inherit flake; }) (
+    registryMap // { default = inputs.nixpkgs; }
+  );
 
   nix.gc = {
     automatic = true;
@@ -44,7 +56,12 @@ in {
   users.users.${username} = {
     isNormalUser = true;
     description = username;
-    extraGroups = ["networkmanager" "wheel" "libvirtd" "docker"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "docker"
+    ];
   };
 
   programs = {
@@ -66,14 +83,14 @@ in {
     tailscale = {
       enable = true;
       useRoutingFeatures = "client";
-      extraSetFlags = ["--ssh"];
+      extraSetFlags = [ "--ssh" ];
     };
     resolved.enable = true;
     openssh = {
       enable = true;
       settings = {
         PermitRootLogin = "no";
-        PasswordAuthentication = true; #disable once in clan
+        PasswordAuthentication = true; # disable once in clan
       };
       openFirewall = true;
     };
@@ -81,15 +98,18 @@ in {
   };
 
   networking = {
-    nameservers = ["192.168.2.1" "100.100.100.100"];
-    search = ["tail217ff.ts.net"];
+    nameservers = [
+      "192.168.2.1"
+      "100.100.100.100"
+    ];
+    search = [ "tail217ff.ts.net" ];
     networkmanager.enable = true;
     nftables.enable = true;
     firewall.enable = true;
   };
 
   boot = {
-    binfmt.emulatedSystems = ["aarch64-linux"];
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
   security = {
@@ -124,5 +144,5 @@ in {
 
   environment.variables.EDITOR = "hx";
 
-  users.groups.libvirtd.members = [username];
+  users.groups.libvirtd.members = [ username ];
 }

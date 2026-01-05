@@ -6,12 +6,22 @@ _: {
     settings = {
       mainBar = {
         height = 24;
-        modules-left = ["hyprland/workspaces" "hyprland/submap"];
-        modules-right = ["network" "pulseaudio" "tray" "clock"];
+        modules-left = [
+          "hyprland/workspaces"
+          "hyprland/submap"
+        ];
+        modules-right = [
+          "network"
+          "pulseaudio"
+          "tray"
+          "clock"
+        ];
         "hyprland/submap" = {
           format = "<span style=\"italic\">{}</span>";
         };
-        tray = {spacing = 10;};
+        tray = {
+          spacing = 10;
+        };
         clock = {
           tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
           format = "{:L%Y-%m-%d<small>[%a]</small> %H:%M}";
@@ -24,7 +34,13 @@ _: {
           format-muted = "  {format_source}";
           format-source = " {volume}%";
           format-source-muted = "";
-          format-icons = {default = ["" "" ""];};
+          format-icons = {
+            default = [
+              ""
+              ""
+              ""
+            ];
+          };
           on-click = "pavucontrol";
           on-click-right = "foot -a pw-top pw-top";
         };
