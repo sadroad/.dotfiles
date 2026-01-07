@@ -67,7 +67,7 @@
     ACTION=="add|change", KERNEL=="sd[a-z]*", ATTR{queue/rotational}=="0", ATTR{queue/scheduler}="none"
   '';
 
-  boot.loader.timeout = 0;
+  boot.loader.timeout = 5;
 
   systemd.settings.Manager = {
     DefaultTimeoutStartSec = 10;
