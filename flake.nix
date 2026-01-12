@@ -200,7 +200,7 @@
     };
     nvf.url = "github:notashelf/nvf/v0.8";
     ghostty = {
-      url = "github:ghostty-org/ghostty/v1.2.3";
+      url = "github:ghostty-org/ghostty/tip";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.zon2nix.inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -218,7 +218,7 @@
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:anomalyco/opencode/v1.1.8";
+      url = "github:anomalyco/opencode/v1.1.13";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
