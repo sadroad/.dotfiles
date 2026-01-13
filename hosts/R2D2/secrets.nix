@@ -37,6 +37,12 @@
           mode = "0400";
           owner = username;
         };
+        "zai-key" = {
+          file = "${secretsPath}/zai-key.age";
+          symlink = true;
+          mode = "0400";
+          owner = username;
+        };
       };
     }
   else

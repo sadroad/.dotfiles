@@ -3,6 +3,7 @@
   inputs,
   lib,
   userDir,
+  config,
   ...
 }:
 let
@@ -178,27 +179,57 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [ "oh-my-opencode@v3.0.0-beta.5" ];
+        mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
+          "zai-mcp-server" = {
+            type = "local";
+            command = [
+              (pkgs.writeShellScript "zai-mcp-server" ''
+                set -euo pipefail
+                export Z_AI_API_KEY="$(cat ${config.age.secrets.zai-key.path})"
+                export Z_AI_MODE="ZAI"
+                exec ${pkgs.bun}/bin/bunx -y @z_ai/mcp-server
+              '')
+            ];
+          };
+        };
       };
     };
   };
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
-    agents = lib.listToAttrs (
-      map
-        (agent: {
-          name = agent;
-          value = {
-            model = "zai-coding-plan/glm-4.7";
-          };
-        })
-        [
-          "Sisyphus"
-          "librarian"
-          "oracle"
-          "frontend-ui-ux-engineer"
-          "document-writer"
-          "explore"
-          "multimodal-looker"
-        ]
-    );
+    agents =
+      lib.listToAttrs (
+        map
+          (agent: {
+            name = agent;
+            value = {
+              model = "zai-coding-plan/glm-4.7";
+            };
+          })
+          [
+            "Sisyphus"
+            "librarian"
+            "oracle"
+            "document-writer"
+            "multimodal-looker"
+            "Prometheus (Planner)"
+            "Metis (Plan Consultant)"
+            "Momus (Plan Reviewer)"
+            "orchestrator-sisyphus"
+          ]
+      )
+      // lib.listToAttrs (
+        map
+          (agent: {
+            name = agent;
+            value = {
+              model = "opencode/minimax-m2.1-free";
+            };
+          })
+          [
+            "frontend-ui-ux-engineer"
+            "explore"
+            "Sisyphus-Junior"
+          ]
+      );
   };
 }

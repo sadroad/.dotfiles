@@ -169,7 +169,6 @@
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.53.1";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -192,7 +191,6 @@
     # shared
     agenix = {
       url = "github:yaxitech/ragenix/83bccfdea758241999f32869fb6b36f7ac72f1ac";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     my_secrets = {
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
@@ -201,8 +199,6 @@
     nvf.url = "github:notashelf/nvf/v0.8";
     ghostty = {
       url = "github:ghostty-org/ghostty/tip";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.zon2nix.inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -210,16 +206,13 @@
     };
     nh = {
       url = "github:nix-community/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
     opencode = {
-      url = "github:anomalyco/opencode/v1.1.13";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:anomalyco/opencode/v1.1.18";
     };
   };
 }
