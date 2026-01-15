@@ -25,6 +25,7 @@
         };
       };
       vim_mode = true;
+      helix_mode = true;
       telemetry = {
         metrics = false;
       };

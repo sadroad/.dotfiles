@@ -178,7 +178,7 @@ in
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = [ "oh-my-opencode@v3.0.0-beta.7" ];
+        plugin = [ "oh-my-opencode@v3.0.0-beta.8" ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
           "zai-mcp-server" = {
             type = "local";

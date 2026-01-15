@@ -59,6 +59,21 @@
             ];
           };
         }
+        {
+          name = "rust";
+          language-servers = [
+            "rust-analyzer"
+            "wakatime"
+          ];
+          auto-format = true;
+        }
+        {
+          name = "c";
+          language-servers = [
+            "clangd"
+            "wakatime"
+          ];
+        }
       ];
       grammar = [
         {
