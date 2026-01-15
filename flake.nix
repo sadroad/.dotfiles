@@ -154,7 +154,7 @@
     };
   inputs = {
     # core
-    nix.url = "github:DeterminateSystems/nix-src";
+    nix.url = "github:DeterminateSystems/nix-src/v3.15.1";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -197,22 +197,17 @@
       flake = false;
     };
     nvf.url = "github:notashelf/nvf/v0.8";
-    ghostty = {
-      url = "github:ghostty-org/ghostty/tip";
-    };
+    ghostty.url = "github:ghostty-org/ghostty/tip";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nh = {
-      url = "github:nix-community/nh";
-    };
+    nh.url = "github:nix-community/nh";
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode = {
-      url = "github:anomalyco/opencode/v1.1.18";
-    };
+    opencode.url = "github:anomalyco/opencode/v1.1.21";
+    wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
   };
 }

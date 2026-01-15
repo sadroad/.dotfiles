@@ -1,9 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   programs.helix = {
     defaultEditor = true;
     enable = true;
-    extraPackages = [ pkgs.nodePackages.typescript-language-server ];
+    extraPackages = [
+      pkgs.nodePackages.typescript-language-server
+      pkgs.nil
+    ];
     settings = {
       theme = "gruvbox";
       editor = {
@@ -17,6 +20,22 @@
       };
     };
     languages = {
+      language-server = {
+        wakatime = {
+          command = "${
+            inputs.wakatime-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
+          }/bin/wakatime-ls";
+        };
+        nil = {
+          config.nil = {
+            nix = {
+              flake = {
+                autoArchive = true;
+              };
+            };
+          };
+        };
+      };
       language = [
         {
           name = "numbat";
@@ -25,6 +44,20 @@
           file-types = [ "nbt" ];
           comment-token = "#";
           roots = [ "." ];
+        }
+        {
+          name = "nix";
+          language-servers = [
+            "nil"
+            "wakatime"
+          ];
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.nixfmt}/bin/nixfmt";
+            args = [
+              "--filename=%{buffer_name}"
+            ];
+          };
         }
       ];
       grammar = [
