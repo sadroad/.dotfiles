@@ -9,7 +9,6 @@
 }:
 let
   inherit (lib)
-    concatStringsSep
     filterAttrs
     isType
     mapAttrs
@@ -95,6 +94,11 @@ in
       openFirewall = true;
     };
     fwupd.enable = true;
+    clamav = {
+      scanner.enable = true;
+      updater.enable = true;
+      daemon.enable = true;
+    };
   };
 
   networking = {

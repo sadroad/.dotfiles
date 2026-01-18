@@ -402,11 +402,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1768603948,
-        "narHash": "sha256-YwFxpevNQteh4iNzSebC5sYcyNzFRxLFeSKbQQ5el40=",
+        "lastModified": 1768628056,
+        "narHash": "sha256-TEfSd6oR4YCc1BVr9pOxjTJASMswKiGfEC2kRA3aTyI=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "56237efeefaf7082a82854eba1fbaa93868925e8",
+        "rev": "9fb03ba55c9e53901193187d5c43341f5b1b430d",
         "type": "github"
       },
       "original": {
@@ -971,11 +971,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767903726,
-        "narHash": "sha256-Iwesk5vXbgGMJQiUn6qFRSu9ktgMIMY2IgC3GFQ5IoI=",
+        "lastModified": 1768664597,
+        "narHash": "sha256-Os7seaXYWMm+ss+DaaZkyJFed9cBx4efYeAyuBmj5Z4=",
         "owner": "nix-community",
         "repo": "nh",
-        "rev": "ec31d400f7c8efde85ab4fd5913845713c869efc",
+        "rev": "7d5ae0607b197115e68e14dcf780070331ff2aa2",
         "type": "github"
       },
       "original": {
@@ -1251,11 +1251,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1768612013,
-        "narHash": "sha256-nLUfEkqA2Bz/2R2yIG/OI6nI+O9Pg96GZAV8O6hWLTQ=",
+        "lastModified": 1768697981,
+        "narHash": "sha256-5V1+PphWa8n2bwA5Jy/k6Xy8iXX4gJLE+i+oGq+M/fY=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "759ce8fb8ef28c6c880d2867a36cc5c8fe44809b",
+        "rev": "53c77e29df4b7da3b53cc8b049487a55a64cf55e",
         "type": "github"
       },
       "original": {
