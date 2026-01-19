@@ -14,7 +14,9 @@ let
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
   inherit (inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}) nix-alien;
-  opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default.override {
+    bun = inputs.nixpkgs-bun-1-3-5.legacyPackages.${pkgs.stdenv.hostPlatform.system}.bun;
+  };
 in
 {
   home.sessionVariables = {

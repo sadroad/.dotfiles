@@ -48,7 +48,9 @@
             ./hosts/${hostname}/default.nix
             {
               nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = [ (import ./overlays/default.nix inputs) ];
+              nixpkgs.overlays = [
+                (import ./overlays/default.nix inputs)
+              ];
             }
             inputs.home-manager.nixosModules.home-manager
             inputs.nix-index-database.nixosModules.nix-index
@@ -100,7 +102,9 @@
             ./hosts/${hostname}/default.nix
             {
               nixpkgs.config.allowUnfree = true;
-              nixpkgs.overlays = [ (import ./overlays/default.nix inputs) ];
+              nixpkgs.overlays = [
+                (import ./overlays/default.nix inputs)
+              ];
             }
             inputs.nix-index-database.darwinModules.nix-index
             inputs.home-manager.darwinModules.home-manager
@@ -166,10 +170,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland/v0.53.1";
-    };
+    hyprland.url = "github:hyprwm/Hyprland/v0.53.1";
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -189,34 +190,26 @@
     };
 
     # shared
-    agenix = {
-      url = "github:yaxitech/ragenix/83bccfdea758241999f32869fb6b36f7ac72f1ac";
-    };
+    agenix.url = "github:yaxitech/ragenix/83bccfdea758241999f32869fb6b36f7ac72f1ac";
     my_secrets = {
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
       flake = false;
     };
-    nvf = {
-      url = "github:notashelf/nvf/v0.8";
-    };
-    ghostty = {
-      url = "github:ghostty-org/ghostty/tip";
-    };
+    nvf.url = "github:notashelf/nvf/v0.8";
+    ghostty.url = "github:ghostty-org/ghostty/tip";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nh = {
-      url = "github:nix-community/nh/v4.3.0-beta1";
-    };
+    nh.url = "github:nix-community/nh/v4.3.0-beta1";
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.1.21";
-    wakatime-ls = {
-      url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
-    };
+    opencode.url = "github:anomalyco/opencode/v1.1.26";
+    wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
+    nixpkgs-bun-1-3-5.url = "github:nixos/nixpkgs/f665af0cdb70ed27e1bd8f9fdfecaf451260fc55";
+
   };
 }

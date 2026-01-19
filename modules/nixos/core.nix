@@ -90,15 +90,6 @@ in
       openFirewall = true;
     };
     fwupd.enable = true;
-    clamav = {
-      scanner.enable = true;
-      updater.enable = true;
-      daemon.enable = true;
-      fangfrisch = {
-        enable = true;
-        interval = "daily";
-      };
-    };
   };
 
   networking = {

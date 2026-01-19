@@ -1,4 +1,4 @@
-_: final: prev: {
+inputs: final: prev: {
   helium = final.callPackage ../pkgs/helium { };
 
   vesktop = prev.vesktop.overrideAttrs (oldAttrs: {
