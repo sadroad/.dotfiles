@@ -154,7 +154,6 @@
     };
   inputs = {
     # core
-    nix.url = "github:DeterminateSystems/nix-src/v3.15.1";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -170,7 +169,6 @@
 
     hyprland = {
       url = "github:hyprwm/Hyprland/v0.53.1";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -185,7 +183,6 @@
     };
     mac-app-util = {
       url = "github:hraban/mac-app-util";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs = {
         cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
       };
@@ -194,7 +191,6 @@
     # shared
     agenix = {
       url = "github:yaxitech/ragenix/83bccfdea758241999f32869fb6b36f7ac72f1ac";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     my_secrets = {
       url = "git+ssh://git@github.com/sadroad/.nix-secrets.git";
@@ -202,29 +198,25 @@
     };
     nvf = {
       url = "github:notashelf/nvf/v0.8";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     ghostty = {
       url = "github:ghostty-org/ghostty/tip";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nh = {
-      url = "github:nix-community/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/nh/v4.3.0-beta1";
     };
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode";
+    opencode.url = "github:anomalyco/opencode/v1.1.21";
     wakatime-ls = {
       url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 }

@@ -178,7 +178,7 @@ in
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = [ "oh-my-opencode@v3.0.0-beta.8" ];
+        plugin = [ "oh-my-opencode@v3.0.0-beta.11" ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
           "zai-mcp-server" = {
             type = "local";
@@ -196,40 +196,28 @@ in
     };
   };
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
-    agents =
-      lib.listToAttrs (
-        map
-          (agent: {
-            name = agent;
-            value = {
-              model = "zai-coding-plan/glm-4.7";
-            };
-          })
-          [
-            "Sisyphus"
-            "librarian"
-            "oracle"
-            "document-writer"
-            "multimodal-looker"
-            "Prometheus (Planner)"
-            "Metis (Plan Consultant)"
-            "Momus (Plan Reviewer)"
-            "orchestrator-sisyphus"
-          ]
-      )
-      // lib.listToAttrs (
-        map
-          (agent: {
-            name = agent;
-            value = {
-              model = "opencode/minimax-m2.1-free";
-            };
-          })
-          [
-            "frontend-ui-ux-engineer"
-            "explore"
-            "Sisyphus-Junior"
-          ]
-      );
+    agents = lib.listToAttrs (
+      map
+        (agent: {
+          name = agent;
+          value = {
+            model = "zai-coding-plan/glm-4.7";
+          };
+        })
+        [
+          "Sisyphus"
+          "librarian"
+          "oracle"
+          "document-writer"
+          "multimodal-looker"
+          "Prometheus (Planner)"
+          "Metis (Plan Consultant)"
+          "Momus (Plan Reviewer)"
+          "orchestrator-sisyphus"
+          "frontend-ui-ux-engineer"
+          "explore"
+          "Sisyphus-Junior"
+        ]
+    );
   };
 }

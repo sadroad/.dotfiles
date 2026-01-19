@@ -17,17 +17,13 @@ let
   registryMap = filterAttrs (_: v: isType v "flake") inputs;
 in
 {
-  nix.package = inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
   nix.settings = {
     accept-flake-config = true;
-    eval-cores = 0;
     experimental-features = [
       "nix-command"
       "flakes"
     ];
     http-connections = 50;
-    lazy-trees = true;
     builders-use-substitutes = true;
     flake-registry = "";
     show-trace = true;
@@ -98,6 +94,10 @@ in
       scanner.enable = true;
       updater.enable = true;
       daemon.enable = true;
+      fangfrisch = {
+        enable = true;
+        interval = "daily";
+      };
     };
   };
 

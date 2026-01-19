@@ -19,8 +19,6 @@ let
   registryMap = filterAttrs (_: v: isType v "flake") inputs;
 in
 {
-  nix.package = inputs.nix.packages.${pkgs.stdenv.hostPlatform.system}.default;
-
   nix.settings = {
     accept-flake-config = true;
     experimental-features = [
