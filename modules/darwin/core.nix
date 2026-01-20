@@ -27,7 +27,6 @@ in
     ];
     trusted-users = [ "@admin" ];
     http-connections = 50;
-    lazy-trees = true;
     builders-use-substitutes = true;
     flake-registry = "";
     show-trace = true;

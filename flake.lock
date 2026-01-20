@@ -168,11 +168,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768727946,
-        "narHash": "sha256-le2GY+ZR6uRHMuOAc60sBR3gBD2BEk1qOZ3S5C/XFpU=",
+        "lastModified": 1768923567,
+        "narHash": "sha256-GVJ0jKsyXLuBzRMXCDY6D5J8wVdwP1DuQmmvYL/Vw/Q=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "558e84658d0eafc812497542ad6ca0d9654b3b0f",
+        "rev": "00395d188e3594a1507f214a2f15d4ce5c07cb28",
         "type": "github"
       },
       "original": {
@@ -362,11 +362,11 @@
         "zon2nix": "zon2nix"
       },
       "locked": {
-        "lastModified": 1768858135,
-        "narHash": "sha256-QcgtrDx4Efv8XKPO9YZ9Zu90xsFsrw5zmj9ugJVh+nw=",
+        "lastModified": 1768943356,
+        "narHash": "sha256-Mx4uoeXO40W2Jw8PVvE0eXx8rzOX2MSDVptz03Fn0HM=",
         "owner": "ghostty-org",
         "repo": "ghostty",
-        "rev": "9ec6e9ea9a8a590fd906a0d216133d949581f54b",
+        "rev": "dc43ded149968309c847e33c710989b1240daf9a",
         "type": "github"
       },
       "original": {
@@ -469,11 +469,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768836546,
-        "narHash": "sha256-nJZkTamcXXMW+SMYiGFB6lB8l0aJw0xjssfN8xYd/Fs=",
+        "lastModified": 1768997641,
+        "narHash": "sha256-7vT8oS6ra/dJaZ6ShvZiPtlZ40XI7CTSb2PmuNPMiXE=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b56c5ad14fcf8b5bc887463552483bf000ca562a",
+        "rev": "27b60942b7285824937f8c2c05021370f6fc5904",
         "type": "github"
       },
       "original": {
@@ -926,11 +926,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768475717,
-        "narHash": "sha256-185VOlWF4K9gzwr7M56ArjqDt6beN/5TxCYLEyVPOcs=",
+        "lastModified": 1768904356,
+        "narHash": "sha256-TIG8J+Or8nOydy8TztvtIshnprlf1q6XDIJnopLtMlA=",
         "owner": "thiagokokada",
         "repo": "nix-alien",
-        "rev": "a579610c67dc946f39c2a64656699eb29eb2ffb5",
+        "rev": "d95b25a4dd6da2a1dfeaaf66163d0a281a8270e9",
         "type": "github"
       },
       "original": {
@@ -1031,22 +1031,6 @@
         "owner": "nixos",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs-bun-1-3-5": {
-      "locked": {
-        "lastModified": 1767151656,
-        "narHash": "sha256-ujL2AoYBnJBN262HD95yer7QYUmYp5kFZGYbyCCKxq8=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f665af0cdb70ed27e1bd8f9fdfecaf451260fc55",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "f665af0cdb70ed27e1bd8f9fdfecaf451260fc55",
         "type": "github"
       }
     },
@@ -1161,11 +1145,11 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1768564909,
-        "narHash": "sha256-Kell/SpJYVkHWMvnhqJz/8DqQg2b6PguxVWOuadbHCc=",
+        "lastModified": 1768886240,
+        "narHash": "sha256-C2TjvwYZ2VDxYWeqvvJ5XPPp6U7H66zeJlRaErJKoEM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "e4bae1bd10c9c57b2cf517953ab70060a828ee6f",
+        "rev": "80e4adbcf8992d3fd27ad4964fbb84907f9478b0",
         "type": "github"
       },
       "original": {
@@ -1236,16 +1220,16 @@
         "nixpkgs": "nixpkgs_10"
       },
       "locked": {
-        "lastModified": 1768859727,
-        "narHash": "sha256-3PpnLiVB+MxnWmdKolUpQ9BQf7nzzRQhoTsL8m0eIBA=",
+        "lastModified": 1768946652,
+        "narHash": "sha256-4WJs+JAmelroxvxRyTscbPGw5ryrELTri8nTy/YZAnU=",
         "owner": "anomalyco",
         "repo": "opencode",
-        "rev": "1ee8a9c0b2211dad0008bc8291185a98ded8f3dd",
+        "rev": "d2fcdef571464c64668062718f3dceec0e79fbeb",
         "type": "github"
       },
       "original": {
         "owner": "anomalyco",
-        "ref": "v1.1.26",
+        "ref": "v1.1.28",
         "repo": "opencode",
         "type": "github"
       }
@@ -1289,7 +1273,6 @@
         "nix-index-database": "nix-index-database",
         "nixos-facter-modules": "nixos-facter-modules",
         "nixpkgs": "nixpkgs_7",
-        "nixpkgs-bun-1-3-5": "nixpkgs-bun-1-3-5",
         "nvf": "nvf",
         "opencode": "opencode",
         "wakatime-ls": "wakatime-ls"

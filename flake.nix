@@ -207,9 +207,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.1.26";
+    opencode.url = "github:anomalyco/opencode/v1.1.28";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
-    nixpkgs-bun-1-3-5.url = "github:nixos/nixpkgs/f665af0cdb70ed27e1bd8f9fdfecaf451260fc55";
-
   };
 }
