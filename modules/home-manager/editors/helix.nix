@@ -6,6 +6,7 @@
     extraPackages = [
       pkgs.nodePackages.typescript-language-server
       pkgs.nil
+      pkgs.nixd
     ];
     settings = {
       theme = "gruvbox";
@@ -48,6 +49,7 @@
         {
           name = "nix";
           language-servers = [
+            "nixd"
             "nil"
             "wakatime"
           ];

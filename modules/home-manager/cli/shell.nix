@@ -17,83 +17,19 @@ in
       enable = true;
 
       extraConfig = ''
-                    def mkcd [dir_name?: string] {
-                        if $dir_name == null {
-                            print "Usage: mkcd <directory_name>"
-                            return 1
-                        }
+        def mkcd [dir_name?: string] {
+            if $dir_name == null {
+                print "Usage: mkcd <directory_name>"
+                return 1
+            }
 
-                        mkdir $dir_name
+            mkdir $dir_name
 
-                        if $env.LAST_EXIT_CODE == 0 {
-                            cd $dir_name
-                        } else {
-                            print $"Error: Could not create directory '($dir_name)'."
-                            return $env.LAST_EXIT_CODE
-                        }
-                    }
-                    def pom [] {
-            # 1. Setup Binaries (Clean abstraction for Nix paths)
-            let gum = "${pkgs.gum}/bin/gum"
-            let timer = "${pkgs.timer}/bin/timer"
-            let notifier = if ($nu.os-info.name == "macos") {
-                "${pkgs.terminal-notifier}/bin/terminal-notifier"
+            if $env.LAST_EXIT_CODE == 0 {
+                cd $dir_name
             } else {
-                "${pkgs.libnotify}/bin/notify-send"
-            }
-
-            # 2. Select Split
-            # We capture the output here because we need the value. 
-            # If cancelled (Ctrl+C), 'complete' captures the failure.
-            let selection = (do -i { ^$gum choose "25/5" "50/10" "all done" --header "Split?" } | complete)
-            
-            if $selection.exit_code != 0 { return } # Exit if user Ctrl+C's the menu
-            
-            let split = ($selection.stdout | str trim)
-            
-            # 3. Logic Map
-            let time = match $split {
-                "25/5" => { work: "25m", break: "5m" }
-                "50/10" => { work: "50m", break: "10m" }
-                _ => { return }
-            }
-
-            # 4. Work Timer
-            # We run this directly with 'do -i'. We DO NOT assign it to a variable.
-            # This ensures stdout goes straight to your terminal.
-            do -i { ^$timer $time.work }
-
-            if ($env.LAST_EXIT_CODE == 0) {
-                # Send Notification
-                if ($nu.os-info.name == "macos") {
-                    run-external $notifier "-message" "Work Done" "-title" "Pomodoro" "-sound" "Crystal"
-                } else {
-                    run-external $notifier "Pomodoro" "Work Done" "-u" "critical"
-                }
-
-                # 5. Break Confirmation
-                # We run gum confirm directly. No pipes. No variables.
-                do -i { ^$gum confirm "Ready for a break?" }
-                
-                if ($env.LAST_EXIT_CODE == 0) {
-                    # User said YES
-                    do -i { ^$timer $time.break }
-
-                    if ($env.LAST_EXIT_CODE == 0) {
-                        # Break Done
-                        if ($nu.os-info.name == "macos") {
-                            run-external $notifier "-message" "Break Over" "-title" "Pomodoro" "-sound" "Crystal"
-                        } else {
-                            run-external $notifier "Pomodoro" "Break Over" "-u" "critical"
-                        }
-                    } else {
-                        # Break Interrupted -> Restart
-                        pom
-                    }
-                } else {
-                    # User said NO (or Esc) -> Restart
-                    pom
-                }
+                print $"Error: Could not create directory '($dir_name)'."
+                return $env.LAST_EXIT_CODE
             }
         }
       ''

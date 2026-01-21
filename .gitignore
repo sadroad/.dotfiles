@@ -2,3 +2,4 @@
 .direnv
 dotfiles
 **/result
+**/target

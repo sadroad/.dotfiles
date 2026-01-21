@@ -14,6 +14,7 @@ let
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
   inherit (inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}) nix-alien;
+
   opencode = pkgs.symlinkJoin {
     name = "opencode-with-wakatime";
     paths = [ inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default ];
@@ -60,6 +61,7 @@ in
       dysk
       typst
       binsider
+      pom
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       nix-alien
@@ -162,7 +164,7 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [
-          "oh-my-opencode@v3.0.1"
+          "oh-my-opencode@v3.1.2"
           "opencode-wakatime@v1.1.1"
         ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
@@ -194,7 +196,7 @@ in
         variant = "high";
       };
       explore = {
-        model = "opencode/claude-haiku-4-5";
+        model = "zai-coding-plan/glm-4.7";
       };
       multimodal-looker = {
         model = "opencode/gemini-3-flash";

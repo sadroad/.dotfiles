@@ -1,5 +1,6 @@
 inputs: final: prev: {
   helium = final.callPackage ../pkgs/helium { };
+  pom = final.callPackage ../pkgs/pom { };
 
   vesktop = prev.vesktop.overrideAttrs (oldAttrs: {
     postPatch = ''

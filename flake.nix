@@ -142,6 +142,24 @@
     {
       formatter = forAllSystems (system: (mkPkgs system).nixfmt-tree);
 
+      devShells = forAllSystems (
+        system:
+        let
+          pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [ inputs.rust-overlay.overlays.default ];
+          };
+        in
+        {
+          default = pkgs.mkShell {
+            buildInputs = with pkgs; [
+              rust-bin.stable.latest.default
+              rust-analyzer
+            ];
+          };
+        }
+      );
+
       nixosConfigurations = {
         piplup = mkNixosSystem {
           hostname = "piplup";
@@ -170,7 +188,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
-    hyprland.url = "github:hyprwm/Hyprland/v0.53.3";
+    hyprland.url = "github:hyprwm/Hyprland";
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -209,5 +227,9 @@
     };
     opencode.url = "github:anomalyco/opencode/v1.1.36";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
