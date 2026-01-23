@@ -170,7 +170,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
-    hyprland.url = "github:hyprwm/Hyprland/v0.53.1";
+    hyprland.url = "github:hyprwm/Hyprland/v0.53.2";
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -207,7 +207,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.1.28";
+    opencode.url = "github:anomalyco/opencode/v1.1.34";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
   };
 }

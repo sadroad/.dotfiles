@@ -119,7 +119,7 @@ in
     };
     opencode = {
       enable = true;
-      package = pkgs.opencode;
+      package = opencode;
       enableMcpIntegration = true;
       agents = {
         docs = ''
@@ -178,7 +178,7 @@ in
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = [ "oh-my-opencode@v3.0.0-beta.11" ];
+        plugin = [ "oh-my-opencode@v3.0.0-beta.13" ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
           "zai-mcp-server" = {
             type = "local";
@@ -206,16 +206,14 @@ in
         })
         [
           "Sisyphus"
-          "librarian"
+          "Atlas"
           "oracle"
-          "document-writer"
+          "librarian"
+          "explore"
           "multimodal-looker"
           "Prometheus (Planner)"
           "Metis (Plan Consultant)"
           "Momus (Plan Reviewer)"
-          "orchestrator-sisyphus"
-          "frontend-ui-ux-engineer"
-          "explore"
           "Sisyphus-Junior"
         ]
     );
