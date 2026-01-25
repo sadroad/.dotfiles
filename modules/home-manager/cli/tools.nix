@@ -14,7 +14,20 @@ let
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
   inherit (inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}) nix-alien;
-  opencode = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  opencode = pkgs.symlinkJoin {
+    name = "opencode-with-wakatime";
+    paths = [ inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default ];
+    buildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/opencode \
+        --prefix PATH : ${
+          pkgs.lib.makeBinPath [
+            pkgs.wakatime-cli
+            pkgs.nixd
+          ]
+        }
+    '';
+  };
 in
 {
   home.sessionVariables = {
@@ -121,36 +134,6 @@ in
       enable = true;
       package = opencode;
       enableMcpIntegration = true;
-      agents = {
-        docs = ''
-          ---
-          description: ALWAYS use this when writing docs
-          ---
-
-          You are an expert technical documentation writer
-
-          You are not verbose
-
-          The title of the page should be a word or a 2-3 word phrase
-
-          The description should be one short line, should not start with "The", should avoid repeating the title of the page, should be 5-10 words long
-
-          Chunks of text should not be more than 2 sentences long
-
-          Each section is separated by a divider of 3 dashes
-
-          The section titles are short with only the first letter of the word capitalized
-
-          The section titles are in the imperative mood
-
-          The section titles should not repeat the term used in the page title, for example, if the page title is "Models", avoid using a section title like "Add new models". This might be unavoidable in some cases, but try to avoid it.
-
-          For JS or TS code snippets remove trailing semicolons and any trailing commas that might not be needed.
-
-          If you are making a commit prefix the commit message with `docs:`
-
-        '';
-      };
       commands = {
         rmslop = ''
           ---
@@ -178,7 +161,10 @@ in
       settings = {
         layout = "stretch";
         theme = "mercury";
-        plugin = [ "oh-my-opencode@v3.0.0-beta.13" ];
+        plugin = [
+          "oh-my-opencode@v3.0.1"
+          "opencode-wakatime@v1.1.1"
+        ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
           "zai-mcp-server" = {
             type = "local";
@@ -196,26 +182,64 @@ in
     };
   };
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
-    agents = lib.listToAttrs (
-      map
-        (agent: {
-          name = agent;
-          value = {
-            model = "zai-coding-plan/glm-4.7";
-          };
-        })
-        [
-          "Sisyphus"
-          "Atlas"
-          "oracle"
-          "librarian"
-          "explore"
-          "multimodal-looker"
-          "Prometheus (Planner)"
-          "Metis (Plan Consultant)"
-          "Momus (Plan Reviewer)"
-          "Sisyphus-Junior"
-        ]
-    );
+    agents = {
+      librarian = {
+        model = "zai-coding-plan/glm-4.7";
+      };
+      sisyphus = {
+        model = "opencode/claude-sonnet-4-5";
+      };
+      oracle = {
+        model = "opencode/gpt-5.2";
+        variant = "high";
+      };
+      explore = {
+        model = "opencode/claude-haiku-4-5";
+      };
+      multimodal-looker = {
+        model = "opencode/gemini-3-flash";
+      };
+      prometheus = {
+        model = "opencode/claude-opus-4-5";
+        variant = "max";
+      };
+      metis = {
+        model = "opencode/claude-opus-4-5";
+        variant = "max";
+      };
+      momus = {
+        model = "opencode/gpt-5.2";
+        variant = "medium";
+      };
+      atlas = {
+        model = "opencode/claude-sonnet-4-5";
+      };
+    };
+    categories = {
+
+      "visual-engineering" = {
+        model = "opencode/gemini-3-pro";
+      };
+      "ultrabrain" = {
+        model = "opencode/gpt-5.2-codex";
+        variant = "xhigh";
+      };
+      "artistry" = {
+        model = "opencode/gemini-3-pro";
+        variant = "max";
+      };
+      "quick" = {
+        model = "opencode/claude-haiku-4-5";
+      };
+      "unspecified-low" = {
+        model = "opencode/claude-sonnet-4-5";
+      };
+      "unspecified-high" = {
+        model = "opencode/claude-sonnet-4-5";
+      };
+      "writing" = {
+        model = "opencode/gemini-3-flash";
+      };
+    };
   };
 }

@@ -91,19 +91,19 @@ in
       };
     };
 
-    atuin = {
-      daemon.enable = true;
-      enable = true;
-      flags = [ "--disable-up-arrow" ];
-      settings = {
-        sync_address = "https://atuin.local.villablanca.tech";
-        enter_accept = false;
-        sync = {
-          records = true;
-        };
-        dotfiles.enable = false;
-      };
-    };
+    # atuin = {
+    #   daemon.enable = true;
+    #   enable = true;
+    #   flags = [ "--disable-up-arrow" ];
+    #   settings = {
+    #     sync_address = "https://atuin.local.villablanca.tech";
+    #     enter_accept = false;
+    #     sync = {
+    #       records = true;
+    #     };
+    #     dotfiles.enable = false;
+    #   };
+    # };
 
     zoxide.enable = true;
     carapace.enable = true;
