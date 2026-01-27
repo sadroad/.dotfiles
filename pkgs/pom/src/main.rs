@@ -7,12 +7,10 @@ fn main() {
     let work_complete = Notification::new()
         .summary("Pomodoro")
         .body("Work Done")
-        .urgency(Urgency::Critical)
         .finalize();
     let break_done = Notification::new()
         .summary("Pomodoro")
         .body("Break Over")
-        .urgency(Urgency::Critical)
         .finalize();
 
     loop {
