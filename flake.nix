@@ -227,9 +227,7 @@
     };
     opencode.url = "github:anomalyco/opencode/v1.1.36";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    jj-starship.url = "github:dmmulroy/jj-starship/v0.7.0";
+    pom.url = "github:sadroad/pom";
   };
 }

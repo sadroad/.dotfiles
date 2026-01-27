@@ -2,12 +2,16 @@
   pkgs,
   lib,
   config,
+  inputs,
   ...
 }:
 let
   manpager = pkgs.writeShellScriptBin "manpager" ''
     awk '{ gsub(/\x1B\[[0-9;]*m/, "", $0); gsub(/.\x08/, "", $0); print }' | ${pkgs.bat}/bin/bat -p -lman
   '';
+  jj-starship = "${
+    inputs.jj-starship.packages.${pkgs.stdenv.hostPlatform.system}.jj-starship
+  }/bin/jj-starship";
 in
 {
   home.shell.enableNushellIntegration = true;
@@ -105,6 +109,28 @@ in
     #     dotfiles.enable = false;
     #   };
     # };
+    #
+    starship = {
+      enable = true;
+      settings = {
+        custom = {
+          jj = {
+            when = "${jj-starship} detect";
+            shell = [ "${jj-starship}" ];
+            format = "$output ";
+          };
+        };
+        git_branch = {
+          disabled = true;
+        };
+        git_status = {
+          disabled = true;
+        };
+        git_commit = {
+          disabled = true;
+        };
+      };
+    };
 
     zoxide.enable = true;
     carapace.enable = true;
@@ -113,6 +139,5 @@ in
   home.sessionVariables = {
     PAGER = "delta";
     MANPAGER = "${manpager}/bin/manpager";
-    pure_enable_nixdevshell = "true";
   };
 }

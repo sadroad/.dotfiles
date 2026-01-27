@@ -29,6 +29,7 @@ let
         }
     '';
   };
+  pom = inputs.pom.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   home.sessionVariables = {
