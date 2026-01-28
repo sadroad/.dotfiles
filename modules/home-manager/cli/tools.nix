@@ -165,7 +165,7 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [
-          "oh-my-opencode@v3.1.2"
+          "oh-my-opencode@v3.1.4"
           "opencode-wakatime@v1.1.1"
         ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
