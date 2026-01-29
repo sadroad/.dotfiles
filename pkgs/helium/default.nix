@@ -12,7 +12,7 @@ let
 
   hashes = {
     "aarch64-darwin" = "sha256-0WZQDI/AVNQSl/m7QM47Yw2d+GyHRaCtj849hs854nM=";
-    "x86_64-linux" = "";
+    "x86_64-linux" = "sha256-y4KzR+pkBUuyVU+ALrzdY0n2rnTB7lTN2ZmVSzag5vE=";
   };
 
   baseMeta = {

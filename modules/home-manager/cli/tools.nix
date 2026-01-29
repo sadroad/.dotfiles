@@ -165,7 +165,7 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [
-          "oh-my-opencode@v3.1.7"
+          "oh-my-opencode@v3.1.8"
           "opencode-wakatime@v1.1.1"
         ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
@@ -187,8 +187,9 @@ in
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
     agents = {
       sisyphus = {
-        model = "opencode/claude-opus-4-5";
-        variant = "max";
+        # model = "opencode/claude-opus-4-5";
+        # variant = "max";
+        model = "opencode/kimi-k2.5";
       };
       oracle = {
         model = "opencode/gpt-5.2";
@@ -217,9 +218,6 @@ in
       };
       atlas = {
         # model = "opencode/claude-sonnet-4-5";
-        model = "opencode/kimi-k2.5";
-      };
-      sisyphus-junior = {
         model = "opencode/kimi-k2.5";
       };
     };

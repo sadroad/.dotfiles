@@ -82,7 +82,7 @@ in
           backend = "gpg";
         };
         snapshot = {
-          auto-track = "~ glob:'**/AGENTS.md' ~ glob:'.sisyphus/**'";
+          auto-track = "~ glob:'**/AGENTS.md' ~ glob:'**/.sisyphus/**'";
         };
       };
     };

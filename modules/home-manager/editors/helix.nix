@@ -3,10 +3,20 @@
   programs.helix = {
     defaultEditor = true;
     enable = true;
-    extraPackages = [
-      pkgs.nodePackages.typescript-language-server
-      pkgs.nil
-      pkgs.nixd
+    extraPackages = with pkgs; [
+      nodePackages.typescript-language-server
+      astro-language-server
+
+      nil
+      nixd
+
+      vscode-json-languageserver
+
+      ty
+      ruff
+      python3Packages.python-lsp-server
+      python3Packages.python-lsp-ruff
+      python3Packages.jedi-language-server
     ];
     settings = {
       theme = "gruvbox";
