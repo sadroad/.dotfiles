@@ -165,7 +165,7 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [
-          "oh-my-opencode@v3.1.4"
+          "oh-my-opencode@v3.1.7"
           "opencode-wakatime@v1.1.1"
         ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
@@ -186,15 +186,16 @@ in
   };
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
     agents = {
-      librarian = {
-        model = "zai-coding-plan/glm-4.7";
-      };
       sisyphus = {
-        model = "opencode/claude-sonnet-4-5";
+        model = "opencode/claude-opus-4-5";
+        variant = "max";
       };
       oracle = {
         model = "opencode/gpt-5.2";
         variant = "high";
+      };
+      librarian = {
+        model = "zai-coding-plan/glm-4.7";
       };
       explore = {
         model = "zai-coding-plan/glm-4.7";
@@ -215,11 +216,14 @@ in
         variant = "medium";
       };
       atlas = {
-        model = "opencode/claude-sonnet-4-5";
+        # model = "opencode/claude-sonnet-4-5";
+        model = "opencode/kimi-k2.5";
+      };
+      sisyphus-junior = {
+        model = "opencode/kimi-k2.5";
       };
     };
     categories = {
-
       "visual-engineering" = {
         model = "opencode/gemini-3-pro";
       };
@@ -232,16 +236,18 @@ in
         variant = "max";
       };
       "quick" = {
-        model = "opencode/claude-haiku-4-5";
+        model = "zai-coding-plan/glm-4.7";
       };
       "unspecified-low" = {
-        model = "opencode/claude-sonnet-4-5";
+        # model = "opencode/claude-sonnet-4-5";
+        model = "opencode/kimi-k2.5";
       };
       "unspecified-high" = {
-        model = "opencode/claude-sonnet-4-5";
+        model = "opencode/claude-opus-4-5";
+        variant = "max";
       };
       "writing" = {
-        model = "opencode/gemini-3-flash";
+        model = "opencode/kimi-k2";
       };
     };
   };
