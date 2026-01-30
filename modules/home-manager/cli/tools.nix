@@ -165,7 +165,7 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [
-          "oh-my-opencode@v3.1.8"
+          "oh-my-opencode@v3.1.9"
           "opencode-wakatime@v1.1.1"
         ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
@@ -232,6 +232,10 @@ in
       "artistry" = {
         model = "opencode/gemini-3-pro";
         variant = "max";
+      };
+      "deep" = {
+        model = "openai/gpt-5.2-codex";
+        variant = "medium";
       };
       "quick" = {
         model = "zai-coding-plan/glm-4.7";
