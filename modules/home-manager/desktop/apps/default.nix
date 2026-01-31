@@ -2,8 +2,12 @@
   pkgs,
   lib,
   username,
+  inputs,
   ...
 }:
+let
+  handy = inputs.handy.packages.${pkgs.stdenv.hostPlatform.system}.default;
+in
 {
   home.packages = with pkgs; [
     wl-clipboard
@@ -22,6 +26,7 @@
     protonup-ng
     hyprpicker
     calibre
+    # handy
   ];
 
   services.dunst = {

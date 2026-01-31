@@ -165,7 +165,7 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [
-          "oh-my-opencode@v3.1.9"
+          "oh-my-opencode@v3.2.2"
           "opencode-wakatime@v1.1.1"
         ];
         mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
@@ -195,6 +195,10 @@ in
         model = "opencode/gpt-5.2";
         variant = "high";
       };
+      hephaestus = {
+        model = "opencode/gpt-5.2-codex";
+        variant = "medium";
+      };
       librarian = {
         model = "zai-coding-plan/glm-4.7";
       };
@@ -214,7 +218,7 @@ in
       };
       momus = {
         model = "opencode/gpt-5.2";
-        variant = "medium";
+        variant = "high";
       };
       atlas = {
         # model = "opencode/claude-sonnet-4-5";

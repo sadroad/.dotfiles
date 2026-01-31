@@ -10,6 +10,8 @@
       nil
       nixd
 
+      tinymist
+
       vscode-json-languageserver
 
       ty
@@ -27,6 +29,11 @@
         color-modes = true;
         indent-guides = {
           render = true;
+        };
+      };
+      keys = {
+        normal = {
+          "C-Meta-w" = ":toggle soft-wrap.enable";
         };
       };
     };
