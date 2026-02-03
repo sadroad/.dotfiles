@@ -165,10 +165,12 @@ in
         layout = "stretch";
         theme = "mercury";
         plugin = [
-          "oh-my-opencode@v3.2.2"
+          "oh-my-opencode@v3.2.3"
           "opencode-wakatime@v1.1.1"
         ];
-        mcp = lib.optionalAttrs (config ? age.secrets.zai-key) {
+        mcp = {
+        }
+        // lib.optionalAttrs (config ? age.secrets.zai-key) {
           "zai-mcp-server" = {
             type = "local";
             command = [
@@ -257,4 +259,6 @@ in
       };
     };
   };
+
+  xdg.configFile."opencode/skills".source = ./skills;
 }

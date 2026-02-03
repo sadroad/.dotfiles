@@ -142,23 +142,6 @@
     {
       formatter = forAllSystems (system: (mkPkgs system).nixfmt-tree);
 
-      devShells = forAllSystems (
-        system:
-        let
-          pkgs = import inputs.nixpkgs {
-            inherit system;
-          };
-        in
-        {
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              rust-bin.stable.latest.default
-              rust-analyzer
-            ];
-          };
-        }
-      );
-
       nixosConfigurations = {
         piplup = mkNixosSystem {
           hostname = "piplup";
@@ -225,7 +208,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.1.49";
+    opencode.url = "github:anomalyco/opencode/v1.1.51";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
     jj-starship.url = "github:dmmulroy/jj-starship/v0.7.0";
     pom.url = "github:sadroad/pom";
