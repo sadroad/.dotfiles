@@ -81,7 +81,7 @@ in
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
     agents = {
       sisyphus = {
-        # model = "opencode/claude-opus-4-5";
+        # model = "opencode/claude-opus-4-6";
         # variant = "max";
         model = "opencode/kimi-k2.5";
       };
@@ -103,11 +103,11 @@ in
         model = "opencode/gemini-3-flash";
       };
       prometheus = {
-        model = "opencode/claude-opus-4-5";
+        model = "opencode/claude-opus-4-6";
         variant = "max";
       };
       metis = {
-        model = "opencode/claude-opus-4-5";
+        model = "opencode/claude-opus-4-6";
         variant = "max";
       };
       momus = {
@@ -143,7 +143,7 @@ in
         model = "opencode/kimi-k2.5";
       };
       "unspecified-high" = {
-        model = "opencode/claude-opus-4-5";
+        model = "opencode/claude-opus-4-6";
         variant = "max";
       };
       "writing" = {

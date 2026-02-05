@@ -129,6 +129,15 @@ in
         git_commit = {
           disabled = true;
         };
+        rust = {
+          disabled = true;
+        };
+        python = {
+          disabled = true;
+        };
+        package = {
+          disabled = true;
+        };
       };
     };
 
