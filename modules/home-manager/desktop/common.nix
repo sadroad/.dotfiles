@@ -10,7 +10,6 @@ let
       inputs.ghostty.packages.${pkgs.stdenv.hostPlatform.system}.default
     else
       pkgs.ghostty-bin;
-  opencode-desktop = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.desktop;
 in
 {
   fonts.fontconfig = {
@@ -52,7 +51,6 @@ in
       slack
       helium
       bruno
-      # opencode-desktop
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective

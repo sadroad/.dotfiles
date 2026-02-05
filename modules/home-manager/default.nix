@@ -3,6 +3,7 @@
   imports = [
     ./system
     ./cli
+    ./opencode
     ./editors/neovim.nix
     ./editors/zed.nix
     ./editors/helix.nix
