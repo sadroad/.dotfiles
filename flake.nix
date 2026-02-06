@@ -55,6 +55,7 @@
             inputs.home-manager.nixosModules.home-manager
             inputs.nix-index-database.nixosModules.nix-index
             inputs.chaotic.nixosModules.default
+            inputs.niri-flake.nixosModules.niri
             (
               {
                 config,
@@ -158,8 +159,7 @@
     };
   inputs = {
     # core
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:nixos/nixpkgs/c5296fdd05cfa2c187990dd909864da9658df755";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -172,6 +172,7 @@
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     hyprland.url = "github:hyprwm/Hyprland";
+    niri-flake.url = "github:sodiboo/niri-flake/ff1edce403a67cfac7bf1038d348f2ef457ac691";
     chaotic = {
       url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
       inputs.nixpkgs.follows = "nixpkgs";

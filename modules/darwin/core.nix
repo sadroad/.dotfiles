@@ -19,6 +19,8 @@ let
   registryMap = filterAttrs (_: v: isType v "flake") inputs;
 in
 {
+  imports = [ ../shared/nix-cache.nix ];
+
   nix.settings = {
     accept-flake-config = true;
     experimental-features = [

@@ -12,6 +12,8 @@ in
   home.packages = with pkgs; [
     wl-clipboard
     grimblast
+    grim
+    slurp
     keymapp
     pavucontrol
     protonmail-desktop

@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./hyprland
+    ./niri
     ./waybar
     ./apps
     ./theme.nix

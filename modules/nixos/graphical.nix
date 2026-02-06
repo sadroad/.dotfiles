@@ -18,6 +18,17 @@
       portalPackage =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
+    niri.enable = true;
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-gtk
+      xdg-desktop-portal-gnome
+      gnome-keyring
+    ];
+    configPackages = [ pkgs.niri ];
   };
 
   services = {
@@ -80,4 +91,5 @@
   };
 
   security.pam.services.hyprlock = { };
+  security.pam.services.swaylock = { };
 }

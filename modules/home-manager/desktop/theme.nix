@@ -83,7 +83,7 @@ in
       enable = true;
       name = "BreezeX-RosePine-Linux";
       package = pkgs.rose-pine-cursor;
-      hyprcursor.enable = true;
+      hyprcursor.enable = false;
       size = 24;
       gtk.enable = true;
       x11.enable = true;

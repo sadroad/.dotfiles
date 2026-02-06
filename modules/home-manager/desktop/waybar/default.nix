@@ -7,8 +7,7 @@ _: {
       mainBar = {
         height = 24;
         modules-left = [
-          "hyprland/workspaces"
-          "hyprland/submap"
+          "niri/workspaces"
         ];
         modules-right = [
           "network"
@@ -16,9 +15,6 @@ _: {
           "tray"
           "clock"
         ];
-        "hyprland/submap" = {
-          format = "<span style=\"italic\">{}</span>";
-        };
         tray = {
           spacing = 10;
         };
@@ -42,7 +38,7 @@ _: {
             ];
           };
           on-click = "pavucontrol";
-          on-click-right = "foot -a pw-top pw-top";
+          on-click-right = "ghostty -e pw-top";
         };
       };
     };

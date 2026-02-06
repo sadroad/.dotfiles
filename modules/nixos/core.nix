@@ -17,6 +17,8 @@ let
   registryMap = filterAttrs (_: v: isType v "flake") inputs;
 in
 {
+  imports = [ ../shared/nix-cache.nix ];
+
   nix.settings = {
     accept-flake-config = true;
     experimental-features = [
@@ -60,7 +62,7 @@ in
   };
 
   programs = {
-    ssh.startAgent = true;
+    # ssh.startAgent = true;  # Disabled - conflicts with gnome.gcr-ssh-agent from niri-flake
     nix-ld = {
       enable = true;
       libraries = with pkgs; [

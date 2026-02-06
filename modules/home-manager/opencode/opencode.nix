@@ -23,7 +23,6 @@ let
   opencode-desktop = inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.desktop;
 in
 {
-  # To enable the opencode desktop app, add to home.packages:
   # home.packages = [ opencode-desktop ];
   programs.opencode = {
     enable = true;
@@ -57,8 +56,8 @@ in
       layout = "stretch";
       theme = "mercury";
       plugin = [
-        "oh-my-opencode@v3.2.3"
-        "opencode-wakatime@v1.1.1"
+        "oh-my-opencode@v3.4.0"
+        "opencode-wakatime@v1.1.5"
       ];
       mcp = {
       }
@@ -79,6 +78,9 @@ in
   };
 
   xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
+    git_master = {
+      include_co_authored_by = false;
+    };
     agents = {
       sisyphus = {
         # model = "opencode/claude-opus-4-6";
@@ -91,7 +93,7 @@ in
       };
       hephaestus = {
         model = "opencode/gpt-5.2-codex";
-        variant = "medium";
+        variant = "medium"; # change to high with 5.3
       };
       librarian = {
         model = "zai-coding-plan/glm-4.7";
@@ -125,11 +127,11 @@ in
       };
       "ultrabrain" = {
         model = "opencode/gpt-5.2-codex";
-        variant = "xhigh";
+        variant = "xhigh"; # change to high with 5.3
       };
       "artistry" = {
         model = "opencode/gemini-3-pro";
-        variant = "max";
+        variant = "high";
       };
       "deep" = {
         model = "openai/gpt-5.2-codex";
