@@ -56,24 +56,24 @@ in
       layout = "stretch";
       theme = "mercury";
       plugin = [
-        "oh-my-opencode@v3.4.0"
+        "oh-my-opencode@v3.5.2"
         "opencode-wakatime@v1.1.5"
       ];
       mcp = {
-      }
-      // lib.optionalAttrs (config ? age.secrets.zai-key) {
-        "zai-mcp-server" = {
-          type = "local";
-          command = [
-            (pkgs.writeShellScript "zai-mcp-server" ''
-              set -euo pipefail
-              export Z_AI_API_KEY="$(cat ${config.age.secrets.zai-key.path})"
-              export Z_AI_MODE="ZAI"
-              exec ${pkgs.bun}/bin/bunx -y @z_ai/mcp-server
-            '')
-          ];
-        };
       };
+      # // lib.optionalAttrs (config ? age.secrets.zai-key) {
+      #   "zai-mcp-server" = {
+      #     type = "local";
+      #     command = [
+      #       (pkgs.writeShellScript "zai-mcp-server" ''
+      #         set -euo pipefail
+      #         export Z_AI_API_KEY="$(cat ${config.age.secrets.zai-key.path})"
+      #         export Z_AI_MODE="ZAI"
+      #         exec ${pkgs.bun}/bin/bunx -y @z_ai/mcp-server
+      #       '')
+      #     ];
+      #   };
+      # };
     };
   };
 
@@ -96,10 +96,10 @@ in
         variant = "medium"; # change to high with 5.3
       };
       librarian = {
-        model = "zai-coding-plan/glm-4.7";
+        model = "zai-coding-plan/glm-5";
       };
       explore = {
-        model = "zai-coding-plan/glm-4.7";
+        model = "zai-coding-plan/glm-5";
       };
       multimodal-looker = {
         model = "opencode/gemini-3-flash";
@@ -138,7 +138,7 @@ in
         variant = "medium";
       };
       "quick" = {
-        model = "zai-coding-plan/glm-4.7";
+        model = "zai-coding-plan/glm-5";
       };
       "unspecified-low" = {
         # model = "opencode/claude-sonnet-4-5";

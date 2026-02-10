@@ -28,7 +28,7 @@ in
     protonup-ng
     hyprpicker
     calibre
-    # handy
+    handy
   ];
 
   services.dunst = {

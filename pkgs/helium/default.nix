@@ -7,11 +7,11 @@
 }:
 let
   pname = "helium";
-  version = "0.8.4.1";
+  version = "0.8.5.1";
   inherit (pkgs.stdenv.hostPlatform) system;
 
   hashes = {
-    "aarch64-darwin" = "sha256-0WZQDI/AVNQSl/m7QM47Yw2d+GyHRaCtj849hs854nM=";
+    "aarch64-darwin" = "sha256-erlRR3QTHvzNCSXcGtpR27d2ElNrrRvS7ZLHEnZK0wI=";
     "x86_64-linux" = "sha256-y4KzR+pkBUuyVU+ALrzdY0n2rnTB7lTN2ZmVSzag5vE=";
   };
 

@@ -209,10 +209,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.1.53";
-    wakatime-ls.url = "github:mrnossiom/wakatime-ls/b8b9c1e612f198d767a64142f34c33ffbd347fae";
+    opencode.url = "github:anomalyco/opencode/v1.1.59";
+    wakatime-ls.url = "github:mrnossiom/wakatime-ls/v0.2.2";
     jj-starship.url = "github:dmmulroy/jj-starship/v0.7.0";
     pom.url = "github:sadroad/pom";
-    handy.url = "github:cjpais/Handy/v0.7.1";
+    handy.url = "github:cjpais/Handy/v0.7.5";
   };
 }
