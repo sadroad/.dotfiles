@@ -17,8 +17,24 @@ in
   programs.niri.settings.spawn-at-startup = [
     # Wallpaper daemon and images
     { command = [ "${pkgs.swww}/bin/swww-daemon" ]; }
-    { command = [ "${pkgs.swww}/bin/swww" "img" "--outputs" "DP-2" "${wallpaperChange}" ]; }
-    { command = [ "${pkgs.swww}/bin/swww" "img" "--outputs" "DP-3" "${wallpaper1}" ]; }
+    {
+      command = [
+        "${pkgs.swww}/bin/swww"
+        "img"
+        "--outputs"
+        "DP-2"
+        "${wallpaperChange}"
+      ];
+    }
+    {
+      command = [
+        "${pkgs.swww}/bin/swww"
+        "img"
+        "--outputs"
+        "DP-3"
+        "${wallpaper1}"
+      ];
+    }
     # Night light (4500K-6500K)
     {
       command = [

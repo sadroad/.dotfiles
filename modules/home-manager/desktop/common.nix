@@ -34,7 +34,7 @@ in
   home.packages =
     with pkgs;
     [
-      # vesktop
+      vesktop
       spotify
       qbittorrent
 

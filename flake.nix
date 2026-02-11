@@ -214,5 +214,7 @@
     jj-starship.url = "github:dmmulroy/jj-starship/v0.7.0";
     pom.url = "github:sadroad/pom";
     handy.url = "github:cjpais/Handy/v0.7.5";
+
+    nixpkgs-vesktop.url = "github:nixos/nixpkgs/a1bab9e494f5f4939442a57a58d0449a109593fe";
   };
 }

@@ -1,7 +1,14 @@
-inputs: final: prev: {
+inputs: final: prev:
+let
+  pinnedPkgs = import inputs.nixpkgs-vesktop {
+    system = prev.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
+{
   helium = final.callPackage ../pkgs/helium { };
 
-  vesktop = prev.vesktop.overrideAttrs (oldAttrs: {
+  vesktop = pinnedPkgs.vesktop.overrideAttrs (oldAttrs: {
     postPatch = ''
       ${oldAttrs.postPatch or ""}
       mkdir -p static

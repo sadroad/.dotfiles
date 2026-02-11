@@ -117,7 +117,6 @@ in
         variant = "high";
       };
       atlas = {
-        # model = "opencode/claude-sonnet-4-5";
         model = "opencode/kimi-k2.5";
       };
     };
@@ -138,11 +137,10 @@ in
         variant = "medium";
       };
       "quick" = {
-        model = "zai-coding-plan/glm-5";
+        model = "opencode/kimi-k2.5";
       };
       "unspecified-low" = {
-        # model = "opencode/claude-sonnet-4-5";
-        model = "opencode/kimi-k2.5";
+        model = "zai-coding-plan/glm-5";
       };
       "unspecified-high" = {
         model = "opencode/claude-opus-4-6";
