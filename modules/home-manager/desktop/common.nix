@@ -50,7 +50,7 @@ in
       imhex
       slack
       helium
-      bruno
+      yaak
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective

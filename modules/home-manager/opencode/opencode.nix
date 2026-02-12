@@ -34,7 +34,7 @@ in
         description: Remove AI code slop
         ---
 
-        Check the diff using `jj diff`, and remove all AI generated slop introduced in this branch.
+        Check the diff using `jj diff`, and remove all AI generated slop introduced in this branch. Before removal, changes you'd like to make to the user for confirmation.
 
         This includes:
 
@@ -56,8 +56,8 @@ in
       layout = "stretch";
       theme = "mercury";
       plugin = [
-        "oh-my-opencode@v3.5.2"
-        "opencode-wakatime@v1.1.5"
+        "oh-my-opencode@v3.5.5"
+        "opencode-wakatime@v1.2.2"
       ];
       mcp = {
       };
@@ -123,6 +123,7 @@ in
     categories = {
       "visual-engineering" = {
         model = "opencode/gemini-3-pro";
+        variant = "high";
       };
       "ultrabrain" = {
         model = "opencode/gpt-5.2-codex";

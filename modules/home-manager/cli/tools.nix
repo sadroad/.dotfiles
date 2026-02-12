@@ -102,6 +102,7 @@ in
     };
     yazi = {
       enable = true;
+      shellWrapperName = "y";
       plugins = {
         save-clipboard-to-file = saveClipboardToFileYaziPlugin;
       };
