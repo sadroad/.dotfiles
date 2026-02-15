@@ -27,7 +27,7 @@ in
     winboat
     protonup-ng
     hyprpicker
-    calibre
+    # calibre
     handy
   ];
 

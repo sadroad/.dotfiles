@@ -3,6 +3,7 @@ _: {
     bind = [
       "$mainMod, R, exec, $menu"
       "$mainMod, Q, exec, $terminal"
+      "$mainMod, SPACE, exec, handy --toggle-transcription"
       "$mainMod, C, killactive,"
       "$mainMod, M, exit,"
       "$mainMod, V, togglefloating,"

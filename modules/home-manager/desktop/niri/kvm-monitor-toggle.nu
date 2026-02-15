@@ -4,7 +4,14 @@
 
 # Get current state by checking which output is being mirrored
 # We store the state in a file since wl-mirror doesn't expose this easily
-let state_file = ($nu.temp-path | path join "niri-kvm-state")
+let temp_dir = (
+    if ($env.TMPDIR? | is-empty) {
+        "/tmp"
+    } else {
+        $env.TMPDIR
+    }
+)
+let state_file = ($temp_dir | path join "niri-kvm-state")
 
 # Default to DP-2 if no state file exists
 let current = if ($state_file | path exists) {
@@ -22,7 +29,7 @@ ps | where name =~ "wl-mirror" | each { |p| kill $p.pid }
 # Start wl-mirror fullscreen on HDMI-A-1, mirroring the next output
 # The --fullscreen-output flag puts it on HDMI-A-1
 # The output argument is what we're mirroring
-wl-mirror $next --fullscreen-output HDMI-A-1 --fullscreen &
+sh -c $"wl-mirror --backend screencopy-shm --fullscreen-output HDMI-A-1 --fullscreen ($next) &"
 
 # Save the new state
 $next | save -f $state_file

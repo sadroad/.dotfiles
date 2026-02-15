@@ -27,7 +27,7 @@
     loader.efi.canTouchEfiVariables = true;
     supportedFilesystems = [ "ntfs" ];
 
-    kernelPackages = pkgs.linuxPackages_cachyos-lto;
+    kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto;
   };
 
   nix.settings.use-xdg-base-directories = true;

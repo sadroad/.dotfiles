@@ -19,6 +19,7 @@ _: {
       exec-once = [
         "hyprctl dispatch workspace 1"
         "[workspace 1 silent] $terminal"
+        "handy --start-hidden"
       ];
       general = {
         gaps_in = "5";

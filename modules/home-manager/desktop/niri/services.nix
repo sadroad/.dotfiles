@@ -15,6 +15,12 @@ in
   ];
 
   programs.niri.settings.spawn-at-startup = [
+    {
+      command = [
+        "handy"
+        "--start-hidden"
+      ];
+    }
     # Wallpaper daemon and images
     { command = [ "${pkgs.swww}/bin/swww-daemon" ]; }
     {

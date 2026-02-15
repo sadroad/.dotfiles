@@ -28,7 +28,6 @@ in
       doggo
       hexyl
       ouch
-
       hyperfine
       hydra-check
       nix-output-monitor
@@ -52,6 +51,7 @@ in
       nix-alien
       gf
       rr
+      wtype
     ]);
 
   programs = {

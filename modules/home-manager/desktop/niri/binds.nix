@@ -28,6 +28,11 @@
       # Application launchers
       "Mod+R".action.spawn = "fuzzel";
       "Mod+Q".action.spawn = "ghostty";
+      "Mod+Space".action.spawn = [
+        "handy"
+        "--toggle-transcription"
+      ];
+      "Mod+Space".repeat = false;
 
       # Window management
       "Mod+C".action.close-window = [ ];
@@ -47,7 +52,7 @@
       "Mod+P".action.spawn = [
         "sh"
         "-c"
-        "wl-mirror $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)"
+        "wl-mirror --backend screencopy-shm $(niri msg --json focused-output | ${pkgs.jq}/bin/jq -r .name)"
       ];
       "Mod+P".repeat = false;
 

@@ -50,11 +50,12 @@
               nixpkgs.config.allowUnfree = true;
               nixpkgs.overlays = [
                 (import ./overlays/default.nix inputs)
+                inputs.nix-cachyos-kernel.overlays.pinned
+                inputs.niri-flake.overlays.niri
               ];
             }
             inputs.home-manager.nixosModules.home-manager
             inputs.nix-index-database.nixosModules.nix-index
-            inputs.chaotic.nixosModules.default
             inputs.niri-flake.nixosModules.niri
             (
               {
@@ -171,13 +172,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
-    hyprland.url = "github:hyprwm/Hyprland/v0.53.0";
-    niri-flake.url = "github:sodiboo/niri-flake/ff1edce403a67cfac7bf1038d348f2ef457ac691";
-    chaotic = {
-      url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
+    hyprland.url = "github:hyprwm/Hyprland/v0.53.3";
+    niri-flake.url = "github:sodiboo/niri-flake/599b3f8d4215470dd50066119c81007b2670b6e1";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     # darwin
     nix-darwin = {
@@ -203,17 +200,20 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nh.url = "github:nix-community/nh/v4.3.0-beta1";
+    nh.url = "github:nix-community/nh/v4.3.0";
     nix-alien = {
       url = "github:thiagokokada/nix-alien";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.2.15";
+    opencode = {
+      url = "github:anomalyco/opencode/v1.2.15";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/v0.2.2";
     jj-starship.url = "github:dmmulroy/jj-starship/v0.7.0";
     pom.url = "github:sadroad/pom";
-    handy.url = "github:cjpais/Handy/v0.7.6";
+    handy.url = "github:cjpais/Handy/v0.7.8";
 
     nixpkgs-vesktop.url = "github:nixos/nixpkgs/a1bab9e494f5f4939442a57a58d0449a109593fe";
   };

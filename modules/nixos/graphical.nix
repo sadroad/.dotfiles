@@ -12,13 +12,16 @@
       openFirewall = true;
     };
     hyprland = {
-      enable = true;
+      enable = false;
       withUWSM = true;
       package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
       portalPackage =
         inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
-    niri.enable = true;
+    niri = {
+      package = pkgs.niri-stable;
+      enable = true;
+    };
   };
 
   xdg.portal = {
@@ -28,7 +31,7 @@
       xdg-desktop-portal-gnome
       gnome-keyring
     ];
-    configPackages = [ pkgs.niri ];
+    configPackages = [ pkgs.niri-stable ];
   };
 
   services = {

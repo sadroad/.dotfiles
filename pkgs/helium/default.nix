@@ -12,7 +12,7 @@ let
 
   hashes = {
     "aarch64-darwin" = "sha256-miPsputiNQwAm867O5I+OBZAr52OzzIFD1UHMzWDMVQ=";
-    "x86_64-linux" = "sha256-y4KzR+pkBUuyVU+ALrzdY0n2rnTB7lTN2ZmVSzag5vE=";
+    "x86_64-linux" = "sha256-N5gdWuxOrIudJx/4nYo4/SKSxakpTFvL4zzByv6Cnug=";
   };
 
   baseMeta = {
@@ -65,7 +65,7 @@ let
           cp -r ${contents}/opt/helium/locales "$out/share/lib/helium"
           cp -r ${contents}/usr/share/* "$out/share"
           cp "${contents}/${pname}.desktop" "$out/share/applications/"
-          substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=AppRun' 'Exec=${meta.mainProgram}'
+          substituteInPlace $out/share/applications/${pname}.desktop --replace-fail 'Exec=helium' 'Exec=${meta.mainProgram}'
         '';
 
       meta = baseMeta // {
