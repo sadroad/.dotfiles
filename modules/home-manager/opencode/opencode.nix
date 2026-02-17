@@ -56,7 +56,7 @@ in
       layout = "stretch";
       theme = "mercury";
       plugin = [
-        "oh-my-opencode@v3.5.5"
+        "oh-my-opencode@v3.7.4"
         "opencode-wakatime@v1.2.2"
       ];
       mcp = {
@@ -85,7 +85,7 @@ in
       sisyphus = {
         # model = "opencode/claude-opus-4-6";
         # variant = "max";
-        model = "opencode/kimi-k2.5";
+        model = "zai-coding-plan/glm-5";
       };
       oracle = {
         model = "opencode/gpt-5.2";
@@ -96,10 +96,10 @@ in
         variant = "medium"; # change to high with 5.3
       };
       librarian = {
-        model = "zai-coding-plan/glm-5";
+        model = "opencode/kimi-k2.5";
       };
       explore = {
-        model = "zai-coding-plan/glm-5";
+        model = "opencode/kimi-k2.5";
       };
       multimodal-looker = {
         model = "opencode/gemini-3-flash";
@@ -117,7 +117,7 @@ in
         variant = "high";
       };
       atlas = {
-        model = "opencode/kimi-k2.5";
+        model = "zai-coding-plan/glm-5";
       };
     };
     categories = {
@@ -147,9 +147,9 @@ in
         model = "opencode/claude-opus-4-6";
         variant = "max";
       };
-      "writing" = {
-        model = "opencode/kimi-k2";
-      };
+      # "writing" = {
+      #   model = "opencode/kimi-k2";
+      # };
     };
   };
 

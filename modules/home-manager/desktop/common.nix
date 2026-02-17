@@ -47,7 +47,7 @@ in
       pkgs.nerd-fonts.jetbrains-mono
       pkgs.nerd-fonts.symbols-only
       prismlauncher
-      imhex
+      # imhex
       slack
       helium
       yaak
