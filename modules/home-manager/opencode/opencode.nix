@@ -122,15 +122,16 @@ in
     };
     categories = {
       "visual-engineering" = {
-        model = "opencode/gemini-3-pro";
-        variant = "high";
+        # model = "opencode/gemini-3-pro";
+        # variant = "high";
+        model = "zai-coding-plan/glm-5";
       };
       "ultrabrain" = {
         model = "opencode/gpt-5.2-codex";
         variant = "xhigh"; # change to high with 5.3
       };
       "artistry" = {
-        model = "opencode/gemini-3-pro";
+        model = "opencode/gemini-3.1-pro";
         variant = "high";
       };
       "deep" = {

@@ -209,7 +209,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.2.6";
+    opencode.url = "github:anomalyco/opencode/v1.2.10";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/v0.2.2";
     jj-starship.url = "github:dmmulroy/jj-starship/v0.7.0";
     pom.url = "github:sadroad/pom";
