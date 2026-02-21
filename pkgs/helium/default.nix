@@ -7,7 +7,7 @@
 }:
 let
   pname = "helium";
-  version = "0.9.2.1";
+  version = "0.9.4.1";
   inherit (pkgs.stdenv.hostPlatform) system;
 
   hashes = {

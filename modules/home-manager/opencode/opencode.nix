@@ -56,7 +56,6 @@ in
       layout = "stretch";
       theme = "mercury";
       plugin = [
-        "oh-my-opencode@v3.7.4"
         "opencode-wakatime@v1.2.2"
       ];
       mcp = {
@@ -73,83 +72,6 @@ in
       #       '')
       #     ];
       #   };
-      # };
-    };
-  };
-
-  xdg.configFile."opencode/oh-my-opencode.json".text = builtins.toJSON {
-    git_master = {
-      include_co_authored_by = false;
-    };
-    agents = {
-      sisyphus = {
-        # model = "opencode/claude-opus-4-6";
-        # variant = "max";
-        model = "zai-coding-plan/glm-5";
-      };
-      oracle = {
-        model = "opencode/gpt-5.2";
-        variant = "high";
-      };
-      hephaestus = {
-        model = "opencode/gpt-5.2-codex";
-        variant = "medium"; # change to high with 5.3
-      };
-      librarian = {
-        model = "opencode/kimi-k2.5";
-      };
-      explore = {
-        model = "opencode/kimi-k2.5";
-      };
-      multimodal-looker = {
-        model = "opencode/gemini-3-flash";
-      };
-      prometheus = {
-        model = "opencode/claude-opus-4-6";
-        variant = "max";
-      };
-      metis = {
-        model = "opencode/claude-opus-4-6";
-        variant = "max";
-      };
-      momus = {
-        model = "opencode/gpt-5.2";
-        variant = "high";
-      };
-      atlas = {
-        model = "zai-coding-plan/glm-5";
-      };
-    };
-    categories = {
-      "visual-engineering" = {
-        # model = "opencode/gemini-3-pro";
-        # variant = "high";
-        model = "zai-coding-plan/glm-5";
-      };
-      "ultrabrain" = {
-        model = "opencode/gpt-5.2-codex";
-        variant = "xhigh"; # change to high with 5.3
-      };
-      "artistry" = {
-        model = "opencode/gemini-3.1-pro";
-        variant = "high";
-      };
-      "deep" = {
-        model = "openai/gpt-5.2-codex";
-        variant = "medium";
-      };
-      "quick" = {
-        model = "opencode/kimi-k2.5";
-      };
-      "unspecified-low" = {
-        model = "zai-coding-plan/glm-5";
-      };
-      "unspecified-high" = {
-        model = "opencode/claude-opus-4-6";
-        variant = "max";
-      };
-      # "writing" = {
-      #   model = "opencode/kimi-k2";
       # };
     };
   };
