@@ -51,6 +51,7 @@ in
       slack
       helium
       yaak
+      ghidra
     ]
     ++ lib.optionals pkgs.stdenv.isDarwin [
       grandperspective

@@ -16,9 +16,6 @@
 
       ty
       ruff
-      python3Packages.python-lsp-server
-      python3Packages.python-lsp-ruff
-      python3Packages.jedi-language-server
     ];
     settings = {
       theme = "gruvbox";
