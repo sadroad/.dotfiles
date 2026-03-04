@@ -76,6 +76,8 @@ in
     virt-manager.enable = true;
   };
 
+  hardware.bluetooth.enable = true;
+
   services = {
     tailscale = {
       enable = true;
@@ -83,6 +85,8 @@ in
       extraSetFlags = [ "--ssh" ];
     };
     resolved.enable = true;
+    power-profiles-daemon.enable = true;
+    upower.enable = true;
     openssh = {
       enable = true;
       settings = {

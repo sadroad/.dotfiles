@@ -8,8 +8,6 @@
   hardware.cpu.intel.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
 
-  powerManagement.cpuFreqGovernor = "performance";
-
   boot.kernelParams = [
     "intel_pstate=active"
     "transparent_hugepage=madvise"
