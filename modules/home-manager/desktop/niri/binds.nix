@@ -2,6 +2,14 @@
 {
   programs.niri.settings.binds =
     let
+      noctalia =
+        cmd:
+        [
+          "noctalia-shell"
+          "ipc"
+          "call"
+        ]
+        ++ (pkgs.lib.splitString " " cmd);
       workspaceBinds = builtins.listToAttrs (
         builtins.concatLists (
           builtins.genList (
@@ -25,14 +33,40 @@
     in
     workspaceBinds
     // {
-      # Application launchers
-      "Mod+R".action.spawn = "fuzzel";
+      # Core launchers
       "Mod+Q".action.spawn = "ghostty";
+      "Mod+R".action.spawn = noctalia "launcher toggle";
+      "Mod+R".repeat = false;
+      "Mod+S".action.spawn = noctalia "controlCenter toggle";
+      "Mod+S".repeat = false;
+      "Mod+Comma".action.spawn = noctalia "settings toggle";
+      "Mod+Comma".repeat = false;
+
+      # Keep custom helper launcher
       "Mod+Space".action.spawn = [
         "handy"
         "--toggle-transcription"
       ];
       "Mod+Space".repeat = false;
+
+      # Media keys through Noctalia
+      "XF86AudioRaiseVolume".action.spawn = noctalia "volume increase";
+      "XF86AudioLowerVolume".action.spawn = noctalia "volume decrease";
+      "XF86AudioMute".action.spawn = noctalia "volume muteOutput";
+      "XF86MonBrightnessUp".action.spawn = noctalia "brightness increase";
+      "XF86MonBrightnessDown".action.spawn = noctalia "brightness decrease";
+
+      # Session and lock controls
+      "Mod+Escape".action.spawn = noctalia "sessionMenu toggle";
+      "Mod+Escape".repeat = false;
+      "Mod+L".action.spawn = noctalia "lockScreen lock";
+      "Mod+L".repeat = false;
+      "Mod+N".action.spawn = noctalia "notifications toggleHistory";
+      "Mod+N".repeat = false;
+      "Mod+Shift+N".action.spawn = noctalia "notifications toggleDND";
+      "Mod+Shift+N".repeat = false;
+      "Mod+Ctrl+N".action.spawn = noctalia "notifications clear";
+      "Mod+Ctrl+N".repeat = false;
 
       # Window management
       "Mod+C".action.close-window = [ ];

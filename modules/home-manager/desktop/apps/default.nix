@@ -31,61 +31,6 @@ in
     handy
   ];
 
-  services.dunst = {
-    enable = true;
-    settings = {
-      global = {
-        width = 300;
-        origin = "bottom-right";
-        offset = "48x48";
-        scale = 0;
-        notification_limit = 5;
-        monitor = 1;
-        corner_radius = 4;
-        progress_bar = true;
-        progress_bar_height = 10;
-        progress_bar_frame_width = 1;
-        progress_bar_min_width = 150;
-        progress_bar_max_width = 300;
-        indicate_hidden = "yes";
-        transparency = 16;
-        separator_height = 2;
-        padding = 8;
-        horizontal_padding = 8;
-        text_icon_padding = 0;
-        frame_width = 2;
-        frame_color = "#FFFFFF";
-        idle_threshold = 0;
-        font = "Berkeley Mono Variable";
-        line_height = 0;
-        format = "<b>%s</b>\\n%b";
-        alignment = "left";
-        vertical_alignment = "center";
-        show_age_threshold = 60;
-        ellipsize = "middle";
-        ignore_newline = "no";
-        stack_duplicates = true;
-        hide_duplicate_count = true;
-        show_indicators = "no";
-      };
-      urgency_low = {
-        background = "#080808";
-        foreground = "#f0f0f0";
-        frame_color = "#ffffff";
-      };
-      urgency_normal = {
-        background = "#080808";
-        foreground = "#f0f0f0";
-        frame_color = "#ffffff";
-      };
-      urgency_critical = {
-        background = "#080808";
-        foreground = "#db4b4b";
-        frame_color = "#db4b4b";
-      };
-    };
-  };
-
   programs.obs-studio = {
     enable = true;
     package = pkgs.obs-studio.override { cudaSupport = true; };

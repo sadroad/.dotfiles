@@ -173,6 +173,15 @@
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
     niri-flake.url = "github:sodiboo/niri-flake/599b3f8d4215470dd50066119c81007b2670b6e1";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.noctalia-qs.follows = "noctalia-qs";
+    };
+    noctalia-qs = {
+      url = "github:noctalia-dev/noctalia-qs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     # darwin

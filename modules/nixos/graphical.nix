@@ -47,7 +47,7 @@
       nvidiaSettings = true;
       modesetting.enable = true;
       powerManagement = {
-        enable = false;
+        enable = true;
         finegrained = false;
       };
 
@@ -85,8 +85,5 @@
     ];
   };
 
-  security = {
-    soteria.enable = true;
-    pam.services.hyprlock = { };
-  };
+  security.soteria.enable = true;
 }
