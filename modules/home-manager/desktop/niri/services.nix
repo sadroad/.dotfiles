@@ -4,8 +4,6 @@ let
   wallpaper1 = pkgs.copyPathToStore ../../../../assets/1.jpg;
 in
 {
-  services.polkit-gnome.enable = true;
-
   home.packages = with pkgs; [
     swww
     wlsunset

@@ -2,7 +2,6 @@
   config,
   pkgs,
   username,
-  inputs,
   ...
 }:
 {
@@ -10,13 +9,6 @@
     localsend = {
       enable = true;
       openFirewall = true;
-    };
-    hyprland = {
-      enable = false;
-      withUWSM = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage =
-        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     };
     niri = {
       package = pkgs.niri-stable;
@@ -93,6 +85,8 @@
     ];
   };
 
-  security.pam.services.hyprlock = { };
-  security.pam.services.swaylock = { };
+  security = {
+    soteria.enable = true;
+    pam.services.hyprlock = { };
+  };
 }

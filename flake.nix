@@ -172,7 +172,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
-    hyprland.url = "github:hyprwm/Hyprland/v0.53.3";
     niri-flake.url = "github:sodiboo/niri-flake/599b3f8d4215470dd50066119c81007b2670b6e1";
     nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
