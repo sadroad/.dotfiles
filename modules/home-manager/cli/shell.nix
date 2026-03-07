@@ -2,16 +2,13 @@
   pkgs,
   lib,
   config,
-  inputs,
   ...
 }:
 let
   manpager = pkgs.writeShellScriptBin "manpager" ''
     awk '{ gsub(/\x1B\[[0-9;]*m/, "", $0); gsub(/.\x08/, "", $0); print }' | ${pkgs.bat}/bin/bat -p -lman
   '';
-  jj-starship = "${
-    inputs.jj-starship.packages.${pkgs.stdenv.hostPlatform.system}.jj-starship
-  }/bin/jj-starship";
+  jj-starship = "${pkgs.jj-starship}/bin/jj-starship";
 in
 {
   home.shell.enableNushellIntegration = true;

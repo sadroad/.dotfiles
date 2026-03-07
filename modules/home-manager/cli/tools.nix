@@ -1,6 +1,5 @@
 {
   pkgs,
-  inputs,
   lib,
   userDir,
   ...
@@ -12,9 +11,6 @@ let
     rev = "3309c787646556beadddf4e4c28fcf3ebf52920b";
     sha256 = "sha256-9UYfakBFWMq4ThWjnZx7q2lIPrVnli1QSSOZfcQli/s=";
   };
-  inherit (inputs.nix-alien.packages.${pkgs.stdenv.hostPlatform.system}) nix-alien;
-
-  pom = inputs.pom.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   home.sessionVariables = {
@@ -46,6 +42,7 @@ in
       typst
       binsider
       pom
+      codex
     ]
     ++ (lib.optionals pkgs.stdenv.isLinux [
       nix-alien
@@ -70,7 +67,6 @@ in
     ripgrep.enable = true;
     fd.enable = true;
     nh = {
-      package = inputs.nh.packages.${pkgs.stdenv.hostPlatform.system}.nh;
       enable = true;
       clean.enable = true;
       flake = "${userDir}/.dotfiles";

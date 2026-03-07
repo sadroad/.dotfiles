@@ -1,4 +1,4 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
   programs.helix = {
     defaultEditor = true;
@@ -37,9 +37,7 @@
     languages = {
       language-server = {
         wakatime = {
-          command = "${
-            inputs.wakatime-ls.packages.${pkgs.stdenv.hostPlatform.system}.default
-          }/bin/wakatime-ls";
+          command = "${pkgs.wakatime-ls}/bin/wakatime-ls";
         };
         nil = {
           config.nil = {
