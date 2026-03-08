@@ -1,5 +1,7 @@
 inputs: final: prev: {
-  helium = final.callPackage ../pkgs/helium { };
+  helium = final.callPackage ../pkgs/helium {
+    enableWideVine = final.stdenv.isLinux;
+  };
   codex = inputs.codex.packages.${prev.stdenv.hostPlatform.system}.default;
   handy = inputs.handy.packages.${prev.stdenv.hostPlatform.system}.default;
   jj-starship = inputs.jj-starship.packages.${prev.stdenv.hostPlatform.system}.jj-starship;

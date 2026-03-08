@@ -21,6 +21,8 @@ in
     };
     mergiraf = {
       enable = true;
+      enableGitIntegration = true;
+      enableJujutsuIntegration = true;
     };
     git = {
       enable = true;
@@ -51,9 +53,6 @@ in
         key = gitSigningKey;
         format = "openpgp";
       };
-    };
-    jjui = {
-      enable = true;
     };
     jujutsu = {
       enable = true;

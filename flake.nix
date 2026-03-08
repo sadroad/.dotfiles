@@ -191,9 +191,9 @@
     };
     mac-app-util = {
       url = "github:hraban/mac-app-util";
-      inputs = {
-        cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
-      };
+      # inputs = {
+      #   cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
+      # };
     };
 
     # shared
@@ -203,7 +203,7 @@
       flake = false;
     };
     nvf.url = "github:notashelf/nvf/v0.8";
-    ghostty.url = "github:ghostty-org/ghostty/tip";
+    ghostty.url = "github:ghostty-org/ghostty/v1.3.0";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -214,11 +214,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nix-index-database.follows = "nix-index-database";
     };
-    opencode.url = "github:anomalyco/opencode/v1.2.20";
+    opencode.url = "github:anomalyco/opencode/v1.2.25";
     wakatime-ls.url = "github:mrnossiom/wakatime-ls/v0.2.2";
     jj-starship.url = "github:dmmulroy/jj-starship/v0.7.0";
     pom.url = "github:sadroad/pom";
     handy.url = "github:cjpais/Handy/v0.7.9";
-    codex.url = "github:openai/codex/rust-v0.111.0";
+    codex.url = "github:openai/codex/rust-v0.112.0";
   };
 }
